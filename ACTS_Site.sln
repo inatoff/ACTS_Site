@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACTS_Site", "ACTS_Site\ACTS_Site.csproj", "{D037F86E-1E24-410B-9218-2B0F19C73AE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACTS_DataLayer", "ACTS_DataLayer\ACTS_DataLayer.csproj", "{D40F9141-FFC8-424D-B980-6BF4C9A971B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D037F86E-1E24-410B-9218-2B0F19C73AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D037F86E-1E24-410B-9218-2B0F19C73AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D037F86E-1E24-410B-9218-2B0F19C73AE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D40F9141-FFC8-424D-B980-6BF4C9A971B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D40F9141-FFC8-424D-B980-6BF4C9A971B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D40F9141-FFC8-424D-B980-6BF4C9A971B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D40F9141-FFC8-424D-B980-6BF4C9A971B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
