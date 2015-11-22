@@ -105,6 +105,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ACTS.mdf" />
+    <Content Include="App_Data\ACTS_log.ldf" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -127,6 +129,8 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -137,6 +141,9 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -145,9 +152,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ACTS.Core\ACTS.Core.csproj">
