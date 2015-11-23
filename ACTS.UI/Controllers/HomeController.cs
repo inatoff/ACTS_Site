@@ -4,11 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ACTS_Site.Controllers
+namespace ACTS.Controllers
 {
     public class HomeController : Controller
     {
-
         // GET: Home
         public ActionResult Index()
         {

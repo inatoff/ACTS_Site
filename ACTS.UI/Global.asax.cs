@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace ACTS_Site
+namespace ACTS.UI
 {
     public class MvcApplication : System.Web.HttpApplication
     {
