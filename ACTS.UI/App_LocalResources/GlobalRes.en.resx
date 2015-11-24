@@ -120,7 +120,7 @@
   <data name="CurrentLang" xml:space="preserve">
     <value>en</value>
   </data>
-  <data name="Title" xml:space="preserve">
+  <data name="HomeIndexTitle" xml:space="preserve">
     <value>Automation and Сontrol in Technical Systems (AСTS)</value>
   </data>
 </root>
