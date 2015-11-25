@@ -1,76 +1,110 @@
 ﻿@{
-    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+	var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+	//var lang = CultureHelper.GetCurrentNeutralCulture();
+}
+@helper LanguageLinkConstructor(string culture, string currentCulture)
+{
+	@:<a 
+	if (culture == currentCulture)
+	{
+	   @:class="selectedLanguage"
+	}
+	@:href="@Url.Action("SetCulture", new { culture = culture, id = Url.RequestContext.RouteData.Values["action"] })">@culture</a>
 }
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" lang="@CultureHelper.GetCurrentNeutralCulture()" />
-    <title>@ViewBag.Title</title>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" lang="@CultureHelper.GetCurrentNeutralCulture()" />
+	<title>@ViewBag.Title</title>
+	<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link href="~/Content/bootstrap.css" rel="stylesheet" />
+	<link href="~/Content/Site.css" rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <img src="~/Content/Images/logo.png" style="max-height:100%" />
-                </a>
-            </div>
+	<nav class="navbar navbar-default navbar-static-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="@Url.Action("Index", "Home")">
+					<img src="~/Content/Images/logo.png" style="max-height:100%" />
+				</a>
+			</div>
 
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					@{
+						//if (!string.IsNullOrEmpty(ViewBag.CurrentPage))
+						if (ViewBag.CurrentPage != "main")
+						{
+							<li><a href="@Url.Action("Index", "Home")">@GlobalRes.Main</a></li>
+						}
+					}				
+					<li class="dropdown">
+						<a href="@Url.Action("About")" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Department<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="@Url.Action("About")">@GlobalRes.About</a></li>
+							<li><a href="@Url.Action("History")">@GlobalRes.History</a></li>
+							<li><a href="@Url.Action("TeachingStaff")">@GlobalRes.TeachingStaff</a></li>
+							<li><a href="@Url.Action("ServicePersonell")">@GlobalRes.ServicePersonell</a></li>
+							<li><a href="@Url.Action("OurGraduates")">@GlobalRes.OurGraduates</a></li>
+							<li><a href="@Url.Action("Placement")">@GlobalRes.Placement</a></li>
+						</ul>
+					</li>
+					<li><a href="#contact">Contact</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Nav header</li>
+							<li><a href="#">Separated link</a></li>
+							<li><a href="#">One more separated link</a></li>
+						</ul>
+					</li>
+				</ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        @*"uk".Active(culture) должно генерить *@
-                        @Html.ActionLink("uk", "SetCulture", "Home", new { culture = "uk" }, new { @class = "uk".Active(culture) })
-                    </li>
-                    <li>
-                        @Html.ActionLink("en", "SetCulture", "Home", new { culture = "en" }, new { @class = "en".Active(culture) })
-                    </li>
-                    <li>
-                        @Html.ActionLink("ru", "SetCulture", "Home", new { culture = "ru" }, new { @class = "ru".Active(culture) })
-                    </li>
-                </ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						@*"uk".Active(culture) должно генерить <a class="selectedLanguage" href="/uk/Home/SetCulture">uk</a> "*@
+						@LanguageLinkConstructor("uk", culture)
+						@*@Html.ActionLink("uk", "SetCulture", "Home", new { culture = "uk" }, new { @class = "uk".Active(culture) })*@
+					</li>
+					<li>
+						@LanguageLinkConstructor("en", culture)
+						@*@Html.ActionLink("en", "SetCulture", "Home", new { culture = "en" }, new { @class = "en".Active(culture) })*@
+					</li>
+					<li>
+						@LanguageLinkConstructor("ru", culture)
+						@*@Html.ActionLink("ru", "SetCulture", "Home", new { culture = "ru" }, new { @class = "ru".Active(culture) })*@
+					</li>
+				</ul>
 
-                <form class="navbar-form navbar-right">
-                    <input type="text" class="form-control" placeholder="Search...">
-                </form>
-            </div><!--/.nav-collapse -->
-        </div>
-    </nav>
+				<form class="navbar-form navbar-right">
+					<input type="text" class="form-control" placeholder="@GlobalRes.Search">
+				</form>
+			</div><!--/.nav-collapse -->
+		</div>
+	</nav>
 
-    <div class="container">
-        @RenderBody()
-    </div>
-    <script src="~/Scripts/jquery-2.1.4.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
+	<div class="container">
+		@RenderBody()
+	</div>
+	<script src="~/Scripts/jquery-2.1.4.js"></script>
+	<script src="~/Scripts/bootstrap.js"></script>
+	@*<script type="text/javascript">
+		$(function () {
+			$("a[title=@lang]").addClass("selectedLanguage");
+		});
+	</script>*@
 </body>
 </html>

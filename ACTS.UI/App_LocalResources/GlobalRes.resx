@@ -117,10 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Про кафедру</value>
+  </data>
+  <data name="AboutDepartment" xml:space="preserve">
+    <value>Про кафедру</value>
+  </data>
   <data name="CurrentLang" xml:space="preserve">
     <value>uk</value>
   </data>
+  <data name="Department" xml:space="preserve">
+    <value>Кафедра</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>Історія кафедри</value>
+  </data>
   <data name="HomeIndexTitle" xml:space="preserve">
     <value>Автоматика і Управління в Технічних Системах (АУТС)</value>
+  </data>
+  <data name="Main" xml:space="preserve">
+    <value>Головна</value>
+  </data>
+  <data name="OurGraduates" xml:space="preserve">
+    <value>Наші випускники</value>
+  </data>
+  <data name="Placement" xml:space="preserve">
+    <value>Працевлаштування</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Пошук...</value>
+  </data>
+  <data name="ServicePersonell" xml:space="preserve">
+    <value>Допоміжний персонал</value>
+  </data>
+  <data name="TeachingStaff" xml:space="preserve">
+    <value>Педагогічний склад</value>
   </data>
 </root>

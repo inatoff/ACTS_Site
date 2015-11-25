@@ -117,10 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>О кафедре</value>
+  </data>
   <data name="CurrentLang" xml:space="preserve">
     <value>ru</value>
   </data>
+  <data name="Department" xml:space="preserve">
+    <value>Кафедра</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>История кафедры</value>
+  </data>
   <data name="HomeIndexTitle" xml:space="preserve">
     <value>Автоматика и Управление в Технических Системах (АУТС)</value>
+  </data>
+  <data name="Main" xml:space="preserve">
+    <value>Главная</value>
   </data>
 </root>
