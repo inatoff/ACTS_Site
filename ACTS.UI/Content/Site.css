@@ -1,7 +1,15 @@
-﻿span.acts {
-    color: #579ADE
+﻿.acts {
+    color: #579ADE;
+    font-size: xx-large
+    
 }
 
-span.kpi{
-    color: #575757
+.kpi{
+    color: #575757;
+    font-size: xx-large
+
+}
+
+.sharp{
+    /*margin:6px*/
 }

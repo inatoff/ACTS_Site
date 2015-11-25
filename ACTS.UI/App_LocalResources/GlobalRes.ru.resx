@@ -120,7 +120,7 @@
   <data name="CurrentLang" xml:space="preserve">
     <value>ru</value>
   </data>
-  <data name="Title" xml:space="preserve">
+  <data name="HomeIndexTitle" xml:space="preserve">
     <value>Автоматика и Управление в Технических Системах (АУТС)</value>
   </data>
 </root>
