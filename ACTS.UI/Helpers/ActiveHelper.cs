@@ -11,7 +11,7 @@ namespace ACTS.UI.Helpers
     {
         public static string Active(this string culture, string currentCulture)
         {
-            return culture == currentCulture ? "stp" : string.Empty;
+            return culture == currentCulture ? "selectedLanguage" : string.Empty;
         }
     }
 }
