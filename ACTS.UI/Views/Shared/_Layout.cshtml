@@ -9,7 +9,7 @@
 	{
 	   @:class="selectedLanguage"
 	}
-	@:href="@Url.Action("SetCulture", new { culture = culture, id = Url.RequestContext.RouteData.Values["action"] })">@culture</a>
+	@:href="@Url.Action("SetCulture", new { culture = culture, returnUrl = Url.Action() })">@culture</a>
 }
 
 <!DOCTYPE html>
