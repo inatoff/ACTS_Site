@@ -1,15 +1,15 @@
 ﻿@{
-	var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+	var culture = CultureHelper.GetImplementedCulture(System.Threading.Thread.CurrentThread.CurrentUICulture.Name);
 	//var lang = CultureHelper.GetCurrentNeutralCulture();
 }
-@helper LanguageLinkConstructor(string culture, string currentCulture)
+@helper LanguageLinkBuilder(string culture, string currentCulture)
 {
 	@:<a 
 	if (culture == currentCulture)
 	{
 	   @:class="selectedLanguage"
 	}
-	@:href="@Url.Action("SetCulture", new { culture = culture, returnUrl = Url.Action() })">@culture</a>
+	@:href="@Url.Action("SetCulture", "Home", new { culture = culture, returnUrl = Url.Action() })">@culture</a>
 }
 
 <!DOCTYPE html>
@@ -48,14 +48,14 @@
 						}
 					}				
 					<li class="dropdown">
-						<a href="@Url.Action("About")" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Department<b class="caret"></b></a>
+						<a href="@Url.Action("About", "Department")" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Department<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="@Url.Action("About")">@GlobalRes.About</a></li>
-							<li><a href="@Url.Action("History")">@GlobalRes.History</a></li>
-							<li><a href="@Url.Action("TeachingStaff")">@GlobalRes.TeachingStaff</a></li>
-							<li><a href="@Url.Action("ServicePersonell")">@GlobalRes.ServicePersonell</a></li>
-							<li><a href="@Url.Action("OurGraduates")">@GlobalRes.OurGraduates</a></li>
-							<li><a href="@Url.Action("Placement")">@GlobalRes.Placement</a></li>
+							<li><a href="@Url.Action("About", "Department")">@GlobalRes.About</a></li>
+							<li><a href="@Url.Action("History", "Department")">@GlobalRes.History</a></li>
+							<li><a href="@Url.Action("TeachingStaff", "Department")">@GlobalRes.TeachingStaff</a></li>
+							<li><a href="@Url.Action("ServicePersonell", "Department")">@GlobalRes.ServicePersonell</a></li>
+							<li><a href="@Url.Action("OurGraduates", "Department")">@GlobalRes.OurGraduates</a></li>
+							<li><a href="@Url.Action("Placement", "Department")">@GlobalRes.Placement</a></li>
 						</ul>
 					</li>
 					<li><a href="#contact">Contact</a></li>
@@ -76,15 +76,15 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li>
 						@*"uk".Active(culture) должно генерить <a class="selectedLanguage" href="/uk/Home/SetCulture">uk</a> "*@
-						@LanguageLinkConstructor("uk", culture)
+						@LanguageLinkBuilder("uk", culture)
 						@*@Html.ActionLink("uk", "SetCulture", "Home", new { culture = "uk" }, new { @class = "uk".Active(culture) })*@
 					</li>
 					<li>
-						@LanguageLinkConstructor("en", culture)
+						@LanguageLinkBuilder("en", culture)
 						@*@Html.ActionLink("en", "SetCulture", "Home", new { culture = "en" }, new { @class = "en".Active(culture) })*@
 					</li>
 					<li>
-						@LanguageLinkConstructor("ru", culture)
+						@LanguageLinkBuilder("ru", culture)
 						@*@Html.ActionLink("ru", "SetCulture", "Home", new { culture = "ru" }, new { @class = "ru".Active(culture) })*@
 					</li>
 				</ul>

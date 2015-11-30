@@ -8,14 +8,15 @@ using System.Web.Routing;
 
 namespace ACTS.UI
 {
-    public class MvcApplication : System.Web.HttpApplication
-    {
-        protected void Application_Start()
-        {
-            AreaRegistration.RegisterAllAreas();
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
+	public class MvcApplication : System.Web.HttpApplication
+	{
+		protected void Application_Start()
+		{
+			AreaRegistration.RegisterAllAreas();
+			RouteConfig.RegisterRoutes(RouteTable.Routes);
+			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
-            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
-        }
-    }
+			ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+		}
+	}
 }

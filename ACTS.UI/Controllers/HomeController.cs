@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace ACTS.Controllers
+namespace ACTS.UI.Controllers
 {
 	public class HomeController : BaseController
 	{
@@ -33,10 +33,5 @@ namespace ACTS.Controllers
 				return Redirect(returnUrl);
 			return RedirectToAction("Index");
 		}   
-
-		public ActionResult About()
-		{
-			return View();
-		}
 	}
 }

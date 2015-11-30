@@ -5,7 +5,7 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ACTS.Controllers
+namespace ACTS.UI.Controllers
 {
 	public class BaseController : Controller
 	{
@@ -25,7 +25,7 @@ namespace ACTS.Controllers
 			cultureName = CultureHelper.GetImplementedCulture(cultureName); // This is safe
 
 			// Modify current thread's cultures            
-			Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(cultureName);
+			Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureName);
 			Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
 
 			return base.BeginExecuteCore(callback, state);

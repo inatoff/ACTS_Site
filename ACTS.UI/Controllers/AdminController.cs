@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ACTS.Controllers
+namespace ACTS.UI.Controllers
 {
-    public class AdminController : Controller
-    {
-        // GET: Admin
-        public ActionResult Index()
-        {
-            return View();
-        }
-    }
+	public class AdminController : BaseController
+	{
+		// GET: Admin
+		public ActionResult Index()
+		{
+			return View();
+		}
+	}
 }
