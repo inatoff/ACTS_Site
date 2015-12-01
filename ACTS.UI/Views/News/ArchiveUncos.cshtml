@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ACTS.Core.Entities.News>
+
+@{
+    ViewBag.Title = "ArchiveUncos";
+}
+
+<h2>ArchiveUncos</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCreate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageData)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataCreate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageData)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageMimeType)
+        </td>
+    </tr>
+}
+
+</table>

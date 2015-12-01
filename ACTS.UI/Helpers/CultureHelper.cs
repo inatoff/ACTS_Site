@@ -16,8 +16,10 @@ namespace ACTS.UI.Helpers
 			"uk",  // first culture is the DEFAULT
 			"en", // english NEUTRAL culture
 			"ru"  // russian NEUTRAL culture
-		
 		};
+
+        public static IEnumerable<string> Cultures { get { return _cultures.AsEnumerable(); } } 
+
 		/// <summary>
 		/// Returns true if the language is a right-to-left language. Otherwise, false.
 		/// </summary>

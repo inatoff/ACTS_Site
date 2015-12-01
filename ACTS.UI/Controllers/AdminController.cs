@@ -13,5 +13,11 @@ namespace ACTS.UI.Controllers
 		{
 			return View();
 		}
+
+        public ActionResult AddEmployee()
+        {
+            return View();
+        }
+        
 	}
 }

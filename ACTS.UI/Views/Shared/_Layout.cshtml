@@ -74,21 +74,17 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li>
-						@*"uk".Active(culture) должно генерить <a class="selectedLanguage" href="/uk/Home/SetCulture">uk</a> "*@
-						@LanguageLinkBuilder("uk", culture)
-						@*@Html.ActionLink("uk", "SetCulture", "Home", new { culture = "uk" }, new { @class = "uk".Active(culture) })*@
-					</li>
-					<li>
-						@LanguageLinkBuilder("en", culture)
-						@*@Html.ActionLink("en", "SetCulture", "Home", new { culture = "en" }, new { @class = "en".Active(culture) })*@
-					</li>
-					<li>
-						@LanguageLinkBuilder("ru", culture)
-						@*@Html.ActionLink("ru", "SetCulture", "Home", new { culture = "ru" }, new { @class = "ru".Active(culture) })*@
-					</li>
-				</ul>
-
+					@foreach (var lang in CultureHelper.Cultures)
+                    {
+                        @:<li
+                            if (culture == lang)
+                            {
+                                @: class="selectedLanguage"
+                            }
+                        @:> <a href="@Url.Action("SetCulture", "Home", new { culture = lang, returnUrl = Url.Action() })">@lang</a>
+                        @:</li>
+                    }
+                </ul>
 				<form class="navbar-form navbar-right">
 					<input type="text" class="form-control" placeholder="@GlobalRes.Search">
 				</form>
@@ -98,6 +94,8 @@
 
 	<div class="container">
 		@RenderBody()
+			
+		@{Html.RenderAction("FooterStringUncos", "News");}
 	</div>
 	<script src="~/Scripts/jquery-2.1.4.js"></script>
 	<script src="~/Scripts/bootstrap.js"></script>

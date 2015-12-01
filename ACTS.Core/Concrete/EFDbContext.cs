@@ -8,10 +8,12 @@ using ACTS.Core.Entities;
 
 namespace ACTS.Core.Concrete
 {
-    public class EFDbContext: DbContext
-    {
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<News> News { get; set; }
-        public DbSet<Event> Events { get; set; }
-    }
+	public class EFDbContext: DbContext
+	{
+        // Employees -- наймити 
+		public DbSet<Employee> Employees { get; set; }
+		// Uncos -- новости в множественном числе
+		public DbSet<News> Uncos { get; set; }
+		//public DbSet<Event> Events { get; set; }
+	}
 }

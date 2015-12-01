@@ -92,13 +92,31 @@
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Event.cs" />
     <Compile Include="Entities\News.cs" />
+    <Compile Include="Migrations\201511301956395_test.cs" />
+    <Compile Include="Migrations\201511301956395_test.Designer.cs">
+      <DependentUpon>201511301956395_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512011511224_rustam.cs" />
+    <Compile Include="Migrations\201512011511224_rustam.Designer.cs">
+      <DependentUpon>201512011511224_rustam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201511301956395_test.resx">
+      <DependentUpon>201511301956395_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512011511224_rustam.resx">
+      <DependentUpon>201512011511224_rustam.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

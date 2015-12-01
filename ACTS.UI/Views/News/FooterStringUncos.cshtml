@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ACTS.Core.Entities.News>
+
+<div class="c__block-title">Новини</div>
+<div class="row">
+	@foreach (var item in Model)
+	{
+		<div class="col-md-4">
+			<a class="post__container" href="http://acts.kpi.ua/programa-konferencii.html">
+				<div class="post__container-image">
+					<img src="http://acts.kpi.ua/app/uploads/2015/11/1263218715_8.jpg" style="max-height:100%" />
+				</div>
+				<div class="post__container-title">Програма конференції</div>
+				<div class="post__container-date">27 Листопад, 2015</div>
+			</a>
+		</div>
+	}
+</div>
