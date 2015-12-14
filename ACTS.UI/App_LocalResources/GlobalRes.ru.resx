@@ -135,4 +135,19 @@
   <data name="Main" xml:space="preserve">
     <value>Главная</value>
   </data>
+  <data name="OurGraduates" xml:space="preserve">
+    <value>Наші випускники</value>
+  </data>
+  <data name="Placement" xml:space="preserve">
+    <value>Працевлаштування</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Пошук...</value>
+  </data>
+  <data name="ServicePersonell" xml:space="preserve">
+    <value>Допоміжний персонал</value>
+  </data>
+  <data name="TeachingStaff" xml:space="preserve">
+    <value>Педагогічний склад</value>
+  </data>
 </root>
