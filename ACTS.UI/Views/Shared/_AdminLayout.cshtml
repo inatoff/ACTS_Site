@@ -1,16 +1,141 @@
-﻿@{ 
-    Layout = null;
+﻿@{
+	ViewBag.CurrentPage = System.IO.Path.GetFileName(Request.PhysicalPath); 
 }
+
+@helper IsActiveTreeView(string activeTreeView)
+{
+	if (ViewBag.CurrentTreeView == activeTreeView)
+	{ 
+		@:active
+	}
+}
+@helper IsActivePage(string activePage)
+{
+	if (ViewBag.CurrentPage == activePage)
+	{
+		@:active
+	}
+}
+
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/Content/skins/_all-skins.css" rel="stylesheet" />
+	<link href="~/Content/AdminLTE.min.css" rel="stylesheet" />
+	<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+	<link href="~/Content/Admin.css" rel="stylesheet" />
+	<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+	<script src="~/Scripts/bootstrap.min.js"></script>
+	<script src="~/Scripts/app.min.js"></script>
 </head>
-<body>
-    <div>
-        @RenderBody()
-    </div>
+<body class="hold-transition skin-green sidebar-mini">
+	<section class="wrapper">
+		<header class="main-header">
+
+			<!-- Logo -->
+			<a href="@Url.Action("Dashboard", "Admin")" class="logo">
+				<!-- mini logo for sidebar mini 50x50 pixels -->
+				<span class="logo-mini">ACTS</span>
+				<!-- logo for regular state and mobile devices -->
+				<span class="logo-lg"><b>Admin</b>ACTS</span>
+			</a>
+
+			<!-- Header Navbar: style can be found in header.less -->
+			<nav class="navbar navbar-static-top" role="navigation">
+				<!-- Sidebar toggle button-->
+				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+			</nav>
+		</header>
+
+		<!-- Left side column. contains the logo and sidebar -->
+		<aside class="main-sidebar">
+			<!-- sidebar: style can be found in sidebar.less -->
+			<section class="sidebar">
+				<!-- sidebar menu: : style can be found in sidebar.less -->
+				<ul class="sidebar-menu">
+					<li class="header">NAVIGATION</li>
+					<li class="@IsActivePage("Dashboard")">
+						<a href="@Url.Action("Dashboard", "Admin")">
+							<i class="fa fa-dashboard"></i> <span>Dashboard</span>
+						</a>
+					</li>
+					<li class="treeview @IsActiveTreeView("Tables")">
+						<a href="#">
+							<i class="fa fa-table"></i> <span>Tables</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li class="@IsActivePage("ListUncos")"><a href="@Url.Action("ListUncos","Admin")"><i class="fa fa-circle-o"></i>Uncos</a></li>
+							<li class="@IsActivePage("ListEmployee")"><a href="@Url.Action("ListEmployee","Admin")"><i class="fa fa-circle-o"></i>Employees</a></li>
+						</ul>
+					</li>
+					<li class="treeview @IsActiveTreeView("")">
+						<a href="#">
+							<i class="fa fa-files-o"></i>
+							<span>Layout Options</span>
+							<span class="label label-primary pull-right">4</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
+							<li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
+							<li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
+							<li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+						</ul>
+					</li>
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-pie-chart"></i>
+							<span>Charts</span>
+							<i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+							<li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+							<li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
+							<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<!-- /.sidebar -->
+		</aside>
+
+		<section class="content-wrapper">
+			<div class="content-header">
+				<h1>@ViewBag.Title</h1>
+
+				<ol class="breadcrumb">
+					<li><a href="@Url.Action("Dashboard", "Admin")"><i class="fa fa-dashboard"></i> Home</a></li>
+					@if (!string.IsNullOrEmpty(ViewBag.CurrentTreeView))
+					{
+						<li> @ViewBag.CurrentTreeView</li>
+					}
+					<li class="active"> @ViewBag.Title</li>
+				</ol>
+			</div>
+			<!-- /.content-header -->
+			<!-- Main content -->
+			<section class="content">
+				@RenderBody()
+			</section>
+
+		</section>
+		<!-- /.content-wrapper -->
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">
+				<b>Version</b> alpha 1.0
+			</div>
+			<strong>Copyright &copy; 2015 <a href="https://vk.com/inatoff"> Rostik Studio</a>.</strong> All reserved.
+		</footer>
+	</div>
+	<!-- ./wrapper -->
 </body>
 </html>
