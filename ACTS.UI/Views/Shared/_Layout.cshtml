@@ -1,8 +1,8 @@
 ﻿@{
-	var culture = CultureHelper.GetImplementedCulture(System.Threading.Thread.CurrentThread.CurrentUICulture.Name);
+	var culture = CultureHelper.GetImplementedCulture(UICulture);
 	//var lang = CultureHelper.GetCurrentNeutralCulture();
 }
-@helper LanguageLinkBuilder(string culture, string currentCulture)
+@*@helper LanguageLinkBuilder(string culture, string currentCulture)
 {
 	@:<a 
 	if (culture == currentCulture)
@@ -10,7 +10,7 @@
 	   @:class="selectedLanguage"
 	}
 	@:href="@Url.Action("SetCulture", "Home", new { culture = culture, returnUrl = Url.Action() })">@culture</a>
-}
+}*@
 
 <!DOCTYPE html>
 
@@ -41,7 +41,6 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					@{
-						//if (!string.IsNullOrEmpty(ViewBag.CurrentPage))
 						if (ViewBag.CurrentPage != "main")
 						{
 							<li><a href="@Url.Action("Index", "Home")">@GlobalRes.Main</a></li>
@@ -75,16 +74,15 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					@foreach (var lang in CultureHelper.Cultures)
-                    {
-                        @:<li
-                            if (culture == lang)
-                            {
-                                @: class="selectedLanguage"
-                            }
-                        @:> <a href="@Url.Action("SetCulture", "Home", new { culture = lang, returnUrl = Url.Action() })">@lang</a>
-                        @:</li>
-                    }
-                </ul>
+					{
+						@:<li
+							if (culture == lang)
+							{
+								@: class="selectedLanguage"
+							}
+						@:> <a href="@Url.Action("SetCulture", "Home", new { culture = lang, returnUrl = Url.Action() })">@lang</a></li>
+					}
+				</ul>
 				<form class="navbar-form navbar-right">
 					<input type="text" class="form-control" placeholder="@GlobalRes.Search">
 				</form>
@@ -99,10 +97,5 @@
 	</div>
 	<script src="~/Scripts/jquery-2.1.4.js"></script>
 	<script src="~/Scripts/bootstrap.js"></script>
-	@*<script type="text/javascript">
-		$(function () {
-			$("a[title=@lang]").addClass("selectedLanguage");
-		});
-	</script>*@
 </body>
 </html>
