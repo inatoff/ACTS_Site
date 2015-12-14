@@ -18,7 +18,7 @@ namespace ACTS.UI.Helpers
 			"ru"  // russian NEUTRAL culture
 		};
 
-        public static IEnumerable<string> Cultures { get { return _cultures.AsEnumerable(); } } 
+		public static IEnumerable<string> Cultures { get { return _cultures.AsEnumerable(); } } 
 
 		/// <summary>
 		/// Returns true if the language is a right-to-left language. Otherwise, false.
@@ -29,7 +29,7 @@ namespace ACTS.UI.Helpers
 
 		}
 		/// <summary>
-		/// Returns a valid culture name based on "name" parameter. If "name" is not valid, it returns the default culture "en-US"
+		/// Returns a valid culture name based on "name" parameter. If "name" is not valid, it returns the default culture "uk"
 		/// </summary>
 		/// <param name="name">Culture's name (e.g. en-US)</param>
 		/// <returns></returns>
