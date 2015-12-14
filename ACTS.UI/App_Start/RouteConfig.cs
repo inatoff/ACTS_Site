@@ -29,6 +29,12 @@ namespace ACTS.UI
 			//);
 
 			routes.MapRoute(
+				name: "Admin",
+				url: "Admin/{action}/{id}",
+				defaults: new { controller = "Admin", action = "Dashboard", id = UrlParameter.Optional }
+			);
+
+			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",
 				defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional}
