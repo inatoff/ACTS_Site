@@ -21,7 +21,7 @@ namespace ACTS.UI.Controllers
 		/// Сторінка з усіма новинами
 		/// </summary>
 		/// <returns></returns>
-		public ActionResult ArchiveUncos()
+		public ViewResult ArchiveUncos()
 		{
 			IEnumerable<News> uncos = repository.Uncos;
 			return View(uncos);
@@ -31,21 +31,21 @@ namespace ACTS.UI.Controllers
 		/// Сторінка з новиною
 		/// </summary>
 		/// <returns></returns>
-		public ActionResult PageNews(int newsID)
+		public ViewResult PageNews(int newsID)
 		{
 			News news = repository.Uncos.FirstOrDefault(n => n.NewsID == newsID);
 			return View(news);
 		}
 
-		public ActionResult FooterStringUncos()
+		public PartialViewResult FooterStringUncos()
 		{
-			IEnumerable<News> last3uncos = repository.Uncos.OrderBy(n => n.DataCreate).Take(3);
+			IEnumerable<News> last3uncos = repository.Uncos.OrderBy(n => n.Create).Take(3);
 			return PartialView(last3uncos);
 		}
 
-		public ActionResult NavLastUncos()
+		public PartialViewResult NavLastUncos()
 		{
-			IEnumerable<News> last3uncos = repository.Uncos.OrderBy(n => n.DataCreate).Take(3);
+			IEnumerable<News> last3uncos = repository.Uncos.OrderBy(n => n.Create).Take(3);
 			return PartialView(last3uncos);
 		}
 
@@ -60,5 +60,28 @@ namespace ACTS.UI.Controllers
 				return null;
 			}
 		}
+
+		public PartialViewResult GetContent(int newsID)
+		{
+			News news = repository.Uncos.FirstOrDefault(p => p.NewsID == newsID);
+			if (news != null)
+			{
+				return PartialView("_NewsContent", news);
+			} else
+			{
+				return null;
+			}
+		}
+
+		//public string GetContent(int newsID)
+		//{
+		//	News news = repository.Uncos.FirstOrDefault(p => p.NewsID == newsID);
+		//	if (news != null)
+		//	{
+		//		return new HtmlString(news.Content).ToHtmlString();
+		//	} else
+		//	{
+		//		return null;
+		//	}
 	}
 }
