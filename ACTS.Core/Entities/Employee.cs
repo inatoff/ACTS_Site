@@ -7,40 +7,39 @@ using System.Threading.Tasks;
 
 namespace ACTS.Core.Entities
 {
-    public class Employee
-    {
-        //obligatory Fields
-        [Key]
-        public int EmployeeID { get; set; }
+	public class Employee
+	{
+		//obligatory Fields
+		public int EmployeeID { get; set; }
 
-        public string Name { get; } // Имя
+		public string Name { get; set; } // Имя
 
-        public string SecondName { get; } // Отчество
+		public string SecondName { get; set; } // Отчество
 
-        public string Surname { get; set; } // Фамилия
+		public string Surname { get; set; } // Фамилия
 
-        public string Post { get; set; } // Должность
+		public string Post { get; set; } // Должность
 
-        public byte[] Photo { get; set; } 
+		public byte[] Photo { get; set; } 
 
-        //optional Fields
+		//optional Fields
 
-        public string Degree { get; set; } // Научная степень    
-        
-        public string EMail { get; set; }
+		public string Degree { get; set; } // Научная степень    
+		
+		public string EMail { get; set; }
 
-        //social Links
+		//social Links
 
-        public string Intellect { get; set; }
+		public string Intellect { get; set; }
 
-        public string VkID { get; set; }
+		public string VkID { get; set; }
 
-        public string FaceBook { get; set; }
+		public string FaceBook { get; set; }
 
-        public string Twitter { get; set; }
+		public string Twitter { get; set; }
 
-        //TODO:  Dictionary<Date,Publication>  Blog???
+		//TODO:  Dictionary<Date,Publication>  Blog???
 
-        
-    }
+		
+	}
 }
