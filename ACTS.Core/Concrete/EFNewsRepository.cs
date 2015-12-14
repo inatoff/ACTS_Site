@@ -21,6 +21,7 @@ namespace ACTS.Core.Concrete
 		{
 			if (news.NewsID == 0)
 			{
+				news.Create = DateTime.UtcNow;
 				context.Uncos.Add(news);
 			} else
 			{
@@ -28,11 +29,10 @@ namespace ACTS.Core.Concrete
 				if (dbEntry != null)
 				{
 					dbEntry.Title = news.Title;
-					dbEntry.DataCreate = news.DataCreate;
-					//dbEntry.Price = news.Price;
-					//dbEntry.Category = news.Category;
-					//dbEntry.ImageData = news.ImageData;
-					//dbEntry.ImageMimeType = news.ImageMimeType;
+					dbEntry.Modified = DateTime.UtcNow;
+					dbEntry.Content = news.Content;
+					dbEntry.ImageData = news.ImageData;
+					dbEntry.ImageMimeType = news.ImageMimeType;
 				}
 			}
 
