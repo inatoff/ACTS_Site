@@ -100,6 +100,26 @@
     <Compile Include="Migrations\201512011511224_rustam.Designer.cs">
       <DependentUpon>201512011511224_rustam.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512040002037_dima.cs" />
+    <Compile Include="Migrations\201512040002037_dima.Designer.cs">
+      <DependentUpon>201512040002037_dima.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512111900440_Description for News.cs" />
+    <Compile Include="Migrations\201512111900440_Description for News.Designer.cs">
+      <DependentUpon>201512111900440_Description for News.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512122255461_News Update.cs" />
+    <Compile Include="Migrations\201512122255461_News Update.Designer.cs">
+      <DependentUpon>201512122255461_News Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512122335513_ChangePropertyInNews.cs" />
+    <Compile Include="Migrations\201512122335513_ChangePropertyInNews.Designer.cs">
+      <DependentUpon>201512122335513_ChangePropertyInNews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512131300565_UpdateNewsPropertyTitle.cs" />
+    <Compile Include="Migrations\201512131300565_UpdateNewsPropertyTitle.Designer.cs">
+      <DependentUpon>201512131300565_UpdateNewsPropertyTitle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -115,6 +135,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512011511224_rustam.resx">
       <DependentUpon>201512011511224_rustam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512040002037_dima.resx">
+      <DependentUpon>201512040002037_dima.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512111900440_Description for News.resx">
+      <DependentUpon>201512111900440_Description for News.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512122255461_News Update.resx">
+      <DependentUpon>201512122255461_News Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512122335513_ChangePropertyInNews.resx">
+      <DependentUpon>201512122335513_ChangePropertyInNews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512131300565_UpdateNewsPropertyTitle.resx">
+      <DependentUpon>201512131300565_UpdateNewsPropertyTitle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
