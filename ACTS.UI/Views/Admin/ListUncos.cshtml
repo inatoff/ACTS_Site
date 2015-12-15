@@ -17,7 +17,7 @@
 	$(document).ready(function () {
 		var table = $('#dataTablePlagin').DataTable({
 			scrollX: true,
-			scrollY : false,
+			scrollY: false,
 			scrollCollapse: true,
 			//select: {
 			//	style: 'single'
@@ -59,8 +59,8 @@
 			]
 		});
 
-	table.buttons().container()
-		.appendTo('#dataTablePlagin_wrapper .col-sm-6:eq(0)');
+		table.buttons().container()
+			.appendTo('#dataTablePlagin_wrapper .col-sm-6:eq(0)');
 	});
 </script>
 
@@ -123,10 +123,10 @@
 										@using (Html.BeginForm("DeleteNews", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 										{
 											<div class="btn-group-vertical">
-												@Html.ActionLink("Edit", "EditNews", new { item.NewsID }, new { @class = "btn btn-default" })
-												@Html.ActionLink("On Main", "PageNews", "News", new { item.NewsID }, new { @class = "btn btn-default" })
+												<a href="@Url.Action("EditNews", new { item.NewsID })" class="btn btn-default"><i class="fa fa-edit ">&nbsp;Edit</i></a>
+												<a href="@Url.Action("PageNews", "News", new { item.NewsID })" class="btn btn-default"><i class="fa fa-home ">&nbsp;On Main</i></a>
 												@Html.Hidden("NewsID", item.NewsID)
-												<input class="btn btn-default" type="submit" value="Delete" />
+												<button class="btn btn-default" type="submit"><i class="fa fa-remove ">&nbsp;Delete</i></button>
 												@*@Html.ActionLink("Delete", "DeleteNews", new { item.NewsID }, new { @class = "btn btn-default" })*@
 											</div>
 										}
@@ -149,7 +149,7 @@
 				</div>
 				<!-- /.box-body -->
 				<div class="box-footer">
-					@Html.ActionLink("Create new News", "CreateNews", null, new { @class = "btn btn-primary" })
+					<a href="@Url.Action("CreateNews")" class="btn btn-primary fa fa-edit">&nbsp;Create new News</a>
 				</div>
 			</div>
 			<!-- /.box -->
