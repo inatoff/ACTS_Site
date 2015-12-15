@@ -115,10 +115,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\ACTS.Core.Concrete.EFDbContext.mdf" />
-    <Content Include="App_Data\ACTS.Core.Concrete.EFDbContext_log.ldf">
-      <DependentUpon>ACTS.Core.Concrete.EFDbContext.mdf</DependentUpon>
-    </Content>
     <Content Include="Buttons-1.1.0\css\buttons.bootstrap.css" />
     <Content Include="Buttons-1.1.0\css\buttons.bootstrap.min.css" />
     <Content Include="Buttons-1.1.0\css\buttons.dataTables.css" />
@@ -484,6 +480,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

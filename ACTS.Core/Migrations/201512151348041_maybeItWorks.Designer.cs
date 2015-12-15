@@ -7,13 +7,13 @@ namespace ACTS.Core.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class dima : IMigrationMetadata
+    public sealed partial class maybeItWorks : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(dima));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(maybeItWorks));
         
         string IMigrationMetadata.Id
         {
-            get { return "201512040002037_dima"; }
+            get { return "201512151348041_maybeItWorks"; }
         }
         
         string IMigrationMetadata.Source

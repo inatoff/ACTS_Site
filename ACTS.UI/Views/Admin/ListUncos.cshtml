@@ -28,7 +28,7 @@
 			[5, 10, 25, 50, -1],
 			['5 rows', '10 rows', '25 rows', '50 rows', 'Show all']
 			],
-			buttons: [
+			@*buttons: [
 				'pageLength',
 				{
 					extend: 'selectedSingle',
@@ -38,7 +38,7 @@
 						//var href = '@Url.Action("EditNews", "Admin", new { })/' + newsId
 						@*location.href = @Url.Action("EditNews", "Admin", new {
 												@:id
-											})*@
+											})
 						$.ajax({ type: "GET", url: "@Url.Action("EditNews", "Admin")", data: { NewsID: newsId }, dataType: "html"});
 						console.log(newsId);
 					}
@@ -51,12 +51,12 @@
 						//var href = '@Url.Action("DeleteNews", "Admin", new { })/' + newsId
 						@*location.href = @Url.Action("EditNews", "Admin", new {
 												@:id
-											})*@
+											})
 						$.ajax({ type: "POST", url: "@Url.Action("DeleteNews", "Admin")", data: { NewsID: newsId }, dataType: "html"});
 						console.log(newsId);
 					}
 				}
-			]
+			]*@
 		});
 
 		table.buttons().container()

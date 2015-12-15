@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace ACTS.UI.Controllers
 {
-	private class BaseController : Controller
+	public abstract class BaseController : Controller
 	{
 		protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
 		{
