@@ -17,54 +17,63 @@
 	$(document).ready(function () {
 		var table = $('#dataTablePlagin').DataTable({
 			scrollX: true,
-			scrollY : false,
+			scrollY: false,
 			scrollCollapse: true,
-			select: {
-				style: 'single'
-			},
-			lengthChange: false,
-			buttons: true,
+			//select: {
+			//	style: 'single'
+			//},
+			columns: [
+		   { className: "dt-center" },
+		   { className: "dt-center" },
+		   { className: "dt-center" },
+		   { className: "dt-center" },
+		   { className: "dt-center" },
+		   { className: "dt-head-center" },
+		   { className: "dt-center" }
+			],
+			//lengthChange: true,
+			//buttons: false,
 			lengthMenu: [
 			[5, 10, 25, 50, -1],
-			['5 rows', '10 rows', '25 rows', '50 rows', 'Show all']
+			['5', '10', '25', '50', 'All']
 			],
-			@*buttons: [
-				'pageLength',
-				{
-					extend: 'selectedSingle',
-					text: 'Edit',
-					action: function (e, dt, node, config) {
-						var newsId = dt.row({ selected: true }).data()[0];
-						//var href = '@Url.Action("EditNews", "Admin", new { })/' + newsId
-						@*location.href = @Url.Action("EditNews", "Admin", new {
-												@:id
-											})
-						$.ajax({ type: "GET", url: "@Url.Action("EditNews", "Admin")", data: { NewsID: newsId }, dataType: "html"});
-						console.log(newsId);
-					}
-				},
-				{
-					extend: 'selectedSingle',
-					text: 'Delete',
-					action: function (e, dt, node, config) {
-						var newsId = dt.row({ selected: true }).data()[0];
-						//var href = '@Url.Action("DeleteNews", "Admin", new { })/' + newsId
-						@*location.href = @Url.Action("EditNews", "Admin", new {
-												@:id
-											})
-						$.ajax({ type: "POST", url: "@Url.Action("DeleteNews", "Admin")", data: { NewsID: newsId }, dataType: "html"});
-						console.log(newsId);
-					}
-				}
-			]*@
+			//buttons: [
+			//	'pageLength'
+				//{
+				//	extend: 'selectedSingle',
+				//	text: 'Edit',
+				//	action: function (e, dt, node, config) {
+				//		var newsId = dt.row({ selected: true }).data()[0];
+				//		//var href = '@Url.Action("EditNews", "Admin", new { })/' + newsId
+				//		@*location.href = @Url.Action("EditNews", "Admin", new {
+				//								@:id
+				//							})*@
+				//		$.ajax({ type: "GET", url: "@Url.Action("EditNews", "Admin")", data: { NewsID: newsId }, dataType: "html"});
+				//		console.log(newsId);
+				//	}
+				//},
+				//{
+				//	extend: 'selectedSingle',
+				//	text: 'Delete',
+				//	action: function (e, dt, node, config) {
+				//		var newsId = dt.row({ selected: true }).data()[0];
+				//		//var href = '@Url.Action("DeleteNews", "Admin", new { })/' + newsId
+				//		@*location.href = @Url.Action("EditNews", "Admin", new {
+				//								@:id
+				//							})*@
+				//		$.ajax({ type: "POST", url: "@Url.Action("DeleteNews", "Admin")", data: { NewsID: newsId }, dataType: "html"});
+				//		console.log(newsId);
+				//	}
+				//}
+			//]
 		});
 
-		table.buttons().container()
-			.appendTo('#dataTablePlagin_wrapper .col-sm-6:eq(0)');
+		//table.buttons().container()
+		//	.appendTo('#dataTablePlagin_wrapper .col-sm-6:eq(0)');
 	});
 </script>
 
-<section>
+<section class="content">
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="box">
@@ -73,7 +82,7 @@
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
-					<table id="dataTablePlagin" class="table table-bordered table-striped" width="100%">
+					<table id="dataTablePlagin" class="table table-bordered table-striped table-hover" width="100%">
 						<thead>
 							<tr>
 								<th>Id</th>
@@ -123,11 +132,10 @@
 										@using (Html.BeginForm("DeleteNews", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 										{
 											<div class="btn-group-vertical">
-												@Html.ActionLink("Edit", "EditNews", new { item.NewsID }, new { @class = "btn btn-default" })
-												@Html.ActionLink("On Main", "PageNews", "News", new { item.NewsID }, new { @class = "btn btn-default" })
+												<a href="@Url.Action("EditNews", new { item.NewsID })" class="btn btn-default"><i class="fa fa-edit ">&nbsp;Edit</i></a>
+												<a href="@Url.Action("PageNews", "News", new { item.NewsID })" class="btn btn-default"><i class="fa fa-home ">&nbsp;On Main</i></a>
 												@Html.Hidden("NewsID", item.NewsID)
-												<input class="btn btn-default" type="submit" value="Delete" />
-												@*@Html.ActionLink("Delete", "DeleteNews", new { item.NewsID }, new { @class = "btn btn-default" })*@
+												<button class="btn btn-default" type="submit"><i class="fa fa-remove ">&nbsp;Delete</i></button>
 											</div>
 										}
 									</td>
@@ -149,7 +157,7 @@
 				</div>
 				<!-- /.box-body -->
 				<div class="box-footer">
-					@Html.ActionLink("Create new News", "CreateNews", null, new { @class = "btn btn-primary" })
+					<a href="@Url.Action("CreateNews")" class="btn btn-primary fa fa-edit">&nbsp;Create new News</a>
 				</div>
 			</div>
 			<!-- /.box -->

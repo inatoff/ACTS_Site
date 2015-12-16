@@ -115,31 +115,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Buttons-1.1.0\css\buttons.bootstrap.css" />
-    <Content Include="Buttons-1.1.0\css\buttons.bootstrap.min.css" />
-    <Content Include="Buttons-1.1.0\css\buttons.dataTables.css" />
-    <Content Include="Buttons-1.1.0\css\buttons.dataTables.min.css" />
-    <Content Include="Buttons-1.1.0\css\buttons.foundation.css" />
-    <Content Include="Buttons-1.1.0\css\buttons.foundation.min.css" />
-    <Content Include="Buttons-1.1.0\css\buttons.jqueryui.css" />
-    <Content Include="Buttons-1.1.0\css\buttons.jqueryui.min.css" />
-    <Content Include="Buttons-1.1.0\js\buttons.bootstrap.js" />
-    <Content Include="Buttons-1.1.0\js\buttons.bootstrap.min.js" />
-    <Content Include="Buttons-1.1.0\js\buttons.colVis.js" />
-    <Content Include="Buttons-1.1.0\js\buttons.colVis.min.js" />
-    <Content Include="Buttons-1.1.0\js\buttons.flash.js" />
-    <Content Include="Buttons-1.1.0\js\buttons.flash.min.js" />
-    <Content Include="Buttons-1.1.0\js\buttons.foundation.js" />
-    <Content Include="Buttons-1.1.0\js\buttons.foundation.min.js" />
-    <Content Include="Buttons-1.1.0\js\buttons.html5.js" />
-    <Content Include="Buttons-1.1.0\js\buttons.html5.min.js" />
-    <Content Include="Buttons-1.1.0\js\buttons.jqueryui.js" />
-    <Content Include="Buttons-1.1.0\js\buttons.jqueryui.min.js" />
-    <Content Include="Buttons-1.1.0\js\buttons.print.js" />
-    <Content Include="Buttons-1.1.0\js\buttons.print.min.js" />
-    <Content Include="Buttons-1.1.0\js\dataTables.buttons.js" />
-    <Content Include="Buttons-1.1.0\js\dataTables.buttons.min.js" />
-    <Content Include="Buttons-1.1.0\swf\flashExport.swf" />
     <Content Include="Content\Admin.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -182,28 +157,6 @@
     <Content Include="Content\skins\_all-skins.min.css" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Site.css" />
-    <Content Include="DataTables-1.10.10\css\dataTables.bootstrap.css" />
-    <Content Include="DataTables-1.10.10\css\dataTables.bootstrap.min.css" />
-    <Content Include="DataTables-1.10.10\css\dataTables.foundation.css" />
-    <Content Include="DataTables-1.10.10\css\dataTables.foundation.min.css" />
-    <Content Include="DataTables-1.10.10\css\dataTables.jqueryui.css" />
-    <Content Include="DataTables-1.10.10\css\dataTables.jqueryui.min.css" />
-    <Content Include="DataTables-1.10.10\css\jquery.dataTables.css" />
-    <Content Include="DataTables-1.10.10\css\jquery.dataTables.min.css" />
-    <Content Include="DataTables-1.10.10\css\jquery.dataTables_themeroller.css" />
-    <Content Include="DataTables-1.10.10\images\sort_asc.png" />
-    <Content Include="DataTables-1.10.10\images\sort_asc_disabled.png" />
-    <Content Include="DataTables-1.10.10\images\sort_both.png" />
-    <Content Include="DataTables-1.10.10\images\sort_desc.png" />
-    <Content Include="DataTables-1.10.10\images\sort_desc_disabled.png" />
-    <Content Include="DataTables-1.10.10\js\dataTables.bootstrap.js" />
-    <Content Include="DataTables-1.10.10\js\dataTables.bootstrap.min.js" />
-    <Content Include="DataTables-1.10.10\js\dataTables.foundation.js" />
-    <Content Include="DataTables-1.10.10\js\dataTables.foundation.min.js" />
-    <Content Include="DataTables-1.10.10\js\dataTables.jqueryui.js" />
-    <Content Include="DataTables-1.10.10\js\dataTables.jqueryui.min.js" />
-    <Content Include="DataTables-1.10.10\js\jquery.dataTables.js" />
-    <Content Include="DataTables-1.10.10\js\jquery.dataTables.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -216,11 +169,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="JSZip-2.5.0\jszip.js" />
-    <Content Include="JSZip-2.5.0\jszip.min.js" />
-    <Content Include="pdfmake-0.1.18\build\pdfmake.js" />
-    <Content Include="pdfmake-0.1.18\build\pdfmake.min.js" />
-    <Content Include="pdfmake-0.1.18\build\vfs_fonts.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\app.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -230,8 +178,6 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="Buttons-1.1.0\css\common.scss" />
-    <Content Include="Buttons-1.1.0\css\mixins.scss" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\datatables.js" />
     <Content Include="Scripts\datatables.min.js" />
@@ -397,16 +343,6 @@
     <Content Include="Scripts\tinymce\themes\modern\theme.min.js" />
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
-    <Content Include="Select-1.1.0\css\select.bootstrap.css" />
-    <Content Include="Select-1.1.0\css\select.bootstrap.min.css" />
-    <Content Include="Select-1.1.0\css\select.dataTables.css" />
-    <Content Include="Select-1.1.0\css\select.dataTables.min.css" />
-    <Content Include="Select-1.1.0\css\select.foundation.css" />
-    <Content Include="Select-1.1.0\css\select.foundation.min.css" />
-    <Content Include="Select-1.1.0\css\select.jqueryui.css" />
-    <Content Include="Select-1.1.0\css\select.jqueryui.min.css" />
-    <Content Include="Select-1.1.0\js\dataTables.select.js" />
-    <Content Include="Select-1.1.0\js\dataTables.select.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
