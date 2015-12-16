@@ -78,11 +78,13 @@
 						@:<li
 							if (culture == lang)
 							{
-								@: class="selectedLanguage"
+								@: class="@(lang) selectedLanguage"
 							}
-						@:> <a href="@Url.Action("SetCulture", "Home", new { culture = lang, returnUrl = Url.Action() })">@lang</a></li>
+                            @:class="@(lang)"    
+						@:> <a href="@Url.Action("SetCulture", "Home", new { culture = lang, returnUrl = Url.Action() })" > </a></li>
 					}
 				</ul>
+
 				<form class="navbar-form navbar-right">
 					<input type="text" class="form-control" placeholder="@GlobalRes.Search">
 				</form>

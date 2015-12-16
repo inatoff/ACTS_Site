@@ -7,7 +7,6 @@
 .kpi{
     color: #575757;
     font-size: xx-large
-
 }
 
 .sharp{
@@ -15,10 +14,26 @@
 }
 
 li.selectedLanguage {
-    font-size:larger;
-    background-color:yellow;
+    background-size:cover;
 }
-
+li.en{    
+    margin-top:10px;
+    background-image:url(Images/en.png);
+}
+li.ru{
+    margin-top:10px;
+    background-image:url(Images/ru.png);
+}
+li.uk{
+    margin-top:10px;
+    background-image:url(Images/uk.png);
+    
+}
+li {
+    background-size:26px;
+    background-repeat:no-repeat;
+    max-height:100%;    
+}
 
 .back-to-top {
     padding: 4px 10px;
