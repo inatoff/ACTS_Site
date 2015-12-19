@@ -85,11 +85,13 @@
     <Compile Include="Abstract\IEmployeeRepository.cs" />
     <Compile Include="Abstract\IEventRepository.cs" />
     <Compile Include="Abstract\INewsRepository.cs" />
-    <Compile Include="Entities\Worker.cs" />
+    <Compile Include="Abstract\ITeacherRepository.cs" />
+    <Compile Include="Abstract\Worker.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFEmployeeRepository.cs" />
     <Compile Include="Concrete\EFEventRepository.cs" />
     <Compile Include="Concrete\EFNewsRepository.cs" />
+    <Compile Include="Concrete\EFTeacherRepository.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Event.cs" />
     <Compile Include="Entities\News.cs" />
@@ -102,6 +104,10 @@
     <Compile Include="Migrations\201512182341358_TeachersWorkerEmployee.cs" />
     <Compile Include="Migrations\201512182341358_TeachersWorkerEmployee.Designer.cs">
       <DependentUpon>201512182341358_TeachersWorkerEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512191246164_TeachersWorkerEmployee_ver2.cs" />
+    <Compile Include="Migrations\201512191246164_TeachersWorkerEmployee_ver2.Designer.cs">
+      <DependentUpon>201512191246164_TeachersWorkerEmployee_ver2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512182341358_TeachersWorkerEmployee.resx">
       <DependentUpon>201512182341358_TeachersWorkerEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512191246164_TeachersWorkerEmployee_ver2.resx">
+      <DependentUpon>201512191246164_TeachersWorkerEmployee_ver2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

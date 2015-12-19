@@ -17,14 +17,35 @@ namespace ACTS.Core.Concrete
 			get { return context.Employees; }
 		}
 
-		public Employee DeleteEmployee(int id)
-		{
-			throw new NotImplementedException();
-		}
-
 		public void SaveEmployee(Employee employee)
 		{
-			throw new NotImplementedException();
+			if (employee.EmployeeID == 0)
+			{
+				context.Employees.Add(employee);
+			} else
+			{
+				Employee dbEntry = context.Employees.Find(employee.EmployeeID);
+				if (dbEntry != null)
+				{
+					dbEntry.FullName = employee.FullName;
+					dbEntry.Position = employee.Position;
+					dbEntry.Photo = employee.Photo;
+					dbEntry.PhotoMimeType = employee.PhotoMimeType;
+				}
+			}
+
+			context.SaveChanges();
+		}
+
+		public Employee DeleteEmployee(int employeeID)
+		{
+			Employee dbEntry = context.Employees.Find(employeeID);
+			if (dbEntry != null)
+			{
+				context.Employees.Remove(dbEntry);
+				context.SaveChanges();
+			}
+			return dbEntry;
 		}
 	}
 }
