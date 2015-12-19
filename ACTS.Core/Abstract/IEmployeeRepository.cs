@@ -9,10 +9,8 @@ namespace ACTS.Core.Abstract
 {
     public interface IEmployeeRepository
     {
-        IQueryable<Employee> HR { get; }
-        void addEmployee(Employee employee);
-        Employee getEmployee(int id);
-        Employee editInfo(Employee employee);
-        Employee deleteEmployee(int id);
+        IQueryable<Employee> Employees { get; }
+        void SaveEmployee(Employee employee);
+        Employee DeleteEmployee(int id);
     }
 }

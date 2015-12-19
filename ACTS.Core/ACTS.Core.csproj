@@ -85,6 +85,7 @@
     <Compile Include="Abstract\IEmployeeRepository.cs" />
     <Compile Include="Abstract\IEventRepository.cs" />
     <Compile Include="Abstract\INewsRepository.cs" />
+    <Compile Include="Entities\Worker.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFEmployeeRepository.cs" />
     <Compile Include="Concrete\EFEventRepository.cs" />
@@ -92,9 +93,15 @@
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Event.cs" />
     <Compile Include="Entities\News.cs" />
+    <Compile Include="Entities\Post.cs" />
+    <Compile Include="Entities\Teacher.cs" />
     <Compile Include="Migrations\201512151348041_maybeItWorks.cs" />
     <Compile Include="Migrations\201512151348041_maybeItWorks.Designer.cs">
       <DependentUpon>201512151348041_maybeItWorks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512182341358_TeachersWorkerEmployee.cs" />
+    <Compile Include="Migrations\201512182341358_TeachersWorkerEmployee.Designer.cs">
+      <DependentUpon>201512182341358_TeachersWorkerEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,6 +115,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201512151348041_maybeItWorks.resx">
       <DependentUpon>201512151348041_maybeItWorks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512182341358_TeachersWorkerEmployee.resx">
+      <DependentUpon>201512182341358_TeachersWorkerEmployee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
