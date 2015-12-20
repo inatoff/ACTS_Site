@@ -123,17 +123,32 @@
   <data name="AboutDepartment" xml:space="preserve">
     <value>Про кафедру</value>
   </data>
+  <data name="Achievments" xml:space="preserve">
+    <value>Досягнення</value>
+  </data>
+  <data name="Advertisment" xml:space="preserve">
+    <value>Об'яви</value>
+  </data>
+  <data name="CoursesAndProbations" xml:space="preserve">
+    <value>Курси та стажування</value>
+  </data>
   <data name="CurrentLang" xml:space="preserve">
     <value>uk</value>
   </data>
   <data name="Department" xml:space="preserve">
     <value>Кафедра</value>
   </data>
+  <data name="ForStudent" xml:space="preserve">
+    <value>Студенту</value>
+  </data>
   <data name="History" xml:space="preserve">
     <value>Історія кафедри</value>
   </data>
   <data name="HomeIndexTitle" xml:space="preserve">
     <value>Автоматика і Управління в Технічних Системах (АУТС)</value>
+  </data>
+  <data name="Laboratories" xml:space="preserve">
+    <value>Лабораторії</value>
   </data>
   <data name="Main" xml:space="preserve">
     <value>Головна</value>
@@ -144,13 +159,46 @@
   <data name="Placement" xml:space="preserve">
     <value>Працевлаштування</value>
   </data>
+  <data name="Postgraduate" xml:space="preserve">
+    <value>Аспірантура</value>
+  </data>
+  <data name="PrizeAndAwards" xml:space="preserve">
+    <value>Премії та винагороди</value>
+  </data>
+  <data name="Researches" xml:space="preserve">
+    <value>Дослідження</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Розклад</value>
+  </data>
+  <data name="Science" xml:space="preserve">
+    <value>Наука</value>
+  </data>
+  <data name="ScienceConnections" xml:space="preserve">
+    <value>Наукові зв'язки</value>
+  </data>
+  <data name="ScienceFields" xml:space="preserve">
+    <value>Наукові напрями</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Пошук...</value>
   </data>
   <data name="ServicePersonell" xml:space="preserve">
     <value>Допоміжний персонал</value>
   </data>
+  <data name="SessionSchedule" xml:space="preserve">
+    <value>Розклад сессії</value>
+  </data>
+  <data name="Specialties" xml:space="preserve">
+    <value>Спеціальності</value>
+  </data>
+  <data name="StudentRating" xml:space="preserve">
+    <value>Рейтинг студентів</value>
+  </data>
   <data name="TeachingStaff" xml:space="preserve">
     <value>Педагогічний склад</value>
+  </data>
+  <data name="UsefulLinks" xml:space="preserve">
+    <value>Корисні посилання</value>
   </data>
 </root>

@@ -2,7 +2,7 @@
     var culture = CultureHelper.GetImplementedCulture(UICulture);
     //var lang = CultureHelper.GetCurrentNeutralCulture();
 }
-@*@helper LanguageLinkBuilder(string culture, string currentCulture)
+@helper LanguageLinkBuilder(string culture, string currentCulture)
     {
         @:<a
         if (culture == currentCulture)
@@ -10,7 +10,7 @@
            @:class="selectedLanguage"
         }
         @:href="@Url.Action("SetCulture", "Home", new { culture = culture, returnUrl = Url.Action() })">@culture</a>
-    }*@
+    }
 
 <!DOCTYPE html>
 
@@ -38,14 +38,16 @@
                 </a>
             </div>
 
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @if (ViewBag.CurrentPage != "main")
-                    {
-                        <li><a href="@Url.Action("Index", "Home")">@GlobalRes.Main</a></li>
-                    }
-                    <li class="dropdown">
-                        <a href="@Url.Action("About", "Department")" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Department<b class="caret"></b></a>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					@{
+						if (ViewBag.CurrentPage != "main")
+						{
+							<li><a href="@Url.Action("Index", "Home")">@GlobalRes.Main</a></li>
+						}
+					}				
+					<li class="dropdown">
+						<a href="@Url.Action("About", "Department")" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Department<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="@Url.Action("About", "Department")">@GlobalRes.About</a></li>
                             <li><a href="@Url.Action("History", "Department")">@GlobalRes.History</a></li>
@@ -54,20 +56,30 @@
                             <li><a href="@Url.Action("OurGraduates", "Department")">@GlobalRes.OurGraduates</a></li>
                             <li><a href="@Url.Action("Placement", "Department")">@GlobalRes.Placement</a></li>
                         </ul>
-                    </li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+					</li>
+					<li class="dropdown">
+                        <a href="@Url.Action("Specialties", "ForStudent")" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.ForStudent<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
+                            <li><a href="@Url.Action("Specialties", "ForStudent")">@GlobalRes.Specialties</a></li>
+                            <li><a href="@Url.Action("StudentRating", "ForStudent")">@GlobalRes.StudentRating</a></li>
+                            <li><a href="@Url.Action("UsefulLinks", "ForStudent")">@GlobalRes.UsefulLinks</a></li>
+                            <li><a href="@Url.Action("Schedule", "ForStudent")">@GlobalRes.Schedule</a></li>
+                            <li><a href="@Url.Action("Postgraduates", "ForStudent")">@GlobalRes.Postgraduate</a></li>
+                            <li><a href="@Url.Action("CoursesAndProbations", "ForStudent")">@GlobalRes.CoursesAndProbations</a></li>
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        <a href="@Url.Action("ScienceFields", "Science")" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Science<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("ScienceFields","ForStudentsЄ")">@GlobalRes.ScienceFields</a></li>
+                            <li><a href="@Url.Action("Researches","ForStudents")">@GlobalRes.Researches</a></li>
+                            <li><a href="@Url.Action("Achievments","ForStudents")">@GlobalRes.Achievments</a></li>
+                            <li><a href="@Url.Action("ScienceConnections","ForStudents")">@GlobalRes.ScienceConnections</a></li>
+                            <li><a href="@Url.Action("Laboratories","ForStudents")">@GlobalRes.Laboratories</a></li>
+                            <li><a href="@Url.Action("PrizesAndAwards","ForStudents")">@GlobalRes.PrizeAndAwards</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

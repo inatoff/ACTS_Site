@@ -120,11 +120,23 @@
   <data name="About" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="AboutDepartment" xml:space="preserve">
+    <value>About Department</value>
+  </data>
+  <data name="Advertisment" xml:space="preserve">
+    <value>Advertisment</value>
+  </data>
+  <data name="CoursesAndProbations" xml:space="preserve">
+    <value>Courses and Probations</value>
+  </data>
   <data name="CurrentLang" xml:space="preserve">
     <value>en</value>
   </data>
   <data name="Department" xml:space="preserve">
     <value>Department</value>
+  </data>
+  <data name="ForStudent" xml:space="preserve">
+    <value>For Student</value>
   </data>
   <data name="History" xml:space="preserve">
     <value>Our History</value>
@@ -135,10 +147,37 @@
   <data name="Main" xml:space="preserve">
     <value>Main</value>
   </data>
+  <data name="OurGraduates" xml:space="preserve">
+    <value>Our Graduates</value>
+  </data>
+  <data name="Placement" xml:space="preserve">
+    <value>Placement</value>
+  </data>
+  <data name="Postgraduate" xml:space="preserve">
+    <value>Postgraduate</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Schedule</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Search...</value>
   </data>
+  <data name="ServicePersonell" xml:space="preserve">
+    <value>Service Personell</value>
+  </data>
+  <data name="SessionSchedule" xml:space="preserve">
+    <value>Session Schedule</value>
+  </data>
+  <data name="Specialties" xml:space="preserve">
+    <value>Specialties</value>
+  </data>
+  <data name="StudentRating" xml:space="preserve">
+    <value>Student Rating</value>
+  </data>
   <data name="TeachingStaff" xml:space="preserve">
     <value>Teaching staff</value>
+  </data>
+  <data name="UsefulLinks" xml:space="preserve">
+    <value>Useful Links</value>
   </data>
 </root>
