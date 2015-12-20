@@ -72,6 +72,7 @@
 						<ul class="treeview-menu">
 							<li class="@IsActivePage("TableUncos")"><a href="@Url.Action("Table","News")"><i class="fa fa-circle-o"></i>Uncos</a></li>
 							<li class="@IsActivePage("TableEmployee")"><a href="@Url.Action("Table", "Employee")"><i class="fa fa-circle-o"></i>Employees</a></li>
+							<li class="@IsActivePage("TableTeacher")"><a href="@Url.Action("Table", "Teacher")"><i class="fa fa-circle-o"></i>Teachers</a></li>
 						</ul>
 					</li>
 					<li class="treeview @IsActiveTreeView("Create")">
@@ -83,6 +84,7 @@
 						<ul class="treeview-menu">
 							<li class="@IsActivePage("EditNews")"><a href="@Url.Action("Create","News")"><i class="fa fa-circle-o"></i>News</a></li>
 							<li class="@IsActivePage("EditEmployee")"><a href="@Url.Action("Create", "Employee")"><i class="fa fa-circle-o"></i>Employee</a></li>
+							<li class="@IsActivePage("EditTeacher")"><a href="@Url.Action("Create", "Teacher")"><i class="fa fa-circle-o"></i>Teacher</a></li>
 						</ul>
 					</li>
 					<li class="treeview">
@@ -124,7 +126,7 @@
 					<div class="alert alert-info alert-dismissible">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 						<h4><i class="icon fa fa-info"></i> Alert!</h4>
-						@TempData["message"]
+						@TempData["infoMessage"]
 					</div>
 				}
 				

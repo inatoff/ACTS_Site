@@ -41,7 +41,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					image.InputStream.Read(news.ImageData, 0, image.ContentLength);
 				}
 				repository.SaveNews(news);
-				TempData["infoMessage"] = string.Format("{0} has been saved", news.Title);
+				TempData["infoMessage"] = string.Format("{0} has been saved.", news.Title);
 				return RedirectToAction(nameof(Table));
 			} else
 			{
@@ -62,7 +62,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			News deletedNews = repository.DeleteNews(newsId);
 			if (deletedNews != null)
 			{
-				TempData["infoMessage"] = string.Format("{0} was deleted", deletedNews.Title);
+				TempData["infoMessage"] = string.Format("{0} was deleted.", deletedNews.Title);
 			}
 			return RedirectToAction(nameof(Table));
 		}

@@ -43,7 +43,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					image.InputStream.Read(employee.Photo, 0, image.ContentLength);
 				}
 				repository.SaveEmployee(employee);
-				TempData["infoMessage"] = string.Format("{0} has been saved", employee.FullName);
+				TempData["infoMessage"] = string.Format("{0} has been saved.", employee.FullName);
 				return RedirectToAction(nameof(Table), new { area = "Admin" });
 			} else
 			{
@@ -64,7 +64,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			Employee deletedEmployee = repository.DeleteEmployee(employeeId);
 			if (deletedEmployee != null)
 			{
-				TempData["infoMessage"] = string.Format("{0} was deleted", deletedEmployee.FullName);
+				TempData["infoMessage"] = string.Format("{0} was deleted.", deletedEmployee.FullName);
 			}
 			return RedirectToAction(nameof(Table));
 		}

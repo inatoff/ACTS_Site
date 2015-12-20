@@ -181,6 +181,8 @@
     <Content Include="Areas\Admin\Views\News\TableUncos.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Teacher\TableTeacher.cshtml" />
+    <Content Include="Areas\Admin\Views\Teacher\EditTeacher.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -434,7 +436,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Default\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Employee\" />
     <Folder Include="Views\Enrollee\" />
