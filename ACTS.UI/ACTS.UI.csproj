@@ -176,6 +176,11 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\News\EditNews.cshtml" />
+    <Content Include="Areas\Admin\Views\News\TableUncos.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -364,10 +369,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\Admin\AdminController.cs" />
-    <Compile Include="Controllers\Admin\EmployeeController.cs" />
-    <Compile Include="Controllers\Admin\NewsController.cs" />
-    <Compile Include="Controllers\Admin\TeacherController.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EmployeeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TeacherController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\ForEnrolleeController.cs" />
@@ -404,13 +410,8 @@
     <Content Include="Views\News\PageNews.cshtml" />
     <Content Include="Views\News\ArchiveUncos.cshtml" />
     <Content Include="Views\News\FooterStringUncos.cshtml" />
-    <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\Admin\Dashboard.cshtml" />
-    <Content Include="Views\News\TableUncos.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Dashboard.cshtml" />
     <Content Include="Views\Shared\_NewsContent.cshtml" />
-    <Content Include="Views\News\EditNews.cshtml" />
-    <Content Include="Views\Employee\EditEmployee.cshtml" />
-    <Content Include="Views\Employee\TableEmployee.cshtml" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.json" />
@@ -421,6 +422,8 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Areas\Admin\Views\Employee\EditEmployee.cshtml" />
+    <Content Include="Areas\Admin\Views\Employee\TableEmployee.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -430,11 +433,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Default\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Employee\" />
     <Folder Include="Views\Enrollee\" />
-    <Folder Include="Views\Teacher\" />
     <Folder Include="Views\ForStudent\" />
     <Folder Include="Views\Science\" />
+    <Folder Include="Views\Teacher\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ACTS.Core\ACTS.Core.csproj">

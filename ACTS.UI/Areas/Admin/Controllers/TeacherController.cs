@@ -6,10 +6,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ACTS.UI.Controllers
+namespace ACTS.UI.Areas.Admin.Controllers
 {
-	public partial class TeacherController : BaseController
+	public class TeacherController : Controller
 	{
+		private ITeacherRepository repository;
+
+		public TeacherController(ITeacherRepository employeeRepository)
+		{
+			repository = employeeRepository;
+		}
+
 		public ActionResult Table()
 		{
 			IEnumerable<Teacher> teachers = repository.Teachers;

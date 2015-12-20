@@ -8,10 +8,17 @@ using System.Web.Mvc;
 using ACTS.Core.Abstract;
 using ACTS.Core.Entities;
 
-namespace ACTS.UI.Controllers
+namespace ACTS.UI.Areas.Admin.Controllers
 {
-	public partial class EmployeeController : BaseController
+	public class EmployeeController : Controller
 	{
+		private IEmployeeRepository repository;
+
+		public EmployeeController(IEmployeeRepository employeeRepository)
+		{
+			repository = employeeRepository;
+		}
+
 		public ActionResult Table()
 		{
 			IEnumerable<Employee> employees = repository.Employees;
@@ -37,7 +44,7 @@ namespace ACTS.UI.Controllers
 				}
 				repository.SaveEmployee(employee);
 				TempData["infoMessage"] = string.Format("{0} has been saved", employee.FullName);
-				return RedirectToAction(nameof(Table));
+				return RedirectToAction(nameof(Table), new { area = "Admin" });
 			} else
 			{
 				// there is something wrong with the data values         

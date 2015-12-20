@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace ACTS.UI.Controllers
 {
-	public partial class NewsController : BaseController
+	public class NewsController : BaseController
 	{
 		private INewsRepository repository;
 

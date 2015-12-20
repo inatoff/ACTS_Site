@@ -3,7 +3,6 @@
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
 	ViewBag.Title = "Edit Employee";
-	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="row">
@@ -53,7 +52,7 @@
 								@:None
 							} else
 							{
-								<img class="img-thumbnail" style="max-width:100%" src="@Url.Action("GetImage", "Employee", new { Model.EmployeeID })" />
+								<img class="img-thumbnail" style="max-width:100%" src="@Url.Action("GetImage", "Employee", new { area = "", Model.EmployeeID })" />
 							}
 						</div>
 					</div>
