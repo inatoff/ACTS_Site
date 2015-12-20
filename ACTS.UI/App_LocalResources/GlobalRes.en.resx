@@ -123,8 +123,17 @@
   <data name="AboutDepartment" xml:space="preserve">
     <value>About Department</value>
   </data>
+  <data name="Achievments" xml:space="preserve">
+    <value>Achievments</value>
+  </data>
   <data name="Advertisment" xml:space="preserve">
     <value>Advertisment</value>
+  </data>
+  <data name="ConditionsOfAdmissions" xml:space="preserve">
+    <value>Conditions of Admission</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contacts</value>
   </data>
   <data name="CoursesAndProbations" xml:space="preserve">
     <value>Courses and Probations</value>
@@ -135,6 +144,12 @@
   <data name="Department" xml:space="preserve">
     <value>Department</value>
   </data>
+  <data name="FDP" xml:space="preserve">
+    <value>Pregraduate preparing</value>
+  </data>
+  <data name="ForEnrollee" xml:space="preserve">
+    <value>For Enrollee</value>
+  </data>
   <data name="ForStudent" xml:space="preserve">
     <value>For Student</value>
   </data>
@@ -144,8 +159,17 @@
   <data name="HomeIndexTitle" xml:space="preserve">
     <value>Automation and Сontrol in Technical Systems (AСTS)</value>
   </data>
+  <data name="Laboratories" xml:space="preserve">
+    <value>Laboratories</value>
+  </data>
+  <data name="Magistracy" xml:space="preserve">
+    <value>Magistracy</value>
+  </data>
   <data name="Main" xml:space="preserve">
     <value>Main</value>
+  </data>
+  <data name="OpenDoors" xml:space="preserve">
+    <value>Open Doors Days</value>
   </data>
   <data name="OurGraduates" xml:space="preserve">
     <value>Our Graduates</value>
@@ -156,8 +180,23 @@
   <data name="Postgraduate" xml:space="preserve">
     <value>Postgraduate</value>
   </data>
+  <data name="PrizeAndAwards" xml:space="preserve">
+    <value>Prize and Awards</value>
+  </data>
+  <data name="Researches" xml:space="preserve">
+    <value>Researches</value>
+  </data>
   <data name="Schedule" xml:space="preserve">
     <value>Schedule</value>
+  </data>
+  <data name="Science" xml:space="preserve">
+    <value>Science</value>
+  </data>
+  <data name="ScienceConnections" xml:space="preserve">
+    <value>Science Connections</value>
+  </data>
+  <data name="ScienceFields" xml:space="preserve">
+    <value>Science Fields</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search...</value>

@@ -129,6 +129,12 @@
   <data name="Advertisment" xml:space="preserve">
     <value>Об'яви</value>
   </data>
+  <data name="ConditionsOfAdmissions" xml:space="preserve">
+    <value>Вимоги до вступу</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Контакти</value>
+  </data>
   <data name="CoursesAndProbations" xml:space="preserve">
     <value>Курси та стажування</value>
   </data>
@@ -137,6 +143,12 @@
   </data>
   <data name="Department" xml:space="preserve">
     <value>Кафедра</value>
+  </data>
+  <data name="FDP" xml:space="preserve">
+    <value>Довузівська підготовка</value>
+  </data>
+  <data name="ForEnrollee" xml:space="preserve">
+    <value>Абітурієнту</value>
   </data>
   <data name="ForStudent" xml:space="preserve">
     <value>Студенту</value>
@@ -150,8 +162,14 @@
   <data name="Laboratories" xml:space="preserve">
     <value>Лабораторії</value>
   </data>
+  <data name="Magistracy" xml:space="preserve">
+    <value>Магістратура</value>
+  </data>
   <data name="Main" xml:space="preserve">
     <value>Головна</value>
+  </data>
+  <data name="OpenDoors" xml:space="preserve">
+    <value>Дні відкритих дверей</value>
   </data>
   <data name="OurGraduates" xml:space="preserve">
     <value>Наші випускники</value>

@@ -123,8 +123,17 @@
   <data name="AboutDepartment" xml:space="preserve">
     <value>О кафедре</value>
   </data>
+  <data name="Achievments" xml:space="preserve">
+    <value>Достижения</value>
+  </data>
   <data name="Advertisment" xml:space="preserve">
     <value>Объявления</value>
+  </data>
+  <data name="ConditionsOfAdmissions" xml:space="preserve">
+    <value>Требования при поступлении</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Контакты</value>
   </data>
   <data name="CoursesAndProbations" xml:space="preserve">
     <value>Курсы и Стажировки</value>
@@ -135,6 +144,12 @@
   <data name="Department" xml:space="preserve">
     <value>Кафедра</value>
   </data>
+  <data name="FDP" xml:space="preserve">
+    <value>Довузовская подготовка</value>
+  </data>
+  <data name="ForEnrollee" xml:space="preserve">
+    <value>Абитуриенту</value>
+  </data>
   <data name="ForStudent" xml:space="preserve">
     <value>Студенту</value>
   </data>
@@ -144,8 +159,17 @@
   <data name="HomeIndexTitle" xml:space="preserve">
     <value>Автоматика и Управление в Технических Системах (АУТС)</value>
   </data>
+  <data name="Laboratories" xml:space="preserve">
+    <value>Лаборатории</value>
+  </data>
+  <data name="Magistracy" xml:space="preserve">
+    <value>Магистратура</value>
+  </data>
   <data name="Main" xml:space="preserve">
     <value>Главная</value>
+  </data>
+  <data name="OpenDoors" xml:space="preserve">
+    <value>Дни открытых дверей</value>
   </data>
   <data name="OurGraduates" xml:space="preserve">
     <value>Наши выпускники</value>
@@ -156,8 +180,23 @@
   <data name="Postgraduate" xml:space="preserve">
     <value>Аспирантура</value>
   </data>
+  <data name="PrizeAndAwards" xml:space="preserve">
+    <value>Призы и награды</value>
+  </data>
+  <data name="Researches" xml:space="preserve">
+    <value>Исследования</value>
+  </data>
   <data name="Schedule" xml:space="preserve">
     <value>Расписание</value>
+  </data>
+  <data name="Science" xml:space="preserve">
+    <value>Наука</value>
+  </data>
+  <data name="ScienceConnections" xml:space="preserve">
+    <value>Научные связи</value>
+  </data>
+  <data name="ScienceFields" xml:space="preserve">
+    <value>Направления</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Поиск</value>

@@ -97,6 +97,24 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Вимоги до вступу.
+        /// </summary>
+        public static string ConditionsOfAdmissions {
+            get {
+                return ResourceManager.GetString("ConditionsOfAdmissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Контакти.
+        /// </summary>
+        public static string Contact {
+            get {
+                return ResourceManager.GetString("Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Курси та стажування.
         /// </summary>
         public static string CoursesAndProbations {
@@ -120,6 +138,24 @@ namespace ACTS.UI.App_LocalResources {
         public static string Department {
             get {
                 return ResourceManager.GetString("Department", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Довузівська підготовка.
+        /// </summary>
+        public static string FDP {
+            get {
+                return ResourceManager.GetString("FDP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Абітурієнту.
+        /// </summary>
+        public static string ForEnrollee {
+            get {
+                return ResourceManager.GetString("ForEnrollee", resourceCulture);
             }
         }
         
@@ -160,11 +196,29 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Магістратура.
+        /// </summary>
+        public static string Magistracy {
+            get {
+                return ResourceManager.GetString("Magistracy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Головна.
         /// </summary>
         public static string Main {
             get {
                 return ResourceManager.GetString("Main", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дні відкритих дверей.
+        /// </summary>
+        public static string OpenDoors {
+            get {
+                return ResourceManager.GetString("OpenDoors", resourceCulture);
             }
         }
         
