@@ -36,7 +36,7 @@ namespace ACTS.UI.Controllers
 					image.InputStream.Read(employee.Photo, 0, image.ContentLength);
 				}
 				repository.SaveEmployee(employee);
-				TempData["message"] = string.Format("{0} has been saved", employee.FullName);
+				TempData["infoMessage"] = string.Format("{0} has been saved", employee.FullName);
 				return RedirectToAction(nameof(Table));
 			} else
 			{
@@ -57,7 +57,7 @@ namespace ACTS.UI.Controllers
 			Employee deletedEmployee = repository.DeleteEmployee(employeeId);
 			if (deletedEmployee != null)
 			{
-				TempData["message"] = string.Format("{0} was deleted", deletedEmployee.FullName);
+				TempData["infoMessage"] = string.Format("{0} was deleted", deletedEmployee.FullName);
 			}
 			return RedirectToAction(nameof(Table));
 		}

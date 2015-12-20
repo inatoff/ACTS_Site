@@ -34,7 +34,7 @@ namespace ACTS.UI.Controllers
 					image.InputStream.Read(teacher.Photo, 0, image.ContentLength);
 				}
 				repository.SaveTeacher(teacher);
-				TempData["message"] = string.Format("{0} has been saved", teacher.FullName);
+				TempData["infoMessage"] = string.Format("{0} has been saved", teacher.FullName);
 				return RedirectToAction(nameof(Table));
 			} else
 			{
@@ -55,7 +55,7 @@ namespace ACTS.UI.Controllers
 			Teacher deletedTeacher = repository.DeleteTeacher(teacherId);
 			if (deletedTeacher != null)
 			{
-				TempData["message"] = string.Format("{0} was deleted", deletedTeacher.FullName);
+				TempData["infoMessage"] = string.Format("{0} was deleted", deletedTeacher.FullName);
 			}
 			return RedirectToAction(nameof(Table));
 		}
