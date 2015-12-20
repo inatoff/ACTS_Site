@@ -79,6 +79,24 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Об&apos;яви.
+        /// </summary>
+        public static string Advertisment {
+            get {
+                return ResourceManager.GetString("Advertisment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Курси та Стажування.
+        /// </summary>
+        public static string CoursesAndProbations {
+            get {
+                return ResourceManager.GetString("CoursesAndProbations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to uk.
         /// </summary>
         public static string CurrentLang {
@@ -93,6 +111,15 @@ namespace ACTS.UI.App_LocalResources {
         public static string Department {
             get {
                 return ResourceManager.GetString("Department", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Студенту.
+        /// </summary>
+        public static string ForStudent {
+            get {
+                return ResourceManager.GetString("ForStudent", resourceCulture);
             }
         }
         
@@ -142,6 +169,24 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Аспірантура.
+        /// </summary>
+        public static string Postgraduate {
+            get {
+                return ResourceManager.GetString("Postgraduate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Розклад.
+        /// </summary>
+        public static string Schedule {
+            get {
+                return ResourceManager.GetString("Schedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Пошук....
         /// </summary>
         public static string Search {
@@ -160,11 +205,47 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Розклад Сессії.
+        /// </summary>
+        public static string SessionSchedule {
+            get {
+                return ResourceManager.GetString("SessionSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Спеціальності.
+        /// </summary>
+        public static string Specialties {
+            get {
+                return ResourceManager.GetString("Specialties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Рейтинг Студентів.
+        /// </summary>
+        public static string StudentRating {
+            get {
+                return ResourceManager.GetString("StudentRating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Педагогічний склад.
         /// </summary>
         public static string TeachingStaff {
             get {
                 return ResourceManager.GetString("TeachingStaff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Корисні посилання.
+        /// </summary>
+        public static string UsefulLinks {
+            get {
+                return ResourceManager.GetString("UsefulLinks", resourceCulture);
             }
         }
     }

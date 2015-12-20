@@ -120,11 +120,23 @@
   <data name="About" xml:space="preserve">
     <value>О кафедре</value>
   </data>
+  <data name="AboutDepartment" xml:space="preserve">
+    <value>О кафедре</value>
+  </data>
+  <data name="Advertisment" xml:space="preserve">
+    <value>Объявления</value>
+  </data>
+  <data name="CoursesAndProbations" xml:space="preserve">
+    <value>Курсы и Стажировки</value>
+  </data>
   <data name="CurrentLang" xml:space="preserve">
     <value>ru</value>
   </data>
   <data name="Department" xml:space="preserve">
     <value>Кафедра</value>
+  </data>
+  <data name="ForStudent" xml:space="preserve">
+    <value>Студенту</value>
   </data>
   <data name="History" xml:space="preserve">
     <value>История кафедры</value>
@@ -136,18 +148,36 @@
     <value>Главная</value>
   </data>
   <data name="OurGraduates" xml:space="preserve">
-    <value>Наші випускники</value>
+    <value>Наши выпускники</value>
   </data>
   <data name="Placement" xml:space="preserve">
-    <value>Працевлаштування</value>
+    <value>Трудоустройство</value>
+  </data>
+  <data name="Postgraduate" xml:space="preserve">
+    <value>Аспирантура</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Расписание</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Пошук...</value>
+    <value>Поиск</value>
   </data>
   <data name="ServicePersonell" xml:space="preserve">
-    <value>Допоміжний персонал</value>
+    <value>Вспомогательный персонал</value>
+  </data>
+  <data name="SessionSchedule" xml:space="preserve">
+    <value>Расписание Сессии</value>
+  </data>
+  <data name="Specialties" xml:space="preserve">
+    <value>Специальности</value>
+  </data>
+  <data name="StudentRating" xml:space="preserve">
+    <value>Рейтинг студентов</value>
   </data>
   <data name="TeachingStaff" xml:space="preserve">
-    <value>Педагогічний склад</value>
+    <value>Научно-педагогический состав</value>
+  </data>
+  <data name="UsefulLinks" xml:space="preserve">
+    <value>Полезные ссылки</value>
   </data>
 </root>

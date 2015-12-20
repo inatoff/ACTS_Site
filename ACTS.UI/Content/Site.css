@@ -13,9 +13,10 @@
     /*margin:6px*/
 }
 
-li.selectedLanguage {
-    background-size:cover;
+li:hover .dropdown-menu{
+    display:block;
 }
+
 li.en{    
     margin-top:10px;
     background-image:url(Images/en.png);
