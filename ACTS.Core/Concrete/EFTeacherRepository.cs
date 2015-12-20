@@ -8,7 +8,7 @@ using ACTS.Core.Entities;
 
 namespace ACTS.Core.Concrete
 {
-	class EFTeacherRepository : ITeacherRepository
+	public class EFTeacherRepository : ITeacherRepository
 	{
 		private EFDbContext context = new EFDbContext();
 

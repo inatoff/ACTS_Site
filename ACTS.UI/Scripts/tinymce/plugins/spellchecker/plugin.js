@@ -550,7 +550,7 @@ define("tinymce/spellcheckerplugin/DomTextMatcher", [], function() {
 		/**
 		 * Resets the DomTextMatcher instance. This will remove any wrapped nodes and remove any matches.
 		 *
-		 * @return {[type]} [Content]
+		 * @return {[type]} [description]
 		 */
 		function reset() {
 			matches.splice(0, matches.length);

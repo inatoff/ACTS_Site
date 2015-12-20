@@ -1,8 +1,4 @@
-﻿@{
-	ViewBag.CurrentPage = System.IO.Path.GetFileName(Request.PhysicalPath); 
-}
-
-@helper IsActiveTreeView(string activeTreeView)
+﻿@helper IsActiveTreeView(string activeTreeView)
 {
 	if (ViewBag.CurrentTreeView == activeTreeView)
 	{ 
@@ -69,24 +65,24 @@
 					</li>
 					<li class="treeview @IsActiveTreeView("Tables")">
 						<a href="#">
-							<i class="fa fa-table"></i> <span>Tables</span> <i class="fa fa-angle-left pull-right"></i>
+							<i class="fa fa-table"></i>
+							<span>Tables</span>
+							<i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li class="@IsActivePage("ListUncos")"><a href="@Url.Action("ListUncos","Admin")"><i class="fa fa-circle-o"></i>Uncos</a></li>
-							<li class="@IsActivePage("ListEmployee")"><a href="@Url.Action("ListEmployee","Admin")"><i class="fa fa-circle-o"></i>Employees</a></li>
+							<li class="@IsActivePage("TableUncos")"><a href="@Url.Action("Table","News")"><i class="fa fa-circle-o"></i>Uncos</a></li>
+							<li class="@IsActivePage("TableEmployee")"><a href="@Url.Action("Table", "Employee")"><i class="fa fa-circle-o"></i>Employees</a></li>
 						</ul>
 					</li>
-					<li class="treeview @IsActiveTreeView("")">
+					<li class="treeview @IsActiveTreeView("Create")">
 						<a href="#">
-							<i class="fa fa-files-o"></i>
-							<span>Layout Options</span>
-							<span class="label label-primary pull-right">4</span>
+							<i class="fa fa-edit"></i>
+							<span>Create</span>
+							<span class="fa fa-angle-left pull-right"></span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-							<li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-							<li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-							<li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+							<li class="@IsActivePage("EditNews")"><a href="@Url.Action("Create","News")"><i class="fa fa-circle-o"></i>News</a></li>
+							<li class="@IsActivePage("EditEmployee")"><a href="@Url.Action("Create", "Employee")"><i class="fa fa-circle-o"></i>Employee</a></li>
 						</ul>
 					</li>
 					<li class="treeview">
@@ -115,14 +111,25 @@
 					<li><a href="@Url.Action("Dashboard", "Admin")"><i class="fa fa-dashboard"></i> Home</a></li>
 					@if (!string.IsNullOrEmpty(ViewBag.CurrentTreeView))
 					{
-						<li> @ViewBag.CurrentTreeView</li>
-					}
+						<li> @ViewBag.CurrentTreeView</li>}
 					<li class="active"> @ViewBag.Title</li>
 				</ol>
 			</div>
 			<!-- /.content-header -->
 			<!-- Main content -->
+
+			<section class="content">
+				@if (!string.IsNullOrEmpty(TempData["message"] as string))
+				{
+					<div class="alert alert-info alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<h4><i class="icon fa fa-info"></i> Alert!</h4>
+						@TempData["message"]
+					</div>
+				}
+				
 				@RenderBody()
+			</section>
 
 		</section>
 		<!-- /.content-wrapper -->
