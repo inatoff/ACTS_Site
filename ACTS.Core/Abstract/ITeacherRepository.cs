@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ACTS.Core.Abstract
 {
-	interface ITeacherRepository
+	public interface ITeacherRepository
 	{
 		IQueryable<Teacher> Teachers { get; }
 		void SaveTeacher(Teacher teacher);

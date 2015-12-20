@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace ACTS.UI.Controllers
 {
-	public class NewsController : BaseController
+	public partial class NewsController : BaseController
 	{
 		private INewsRepository repository;
 
@@ -39,7 +39,18 @@ namespace ACTS.UI.Controllers
 
 		public PartialViewResult FooterStringUncos()
 		{
-			IEnumerable<News> last3uncos = repository.Uncos.OrderBy(n => n.Create).Take(3);
+			var uncos = repository.Uncos.Where(delegate (News n) {
+				if (n.Modified.HasValue)
+					return (DateTime.UtcNow - n.Modified.Value).TotalDays < 365;
+				return (DateTime.UtcNow - n.Create.Value).TotalDays < 365;
+			});
+			Random rand = new Random();
+			var randomNumbers = uncos.Select(r => rand.Next()).ToArray();
+			IEnumerable<News> last3uncos = uncos.Zip(randomNumbers, (n, o) => new { News = n, Order = o })
+									 .OrderBy(o => o.Order)
+									 .Select(o => o.News)
+									 .Take(3);
+
 			return PartialView(last3uncos);
 		}
 
@@ -72,16 +83,5 @@ namespace ACTS.UI.Controllers
 				return null;
 			}
 		}
-
-		//public string GetContent(int newsID)
-		//{
-		//	News news = repository.Uncos.FirstOrDefault(p => p.NewsID == newsID);
-		//	if (news != null)
-		//	{
-		//		return new HtmlString(news.Content).ToHtmlString();
-		//	} else
-		//	{
-		//		return null;
-		//	}
 	}
 }

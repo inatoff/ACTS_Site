@@ -24,7 +24,7 @@ tinymce.PluginManager.add('fullpage', function(editor) {
 			body: [
 				{name: 'title', label: 'Title'},
 				{name: 'keywords', label: 'Keywords'},
-				{name: 'Content', label: 'Content'},
+				{name: 'description', label: 'Description'},
 				{name: 'robots', label: 'Robots'},
 				{name: 'author', label: 'Author'},
 				{name: 'docencoding', label: 'Encoding'}
@@ -214,7 +214,7 @@ tinymce.PluginManager.add('fullpage', function(editor) {
 		}
 
 		// Add/update/remove meta
-		each('keywords,Content,author,copyright,robots'.split(','), function(name) {
+		each('keywords,description,author,copyright,robots'.split(','), function(name) {
 			var nodes = headerFragment.getAll('meta'), i, meta, value = data[name];
 
 			for (i = 0; i < nodes.length; i++) {

@@ -31,7 +31,8 @@ namespace ACTS.UI.Infrastructure
         private void AddBindings()
         {       // конфигурирование контейнера  
             ninjectKernel.Bind<IEventRepository>().To<EFEventRepository>();
-           // ninjectKernel.Bind<IEmployeeRepository>().To<EFEmployeeRepository>();
+			ninjectKernel.Bind<IEmployeeRepository>().To<EFEmployeeRepository>();
+			ninjectKernel.Bind<ITeacherRepository>().To<EFTeacherRepository>();
             ninjectKernel.Bind<INewsRepository>().To<EFNewsRepository>();
         }
     }

@@ -46,7 +46,7 @@ tinymce.PluginManager.add('template', function(editor) {
 				value: {
 					url: template.url,
 					content: template.content,
-					Content: template.Content
+					description: template.description
 				}
 			});
 		});
@@ -96,7 +96,7 @@ tinymce.PluginManager.add('template', function(editor) {
 				insertIframeHtml(templateHtml);
 			}
 
-			win.find('#Content')[0].text(e.control.value().Content);
+			win.find('#description')[0].text(e.control.value().description);
 		}
 
 		win = editor.windowManager.open({
@@ -113,7 +113,7 @@ tinymce.PluginManager.add('template', function(editor) {
 						type: 'listbox', label: 'Templates', name: 'template', values: values, onselect: onSelectTemplate
 					}}
 				]},
-				{type: 'label', name: 'Content', label: 'Content', text: '\u00a0'},
+				{type: 'label', name: 'description', label: 'Description', text: '\u00a0'},
 				{type: 'iframe', flex: 1, border: 1}
 			],
 
