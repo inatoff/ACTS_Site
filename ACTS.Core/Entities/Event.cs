@@ -8,6 +8,7 @@ namespace ACTS.Core.Entities
 {
     public class Event
     {
-        
-    }
+		public int EventID { get; set; }
+
+	}
 }
