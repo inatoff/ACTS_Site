@@ -82,10 +82,6 @@
     <Compile Include="Migrations\201512191246164_TeachersWorkerEmployee_ver2.Designer.cs">
       <DependentUpon>201512191246164_TeachersWorkerEmployee_ver2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512201603546_workerRequired.cs" />
-    <Compile Include="Migrations\201512201603546_workerRequired.Designer.cs">
-      <DependentUpon>201512201603546_workerRequired.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -104,9 +100,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512191246164_TeachersWorkerEmployee_ver2.resx">
       <DependentUpon>201512191246164_TeachersWorkerEmployee_ver2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512201603546_workerRequired.resx">
-      <DependentUpon>201512201603546_workerRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -29,7 +29,7 @@ namespace ACTS.Core.Entities
 		[HiddenInput(DisplayValue = false)]
 		public string ImageMimeType { get; set; }
 
-		[Required(ErrorMessage = "Please enter a description")]
+		[Required(ErrorMessage = "Please enter a content")]
 		[DataType(DataType.MultilineText)]
 		[AllowHtml]
 		public string Content { get; set; }
