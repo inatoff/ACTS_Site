@@ -395,7 +395,6 @@
     <Compile Include="Helpers\ActiveHelper.cs" />
     <Compile Include="Helpers\CultureHelper.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
-    <Compile Include="Infrastructure\ProfileAllAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -433,6 +432,7 @@
     <Content Include="Areas\Admin\Views\Employee\EditEmployee.cshtml" />
     <Content Include="Areas\Admin\Views\Employee\TableEmployee.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -78,7 +78,7 @@
         
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="~/Content/Images/actsSlide1.jpg" alt="First slide"> 
+                <img src="~/Content/Images/actsSlide1.jpg" alt="First slide" > 
             </div>
             <div class="item">
                 <img src="~/Content/Images/actsSlide2.jpg" alt="Second slide">
@@ -95,7 +95,8 @@
     <div class="container" style="height:100%">
         @RenderBody()
 
-        @{Html.RenderAction("FooterStringUncos", "News");}
+        @if (ViewBag.CurrentPage != "main") { Html.RenderAction("FooterStringUncos", "News"); }
+        @if (ViewBag.CurrentPage == "main") { @Html.Partial("Footer"); }    
     </div>
     <script src="~/Scripts/jquery-2.1.4.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
