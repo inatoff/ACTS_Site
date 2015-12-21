@@ -6,9 +6,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ACTS.UI.Controllers
+namespace ACTS.UI.Areas.Admin.Controllers
 {
-	public class AdminController : BaseController
+	public class AdminController : Controller
 	{
 		//private INewsRepository _newsRepository;
 

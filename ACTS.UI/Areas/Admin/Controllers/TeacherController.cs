@@ -6,10 +6,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ACTS.UI.Controllers
+namespace ACTS.UI.Areas.Admin.Controllers
 {
-	public partial class TeacherController : BaseController
+	public class TeacherController : Controller
 	{
+		private ITeacherRepository repository;
+
+		public TeacherController(ITeacherRepository employeeRepository)
+		{
+			repository = employeeRepository;
+		}
+
 		public ActionResult Table()
 		{
 			IEnumerable<Teacher> teachers = repository.Teachers;
@@ -34,7 +41,7 @@ namespace ACTS.UI.Controllers
 					image.InputStream.Read(teacher.Photo, 0, image.ContentLength);
 				}
 				repository.SaveTeacher(teacher);
-				TempData["message"] = string.Format("{0} has been saved", teacher.FullName);
+				TempData["infoMessage"] = string.Format("{0} has been saved.", teacher.FullName);
 				return RedirectToAction(nameof(Table));
 			} else
 			{
@@ -55,7 +62,7 @@ namespace ACTS.UI.Controllers
 			Teacher deletedTeacher = repository.DeleteTeacher(teacherId);
 			if (deletedTeacher != null)
 			{
-				TempData["message"] = string.Format("{0} was deleted", deletedTeacher.FullName);
+				TempData["infoMessage"] = string.Format("{0} was deleted.", deletedTeacher.FullName);
 			}
 			return RedirectToAction(nameof(Table));
 		}

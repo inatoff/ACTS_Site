@@ -20,7 +20,7 @@ namespace ACTS.Core.Entities
 		[HiddenInput(DisplayValue = false)]
 		public DateTime? Modified { get; set; }
 
-		[Required(ErrorMessage = "Please enter a description")]
+		[Required(ErrorMessage = "Please enter a content")]
 		[DataType(DataType.MultilineText)]
 		[AllowHtml]
 		public string Content { get; set; }

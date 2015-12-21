@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace ACTS.UI.Controllers
 {
-	public partial class TeacherController : BaseController
+	public class TeacherController : BaseController
 	{
 		private ITeacherRepository repository;
 

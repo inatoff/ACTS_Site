@@ -10,7 +10,7 @@ using ACTS.Core.Entities;
 
 namespace ACTS.UI.Controllers
 {
-	public partial class EmployeeController : BaseController
+	public class EmployeeController : BaseController
 	{
 		private IEmployeeRepository repository;
 

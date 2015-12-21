@@ -33,5 +33,9 @@ namespace ACTS.UI.Controllers
 				return Redirect(returnUrl);
 			return RedirectToAction("Index");
 		}   
+        public ActionResult Contacts()
+        {
+            return View();
+        }
 	}
 }

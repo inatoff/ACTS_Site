@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace ACTS.UI.Controllers
 {
-    public class ForStudentController : Controller
+    public class ForStudentController : BaseController
     {
         // GET: ForStudent
         public ActionResult Index()

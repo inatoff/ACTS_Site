@@ -6,10 +6,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ACTS.UI.Controllers
+namespace ACTS.UI.Areas.Admin.Controllers
 {
-	public partial class NewsController : BaseController
+	public class NewsController : Controller
 	{
+		private INewsRepository repository;
+
+		public NewsController(INewsRepository newsRepository)
+		{
+			repository = newsRepository;
+		}
+
 		public ActionResult Table()
 		{
 			IEnumerable<News> uncos = repository.Uncos;
@@ -34,7 +41,7 @@ namespace ACTS.UI.Controllers
 					image.InputStream.Read(news.ImageData, 0, image.ContentLength);
 				}
 				repository.SaveNews(news);
-				TempData["message"] = string.Format("{0} has been saved", news.Title);
+				TempData["infoMessage"] = string.Format("{0} has been saved.", news.Title);
 				return RedirectToAction(nameof(Table));
 			} else
 			{
@@ -55,7 +62,7 @@ namespace ACTS.UI.Controllers
 			News deletedNews = repository.DeleteNews(newsId);
 			if (deletedNews != null)
 			{
-				TempData["message"] = string.Format("{0} was deleted", deletedNews.Title);
+				TempData["infoMessage"] = string.Format("{0} was deleted.", deletedNews.Title);
 			}
 			return RedirectToAction(nameof(Table));
 		}

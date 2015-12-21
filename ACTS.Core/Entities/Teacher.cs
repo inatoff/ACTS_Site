@@ -14,6 +14,7 @@ namespace ACTS.Core.Entities
 
 		public string Degree { get; set; } // Научная степень    
 
+		[EmailAddress]
 		public string EMail { get; set; }
 
 		//social Links

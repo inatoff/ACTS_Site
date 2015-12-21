@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace ACTS.Core.Abstract
 	{
 		//obligatory Fields
 
+		//[Required(ErrorMessage = "Please enter a name")]
+		//[StringLength(70, ErrorMessage = "FullName: Length should not exceed 70 characters")]
 		public string FullName { get; set; } // Полное имя
 
 		//public string Name { get; set; } // Имя
@@ -18,6 +21,8 @@ namespace ACTS.Core.Abstract
 
 		//public string Surname { get; set; } // Фамилия
 
+		//[Required(ErrorMessage = "Please enter a position")]
+		//[StringLength(500, ErrorMessage = "FullName: Position should not exceed 500 characters")]
 		public string Position { get; set; } // Должность
 
 		public byte[] Photo { get; set; }

@@ -8,10 +8,17 @@ using System.Web.Mvc;
 using ACTS.Core.Abstract;
 using ACTS.Core.Entities;
 
-namespace ACTS.UI.Controllers
+namespace ACTS.UI.Areas.Admin.Controllers
 {
-	public partial class EmployeeController : BaseController
+	public class EmployeeController : Controller
 	{
+		private IEmployeeRepository repository;
+
+		public EmployeeController(IEmployeeRepository employeeRepository)
+		{
+			repository = employeeRepository;
+		}
+
 		public ActionResult Table()
 		{
 			IEnumerable<Employee> employees = repository.Employees;
@@ -36,8 +43,8 @@ namespace ACTS.UI.Controllers
 					image.InputStream.Read(employee.Photo, 0, image.ContentLength);
 				}
 				repository.SaveEmployee(employee);
-				TempData["message"] = string.Format("{0} has been saved", employee.FullName);
-				return RedirectToAction(nameof(Table));
+				TempData["infoMessage"] = string.Format("{0} has been saved.", employee.FullName);
+				return RedirectToAction(nameof(Table), new { area = "Admin" });
 			} else
 			{
 				// there is something wrong with the data values         
@@ -57,7 +64,7 @@ namespace ACTS.UI.Controllers
 			Employee deletedEmployee = repository.DeleteEmployee(employeeId);
 			if (deletedEmployee != null)
 			{
-				TempData["message"] = string.Format("{0} was deleted", deletedEmployee.FullName);
+				TempData["infoMessage"] = string.Format("{0} was deleted.", deletedEmployee.FullName);
 			}
 			return RedirectToAction(nameof(Table));
 		}

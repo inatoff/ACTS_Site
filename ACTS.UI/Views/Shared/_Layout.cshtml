@@ -21,10 +21,9 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="~/Content/simple-sidebar.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" /> 
 </head>
-<body>
+<body style="height:100%">
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -70,11 +69,30 @@
                   <form class="navbar-form navbar-right">
                       <input type="text" class="form-control" placeholder="@GlobalRes.Search">
                   </form>
-</div>
+            </div>
         </div>
     </nav>
-
-    <div class="container">
+    @if (ViewBag.CurrentPage == "main")
+    {
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+        
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="~/Content/Images/actsSlide1.jpg" alt="First slide"> 
+            </div>
+            <div class="item">
+                <img src="~/Content/Images/actsSlide2.jpg" alt="Second slide">
+            </div>
+            <div class="item">
+                <img src="~/Content/Images/actsSlide3.jpg" alt="Third slide">
+            </div>
+            <div class="item">
+                <img src="~/Content/Images/actsSlide4.jpg" alt="Third slide">
+            </div>
+        </div>
+    </div>
+    }
+    <div class="container" style="height:100%">
         @RenderBody()
 
         @{Html.RenderAction("FooterStringUncos", "News");}
@@ -83,3 +101,4 @@
     <script src="~/Scripts/bootstrap.js"></script>
 </body>
 </html>
+

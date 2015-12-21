@@ -3,7 +3,6 @@
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
 	ViewBag.Title = "Edit News";
-	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <script src="~/Scripts/tinymce/tinymce.js"></script>
@@ -84,7 +83,7 @@
 								@:None
 							} else
 							{
-								<img class="img-thumbnail" style="max-width:100%" src="@Url.Action("GetImage", "News", new { Model.NewsID })" />
+								<img class="img-thumbnail" style="max-width:100%" src="@Url.Action("GetImage", "News", new { area = "", Model.NewsID })" />
 							}
 						</div>
 					</div>
