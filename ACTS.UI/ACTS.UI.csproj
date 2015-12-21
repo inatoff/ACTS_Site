@@ -421,6 +421,8 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Views\Shared\PanelSections.cshtml" />
+    <Content Include="Views\Shared\DepartmentNav.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -432,9 +434,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Enrollee\" />
-    <Folder Include="Views\Teacher\" />
     <Folder Include="Views\ForStudent\" />
     <Folder Include="Views\Science\" />
+    <Folder Include="Views\Teacher\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ACTS.Core\ACTS.Core.csproj">

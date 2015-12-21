@@ -4,6 +4,9 @@
 
 
 <div class="row">
+    <div class="col-md-3">
+        @Html.Partial("DepartmentNav")
+    </div>
 	<div class="col-md-9" role="main">
 		<div class="c__block">
 			<div class="c__block-title">Про кафедру</div>
@@ -35,18 +38,5 @@
 				<p>Після 4-го курсу паралельно з основною спеціальністю студенти (за бажанням) можуть отримати за 2 роки (вечірня форма навчання за контрактом) кваліфікацію менеджера-маркетолога за спеціальністю “Маркетинг” або бакалавраперекладача.</p>
 			</div>
 		</div>
-	</div>
-	<div class="col-md-3" role="complementary">
-		<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
-			<ul class="nav bs-docs-sidenav">
-				<li><a class="active" href="@Url.Action("About")">@GlobalRes.About</a></li>
-				<li><a href="@Url.Action("History")">@GlobalRes.History</a></li>
-				<li><a href="@Url.Action("TeachingStaff")">@GlobalRes.TeachingStaff</a></li>
-				<li><a href="@Url.Action("ServicePersonell")">@GlobalRes.ServicePersonell</a></li>
-				<li><a href="@Url.Action("OurGraduates")">@GlobalRes.OurGraduates</a></li>
-				<li><a href="@Url.Action("Placement")">@GlobalRes.Placement</a></li>
-			</ul>
-			<a class="back-to-top" href="#top">Back to top</a>
-		</nav>
-	</div>
+	</div>	
 </div>
