@@ -21,9 +21,9 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" /> 
 </head>
-<body>
+<body style="height:100%">
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -46,51 +46,10 @@
                             <li><a href="@Url.Action("Index", "Home")">@GlobalRes.Main</a></li>
                         }
                     }
-                    <li class="dropdown">
-                        <a href="@Url.Action("About", "Department")" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Department<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("About", "Department")">@GlobalRes.About</a></li>
-                            <li><a href="@Url.Action("History", "Department")">@GlobalRes.History</a></li>
-                            <li><a href="@Url.Action("TeachingStaff", "Department")">@GlobalRes.TeachingStaff</a></li>
-                            <li><a href="@Url.Action("ServicePersonell", "Department")">@GlobalRes.ServicePersonell</a></li>
-                            <li><a href="@Url.Action("OurGraduates", "Department")">@GlobalRes.OurGraduates</a></li>
-                            <li><a href="@Url.Action("Placement", "Department")">@GlobalRes.Placement</a></li>
+                <!--Генерация панели навигации из PartialView PanelSections-->
+                    @Html.Partial("PanelSections")
                         </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="@Url.Action("Specialties", "ForStudent")" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.ForStudent<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("Specialties", "ForStudent")">@GlobalRes.Specialties</a></li>
-                            <li><a href="@Url.Action("StudentRating", "ForStudent")">@GlobalRes.StudentRating</a></li>
-                            <li><a href="@Url.Action("UsefulLinks", "ForStudent")">@GlobalRes.UsefulLinks</a></li>
-                            <li><a href="@Url.Action("Schedule", "ForStudent")">@GlobalRes.Schedule</a></li>
-                            <li><a href="@Url.Action("Postgraduates", "ForStudent")">@GlobalRes.Postgraduate</a></li>
-                            <li><a href="@Url.Action("CoursesAndProbations", "ForStudent")">@GlobalRes.CoursesAndProbations</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="@Url.Action("ScienceFields", "Science")" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Science<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("ScienceFields","ForStudentsЄ")">@GlobalRes.ScienceFields</a></li>
-                            <li><a href="@Url.Action("Researches","ForStudents")">@GlobalRes.Researches</a></li>
-                            <li><a href="@Url.Action("Achievments","ForStudents")">@GlobalRes.Achievments</a></li>
-                            <li><a href="@Url.Action("ScienceConnections","ForStudents")">@GlobalRes.ScienceConnections</a></li>
-                            <li><a href="@Url.Action("Laboratories","ForStudents")">@GlobalRes.Laboratories</a></li>
-                            <li><a href="@Url.Action("PrizesAndAwards","ForStudents")">@GlobalRes.PrizeAndAwards</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="@Url.Action("OpenDoors", "ForEnrollee")" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.ForEnrollee<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("OpenDoors","ForEnrollee")">@GlobalRes.OpenDoors</a></li>
-                            <li><a href="@Url.Action("ConditionsOfAdmissions","ForEnrollee")">@GlobalRes.ConditionsOfAdmissions</a></li>
-                            <li><a href="@Url.Action("FDP","ForEnrollee")">@GlobalRes.FDP</a></li>
-                            <li><a href="@Url.Action("Magistracy","ForEnrollee")">@GlobalRes.Magistracy</a></li>
-                        </ul>
-                    </li>
-                            <li><a href="#contact">@GlobalRes.Contact</a></li>
-                        </ul>
-
+                <!--Выбор локализации -->
                         <ul class="nav navbar-nav navbar-right">
                             @foreach (var lang in CultureHelper.Cultures)
                             {
@@ -106,20 +65,41 @@
                                 </li>
                             }
                         </ul>
-
-                        <form class="navbar-form navbar-right">
-                            <input type="text" class="form-control" placeholder="@GlobalRes.Search">
-                        </form>
-</div><!--/.nav-collapse -->
+                <!--Поиск-->
+                  <form class="navbar-form navbar-right">
+                      <input type="text" class="form-control" placeholder="@GlobalRes.Search">
+                  </form>
+            </div>
         </div>
     </nav>
-
-    <div class="container">
+    @if (ViewBag.CurrentPage == "main")
+    {
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+        
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="~/Content/Images/actsSlide1.jpg" alt="First slide" > 
+            </div>
+            <div class="item">
+                <img src="~/Content/Images/actsSlide2.jpg" alt="Second slide">
+            </div>
+            <div class="item">
+                <img src="~/Content/Images/actsSlide3.jpg" alt="Third slide">
+            </div>
+            <div class="item">
+                <img src="~/Content/Images/actsSlide4.jpg" alt="Third slide">
+            </div>
+        </div>
+    </div>
+    }
+    <div class="container" style="height:100%">
         @RenderBody()
 
-        @{Html.RenderAction("FooterStringUncos", "News");}
+        @if (ViewBag.CurrentPage != "main") { Html.RenderAction("FooterStringUncos", "News"); }
+        @if (ViewBag.CurrentPage == "main") { @Html.Partial("Footer"); }    
     </div>
     <script src="~/Scripts/jquery-2.1.4.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
 </body>
 </html>
+

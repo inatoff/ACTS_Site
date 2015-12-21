@@ -13,6 +13,31 @@
     /*margin:6px*/
 }
 
+ul li:hover{    
+    background: #e7e7e7;
+    color: #fff;
+}
+
+ul.dropdown-menu {
+    text-align: left; 
+    margin: 0; 
+    list-style: none;
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    background-color:#e7e7e7;
+}
+
+ul.dropdown-menu li {
+    font: bold 18px ;
+    position: relative; 
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
 li:hover .dropdown-menu{
     display:block;
 }
@@ -43,6 +68,13 @@ li {
     font-size: 12px;
     font-weight: 500;
     color: #999;
+}
+
+.navbar {
+    margin-bottom:0;
+} 
+#carousel div.item {
+    height:250px;
 }
 
 /*из http://acts.kpi.ua/app/themes/wp-theme-acts-main/css/style.css */ 

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace ACTS.UI.Controllers
 {
-    public class ForEnrolleeController : Controller
+    public class ForEnrolleeController : BaseController
     {
         // GET: Enrollee
         public ActionResult OpenDoors()

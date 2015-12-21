@@ -7,7 +7,7 @@ namespace ACTS.UI
 	{
 		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{
-			filters.Add(new ProfileAllAttribute());
+			
 		}
 	}
 }
