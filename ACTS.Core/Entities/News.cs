@@ -14,7 +14,7 @@ namespace ACTS.Core.Entities
 		[HiddenInput(DisplayValue = false)]
 		public int NewsID { get; set; }
 
-		[Required(ErrorMessage = "Please enter a title")]
+		[Required(AllowEmptyStrings = false, ErrorMessage = "Please enter a title")]
 		[StringLength(500, ErrorMessage = "Title: Length should not exceed 500 characters")]
 		public string Title { get; set; }
 
@@ -29,7 +29,6 @@ namespace ACTS.Core.Entities
 		[HiddenInput(DisplayValue = false)]
 		public string ImageMimeType { get; set; }
 
-		[Required(ErrorMessage = "Please enter a content")]
 		[DataType(DataType.MultilineText)]
 		[AllowHtml]
 		public string Content { get; set; }
