@@ -16,5 +16,6 @@ namespace ACTS.Core.Concrete
 		public DbSet<News> Uncos { get; set; }
 		public DbSet<Event> Events { get; set; }
 		public DbSet<Teacher> Teachers { get; set; }
+		public DbSet<Post> Posts { get; set; }
 	}
 }

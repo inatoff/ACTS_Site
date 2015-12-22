@@ -21,13 +21,13 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Table()
 		{
-			IEnumerable<Employee> employees = repository.Employees;
+			IEnumerable<Employee> employees = repository.Employees.OrderBy(em => em.EmployeeID);
 			return View("TableEmployee", employees);
 		}
 
 		public ActionResult Edit(int employeeId)
 		{
-			Employee employee = repository.Employees.FirstOrDefault(p => p.EmployeeID == employeeId);
+			Employee employee = repository.GetEmployeeById(employeeId);
 			return View("EditEmployee", employee);
 		}
 

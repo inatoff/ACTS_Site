@@ -19,13 +19,13 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Table()
 		{
-			IEnumerable<Teacher> teachers = repository.Teachers;
+			IEnumerable<Teacher> teachers = repository.Teachers.OrderBy(t => t.TeacherID);
 			return View("TableTeacher",teachers);
 		}
 
 		public ActionResult Edit(int teacherId)
 		{
-			Teacher teacher = repository.Teachers.FirstOrDefault(p => p.TeacherID == teacherId);
+			Teacher teacher = repository.GetTeacherById(teacherId);
 			return View("EditTeacher", teacher);
 		}
 

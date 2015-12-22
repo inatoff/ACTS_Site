@@ -33,7 +33,8 @@ namespace ACTS.UI.Infrastructure
             ninjectKernel.Bind<IEventRepository>().To<EFEventRepository>();
 			ninjectKernel.Bind<IEmployeeRepository>().To<EFEmployeeRepository>();
 			ninjectKernel.Bind<ITeacherRepository>().To<EFTeacherRepository>();
-            ninjectKernel.Bind<INewsRepository>().To<EFNewsRepository>();
+			ninjectKernel.Bind<INewsRepository>().To<EFNewsRepository>();
+			ninjectKernel.Bind<IPostRepository>().To<EFPostRepository>();
         }
-    }
+}
 }

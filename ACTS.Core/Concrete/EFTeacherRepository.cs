@@ -54,5 +54,10 @@ namespace ACTS.Core.Concrete
 			}
 			return dbEntry;
 		}
+
+		public Teacher GetTeacherById(int teacherId)
+		{
+			return Teachers.FirstOrDefault(p => p.TeacherID == teacherId);
+		}
 	}
 }

@@ -11,6 +11,7 @@ namespace ACTS.Core.Abstract
     {
         IQueryable<Employee> Employees { get; }
         void SaveEmployee(Employee employee);
+		Employee GetEmployeeById(int employeeId);
         Employee DeleteEmployee(int employeeID);
-    }
+	}
 }

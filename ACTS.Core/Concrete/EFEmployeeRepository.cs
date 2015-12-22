@@ -47,5 +47,10 @@ namespace ACTS.Core.Concrete
 			}
 			return dbEntry;
 		}
+
+		public Employee GetEmployeeById(int employeeId)
+		{
+			return Employees.FirstOrDefault(p => p.EmployeeID == employeeId);
+		}
 	}
 }

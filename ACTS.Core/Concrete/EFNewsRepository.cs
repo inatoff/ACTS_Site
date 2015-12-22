@@ -17,28 +17,27 @@ namespace ACTS.Core.Concrete
 			get { return context.Uncos; }
 		}
 
-		public void SaveNews(News news)
-		{
-			if (news.NewsID == 0)
-			{
-				news.Create = DateTime.UtcNow;
-				context.Uncos.Add(news);
-			} else
-			{
-				News dbEntry = context.Uncos.Find(news.NewsID);
-				if (dbEntry != null)
-				{
-					dbEntry.Title = news.Title;
-					dbEntry.Modified = DateTime.UtcNow;
-					dbEntry.Content = news.Content;
-					dbEntry.ImageData = news.ImageData;
-					dbEntry.ImageMimeType = news.ImageMimeType;
-				}
-			}
+		//public void SaveNews(News news)
+		//{
+		//	if (news.NewsID == 0)
+		//	{
+		//		news.Create = DateTime.UtcNow;
+		//		context.Uncos.Add(news);
+		//	} else
+		//	{
+		//		News dbEntry = context.Uncos.Find(news.NewsID);
+		//		if (dbEntry != null)
+		//		{
+		//			dbEntry.Title = news.Title;
+		//			dbEntry.Modified = DateTime.UtcNow;
+		//			dbEntry.Content = news.Content;
+		//			dbEntry.ImageData = news.ImageData;
+		//			dbEntry.ImageMimeType = news.ImageMimeType;
+		//		}
+		//	}
 
-			context.SaveChanges();
-		}
-
+		//	context.SaveChanges();
+		//}
 
 		public News DeleteNews(int newsID)
 		{
@@ -49,6 +48,35 @@ namespace ACTS.Core.Concrete
 				context.SaveChanges();
 			}
 			return dbEntry;
+		}
+
+		public News GetNewsById(int newsId)
+		{
+			return Uncos.FirstOrDefault(p => p.NewsID == newsId);
+		}
+
+		public void SaveUpdatedNews(News news)
+		{
+			News dbEntry = context.Uncos.Find(news.NewsID);
+			if (dbEntry != null)
+			{
+				dbEntry.Title = news.Title;
+				dbEntry.Modified = DateTime.UtcNow;
+				dbEntry.Content = news.Content;
+				dbEntry.ImageData = news.ImageData;
+				dbEntry.ImageMimeType = news.ImageMimeType;
+			}
+
+			context.SaveChanges();
+
+		}
+
+		public void SaveNewNews(News news)
+		{
+			news.Create = DateTime.UtcNow;
+			context.Uncos.Add(news);
+
+			context.SaveChanges();
 		}
 	}
 }

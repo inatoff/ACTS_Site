@@ -64,7 +64,9 @@
     <Compile Include="Concrete\EFEmployeeRepository.cs" />
     <Compile Include="Concrete\EFEventRepository.cs" />
     <Compile Include="Concrete\EFNewsRepository.cs" />
+    <Compile Include="Concrete\EFPostRepository.cs" />
     <Compile Include="Concrete\EFTeacherRepository.cs" />
+    <Compile Include="Abstract\IPostRepository.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Event.cs" />
     <Compile Include="Entities\News.cs" />
