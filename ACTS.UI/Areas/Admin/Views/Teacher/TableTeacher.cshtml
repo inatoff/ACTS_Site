@@ -18,32 +18,14 @@
 	}
 }
 
-<link type="text/css" href="~/Content/datatables.min.css" rel="stylesheet" />
-<script type="text/javascript" src="~/Scripts/datatables.min.js"></script>
+@section Styles{
+	@Styles.Render("~/Content/css/datatables")
+}
 
-<script type="text/javascript">
-	$(document).ready(function () {
-		var table = $('#dataTablePlagin').DataTable({
-			scrollX: true,
-			scrollY: false,
-			scrollCollapse: true,
-			columns: [
-		   { className: "dt-center" },
-		   { className: "dt-center" },
-		   { className: "dt-center" },
-		   { className: "dt-center" },
-		   { className: "dt-center" },
-		   { className: "dt-center" },
-		   { className: "dt-head-center" },
-		   { className: "dt-center" }
-			],
-			lengthMenu: [
-			[5, 10, 25, 50, -1],
-			['5', '10', '25', '50', 'All']
-			]
-		});
-	});
-</script>
+@section Scripts {
+	@Scripts.Render("~/bundles/datatables")
+	<script src="~/Scripts/Admin/Teacher/tableTeacher.js"></script>
+}
 
 <div class="row">
 	<div class="col-xs-12">
@@ -53,7 +35,7 @@
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
-				<table id="dataTablePlagin" class="table table-bordered table-striped table-hover" width="100%">
+				<table id="dataTablePlagin" class="table table-bordered table-striped table-hover">
 					<thead>
 						<tr>
 							<th>Id</th>
@@ -71,7 +53,7 @@
 						{
 							<tr>
 								<td>
-									@item.TeacherID
+									@item.TeacherId
 								</td>
 								<td>
 									@item.FullName
@@ -88,7 +70,7 @@
 								<td>
 									<div class="btn-group-vertical">
 										@SocialLink("Intellect", item.Intellect, "btn-info", "fa-info")
-										@SocialLink("Vk", item.VkID, "btn-vk", "fa-vk")
+										@SocialLink("Vk", item.Vk, "btn-vk", "fa-vk")
 										@SocialLink("Twitter", item.Twitter, "btn-twitter", "fa-twitter")
 										@SocialLink("Facebook", item.FaceBook, "btn-facebook", "fa-facebook")
 									</div>
@@ -99,22 +81,18 @@
 										@:None
 									} else
 									{
-										<img width="100" height="100" src="@Url.Action("GetImage", "Teacher", new { area = "", item.TeacherID })" />
+										<img width="100" height="100" src="@Url.Action("GetImage", "Teacher", new { area = "", item.TeacherId })" />
 									}
 								</td>
 								<td>
 									@using (Html.BeginForm("Delete", "Teacher", FormMethod.Post, new { enctype = "multipart/form-data" }))
 									{
-										@Html.Hidden("TeacherID", item.TeacherID)
-										<div class="btn-group-vertical">
-											<a href="@Url.Action("Edit", "Teacher", new { item.TeacherID })" class="btn btn-default">
-												<i class="fa fa-edit ">&nbsp;Edit</i>
-											</a>
-											<a href="@Url.Action("PageNews", "Employee", new { item.TeacherID })" class="btn btn-default">
-												<i class="fa fa-home ">&nbsp;On Main</i>
-											</a>
-											<button class="btn btn-default" type="submit"><i class="fa fa-remove ">&nbsp;Delete</i></button>
-										</div>
+										@Html.Hidden("TeacherID", item.TeacherId)
+										<ul class="list-unstyled">
+											<li><a href="@Url.Action("Edit", "Teacher", new { item.TeacherId })" class="btn btn-link"><i class="fa fa-edit ">&nbsp;Edit</i></a></li>
+											<li><a href="@Url.Action("PageNews", "Employee", new { item.TeacherId })" class="btn btn-link"><i class="fa fa-home ">&nbsp;On Main</i></a></li>
+											<li><button class="btn btn-link" type="submit"><i class="fa fa-remove text-danger">&nbsp;Delete</i></button></li>
+										</ul>
 									}
 								</td>
 							</tr>

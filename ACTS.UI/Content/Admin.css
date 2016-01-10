@@ -1,6 +1,9 @@
 ﻿body{
     font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+table#dataTablePlagin{
+    width:100% !important
+}
 table.dataTable th.dt-left,
 table.dataTable td.dt-left {
   text-align: left;

@@ -19,13 +19,13 @@ namespace ACTS.Core.Concrete
 
 		public void SavePost(Post post)
 		{
-			if (post.PostID == 0)
+			if (post.PostId == 0)
 			{
 				post.Create = DateTime.UtcNow;
 				context.Posts.Add(post);
 			} else
 			{
-				Post dbEntry = context.Posts.Find(post.PostID);
+				Post dbEntry = context.Posts.Find(post.PostId);
 				if (dbEntry != null)
 				{
 					dbEntry.Title = post.Title;
@@ -50,7 +50,7 @@ namespace ACTS.Core.Concrete
 
 		public Post GetPostById(int postId)
 		{
-			return Posts.FirstOrDefault(p => p.PostID == postId);
+			return Posts.FirstOrDefault(p => p.PostId == postId);
 		}
 	}
 }

@@ -6,9 +6,8 @@ namespace ACTS.Core.Entities
 {
 	public class Post
 	{
-		[Key]
 		[HiddenInput(DisplayValue = false)]
-		public int PostID { get; set; }
+		public int PostId { get; set; }
 
 		[Required(ErrorMessage = "Please enter a title")]
 		[StringLength(500, ErrorMessage = "Title: Length should not exceed 500 characters")]

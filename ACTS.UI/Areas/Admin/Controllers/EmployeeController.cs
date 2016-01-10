@@ -21,7 +21,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Table()
 		{
-			IEnumerable<Employee> employees = repository.Employees.OrderBy(em => em.EmployeeID);
+			IEnumerable<Employee> employees = repository.Employees.OrderBy(em => em.EmployeeId);
 			return View("TableEmployee", employees);
 		}
 
@@ -42,7 +42,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					employee.Photo = new byte[image.ContentLength];
 					image.InputStream.Read(employee.Photo, 0, image.ContentLength);
 				}
-				repository.SaveEmployee(employee);
+				repository.UpdateEmployee(employee);
 				TempData["infoMessage"] = string.Format("{0} has been saved.", employee.FullName);
 				return RedirectToAction(nameof(Table), new { area = "Admin" });
 			} else
@@ -55,7 +55,28 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		public ActionResult Create()
 		{
 			ViewBag.CurrentTreeView = "Create";
-			return View("EditEmployee", new Employee());
+			return View("CreateEmployee", new Employee());
+		}
+
+		[HttpPost]
+		public ActionResult Create(Employee employee, HttpPostedFileBase image)
+		{
+			if (ModelState.IsValid)
+			{
+				if (image != null)
+				{
+					employee.PhotoMimeType = image.ContentType;
+					employee.Photo = new byte[image.ContentLength];
+					image.InputStream.Read(employee.Photo, 0, image.ContentLength);
+				}
+				repository.CreateEmployee(employee);
+				TempData["infoMessage"] = string.Format("{0} has been updated.", employee.FullName);
+				return RedirectToAction(nameof(Table), new { area = "Admin" });
+			} else
+			{
+				// there is something wrong with the data values         
+				return View("CreateEmployee", employee);
+			}
 		}
 
 		[HttpPost]

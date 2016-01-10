@@ -5,9 +5,8 @@
 	ViewBag.Title = "Edit News";
 }
 
-<script src="~/Scripts/tinymce/tinymce.js"></script>
-<script type="text/javascript">
-	@*TODO: как вариант можно заменить на CK Editor*@
+@*<script type="text/javascript">
+	//TODO: как вариант можно заменить на CK Editor
 	tinymce.init({
 		selector: 'textarea.tinymceEditor',  // change this value according to your HTML
 		//language: "uk",
@@ -39,8 +38,12 @@
 		image_advtab: true,
 		paste_data_images: true,
 	});
-</script>
+</script>*@
 
+@section Scripts {
+	@Scripts.Render("~/bundles/tinymce")
+	<script src="~/Scripts/Admin/initTinyEditor.js"></script>
+}
 
 <div class="row">
 	<div class="col-xs-12">
@@ -57,7 +60,7 @@
 					@Html.AntiForgeryToken()
 
 					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-					@Html.HiddenFor(model => Model.NewsID)
+					@Html.HiddenFor(model => Model.NewsId)
 					@Html.HiddenFor(model => Model.ImageMimeType)
 					@Html.HiddenFor(model => Model.ImageData)
 
@@ -75,7 +78,7 @@
 								@:None
 							} else
 							{
-								<img class="img-thumbnail" style="max-width:100%" src="@Url.Action("GetImage", "News", new { area = "", Model.NewsID })" />
+								<img class="img-thumbnail" style="max-width:100%" src="@Url.Action("GetImage", "News", new { area = "", Model.NewsId })" />
 							}
 						</div>
 					</div>
@@ -93,15 +96,15 @@
 				</div>
 					<!-- /.box-body -->
 
-					<div class="box-footer">
-						<button type="submit" class="btn btn-primary">
-							<i class="fa fa-save"></i>&nbsp;Save
-						</button>
-						<a type="button" class="btn btn-default pull-right" href="@Url.Action("Table", "News")">
-							<i class="fa fa-times"></i>&nbsp;Cancel and return to Table
-						</a>
-					</div>
-				}
+				<div class="box-footer">
+					<button type="submit" class="btn btn-primary">
+						<i class="fa fa-save"></i>&nbsp;Save
+					</button>
+					<a type="button" class="btn btn-default pull-right" href="@Url.Action("Table", "News")">
+						<i class="fa fa-times"></i>&nbsp;Cancel and return to Table
+					</a>
+				</div>
+			}
 			<!-- form end -->
 		</div>
 	</div>

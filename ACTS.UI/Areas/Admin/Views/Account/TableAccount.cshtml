@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ACTS.UI.Models.AccountInfoViewModel>
+
+@{
+	ViewBag.Title = "Table of Accounts";
+	ViewBag.CurrentTreeView = "Tables";
+}
+
+@section Styles{
+	@Styles.Render("~/Content/css/datatables")
+}
+
+@section Scripts {
+	@Scripts.Render("~/bundles/datatables")
+	<script src="~/Scripts/Admin/Account/tableAccount.js"></script>
+}
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-default">
+			<div class="box-header"><h3 class="box-title">Accounts</h3></div>
+
+			<div class="box-body">
+				<table id="dataTablePlagin" class="table table-bordered table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>UserName</th>
+							<th>Email</th>
+							<th>Roles</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td>
+									@item.Id
+								</td>
+								<td>
+									@item.UserName
+								</td>
+								<td>
+									@item.Email
+								</td>
+								<td>
+									<ul class="list-unstyled">
+										@foreach (var role in item.Roles)
+										{
+											<li>@role</li>
+										}
+									</ul>
+								</td>
+								<td>
+									@using (Html.BeginForm("Delete", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+									{
+										@Html.Hidden("Id", item.Id)
+										<ul class="list-unstyled">
+											<li><a href="@Url.Action("Edit", "Account", new { item.Id })" class="btn btn-link"><i class="fa fa-edit ">&nbsp;Edit</i></a></li>
+											<li><a href="@Url.Action("PageNews", "Account", new { item.Id })" class="btn btn-link"><i class="fa fa-home ">&nbsp;On Main</i></a></li>
+											<li><button class="btn btn-link" type="submit"><i class="fa fa-remove text-danger">&nbsp;Delete</i></button></li>
+										</ul>
+									}
+								</td>
+							</tr>}
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Id</th>
+							<th>UserName</th>
+							<th>Email</th>
+							<th>Roles</th>
+							<th>Actions</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			<!-- /.box-body -->
+			<div class="box-footer">
+				<a href="@Url.Action("Create", "Account")" class="btn btn-primary fa fa-edit">&nbsp;Create new Account</a>
+			</div>
+		</div>
+		<!-- /.box -->
+	</div>
+</div>

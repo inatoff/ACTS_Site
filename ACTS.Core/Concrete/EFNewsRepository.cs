@@ -17,27 +17,27 @@ namespace ACTS.Core.Concrete
 			get { return context.Uncos; }
 		}
 
-		//public void SaveNews(News news)
-		//{
-		//	if (news.NewsID == 0)
-		//	{
-		//		news.Create = DateTime.UtcNow;
-		//		context.Uncos.Add(news);
-		//	} else
-		//	{
-		//		News dbEntry = context.Uncos.Find(news.NewsID);
-		//		if (dbEntry != null)
-		//		{
-		//			dbEntry.Title = news.Title;
-		//			dbEntry.Modified = DateTime.UtcNow;
-		//			dbEntry.Content = news.Content;
-		//			dbEntry.ImageData = news.ImageData;
-		//			dbEntry.ImageMimeType = news.ImageMimeType;
-		//		}
-		//	}
+		public void SaveNews(News news)
+		{
+			if (news.NewsId == 0)
+			{
+				news.Create = DateTime.UtcNow;
+				context.Uncos.Add(news);
+			} else
+			{
+				News dbEntry = context.Uncos.Find(news.NewsId);
+				if (dbEntry != null)
+				{
+					dbEntry.Title = news.Title;
+					dbEntry.Modified = DateTime.UtcNow;
+					dbEntry.Content = news.Content;
+					dbEntry.ImageData = news.ImageData;
+					dbEntry.ImageMimeType = news.ImageMimeType;
+				}
+			}
 
-		//	context.SaveChanges();
-		//}
+			context.SaveChanges();
+		}
 
 		public News DeleteNews(int newsID)
 		{
@@ -52,12 +52,12 @@ namespace ACTS.Core.Concrete
 
 		public News GetNewsById(int newsId)
 		{
-			return Uncos.FirstOrDefault(p => p.NewsID == newsId);
+			return Uncos.FirstOrDefault(p => p.NewsId == newsId);
 		}
 
-		public void SaveUpdatedNews(News news)
+		public void UpdateNews(News news)
 		{
-			News dbEntry = context.Uncos.Find(news.NewsID);
+			News dbEntry = context.Uncos.Find(news.NewsId);
 			if (dbEntry != null)
 			{
 				dbEntry.Title = news.Title;
@@ -71,7 +71,7 @@ namespace ACTS.Core.Concrete
 
 		}
 
-		public void SaveNewNews(News news)
+		public void CreateNews(News news)
 		{
 			news.Create = DateTime.UtcNow;
 			context.Uncos.Add(news);

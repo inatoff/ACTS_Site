@@ -10,9 +10,8 @@ namespace ACTS.Core.Entities
 {
 	public class News
 	{
-		[Key]
 		[HiddenInput(DisplayValue = false)]
-		public int NewsID { get; set; }
+		public int NewsId { get; set; }
 
 		[Required(AllowEmptyStrings = false, ErrorMessage = "Please enter a title")]
 		[StringLength(500, ErrorMessage = "Title: Length should not exceed 500 characters")]

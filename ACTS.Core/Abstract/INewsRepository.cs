@@ -11,8 +11,8 @@ namespace ACTS.Core.Abstract
 	{
 		// Uncos -- новости в множине
 		IQueryable<News> Uncos { get; }     
-		void SaveUpdatedNews(News news);
-		void SaveNewNews(News news);
+		void UpdateNews(News news);
+		void CreateNews(News news);
 		News GetNewsById(int newsId);
 		News DeleteNews(int newsID);
 	}

@@ -10,6 +10,6 @@ namespace ACTS.Core.Entities
 {
 	public class Employee : Worker
 	{
-		public int EmployeeID { get; set; }
+		public int EmployeeId { get; set; }
 	}
 }

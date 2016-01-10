@@ -19,7 +19,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Table()
 		{
-			IEnumerable<News> uncos = repository.Uncos.OrderBy(n => n.NewsID);
+			IEnumerable<News> uncos = repository.Uncos.OrderBy(n => n.NewsId);
 			return View("TableUncos", uncos);
 		}
 
@@ -40,7 +40,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					news.ImageData = new byte[image.ContentLength];
 					image.InputStream.Read(news.ImageData, 0, image.ContentLength);
 				}
-				repository.SaveUpdatedNews(news);
+				repository.UpdateNews(news);
 				TempData["infoMessage"] = string.Format("{0} has been saved.", news.Title);
 				return RedirectToAction(nameof(Table));
 			} else
@@ -61,7 +61,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					news.ImageData = new byte[image.ContentLength];
 					image.InputStream.Read(news.ImageData, 0, image.ContentLength);
 				}
-				repository.SaveNewNews(news);
+				repository.CreateNews(news);
 				TempData["infoMessage"] = string.Format("{0} has been created.", news.Title);
 				return RedirectToAction(nameof(Table));
 			} else
