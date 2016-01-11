@@ -55,7 +55,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		public ActionResult Create()
 		{
 			ViewBag.CurrentTreeView = "Create";
-			return View("CreateEmployee", new Employee());
+			return View("CreateEmployee");
 		}
 
 		[HttpPost]

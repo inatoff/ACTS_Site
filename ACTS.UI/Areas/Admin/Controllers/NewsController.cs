@@ -67,14 +67,14 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			} else
 			{
 				// there is something wrong with the data values         
-				return View("EditNews", news);
+				return View("EditNews");
 			}
 		}
 
 		public ActionResult Create()
 		{
 			ViewBag.CurrentTreeView = "Create";
-			return View("CreateNews", new News());
+			return View("CreateNews");
 		}
 
 		[HttpPost]

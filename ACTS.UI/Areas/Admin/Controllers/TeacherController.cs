@@ -53,7 +53,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		public ActionResult Create()
 		{
 			ViewBag.CurrentTreeView = "Create";
-			return View("CreateTeacher", new Teacher());
+			return View("CreateTeacher");
 		}
 
 		[HttpPost]
