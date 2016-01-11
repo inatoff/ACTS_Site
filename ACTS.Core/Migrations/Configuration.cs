@@ -42,7 +42,7 @@ namespace ACTS.Core.Migrations
 					UserName = "admin",
 					LockoutEnabled = true
 				}; 
-				userManager.Create(user, "SuperP@ss");
+				userManager.Create(user, "SuperP@ss"); 
 
 				userManager.AddToRole(user.Id, "Admin");
 			}

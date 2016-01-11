@@ -8,12 +8,12 @@ using System.Web.Mvc;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
-	[Authorize(Roles = "admin")]
-	public class AdminController : Controller
-	{
-		public ActionResult Dashboard()
-		{
-			return View();
-		}
-	}
+    [Authorize(Roles = "Admin")]
+    public class AdminController : Controller
+    {
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+    }
 }

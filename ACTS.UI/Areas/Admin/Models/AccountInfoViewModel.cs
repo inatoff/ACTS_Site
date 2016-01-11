@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ACTS.UI.Models
+namespace ACTS.UI.Areas.Admin.Models
 {
 	public class AccountInfoViewModel
 	{
