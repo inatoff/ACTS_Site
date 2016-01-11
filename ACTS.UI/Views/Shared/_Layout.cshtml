@@ -24,8 +24,8 @@
     <link href="~/Content/Site.css" rel="stylesheet" /> 
 </head>
 <body style="height:100%">
-    <nav class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container">
+    <div class="container">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -36,9 +36,8 @@
                 <a class="navbar-brand" href="@Url.Action("Index", "Home")">
                     <img src="~/Content/Images/logo.png" style="max-height:100%" />
                 </a>
-            </div>
-
-			<div class="navbar-collapse collapse">
+            </div> 
+            <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @{
                         if (ViewBag.CurrentPage != "main")
@@ -46,35 +45,37 @@
                             <li><a href="@Url.Action("Index", "Home")">@GlobalRes.Main</a></li>
                         }
                     }
-                <!--Генерация панели навигации из PartialView PanelSections-->
+                    <!--Генерация панели навигации из PartialView PanelSections-->
                     @Html.Partial("PanelSections")
-                        </ul>
+                </ul>
                 <!--Выбор локализации -->
-                        <ul class="nav navbar-nav navbar-right">
-                            @foreach (var lang in CultureHelper.Cultures)
-                            {
-                                <li class="@lang
+                <ul class="nav navbar-nav navbar-right">
+                    @foreach (var lang in CultureHelper.Cultures)
+                    {
+                        <li class="@lang
                             @if (culture == lang) {
 								 @:selectedLanguage
 							}
                         ">
-                                    <a href="@Url.Action("SetCulture", "Home", new {
+                            <a href="@Url.Action("SetCulture", "Home", new {
                                   culture = lang,
                                   returnUrl = Url.Action()
                               })"></a>
-                                </li>
-                            }
-                        </ul>
+                        </li>
+                    }
+                </ul>
                 <!--Поиск-->
-                  <form class="navbar-form navbar-right">
-                      <input type="text" class="form-control" placeholder="@GlobalRes.Search">
-                  </form>
+                @*<form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="@GlobalRes.Search">
+                </form>*@
             </div>
-        </div>
-    </nav>
+
+        </nav>
+
+    </div>
     @if (ViewBag.CurrentPage == "main")
     {
-    <div id="carousel" class="carousel slide" data-ride="carousel">
+    <div id="carousel" class="container carousel slide" data-ride="carousel">
         
         <div class="carousel-inner" role="listbox">
             <div class="item active">

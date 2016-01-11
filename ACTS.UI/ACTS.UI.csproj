@@ -433,6 +433,7 @@
     <Content Include="Areas\Admin\Views\Employee\TableEmployee.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Teacher\TeachingStaff.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -445,11 +446,10 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\actsScripts\" />
-    <Folder Include="Views\Employee\" />
-    <Folder Include="Views\Enrollee\" />
+    <Folder Include="Views\Employee\Enrollee\" />
+    <Folder Include="Views\ForEnrollee\" />
     <Folder Include="Views\ForStudent\" />
     <Folder Include="Views\Science\" />
-    <Folder Include="Views\Teacher\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ACTS.Core\ACTS.Core.csproj">

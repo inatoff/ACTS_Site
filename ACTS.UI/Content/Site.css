@@ -1,19 +1,4 @@
-﻿.acts {
-    color: #579ADE;
-    font-size: xx-large
-    
-}
-
-.kpi{
-    color: #575757;
-    font-size: xx-large
-}
-
-.sharp{
-    /*margin:6px*/
-}
-
-ul li:hover{    
+﻿ul li:hover{    
     background: #e7e7e7;
     color: #fff;
 }
@@ -28,35 +13,47 @@ ul.dropdown-menu {
     background-color:#e7e7e7;
 }
 
+ul.nav.navbar-nav.navbar-right{
+    padding-left:0;
+}
+
 ul.dropdown-menu li {
     font: bold 18px ;
     position: relative; 
-    cursor: pointer;
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -ms-transition: all 0.2s;
-    -o-transition: all 0.2s;
+    cursor: pointer; 
     transition: all 0.2s;
 }
 li:hover .dropdown-menu{
     display:block;
 }
 
-li.en{    
+li.dropdown span{
+    display:block; 
+    position: relative;
+    padding:10px 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color:#777; 
+    cursor:pointer;
+}
+
+li.en{   
+    color:transparent; 
     margin-top:10px;
     background-image:url(Images/en.png);
 }
 li.ru{
+    color:transparent;
     margin-top:10px;
     background-image:url(Images/ru.png);
 }
 li.uk{
+    color:transparent;
     margin-top:10px;
     background-image:url(Images/uk.png);
     
 }
-li {
-    background-size:26px;
+li { 
     background-repeat:no-repeat;
     max-height:100%;    
 }

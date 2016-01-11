@@ -64,7 +64,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			Employee deletedEmployee = repository.DeleteEmployee(employeeId);
 			if (deletedEmployee != null)
 			{
-				TempData["infoMessage"] = string.Format("{0} was deleted.", deletedEmployee.FullName);
+				TempData["infoMessage"] = ($"{deletedEmployee.FullName} was deleted.");
 			}
 			return RedirectToAction(nameof(Table));
 		}

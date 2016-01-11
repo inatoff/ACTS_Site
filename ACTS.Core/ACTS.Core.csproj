@@ -59,7 +59,7 @@
     <Compile Include="Abstract\IEventRepository.cs" />
     <Compile Include="Abstract\INewsRepository.cs" />
     <Compile Include="Abstract\ITeacherRepository.cs" />
-    <Compile Include="Abstract\Worker.cs" />
+    <Compile Include="Entities\Worker.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFEmployeeRepository.cs" />
     <Compile Include="Concrete\EFEventRepository.cs" />

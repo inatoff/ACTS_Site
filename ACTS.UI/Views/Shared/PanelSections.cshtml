@@ -1,5 +1,5 @@
 ﻿<li class="dropdown">
-    <a href="@Url.Action("About", "Department")" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Department<b class="caret"></b></a>
+    <span style="display:block; padding:10px 15px;padding-top:15px; color:#777; cursor:pointer;">@GlobalRes.Department<b class="caret"></b></span>
     <ul class="dropdown-menu">
         <li><a href="@Url.Action("About", "Department")">@GlobalRes.About</a></li>
         <li><a href="@Url.Action("History", "Department")">@GlobalRes.History</a></li>
@@ -10,7 +10,7 @@
     </ul>
 </li>
 <li class="dropdown">
-    <a href="@Url.Action("Specialties", "ForStudent")" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.ForStudent<b class="caret"></b></a>
+    <span>@GlobalRes.ForStudent<b class="caret"></b></span>
     <ul class="dropdown-menu">
         <li><a href="@Url.Action("Specialties", "ForStudent")">@GlobalRes.Specialties</a></li>
         <li><a href="@Url.Action("StudentRating", "ForStudent")">@GlobalRes.StudentRating</a></li>
@@ -21,7 +21,7 @@
     </ul>
 </li>
 <li class="dropdown">
-    <a href="@Url.Action("ScienceFields", "Science")" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Science<b class="caret"></b></a>
+    <span>@GlobalRes.Science<b class="caret"></b></span>
     <ul class="dropdown-menu">
         <li><a href="@Url.Action("ScienceFields","ForStudentsЄ")">@GlobalRes.ScienceFields</a></li>
         <li><a href="@Url.Action("Researches","ForStudents")">@GlobalRes.Researches</a></li>
@@ -32,12 +32,12 @@
     </ul>
 </li>
 <li class="dropdown">
-    <a href="@Url.Action("OpenDoors", "ForEnrollee")" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.ForEnrollee<b class="caret"></b></a>
+    <span>@GlobalRes.ForEnrollee<b class="caret"></b></span>
     <ul class="dropdown-menu">
         <li><a href="@Url.Action("OpenDoors","ForEnrollee")">@GlobalRes.OpenDoors</a></li>
         <li><a href="@Url.Action("ConditionsOfAdmissions","ForEnrollee")">@GlobalRes.ConditionsOfAdmissions</a></li>
         <li><a href="@Url.Action("FDP","ForEnrollee")">@GlobalRes.FDP</a></li>
         <li><a href="@Url.Action("Magistracy","ForEnrollee")">@GlobalRes.Magistracy</a></li>
     </ul>
-</li>
+</li>   
 <li><a href="@Url.Action("Contacts","Home")">@GlobalRes.Contact</a></li>

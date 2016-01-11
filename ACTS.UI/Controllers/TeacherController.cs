@@ -28,5 +28,10 @@ namespace ACTS.UI.Controllers
 				return null;
 			}
 		}
+
+        public ViewResult TeachingStaff()
+        {
+            return View(repository.Teachers);
+        }
 	}
 }
