@@ -19,12 +19,12 @@ namespace ACTS.Core.Concrete
 
 		public void SaveTeacher(Teacher teacher)
 		{
-			if (teacher.TeacherID == 0)
+			if (teacher.TeacherId == 0)
 			{
 				context.Teachers.Add(teacher);
 			} else
 			{
-				Teacher dbEntry = context.Teachers.Find(teacher.TeacherID);
+				Teacher dbEntry = context.Teachers.Find(teacher.TeacherId);
 				if (dbEntry != null)
 				{
 					dbEntry.FullName = teacher.FullName;
@@ -35,7 +35,7 @@ namespace ACTS.Core.Concrete
 					dbEntry.EMail = teacher.EMail;
 					// social Links
 					dbEntry.Intellect = teacher.Intellect;
-					dbEntry.VkID = teacher.VkID;
+					dbEntry.Vk = teacher.Vk;
 					dbEntry.FaceBook = teacher.FaceBook;
 					dbEntry.Twitter = teacher.Twitter;
 				}
@@ -53,6 +53,38 @@ namespace ACTS.Core.Concrete
 				context.SaveChanges();
 			}
 			return dbEntry;
+		}
+
+		public Teacher GetTeacherById(int teacherId)
+		{
+			return Teachers.FirstOrDefault(p => p.TeacherId == teacherId);
+		}
+
+		public void CreateTeacher(Teacher teacher)
+		{
+			context.Teachers.Add(teacher);
+			context.SaveChanges();
+		}
+
+		public void UpdateTeacher(Teacher teacher)
+		{
+			Teacher dbEntry = context.Teachers.Find(teacher.TeacherId);
+			if (dbEntry != null)
+			{
+				dbEntry.FullName = teacher.FullName;
+				dbEntry.Position = teacher.Position;
+				dbEntry.Degree = teacher.Degree;
+				dbEntry.Photo = teacher.Photo;
+				dbEntry.PhotoMimeType = teacher.PhotoMimeType;
+				dbEntry.EMail = teacher.EMail;
+				// social Links
+				dbEntry.Intellect = teacher.Intellect;
+				dbEntry.Vk = teacher.Vk;
+				dbEntry.FaceBook = teacher.FaceBook;
+				dbEntry.Twitter = teacher.Twitter;
+			}
+
+			context.SaveChanges();
 		}
 	}
 }

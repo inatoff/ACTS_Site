@@ -19,13 +19,13 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Table()
 		{
-			IEnumerable<News> uncos = repository.Uncos;
+			IEnumerable<News> uncos = repository.Uncos.OrderBy(n => n.NewsId);
 			return View("TableUncos", uncos);
 		}
 
 		public ActionResult Edit(int newsId)
 		{
-			News news = repository.Uncos.FirstOrDefault(p => p.NewsID == newsId);
+			News news = repository.GetNewsById(newsId);
 			return View("EditNews", news);
 		}
 
@@ -40,8 +40,29 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					news.ImageData = new byte[image.ContentLength];
 					image.InputStream.Read(news.ImageData, 0, image.ContentLength);
 				}
-				repository.SaveNews(news);
+				repository.UpdateNews(news);
 				TempData["infoMessage"] = string.Format("{0} has been saved.", news.Title);
+				return RedirectToAction(nameof(Table));
+			} else
+			{
+				// there is something wrong with the data values         
+				return View("EditNews", news);
+			}
+		}
+
+		[HttpPost]
+		public ActionResult Create(News news, HttpPostedFileBase image)
+		{
+			if (ModelState.IsValid)
+			{
+				if (image != null)
+				{
+					news.ImageMimeType = image.ContentType;
+					news.ImageData = new byte[image.ContentLength];
+					image.InputStream.Read(news.ImageData, 0, image.ContentLength);
+				}
+				repository.CreateNews(news);
+				TempData["infoMessage"] = string.Format("{0} has been created.", news.Title);
 				return RedirectToAction(nameof(Table));
 			} else
 			{
@@ -53,7 +74,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		public ActionResult Create()
 		{
 			ViewBag.CurrentTreeView = "Create";
-			return View("EditNews", new News());
+			return View("CreateNews", new News());
 		}
 
 		[HttpPost]

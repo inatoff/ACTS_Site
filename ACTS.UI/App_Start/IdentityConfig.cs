@@ -1,0 +1,97 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
+using Microsoft.Owin.Security;
+using ACTS.Core.Concrete;
+using ACTS.Core.Identity;
+
+namespace ACTS.UI
+{
+	// Настройка диспетчера пользователей приложения. UserManager определяется в ASP.NET Identity и используется приложением.
+	public class ApplicationUserManager : UserManager<ApplicationUser, int>
+	{
+		public ApplicationUserManager(IUserStore<ApplicationUser, int> store)
+			: base(store)
+		{
+		}
+
+		public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
+		{
+			var manager = new ApplicationUserManager(new ApplicationUserStore(context.Get<EFDbContext>()));
+
+			// Настройка логики проверки имен пользователей
+			manager.UserValidator = new UserValidator<ApplicationUser, int>(manager)
+			{
+				AllowOnlyAlphanumericUserNames = false,
+				RequireUniqueEmail = true,
+			};
+
+			// Настройка логики проверки паролей
+			manager.PasswordValidator = new PasswordValidator
+			{
+				RequiredLength = 8,
+				RequireNonLetterOrDigit = true,
+				RequireDigit = true,
+				RequireLowercase = true,
+				RequireUppercase = true,
+			};
+
+			// Настройка параметров блокировки по умолчанию
+			manager.UserLockoutEnabledByDefault = true;
+			manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(1);
+			manager.MaxFailedAccessAttemptsBeforeLockout = 3;
+
+			// Регистрация поставщиков двухфакторной проверки подлинности. Для получения кода проверки пользователя в данном приложении используется телефон и сообщения электронной почты
+			// Здесь можно указать собственный поставщик и подключить его.
+			//manager.RegisterTwoFactorProvider("Код, полученный по телефону", new PhoneNumberTokenProvider<IdentityUser>
+			//{
+			//	MessageFormat = "Ваш код безопасности: {0}"
+			//});
+			//manager.RegisterTwoFactorProvider("Код из сообщения", new EmailTokenProvider<IdentityUser>
+			//{
+			//	Subject = "Код безопасности",
+			//	BodyFormat = "Ваш код безопасности: {0}"
+			//});
+			
+			var dataProtectionProvider = options.DataProtectionProvider;
+			if (dataProtectionProvider != null)
+				manager.UserTokenProvider = 
+					new DataProtectorTokenProvider<ApplicationUser, int>(dataProtectionProvider.Create("ASP.NET Identity"));
+
+			return manager;
+		}
+	}
+
+	// Настройка диспетчера входа для приложения.
+	public class ApplicationSignInManager : SignInManager<ApplicationUser, int>
+	{
+		ApplicationSignInManager(UserManager<ApplicationUser, int> userManager, IAuthenticationManager authenticationManager)
+			: base(userManager, authenticationManager)
+		{
+		}
+
+		public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
+		{
+			return new ApplicationSignInManager
+				(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+		}
+	}
+
+	public class ApplicationRoleManager : RoleManager<ApplicationRole, int>
+	{
+		public ApplicationRoleManager(IRoleStore<ApplicationRole, int> store)
+			: base(store)
+		{
+		}
+
+		public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
+		{
+			return new ApplicationRoleManager(new ApplicationRoleStore(context.Get<EFDbContext>()));
+		}
+	}
+}

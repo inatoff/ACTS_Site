@@ -10,7 +10,9 @@ namespace ACTS.Core.Abstract
 	public interface ITeacherRepository
 	{
 		IQueryable<Teacher> Teachers { get; }
-		void SaveTeacher(Teacher teacher);
+		void CreateTeacher(Teacher teacher);
+		void UpdateTeacher(Teacher teacher);
+		Teacher GetTeacherById(int teacherId);
 		Teacher DeleteTeacher(int teacherID);
 	}
 }

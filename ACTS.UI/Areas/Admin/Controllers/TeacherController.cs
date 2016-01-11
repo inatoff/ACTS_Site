@@ -19,13 +19,13 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Table()
 		{
-			IEnumerable<Teacher> teachers = repository.Teachers;
+			IEnumerable<Teacher> teachers = repository.Teachers.OrderBy(t => t.TeacherId);
 			return View("TableTeacher",teachers);
 		}
 
 		public ActionResult Edit(int teacherId)
 		{
-			Teacher teacher = repository.Teachers.FirstOrDefault(p => p.TeacherID == teacherId);
+			Teacher teacher = repository.GetTeacherById(teacherId);
 			return View("EditTeacher", teacher);
 		}
 
@@ -40,7 +40,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					teacher.Photo = new byte[image.ContentLength];
 					image.InputStream.Read(teacher.Photo, 0, image.ContentLength);
 				}
-				repository.SaveTeacher(teacher);
+				repository.UpdateTeacher(teacher);
 				TempData["infoMessage"] = string.Format("{0} has been saved.", teacher.FullName);
 				return RedirectToAction(nameof(Table));
 			} else
@@ -53,7 +53,28 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		public ActionResult Create()
 		{
 			ViewBag.CurrentTreeView = "Create";
-			return View("EditTeacher", new Teacher());
+			return View("CreateTeacher", new Teacher());
+		}
+
+		[HttpPost]
+		public ActionResult Create(Teacher teacher, HttpPostedFileBase image)
+		{
+			if (ModelState.IsValid)
+			{
+				if (image != null)
+				{
+					teacher.PhotoMimeType = image.ContentType;
+					teacher.Photo = new byte[image.ContentLength];
+					image.InputStream.Read(teacher.Photo, 0, image.ContentLength);
+				}
+				repository.CreateTeacher(teacher);
+				TempData["infoMessage"] = string.Format("{0} has been saved.", teacher.FullName);
+				return RedirectToAction(nameof(Table));
+			} else
+			{
+				// there is something wrong with the data values         
+				return View("CreateTeacher", teacher);
+			}
 		}
 
 		[HttpPost]

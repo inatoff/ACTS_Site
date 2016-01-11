@@ -19,7 +19,7 @@ namespace ACTS.UI.Controllers
 
 		public FileContentResult GetImage(int employeeID)
 		{
-			Teacher news = repository.Teachers.FirstOrDefault(p => p.TeacherID == employeeID);
+			Teacher news = repository.Teachers.FirstOrDefault(p => p.TeacherId == employeeID);
 			if (news != null)
 			{
 				return File(news.Photo, news.PhotoMimeType);

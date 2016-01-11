@@ -8,15 +8,9 @@ using System.Web.Mvc;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
+	[Authorize(Roles = "admin")]
 	public class AdminController : Controller
 	{
-		//private INewsRepository _newsRepository;
-
-		//public AdminController(INewsRepository newsRepository)
-		//{
-		//	_newsRepository = newsRepository;
-		//}
-
 		public ActionResult Dashboard()
 		{
 			return View();

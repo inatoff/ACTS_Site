@@ -12,21 +12,15 @@
 		@:active
 	}
 }
-
 <!DOCTYPE html>
 
 <html>
 <head>
 	<meta name="viewport" content="width=device-width" />
 	<title>@ViewBag.Title</title>
-	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-	<link href="~/Content/skins/_all-skins.css" rel="stylesheet" />
-	<link href="~/Content/AdminLTE.min.css" rel="stylesheet" />
-	<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-	<link href="~/Content/Admin.css" rel="stylesheet" />
-	<script src="~/Scripts/jquery-2.1.4.min.js"></script>
-	<script src="~/Scripts/bootstrap.min.js"></script>
-	<script src="~/Scripts/app.min.js"></script>
+	@Styles.Render("~/Content/css")
+	@Styles.Render("~/Content/css/admin")
+	@RenderSection("styles", required: false)
 </head>
 <body class="hold-transition skin-green sidebar-mini">
 	<section class="wrapper">
@@ -48,6 +42,9 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
+
+				@Html.Partial("_UserPartial")
+
 			</nav>
 		</header>
 
@@ -73,6 +70,7 @@
 							<li class="@IsActivePage("TableUncos")"><a href="@Url.Action("Table","News")"><i class="fa fa-circle-o"></i>Uncos</a></li>
 							<li class="@IsActivePage("TableEmployee")"><a href="@Url.Action("Table", "Employee")"><i class="fa fa-circle-o"></i>Employees</a></li>
 							<li class="@IsActivePage("TableTeacher")"><a href="@Url.Action("Table", "Teacher")"><i class="fa fa-circle-o"></i>Teachers</a></li>
+							<li class="@IsActivePage("TableAccount")"><a href="@Url.Action("Table", "Account")"><i class="fa fa-circle-o"></i>Accounts</a></li>
 						</ul>
 					</li>
 					<li class="treeview @IsActiveTreeView("Create")">
@@ -82,9 +80,10 @@
 							<span class="fa fa-angle-left pull-right"></span>
 						</a>
 						<ul class="treeview-menu">
-							<li class="@IsActivePage("EditNews")"><a href="@Url.Action("Create","News")"><i class="fa fa-circle-o"></i>News</a></li>
-							<li class="@IsActivePage("EditEmployee")"><a href="@Url.Action("Create", "Employee")"><i class="fa fa-circle-o"></i>Employee</a></li>
-							<li class="@IsActivePage("EditTeacher")"><a href="@Url.Action("Create", "Teacher")"><i class="fa fa-circle-o"></i>Teacher</a></li>
+							<li class="@IsActivePage("CreateNews")"><a href="@Url.Action("Create","News")"><i class="fa fa-circle-o"></i>News</a></li>
+							<li class="@IsActivePage("CreateEmployee")"><a href="@Url.Action("Create", "Employee")"><i class="fa fa-circle-o"></i>Employee</a></li>
+							<li class="@IsActivePage("CreateTeacher")"><a href="@Url.Action("Create", "Teacher")"><i class="fa fa-circle-o"></i>Teacher</a></li>
+							<li class="@IsActivePage("CreateAccount")"><a href="@Url.Action("Create", "Account")"><i class="fa fa-circle-o"></i>Account</a></li>
 						</ul>
 					</li>
 					<li class="treeview">
@@ -143,5 +142,9 @@
 		</footer>
 	</section>
 	<!-- ./wrapper -->
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@Scripts.Render("~/bundles/admin")
+	@RenderSection("scripts", required: false)
 </body>
 </html>
