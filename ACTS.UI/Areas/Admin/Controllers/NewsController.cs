@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
+    [Authorize]
 	public class NewsController : Controller
 	{
 		private INewsRepository repository;
