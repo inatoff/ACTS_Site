@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ACTS.Core.Entities.Teacher>
 
 @{
-	ViewBag.Title = "Table of Teacher";
+	ViewBag.Title = "Table of teacher";
 	ViewBag.CurrentTreeView = "Tables";
 }
 
@@ -29,7 +29,7 @@
 
 <div class="row">
 	<div class="col-xs-12">
-		<div class="box box-default">
+		<div class="box box-primary">
 			<div class="box-header">
 				<h3 class="box-title">Teachers</h3>
 			</div>
@@ -39,10 +39,10 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>FullName</th>
+							<th>Full name</th>
 							<th>Position</th>
 							<th>Degree</th>
-							<th>EMail</th>
+							<th>Email</th>
 							<th>Social links</th>
 							<th>Image</th>
 							<th>Actions</th>
@@ -65,14 +65,14 @@
 									@item.Degree
 								</td>
 								<td>
-									@item.EMail
+									@item.Email
 								</td>
 								<td>
 									<div class="btn-group-vertical">
 										@SocialLink("Intellect", item.Intellect, "btn-info", "fa-info")
-										@SocialLink("Vk", item.Vk, "btn-vk", "fa-vk")
+										@SocialLink("Vkontakte", item.Vk, "btn-vk", "fa-vk")
 										@SocialLink("Twitter", item.Twitter, "btn-twitter", "fa-twitter")
-										@SocialLink("Facebook", item.FaceBook, "btn-facebook", "fa-facebook")
+										@SocialLink("Facebook", item.Facebook, "btn-facebook", "fa-facebook")
 									</div>
 								</td>
 								<td>
@@ -81,13 +81,13 @@
 										@:None
 									} else
 									{
-										<img width="100" height="100" src="@Url.Action("GetImage", "Teacher", new { area = "", item.TeacherId })" />
+										<img alt="Teacher image" width="100" height="100" src="@Url.Action("GetImage", "Teacher", new { area = "", item.TeacherId })" />
 									}
 								</td>
 								<td>
 									@using (Html.BeginForm("Delete", "Teacher", FormMethod.Post, new { enctype = "multipart/form-data" }))
 									{
-										@Html.Hidden("TeacherID", item.TeacherId)
+										@Html.Hidden("TeacherId", item.TeacherId)
 										<ul class="list-unstyled">
 											<li><a href="@Url.Action("Edit", "Teacher", new { item.TeacherId })" class="btn btn-link"><i class="fa fa-edit ">&nbsp;Edit</i></a></li>
 											<li><a href="@Url.Action("PageNews", "Employee", new { item.TeacherId })" class="btn btn-link"><i class="fa fa-home ">&nbsp;On Main</i></a></li>
@@ -101,10 +101,10 @@
 					<tfoot>
 						<tr>
 							<th>Id</th>
-							<th>FullName</th>
+							<th>Full name</th>
 							<th>Position</th>
 							<th>Degree</th>
-							<th>EMail</th>
+							<th>Email</th>
 							<th>Social links</th>
 							<th>Image</th>
 							<th>Actions</th>
@@ -114,7 +114,7 @@
 			</div>
 			<!-- /.box-body -->
 			<div class="box-footer">
-				<a href="@Url.Action("Create", "Teacher")" class="btn btn-primary fa fa-edit">&nbsp;Create new Teacher</a>
+				<a href="@Url.Action("Create", "Teacher")" class="btn btn-primary fa fa-edit">&nbsp;Create new teacher</a>
 			</div>
 		</div>
 		<!-- /.box -->

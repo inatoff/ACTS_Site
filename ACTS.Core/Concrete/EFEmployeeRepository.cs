@@ -37,9 +37,9 @@ namespace ACTS.Core.Concrete
 			context.SaveChanges();
 		}
 
-		public Employee DeleteEmployee(int employeeID)
+		public Employee DeleteEmployee(int employeeId)
 		{
-			Employee dbEntry = context.Employees.Find(employeeID);
+			Employee dbEntry = context.Employees.Find(employeeId);
 			if (dbEntry != null)
 			{
 				context.Employees.Remove(dbEntry);

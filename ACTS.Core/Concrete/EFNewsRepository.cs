@@ -39,9 +39,9 @@ namespace ACTS.Core.Concrete
 			context.SaveChanges();
 		}
 
-		public News DeleteNews(int newsID)
+		public News DeleteNews(int newsId)
 		{
-			News dbEntry = context.Uncos.Find(newsID);
+			News dbEntry = context.Uncos.Find(newsId);
 			if (dbEntry != null)
 			{
 				context.Uncos.Remove(dbEntry);

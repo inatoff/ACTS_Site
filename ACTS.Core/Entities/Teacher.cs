@@ -19,20 +19,24 @@ namespace ACTS.Core.Entities
 		public string Degree { get; set; } // Научная степень    
 
 		[EmailAddress]
-		public string EMail { get; set; }
+		public string Email { get; set; }
 
 		//social Links
 
 		[Url]
+		[Display(Name = "Intellect url")]
 		public string Intellect { get; set; }
 
 		[Url]
+		[Display(Name = "Vkontakte url")]
 		public string Vk { get; set; }
 
 		[Url]
-		public string FaceBook { get; set; }
+		[Display(Name = "Facebook url")]
+		public string Facebook { get; set; }
 
 		[Url]
+		[Display(Name = "Twitter url")]
 		public string Twitter { get; set; }
 
 		public virtual int? UserKey { get; set; }

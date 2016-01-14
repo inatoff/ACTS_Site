@@ -60,9 +60,9 @@ namespace ACTS.UI.Controllers
 			return PartialView(last3uncos);
 		}
 
-		public FileContentResult GetImage(int newsID)
+		public FileContentResult GetImage(int newsId)
 		{
-			News news = repository.Uncos.FirstOrDefault(p => p.NewsId == newsID);
+			News news = repository.GetNewsById(newsId);
 			if (news != null)
 			{
 				return File(news.ImageData, news.ImageMimeType);
@@ -72,9 +72,9 @@ namespace ACTS.UI.Controllers
 			}
 		}
 
-		public PartialViewResult GetContent(int newsID)
+		public PartialViewResult GetContent(int newsId)
 		{
-			News news = repository.Uncos.FirstOrDefault(p => p.NewsId == newsID);
+			News news = repository.Uncos.FirstOrDefault(p => p.NewsId == newsId);
 			if (news != null)
 			{
 				return PartialView("_NewsContent", news);

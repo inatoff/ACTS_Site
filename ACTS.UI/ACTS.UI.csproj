@@ -173,6 +173,10 @@
     <Content Include="Content\Admin.css" />
     <Content Include="Content\AdminLTE.css" />
     <Content Include="Content\AdminLTE.min.css" />
+    <Content Include="Content\bootstrap-fileinput\css\fileinput.css" />
+    <Content Include="Content\bootstrap-fileinput\css\fileinput.min.css" />
+    <Content Include="Content\bootstrap-fileinput\img\loading-sm.gif" />
+    <Content Include="Content\bootstrap-fileinput\img\loading.gif" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -369,6 +373,19 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\dataTables.bootstrap.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\fileinput.js" />
+    <Content Include="Scripts\fileinput.min.js" />
+    <Content Include="Scripts\fileinput_locale_de.js" />
+    <Content Include="Scripts\fileinput_locale_es.js" />
+    <Content Include="Scripts\fileinput_locale_fr.js" />
+    <Content Include="Scripts\fileinput_locale_hu.js" />
+    <Content Include="Scripts\fileinput_locale_it.js" />
+    <Content Include="Scripts\fileinput_locale_LANG.js" />
+    <Content Include="Scripts\fileinput_locale_ru.js" />
+    <Content Include="Scripts\fileinput_locale_sr.js" />
+    <Content Include="Scripts\fileinput_locale_th.js" />
+    <Content Include="Scripts\fileinput_locale_uk.js" />
+    <Content Include="Scripts\fileinput_locale_zh.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
@@ -578,6 +595,8 @@
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TeacherController.cs" />
     <Compile Include="Areas\Admin\Models\AccountViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\EditAccountViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\RoleItem.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
@@ -595,8 +614,11 @@
     <Compile Include="Helpers\CultureHelper.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\SignInStatusHelper.cs" />
+    <Compile Include="Helpers\TempDataDictionaryHelper.cs" />
+    <Compile Include="Areas\Admin\Models\Messanger.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
-    <Compile Include="Areas\Admin\Models\AccountInfoViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\InfoAccountViewModel.cs" />
+    <Compile Include="Infrastructure\SecurityAttribute.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -630,6 +652,9 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Account\TableAccount.cshtml" />
     <Content Include="Areas\Admin\Views\Account\CreateAccount.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\EditorTemplates\RoleItem.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_MessagerPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\EditAccount.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

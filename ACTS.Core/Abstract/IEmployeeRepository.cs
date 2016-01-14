@@ -13,6 +13,6 @@ namespace ACTS.Core.Abstract
 		void UpdateEmployee(Employee employee);
 		void CreateEmployee(Employee employee);
 		Employee GetEmployeeById(int employeeId);
-        Employee DeleteEmployee(int employeeID);
+        Employee DeleteEmployee(int employeeId);
 	}
 }

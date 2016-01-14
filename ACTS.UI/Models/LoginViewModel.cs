@@ -10,15 +10,15 @@ namespace ACTS.UI.Models
 	public class LoginViewModel
 	{
 		[Required]
-		[Display(Name = "Адрес электронной почты")]
+		[Display(Name = "Email or Login")]
 		public string EmailOrLogin { get; set; }
 
 		[Required]
 		[DataType(DataType.Password)]
-		[Display(Name = "Пароль")]
+		[Display(Name = "Password")]
 		public string Password { get; set; }
 
-		[Display(Name = "Запомнить меня")]
+		[Display(Name = "Remember Me")]
 		public bool RememberMe { get; set; }
 	}
 }

@@ -1,5 +1,7 @@
 ﻿using ACTS.Core.Abstract;
 using ACTS.Core.Entities;
+using ACTS.UI.Areas.Admin.Models;
+using ACTS.UI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +44,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					image.InputStream.Read(news.ImageData, 0, image.ContentLength);
 				}
 				repository.UpdateNews(news);
-				TempData["infoMessage"] = string.Format("{0} has been saved.", news.Title);
+				TempData.AddMessage(MessageType.Success, $"News with title \"{news.Title}\" successfully saved.");
 				return RedirectToAction(nameof(Table));
 			} else
 			{
@@ -63,7 +65,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					image.InputStream.Read(news.ImageData, 0, image.ContentLength);
 				}
 				repository.CreateNews(news);
-				TempData["infoMessage"] = string.Format("{0} has been created.", news.Title);
+				TempData.AddMessage(MessageType.Success, $"News with title \"{news.Title}\" successfully created.");
 				return RedirectToAction(nameof(Table));
 			} else
 			{
@@ -74,7 +76,6 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Create()
 		{
-			ViewBag.CurrentTreeView = "Create";
 			return View("CreateNews");
 		}
 
@@ -84,7 +85,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			News deletedNews = repository.DeleteNews(newsId);
 			if (deletedNews != null)
 			{
-				TempData["infoMessage"] = string.Format("{0} was deleted.", deletedNews.Title);
+				TempData.AddMessage(MessageType.Success, $"News with title \"{deletedNews.Title}\" successfully deleted.");
 			}
 			return RedirectToAction(nameof(Table));
 		}

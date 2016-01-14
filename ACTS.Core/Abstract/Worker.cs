@@ -12,7 +12,8 @@ namespace ACTS.Core.Abstract
 		//obligatory Fields
 
 		[Required(ErrorMessage = "Please enter a name")]
-		[StringLength(70, ErrorMessage = "FullName: Length should not exceed 70 characters")]
+		[StringLength(70, ErrorMessage = "Full name: Length should not exceed 70 characters")]
+		[Display(Name = "Full name")]
 		public string FullName { get; set; } // Полное имя
 
 		//public string Name { get; set; } // Имя
@@ -25,6 +26,7 @@ namespace ACTS.Core.Abstract
 		[StringLength(500, ErrorMessage = "FullName: Length should not exceed 500 characters")]
 		public string Position { get; set; } // Должность
 
+		[Display(Name = "Image")]
 		public byte[] Photo { get; set; }
 
 		public string PhotoMimeType { get; set; }

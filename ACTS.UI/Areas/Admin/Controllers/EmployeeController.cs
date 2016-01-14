@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using ACTS.Core.Abstract;
 using ACTS.Core.Entities;
+using ACTS.UI.Helpers;
+using ACTS.UI.Areas.Admin.Models;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
@@ -43,7 +45,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					image.InputStream.Read(employee.Photo, 0, image.ContentLength);
 				}
 				repository.UpdateEmployee(employee);
-				TempData["infoMessage"] = string.Format("{0} has been saved.", employee.FullName);
+				TempData.AddMessage(MessageType.Success, $"Employee \"{employee.FullName}\" successfully saved.");
 				return RedirectToAction(nameof(Table), new { area = "Admin" });
 			} else
 			{
@@ -54,7 +56,6 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Create()
 		{
-			ViewBag.CurrentTreeView = "Create";
 			return View("CreateEmployee");
 		}
 
@@ -70,7 +71,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					image.InputStream.Read(employee.Photo, 0, image.ContentLength);
 				}
 				repository.CreateEmployee(employee);
-				TempData["infoMessage"] = string.Format("{0} has been updated.", employee.FullName);
+				TempData.AddMessage(MessageType.Success, $"Employee \"{employee.FullName}\" successfully created.");
 				return RedirectToAction(nameof(Table), new { area = "Admin" });
 			} else
 			{
@@ -85,7 +86,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			Employee deletedEmployee = repository.DeleteEmployee(employeeId);
 			if (deletedEmployee != null)
 			{
-				TempData["infoMessage"] = ($"{deletedEmployee.FullName} was deleted.");
+				TempData.AddMessage(new Message(MessageType.Success, $"Employee \"{deletedEmployee.FullName}\" successfully deleted."));
 			}
 			return RedirectToAction(nameof(Table));
 		}

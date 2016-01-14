@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ACTS.UI.Areas.Admin.Models
 {
-	public class AccountInfoViewModel
+	public class InfoAccountViewModel
 	{
 		public int Id { get; set; }
 		public string UserName { get; set; }

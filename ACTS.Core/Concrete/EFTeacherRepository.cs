@@ -32,11 +32,11 @@ namespace ACTS.Core.Concrete
 					dbEntry.Degree = teacher.Degree;
 					dbEntry.Photo = teacher.Photo;
 					dbEntry.PhotoMimeType = teacher.PhotoMimeType;
-					dbEntry.EMail = teacher.EMail;
+					dbEntry.Email = teacher.Email;
 					// social Links
 					dbEntry.Intellect = teacher.Intellect;
 					dbEntry.Vk = teacher.Vk;
-					dbEntry.FaceBook = teacher.FaceBook;
+					dbEntry.Facebook = teacher.Facebook;
 					dbEntry.Twitter = teacher.Twitter;
 				}
 			}
@@ -44,9 +44,9 @@ namespace ACTS.Core.Concrete
 			context.SaveChanges();
 		}
 
-		public Teacher DeleteTeacher(int teacherID)
+		public Teacher DeleteTeacher(int teacherId)
 		{
-			Teacher dbEntry = context.Teachers.Find(teacherID);
+			Teacher dbEntry = context.Teachers.Find(teacherId);
 			if (dbEntry != null)
 			{
 				context.Teachers.Remove(dbEntry);
@@ -76,11 +76,11 @@ namespace ACTS.Core.Concrete
 				dbEntry.Degree = teacher.Degree;
 				dbEntry.Photo = teacher.Photo;
 				dbEntry.PhotoMimeType = teacher.PhotoMimeType;
-				dbEntry.EMail = teacher.EMail;
+				dbEntry.Email = teacher.Email;
 				// social Links
 				dbEntry.Intellect = teacher.Intellect;
 				dbEntry.Vk = teacher.Vk;
-				dbEntry.FaceBook = teacher.FaceBook;
+				dbEntry.Facebook = teacher.Facebook;
 				dbEntry.Twitter = teacher.Twitter;
 			}
 

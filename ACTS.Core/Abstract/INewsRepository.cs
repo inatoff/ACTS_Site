@@ -14,6 +14,6 @@ namespace ACTS.Core.Abstract
 		void UpdateNews(News news);
 		void CreateNews(News news);
 		News GetNewsById(int newsId);
-		News DeleteNews(int newsID);
+		News DeleteNews(int newsId);
 	}
 }

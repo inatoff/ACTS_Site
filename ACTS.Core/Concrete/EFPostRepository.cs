@@ -37,9 +37,9 @@ namespace ACTS.Core.Concrete
 			context.SaveChanges();
 		}
 
-		public Post DeletePost(int postID)
+		public Post DeletePost(int postId)
 		{
-			Post dbEntry = context.Posts.Find(postID);
+			Post dbEntry = context.Posts.Find(postId);
 			if (dbEntry != null)
 			{
 				context.Posts.Remove(dbEntry);

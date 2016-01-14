@@ -1,7 +1,7 @@
-﻿@model IEnumerable<ACTS.UI.Models.AccountInfoViewModel>
+﻿@model IEnumerable<ACTS.UI.Areas.Admin.Models.InfoAccountViewModel>
 
 @{
-	ViewBag.Title = "Table of Accounts";
+	ViewBag.Title = "Table of accounts";
 	ViewBag.CurrentTreeView = "Tables";
 }
 
@@ -16,7 +16,7 @@
 
 <div class="row">
 	<div class="col-xs-12">
-		<div class="box box-default">
+		<div class="box box-primary">
 			<div class="box-header"><h3 class="box-title">Accounts</h3></div>
 
 			<div class="box-body">
@@ -41,7 +41,13 @@
 									@item.UserName
 								</td>
 								<td>
-									@item.Email
+									@if (string.IsNullOrWhiteSpace(item.Email))
+									{
+										@:None
+									} else
+									{
+										@item.Email
+									}
 								</td>
 								<td>
 									<ul class="list-unstyled">
@@ -57,12 +63,12 @@
 										@Html.Hidden("Id", item.Id)
 										<ul class="list-unstyled">
 											<li><a href="@Url.Action("Edit", "Account", new { item.Id })" class="btn btn-link"><i class="fa fa-edit ">&nbsp;Edit</i></a></li>
-											<li><a href="@Url.Action("PageNews", "Account", new { item.Id })" class="btn btn-link"><i class="fa fa-home ">&nbsp;On Main</i></a></li>
 											<li><button class="btn btn-link" type="submit"><i class="fa fa-remove text-danger">&nbsp;Delete</i></button></li>
 										</ul>
 									}
 								</td>
-							</tr>}
+							</tr>
+						}
 					</tbody>
 					<tfoot>
 						<tr>
@@ -76,8 +82,9 @@
 				</table>
 			</div>
 			<!-- /.box-body -->
+
 			<div class="box-footer">
-				<a href="@Url.Action("Create", "Account")" class="btn btn-primary fa fa-edit">&nbsp;Create new Account</a>
+				<a href="@Url.Action("Create", "Account")" class="btn btn-primary btn-lg fa fa-edit">&nbsp;Create new account</a>
 			</div>
 		</div>
 		<!-- /.box -->

@@ -2,14 +2,38 @@
 
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
+	ViewBag.CurrentTreeView = "Create";
 	ViewBag.Title = "Create Employee";
+}
+
+@section Styles{
+	@Styles.Render("~/Content/css/bootstrap-fileinput")
+}
+
+@section Scripts{
+	@Scripts.Render("~/bundles/bootstrap-fileinput")
+	<script>
+		$(document).on('ready', function() {
+			$("#input-image").fileinput({
+				previewFileType: "image",
+				browseClass: "btn btn-success",
+				browseLabel: "Pick Image",
+				browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+				removeClass: "btn btn-danger",
+				removeLabel: "Delete",
+				removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+				showUpload: false,
+				maxFileSize: 5120
+			});
+		});
+	</script>
 }
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<div class="box-header with-border">
-				<h3 class="box-title"> Create Employee</h3>
+				<h3 class="box-title"> Create employee</h3>
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
@@ -22,20 +46,20 @@
 					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 					<div class="form-group">
-						@Html.LabelFor(model => Model.FullName, "FullName")
+						@Html.LabelFor(model => Model.FullName)
 						@Html.ValidationMessageFor(model => Model.FullName, "", new { @class = "text-danger" })
-						@Html.EditorFor(model => Model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.EditorFor(model => Model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Full name" } })
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => Model.Position, "Position")
+						@Html.LabelFor(model => Model.Position)
 						@Html.ValidationMessageFor(model => Model.Position, "", new { @class = "text-danger" })
-						@Html.EditorFor(model => Model.Position, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.EditorFor(model => Model.Position, new { htmlAttributes = new { @class = "form-control", placeholder = "Position" } })
 					</div>
 
 					<div class="form-group">
 						@Html.LabelFor(model => Model.Photo, "Upload new image:")
-						<input type="file" name="Image" />
+						<input id="input-image" class="file-loading" accept="image/*" type="file" name="Image" />
 					</div>
 				</div>
 					<!-- /.box-body -->

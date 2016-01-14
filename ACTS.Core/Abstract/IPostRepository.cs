@@ -8,6 +8,6 @@ namespace ACTS.Core.Abstract
 		IQueryable<Post> Posts { get; }
 		void SavePost(Post post);
 		Post GetPostById(int postId);
-		Post DeletePost(int postID);
+		Post DeletePost(int postId);
 	}
 }

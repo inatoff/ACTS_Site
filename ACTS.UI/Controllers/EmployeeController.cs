@@ -19,9 +19,9 @@ namespace ACTS.UI.Controllers
 			repository = employeeRepository;
 		}
 
-		public FileContentResult GetImage(int employeeID)
+		public FileContentResult GetImage(int employeeId)
 		{
-			Employee news = repository.Employees.FirstOrDefault(p => p.EmployeeId == employeeID);
+			Employee news = repository.GetEmployeeById(employeeId);
 			if (news != null)
 			{
 				return File(news.Photo, news.PhotoMimeType);

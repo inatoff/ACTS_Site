@@ -16,35 +16,42 @@ namespace ACTS.UI
 	public class ApplicationUserManager : UserManager<ApplicationUser, int>
 	{
 		public ApplicationUserManager(IUserStore<ApplicationUser, int> store)
-			: base(store)
+			:base(store)
+		{
+			// Настройка логики проверки имен пользователей
+			this.UserValidator = new UserValidator<ApplicationUser, int>(this) {
+				AllowOnlyAlphanumericUserNames = false,
+				RequireUniqueEmail = true,
+			};
+
+			// Настройка логики проверки паролей
+			this.PasswordValidator = new PasswordValidator {
+				RequiredLength = 8,
+				RequireNonLetterOrDigit = true,
+				RequireDigit = true,
+				RequireLowercase = true,
+				RequireUppercase = true
+			};
+
+			// Настройка параметров блокировки по умолчанию
+			this.UserLockoutEnabledByDefault = true;
+			this.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(1);
+			this.MaxFailedAccessAttemptsBeforeLockout = 3;
+		}
+
+		public ApplicationUserManager(EFDbContext context)
+			:base(new ApplicationUserStore(context))
+		{
+		}
+
+		public ApplicationUserManager()
+			:base(new ApplicationUserStore(new EFDbContext()))
 		{
 		}
 
 		public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
 		{
 			var manager = new ApplicationUserManager(new ApplicationUserStore(context.Get<EFDbContext>()));
-
-			// Настройка логики проверки имен пользователей
-			manager.UserValidator = new UserValidator<ApplicationUser, int>(manager)
-			{
-				AllowOnlyAlphanumericUserNames = false,
-				RequireUniqueEmail = true,
-			};
-
-			// Настройка логики проверки паролей
-			manager.PasswordValidator = new PasswordValidator
-			{
-				RequiredLength = 8,
-				RequireNonLetterOrDigit = true,
-				RequireDigit = true,
-				RequireLowercase = true,
-				RequireUppercase = true,
-			};
-
-			// Настройка параметров блокировки по умолчанию
-			manager.UserLockoutEnabledByDefault = true;
-			manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(1);
-			manager.MaxFailedAccessAttemptsBeforeLockout = 3;
 
 			// Регистрация поставщиков двухфакторной проверки подлинности. Для получения кода проверки пользователя в данном приложении используется телефон и сообщения электронной почты
 			// Здесь можно указать собственный поставщик и подключить его.
@@ -86,6 +93,16 @@ namespace ACTS.UI
 	{
 		public ApplicationRoleManager(IRoleStore<ApplicationRole, int> store)
 			: base(store)
+		{
+		}
+
+		public ApplicationRoleManager(EFDbContext context)
+			:base(new ApplicationRoleStore(context))
+		{
+		}
+
+		public ApplicationRoleManager()
+			:base(new ApplicationRoleStore(new EFDbContext()))
 		{
 		}
 

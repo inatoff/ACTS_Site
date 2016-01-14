@@ -27,12 +27,12 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            @if ((ViewBag.ReturnUrl is string) ? ViewBag.ReturnUrl.ToLower().StartsWith("/admin") : false)
+            @if (string.IsNullOrWhiteSpace(ViewBag.ReturnUrl) ? false : ViewBag.ReturnUrl.ToLower().StartsWith("/admin"))
             {
                 <a href="@Url.Action("Dashboard","Admin", new { area = "Admin" })"><b>Admin</b>ACTS</a>
             } else
             {
-                <a href="@Url.Action("Home")">ACTS</a>
+                <a href="@Url.Action("Index","Home")">ACTS</a>
             }
         </div>
         <!-- /.login-logo -->
@@ -46,18 +46,18 @@
                     <div class="form-group has-feedback">
                         @Html.TextBoxFor(m => m.EmailOrLogin, new { @class = "form-control", placeholder = "Login or Email" })
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        @Html.ValidationMessageFor(model => Model.EmailOrLogin, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group has-feedback">
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        @Html.ValidationMessageFor(model => Model.Password, "", new { @class = "text-danger" })
                     </div>
                     <div class="row">
                         <div class="col-xs-8">
                             <div class="checkbox icheck">
-                                <label>
-                                    @Html.CheckBoxFor(m => m.RememberMe)
-                                    Remember Me
-                                </label>
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
                             </div>
                         </div>
                         <!-- /.col -->

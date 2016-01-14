@@ -1,83 +1,90 @@
-﻿@model ACTS.UI.Areas.Admin.Models.AccountViewModel
+﻿@*@using Fabrik.Common.Web*@
+@model ACTS.UI.Areas.Admin.Models.AccountViewModel
 @{
-    ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
-    ViewBag.Title = "Create account";
+	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
+	ViewBag.Title = "Create account";
 }
+
+@section Styles{
+	<!-- iCheck -->
+	<link href="~/Content/iCheck/square/blue.css" rel="stylesheet" />
+}
+
 @section Scripts{
-    <script src="~/Scripts/jquery.icheck.min.js"></script>
-    <script>
-        $(function () {
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' // optional
-            });
-        });
-    </script>
-    }
+	<!-- iCheck -->
+	<script src="~/Scripts/jquery.icheck.min.js"></script>
+	<script>
+			$(function () {
+				$('input').iCheck({
+					checkboxClass: 'icheckbox_square-blue',
+					radioClass: 'iradio_square-blue',
+					increaseArea: '20%' // optional
+				});
+			});
+	</script>
+}
+
 <div class="row">
-    <div class="col-xs-12">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title"> Create account</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            @*TODO: Rustam помоги сделать что бы когда оно проверяет и там неправильные даные то виглядела как http://bootstrap-3.ru/css.php#forms-control-validation*@
-            @using (Html.BeginForm("Create", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                <div class="box-body">
-                    @Html.AntiForgeryToken()
+	<div class="col-xs-12">
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<h3 class="box-title"> Create account</h3>
+			</div>
+			<!-- /.box-header -->
+			<!-- form start -->
+			@*TODO: Rustam помоги сделать что бы когда оно проверяет и там неправильные даные то виглядела как http://bootstrap-3.ru/css.php#forms-control-validation*@
+			@using (Html.BeginForm("Create", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+			{
+				<div class="box-body">
+					@Html.AntiForgeryToken()
 
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => Model.UserName)
-                        @Html.ValidationMessageFor(model => Model.UserName, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => Model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
+					<div class="form-group">
+						@Html.LabelFor(model => model.UserName)
+						@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+						@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "User name" } })
+					</div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => Model.Email)
-                        @Html.ValidationMessageFor(model => Model.Email, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => Model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => Model.Password)
-                        @Html.ValidationMessageFor(model => Model.Password, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => Model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
+					<div class="form-group">
+						@Html.LabelFor(model => model.Email)
+						@Html.ValidationMessageFor(model => Model.Email, "", new { @class = "text-danger" })
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+							@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+						</div>
+					</div>
+					<div class="form-group">
+						@Html.LabelFor(model => model.Password)
+						@Html.ValidationMessageFor(model => Model.Password, "", new { @class = "text-danger" })
+						@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+					</div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => Model.ConfirmPassword)
-                        @Html.ValidationMessageFor(model => Model.ConfirmPassword, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => Model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
+					<div class="form-group">
+						@Html.LabelFor(model => model.ConfirmPassword)
+						@Html.ValidationMessageFor(model => Model.ConfirmPassword, "", new { @class = "text-danger" })
+						@Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Confirm password" } })
+					</div>
 
-                    @*@foreach (var role in ViewBag.AvailabeRoles)
-                    {
-                        <div class="checkbox icheck">
-                            <label>
-                                @Html.CheckBoxFor(s=>s.Roles)
-                                Remember Me
-                            </label>
-                        </div>
-                    }*@
+					<div class="form-group">
+						@Html.LabelFor(model => model.Roles)
+						@Html.ValidationMessageFor(model => model.Roles, "", new { @class = "text-danger" })
+						@Html.EditorFor(model => model.Roles)
+					</div>
+				</div>
+				<!-- /.box-body -->
 
-                    <div></div>
-                </div>
-					<!-- /.box-body -->
-
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-save"></i>&nbsp;Create
-                    </button>
-                    <a type="button" class="btn btn-default pull-right" href="@Url.Action("Table", "Account")">
-                        <i class="fa fa-times"></i>&nbsp;Cancel and return to Table
-                    </a>
-                </div>}
-            <!-- form end -->
-        </div>
-    </div>
+				<div class="box-footer">
+					<button type="submit" class="btn btn-primary">
+						<i class="fa fa-save"></i>&nbsp;Create
+					</button>
+					<a type="button" class="btn btn-default pull-right" href="@Url.Action("Table", "Account")">
+						<i class="fa fa-times"></i>&nbsp;Cancel and return to Table
+					</a>
+				</div>
+			}
+			<!-- form end -->
+		</div>
+	</div>
 </div>
 

@@ -1,0 +1,8 @@
+﻿@model ACTS.UI.Areas.Admin.Models.RoleItem
+@*// Those two hidden fields are just to persist the id and name*@
+@*@Html.HiddenFor(model => model.Id)*@
+@Html.HiddenFor(model => model.Value)
+<div class="checkbox icheck">
+    @Html.CheckBoxFor(model => model.Selected)
+    @Html.LabelFor(model => model.Selected, Model.Value)
+</div>

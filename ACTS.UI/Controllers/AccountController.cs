@@ -54,10 +54,22 @@ namespace ACTS.UI.Controllers
 			}
 		}
 
+		// если таки будет сделано отдельные Login для Admin то можно просто редиректить отсюда туда если 
+		// returnUrl.ToLower().StartsWith("/admin")
 		[AllowAnonymous]
 		public ActionResult Login(string returnUrl)
 		{
 			ViewBag.ReturnUrl = returnUrl;
+			// не уверен что нужно говорить пользователю что он не имеет достаточно прав,
+			// но вместе с етим мы можем иметь ситуацию когда кто то битый час пытаеться войти 
+			// не зная почему его не пускает
+			if (string.IsNullOrWhiteSpace(returnUrl) ? false : returnUrl.ToLower().StartsWith("/admin"))
+			{
+				if (!User.IsInRole("Admin") && User.Identity.IsAuthenticated)
+				{
+					ModelState.AddModelError("", "Not enough rights for the current account.");
+				}
+			}
 			return View();
 		}
 

@@ -2,7 +2,30 @@
 
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
-	ViewBag.Title = "Edit Teacher";
+	ViewBag.Title = "Edit teacher";
+}
+
+@section Styles{
+	@Styles.Render("~/Content/css/bootstrap-fileinput")
+}
+
+@section Scripts{
+	@Scripts.Render("~/bundles/bootstrap-fileinput")
+	<script>
+		$(document).on('ready', function() {
+			$("#input-image").fileinput({
+				previewFileType: "image",
+				browseClass: "btn btn-success",
+				browseLabel: "Pick Image",
+				browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+				removeClass: "btn btn-danger",
+				removeLabel: "Delete",
+				removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+				showUpload: false,
+				maxFileSize: 5120
+			});
+		});
+	</script>
 }
 
 <div class="row">
@@ -20,88 +43,88 @@
 					@Html.AntiForgeryToken()
 
 					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-					@Html.HiddenFor(model => Model.TeacherId)
-					@Html.HiddenFor(model => Model.Photo)
-					@Html.HiddenFor(model => Model.PhotoMimeType)
+					@Html.HiddenFor(model => model.TeacherId)
+					@Html.HiddenFor(model => model.Photo)
+					@Html.HiddenFor(model => model.PhotoMimeType)
 
 					<div class="form-group">
-						@Html.LabelFor(model => Model.FullName, "FullName")
-						@Html.ValidationMessageFor(model => Model.FullName, "", new { @class = "text-danger" })
-						@Html.EditorFor(model => Model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.LabelFor(model => model.FullName)
+						@Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+						@Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Full name" } })
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => Model.Position, "Position")
-						@Html.ValidationMessageFor(model => Model.Position, "", new { @class = "text-danger" })
-						@Html.EditorFor(model => Model.Position, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.LabelFor(model => model.Position)
+						@Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+						@Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control", placeholder = "Position" } })
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => Model.Degree, "Degree")
-						@Html.ValidationMessageFor(model => Model.Degree, "", new { @class = "text-danger" })
-						@Html.EditorFor(model => Model.Degree, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.LabelFor(model => model.Degree)
+						@Html.ValidationMessageFor(model => model.Degree, "", new { @class = "text-danger" })
+						@Html.EditorFor(model => model.Degree, new { htmlAttributes = new { @class = "form-control", placeholder = "Degree" } })
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => Model.EMail, "EMail")
-						@Html.ValidationMessageFor(model => Model.EMail, "", new { @class = "text-danger" })
+						@Html.LabelFor(model => model.Email)
+						@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-							@Html.EditorFor(model => Model.EMail, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+							@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
 						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => Model.Intellect, "Intellect Url")
-						@Html.ValidationMessageFor(model => Model.Intellect, "", new { @class = "text-danger" })
+						@Html.LabelFor(model => model.Intellect)
+						@Html.ValidationMessageFor(model => model.Intellect, "", new { @class = "text-danger" })
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-info"></i></span>
-							@Html.EditorFor(model => Model.Intellect, new { htmlAttributes = new { @class = "form-control" } })
+							@Html.EditorFor(model => model.Intellect, new { htmlAttributes = new { @class = "form-control", placeholder = "Intellect url" } })
 						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => Model.Vk, "Vk Url")
-						@Html.ValidationMessageFor(model => Model.Vk, "", new { @class = "text-danger" })
+						@Html.LabelFor(model => model.Vk)
+						@Html.ValidationMessageFor(model => model.Vk, "", new { @class = "text-danger" })
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-vk"></i></span>
-							@Html.EditorFor(model => Model.Vk, new { htmlAttributes = new { @class = "form-control" } })
+							@Html.EditorFor(model => model.Vk, new { htmlAttributes = new { @class = "form-control", placeholder = "Vkontakte url" } })
 						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => Model.Twitter, "Twitter Url")
-						@Html.ValidationMessageFor(model => Model.Twitter, "", new { @class = "text-danger" })
+						@Html.LabelFor(model => model.Twitter)
+						@Html.ValidationMessageFor(model => model.Twitter, "", new { @class = "text-danger" })
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-twitter"></i></span>
-							@Html.EditorFor(model => Model.Twitter, new { htmlAttributes = new { @class = "form-control" } })
+							@Html.EditorFor(model => model.Twitter, new { htmlAttributes = new { @class = "form-control", placeholder = "Twitter url" } })
 						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => Model.FaceBook, "FaceBook Url")
-						@Html.ValidationMessageFor(model => Model.FaceBook, "", new { @class = "text-danger" })
+						@Html.LabelFor(model => model.Facebook)
+						@Html.ValidationMessageFor(model => model.Facebook, "", new { @class = "text-danger" })
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-facebook"></i></span>
-							@Html.EditorFor(model => Model.FaceBook, new { htmlAttributes = new { @class = "form-control" } })
+							@Html.EditorFor(model => model.Facebook, new { htmlAttributes = new { @class = "form-control", placeholder = "Facebook url" } })
 						</div>
 					</div>
 					
 					<div class="form-group">
-						@Html.LabelFor(model => Model.Photo, "Image")
+						@Html.LabelFor(model => model.Photo)
 						<div>
 							@if (Model.Photo == null)
 							{
 								@:None
 							} else
 							{
-								<img class="img-thumbnail" style="max-width:100%" src="@Url.Action("GetImage", "Teacher", new { area = "", Model.TeacherId })" />
+								<img alt="Teacher image" class="img-thumbnail" style="max-width:100%" src="@Url.Action("GetImage", "Teacher", new { area = "", Model.TeacherId })" />
 							}
 						</div>
 					</div>
 					<div class="form-group">
-						@Html.LabelFor(model => Model.Photo, "Upload new image:")
-						<input type="file" name="Image" />
+						@Html.LabelFor(model => model.Photo, "Upload new image:")
+						<input id="input-image" class="file-loading" accept="image/*" type="file" name="Image" />
 					</div>
 				</div>
 					<!-- /.box-body -->
@@ -113,7 +136,8 @@
 					<a type="button" class="btn btn-default pull-right" href="@Url.Action("Table", "Teacher")">
 						<i class="fa fa-times"></i>&nbsp;Cancel and return to Table
 					</a>
-				</div>}
+				</div>
+			}
 			<!-- form end -->
 		</div>
 	</div>

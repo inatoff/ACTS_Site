@@ -37,14 +37,23 @@ namespace ACTS.Core.Migrations
 
 			if (!userManager.Users.Any())
 			{
-				var user = new ApplicationUser {
+				var admin = new ApplicationUser {
 					Email = "rukpet@bigmir.net",
 					UserName = "admin",
 					LockoutEnabled = true
 				}; 
-				userManager.Create(user, "SuperP@ss"); 
+				userManager.Create(admin, "SuperP@ss"); 
 
-				userManager.AddToRole(user.Id, "Admin");
+				userManager.AddToRole(admin.Id, "Admin");
+
+				var teacher = new ApplicationUser {
+					Email = "teacher@bigmir.net",
+					UserName = "teacher",
+					LockoutEnabled = true
+				};
+				userManager.Create(teacher, "SuperP@ss");
+
+				userManager.AddToRole(teacher.Id, "Teacher");
 			}
 
 			base.Seed(context);

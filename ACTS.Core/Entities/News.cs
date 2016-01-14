@@ -23,6 +23,7 @@ namespace ACTS.Core.Entities
 		[HiddenInput(DisplayValue = false)]
 		public DateTime? Modified { get; set; }
 
+		[Display(Name = "Image")]
 		public byte [] ImageData { get; set; }
 
 		[HiddenInput(DisplayValue = false)]
