@@ -102,7 +102,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 
 
-                await _userManager.CreateAsync(user);
+                await _userManager.CreateAsync(newUser);
                 return RedirectToAction(nameof(Table));
             }
             else

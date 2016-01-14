@@ -129,6 +129,30 @@
   <data name="Advertisment" xml:space="preserve">
     <value>Об'яви</value>
   </data>
+  <data name="BlogAddPost" xml:space="preserve">
+    <value>Додати публікацію</value>
+  </data>
+  <data name="BlogEdit" xml:space="preserve">
+    <value>Редагувати </value>
+  </data>
+  <data name="BlogEditProfile" xml:space="preserve">
+    <value>Редагувати профіль</value>
+  </data>
+  <data name="BlogInterests" xml:space="preserve">
+    <value>Наукові інтереси</value>
+  </data>
+  <data name="BlogMain" xml:space="preserve">
+    <value>Головна</value>
+  </data>
+  <data name="BlogProjects" xml:space="preserve">
+    <value>Проекти</value>
+  </data>
+  <data name="BlogPublications" xml:space="preserve">
+    <value>Основні публікації</value>
+  </data>
+  <data name="BlogRemovePost" xml:space="preserve">
+    <value>Видалити публікацію</value>
+  </data>
   <data name="ConditionsOfAdmissions" xml:space="preserve">
     <value>Вимоги до вступу</value>
   </data>

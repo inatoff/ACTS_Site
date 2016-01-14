@@ -20,8 +20,11 @@ namespace ACTS.Core.Entities
 
 		[EmailAddress]
 		public string EMail { get; set; }
+        
+        [Required]
+        public virtual string NameSlug { get; set; } //Дружественный ЮРЛ (по фамилии, в случае совпадения фамилии добавлять инициалы)
 
-		//social Links
+		//Social Links
 
 		[Url]
 		public string Intellect { get; set; }
@@ -44,9 +47,15 @@ namespace ACTS.Core.Entities
 			get { return UserKey != null; }
 		}
 
-		// Blog
+		// PersonalPage
 
-		public virtual ICollection<Post> Blog { get; set; }
+        public virtual IList<string> Projects { get; set; }
+
+        public virtual IList<string> Publications { get; set; }
+
+        public virtual IList<string> ScienceInterests { get; set; }
+
+        public virtual Blog Blog { get; set; }
 	}
 
 	public class TeacherMap : EntityTypeConfiguration<Teacher>

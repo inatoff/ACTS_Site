@@ -74,7 +74,8 @@
     <Compile Include="Concrete\EFNewsRepository.cs" />
     <Compile Include="Concrete\EFPostRepository.cs" />
     <Compile Include="Concrete\EFTeacherRepository.cs" />
-    <Compile Include="Abstract\IPostRepository.cs" />
+    <Compile Include="Abstract\IBlogRepository.cs" />
+    <Compile Include="Entities\Blog.cs" />
     <Compile Include="Identity\ApplicationRole.cs" />
     <Compile Include="Identity\ApplicationUser.cs" />
     <Compile Include="Entities\Employee.cs" />

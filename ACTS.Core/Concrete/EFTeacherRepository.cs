@@ -55,7 +55,13 @@ namespace ACTS.Core.Concrete
 			return dbEntry;
 		}
 
-		public Teacher GetTeacherById(int teacherId)
+
+        public Teacher GetTeacherByUrlSlug(string nameSlug)
+        {
+            return Teachers.FirstOrDefault(p => p.NameSlug == nameSlug);
+        }
+
+        public Teacher GetTeacherById(int teacherId)
 		{
 			return Teachers.FirstOrDefault(p => p.TeacherId == teacherId);
 		}
@@ -86,5 +92,6 @@ namespace ACTS.Core.Concrete
 
 			context.SaveChanges();
 		}
-	}
+
+    }
 }

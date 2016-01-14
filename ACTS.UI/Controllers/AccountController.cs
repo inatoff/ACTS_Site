@@ -110,8 +110,7 @@ namespace ACTS.UI.Controllers
 
 			return View(model);
 		}
-
-		//
+        
 		// POST: /Account/LogOff
 		[HttpPost]
 		[ValidateAntiForgeryToken]
@@ -120,6 +119,7 @@ namespace ACTS.UI.Controllers
 			AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
 			return RedirectToAction("Index", "Home");
 		}
+
 
 		#region Helpers
 		private IAuthenticationManager AuthenticationManager

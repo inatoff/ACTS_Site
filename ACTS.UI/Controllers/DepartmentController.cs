@@ -18,11 +18,6 @@ namespace ACTS.UI.Controllers
 			return View();
 		}
 
-		public ActionResult TeachingStaff()
-		{
-			return View();
-		}
-		
 		public ActionResult ServicePersonell()
 		{
 			return View();

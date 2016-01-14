@@ -8,7 +8,7 @@ using ACTS.Core.Entities;
 
 namespace ACTS.Core.Concrete
 {
-	public class EFPostRepository : IPostRepository
+	public class EFBlogRepository : IBlogRepository
 	{
 		private EFDbContext context = new EFDbContext();
 
@@ -17,25 +17,10 @@ namespace ACTS.Core.Concrete
 			get { return context.Posts; }
 		}
 
-		public void SavePost(Post post)
-		{
-			if (post.PostId == 0)
-			{
-				post.Create = DateTime.UtcNow;
-				context.Posts.Add(post);
-			} else
-			{
-				Post dbEntry = context.Posts.Find(post.PostId);
-				if (dbEntry != null)
-				{
-					dbEntry.Title = post.Title;
-					dbEntry.Modified = DateTime.UtcNow;
-					dbEntry.Content = post.Content;
-				}
-			}
-
-			context.SaveChanges();
-		}
+        public IQueryable<Blog> Blogs
+        {
+            get { return context.Blogs; }
+        } 
 
 		public Post DeletePost(int postID)
 		{
@@ -52,5 +37,36 @@ namespace ACTS.Core.Concrete
 		{
 			return Posts.FirstOrDefault(p => p.PostId == postId);
 		}
-	}
+
+        public void CreatePost(Post post)
+        {
+            if (post.PostId == 0)
+            {
+                post.Create = DateTime.UtcNow;
+                context.Posts.Add(post);
+            }
+            else
+            {
+                Post dbEntry = context.Posts.Find(post.PostId);
+                if (dbEntry != null)
+                {
+                    dbEntry.Title = post.Title;
+                    dbEntry.Modified = DateTime.UtcNow;
+                    dbEntry.Content = post.Content;
+                }
+            }
+
+            context.SaveChanges();
+        }
+
+        public void EditPost(Post post)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Blog GetBlogByAuthorNameSlug(string slug)
+        {
+            return Blogs.FirstOrDefault(b => b.Author.NameSlug == slug);
+        }
+    } 
 }

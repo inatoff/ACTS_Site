@@ -1,5 +1,7 @@
 ﻿using ACTS.Core.Abstract;
 using ACTS.Core.Entities;
+using ACTS.UI.App_LocalResources;
+using ACTS.UI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace ACTS.UI.Controllers
 	public class TeacherController : BaseController
 	{
 		private ITeacherRepository repository;
-
+        
 		public TeacherController(ITeacherRepository employeeRepository)
 		{
 			repository = employeeRepository;
@@ -32,6 +34,6 @@ namespace ACTS.UI.Controllers
         public ViewResult TeachingStaff()
         {
             return View(repository.Teachers);
-        }
+        }        
 	}
 }

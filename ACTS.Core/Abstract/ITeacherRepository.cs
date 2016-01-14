@@ -13,6 +13,7 @@ namespace ACTS.Core.Abstract
 		void CreateTeacher(Teacher teacher);
 		void UpdateTeacher(Teacher teacher);
 		Teacher GetTeacherById(int teacherId);
-		Teacher DeleteTeacher(int teacherID);
+        Teacher GetTeacherByUrlSlug(string urlSlug);
+        Teacher DeleteTeacher(int teacherID);
 	}
 }

@@ -97,6 +97,78 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Додати публікацію.
+        /// </summary>
+        public static string BlogAddPost {
+            get {
+                return ResourceManager.GetString("BlogAddPost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редагувати .
+        /// </summary>
+        public static string BlogEdit {
+            get {
+                return ResourceManager.GetString("BlogEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редагувати профіль.
+        /// </summary>
+        public static string BlogEditProfile {
+            get {
+                return ResourceManager.GetString("BlogEditProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Наукові інтереси.
+        /// </summary>
+        public static string BlogInterests {
+            get {
+                return ResourceManager.GetString("BlogInterests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Головна.
+        /// </summary>
+        public static string BlogMain {
+            get {
+                return ResourceManager.GetString("BlogMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Проекти.
+        /// </summary>
+        public static string BlogProjects {
+            get {
+                return ResourceManager.GetString("BlogProjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Основні публікації.
+        /// </summary>
+        public static string BlogPublications {
+            get {
+                return ResourceManager.GetString("BlogPublications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Видалити публікацію.
+        /// </summary>
+        public static string BlogRemovePost {
+            get {
+                return ResourceManager.GetString("BlogRemovePost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вимоги до вступу.
         /// </summary>
         public static string ConditionsOfAdmissions {

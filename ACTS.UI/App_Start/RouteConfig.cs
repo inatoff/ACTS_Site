@@ -14,26 +14,28 @@ namespace ACTS.UI
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-			//routes.MapRoute(
-			//	 name: "Default",
-			//	 url: "{culture}/{controller}/{action}/{id}",
-			//	 defaults: new { culture = CultureHelper.GetDefaultCulture(), controller = "Home", action = "Index", id = UrlParameter.Optional }
-			// );
+            //routes.MapRoute(
+            //	 name: "Default",
+            //	 url: "{culture}/{controller}/{action}/{id}",
+            //	 defaults: new { culture = CultureHelper.GetDefaultCulture(), controller = "Home", action = "Index", id = UrlParameter.Optional }
+            // );
 
+            //routes.MapRoute(
+            //	name: "Lang",
+            //	url: "{lang}/{controller}/{action}/{id}",
+            //	defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+            //	constraints: new { lang = @"uk|ru|en" }
+            //);
 
-			//routes.MapRoute(
-			//	name: "Lang",
-			//	url: "{lang}/{controller}/{action}/{id}",
-			//	defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-			//	constraints: new { lang = @"uk|ru|en" }
-			//);
+            routes.MapMvcAttributeRoutes();
 
-			routes.MapRoute(
+            routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",
 				defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional},
 				namespaces: new[] { "ACTS.UI.Controllers" }
 			);
+
 		}
 	}
 }
