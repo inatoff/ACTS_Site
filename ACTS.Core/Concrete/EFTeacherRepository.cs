@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ACTS.Core.Entities;
+using ACTS.Core.Identity;
+using System.Collections;
 
 namespace ACTS.Core.Concrete
 {
@@ -15,6 +17,11 @@ namespace ACTS.Core.Concrete
 		public IQueryable<Teacher> Teachers
 		{
 			get { return context.Teachers; }
+		}
+
+		public IQueryable<Teacher> NoPairTeachers
+		{
+			get { return context.Teachers.Where(t => t.User == null); }
 		}
 
 		public void SaveTeacher(Teacher teacher)
@@ -85,6 +92,39 @@ namespace ACTS.Core.Concrete
 			}
 
 			context.SaveChanges();
+		}
+
+		public void AddPairToUser(int teacherId, int userId)
+		{
+			var user = context.Users.Find(userId);
+			var teacher = GetTeacherById(teacherId);
+
+			if (user == null || teacher == null) return;
+
+			if (user.HasTeacher ^ teacher.HasUser)
+				throw new InvalidOperationException("Teacher or User already have pair.");
+
+			user.Teacher = teacher;
+			teacher.User = user;
+
+			context.SaveChanges();
+		}
+
+		public void RemovePairToUser(int teacherId)
+		{
+			var teacher = GetTeacherById(teacherId);
+
+			if (teacher == null) return;
+
+			teacher.User.Teacher = default(Teacher);
+			teacher.User = default(ApplicationUser);
+
+			context.SaveChanges();
+		}
+
+		public IQueryable<Teacher> GetNoPairTeachersWithSelected(int teacherId)
+		{
+			return context.Teachers.Where(t => t.User == null || t.TeacherId == teacherId);
 		}
 	}
 }

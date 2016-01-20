@@ -24,8 +24,11 @@ namespace ACTS.UI
 				.Include("~/Scripts/jquery.dataTables.js")
 				.Include("~/Scripts/dataTables.bootstrap.js"));
 
-			bundles.Add(new ScriptBundle("~/bundles/bootstrap-fileinput")
+			bundles.Add(new ScriptBundle("~/bundles/fileinput")
 				.Include("~/Scripts/fileinput.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/select2")
+				.Include("~/Scripts/select2.js"));
 
 			bundles.Add(new StyleBundle("~/Content/css")
 				.Include("~/Content/bootstrap.css",
@@ -41,6 +44,9 @@ namespace ACTS.UI
 
 			bundles.Add(new StyleBundle("~/Content/css/bootstrap-fileinput")
 				.Include("~/Content/bootstrap-fileinput/css/fileinput.css"));
+
+			bundles.Add(new StyleBundle("~/Content/css/select2")
+				.Include("~/Content/css/select2.css"));
 		}
 	}
 }

@@ -7,12 +7,12 @@
 }
 
 @section Styles{
-    @Styles.Render("~/Content/css/bootstrap-fileinput")
+	@Styles.Render("~/Content/css/bootstrap-fileinput")
 }
 
 @section Scripts{
-    @Scripts.Render("~/bundles/bootstrap-fileinput")
-    <script>
+	@Scripts.Render("~/bundles/fileinput")
+	<script>
 		$(document).on('ready', function() {
 			$("#input-image").fileinput({
 				previewFileType: "image",
@@ -23,10 +23,10 @@
 				removeLabel: "Delete",
 				removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
 				showUpload: false,
-			    maxFileSize: 5120
+				maxFileSize: 5120
 			});
 		});
-    </script>
+	</script>
 }
 
 <div class="row">

@@ -107,6 +107,10 @@
     <Compile Include="Migrations\201601101740031_initIdentity.Designer.cs">
       <DependentUpon>201601101740031_initIdentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601201453446_relation_User_Teacher.cs" />
+    <Compile Include="Migrations\201601201453446_relation_User_Teacher.Designer.cs">
+      <DependentUpon>201601201453446_relation_User_Teacher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -132,6 +136,14 @@
     <EmbeddedResource Include="Migrations\201601101740031_initIdentity.resx">
       <DependentUpon>201601101740031_initIdentity.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601201453446_relation_User_Teacher.resx">
+      <DependentUpon>201601201453446_relation_User_Teacher.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Migrations\ImagesForSeed\Новацкий.jpg" />
+    <Content Include="Migrations\ImagesForSeed\Теленик.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

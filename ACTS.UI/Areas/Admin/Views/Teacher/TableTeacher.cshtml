@@ -45,6 +45,7 @@
 							<th>Email</th>
 							<th>Social links</th>
 							<th>Image</th>
+							<th>Account</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
@@ -85,6 +86,16 @@
 									}
 								</td>
 								<td>
+									@if (item.HasUser)
+									{
+										@item.User.UserName
+									}
+									else
+									{
+										@:None
+									}
+								</td>
+								<td>
 									@using (Html.BeginForm("Delete", "Teacher", FormMethod.Post, new { enctype = "multipart/form-data" }))
 									{
 										@Html.Hidden("TeacherId", item.TeacherId)
@@ -107,6 +118,7 @@
 							<th>Email</th>
 							<th>Social links</th>
 							<th>Image</th>
+							<th>Account</th>
 							<th>Actions</th>
 						</tr>
 					</tfoot>

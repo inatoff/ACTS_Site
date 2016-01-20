@@ -12,13 +12,11 @@ namespace ACTS.Core.Identity
 {
 	public class ApplicationUser : IdentityUser<int, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
 	{
-		public virtual int? TeacherKey { get; set; }
 		public virtual Teacher Teacher { get; set; }
 
-		[NotMapped]
 		public bool HasTeacher
 		{
-			get{ return TeacherKey != null; }
+			get { return Teacher != null; }
 		}
 	}
 
@@ -26,9 +24,8 @@ namespace ACTS.Core.Identity
 	{
 		public ApplicationUserMap()
 		{
-			this.HasOptional(x => x.Teacher)
-				.WithOptionalPrincipal()
-				.Map(x => x.MapKey(nameof(ApplicationUser.TeacherKey)));
+            this.HasOptional(x => x.Teacher)
+                .WithOptionalPrincipal();
 		}
 	}
 }

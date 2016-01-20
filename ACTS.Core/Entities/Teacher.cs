@@ -1,4 +1,4 @@
-﻿using ACTS.Core.Abstract;
+using ACTS.Core.Abstract;
 using ACTS.Core.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -39,13 +39,11 @@ namespace ACTS.Core.Entities
 		[Display(Name = "Twitter url")]
 		public string Twitter { get; set; }
 
-		public virtual int? UserKey { get; set; }
 		public virtual ApplicationUser User { get; set; }
 
-		[NotMapped]
 		public bool HasUser
 		{
-			get { return UserKey != null; }
+			get { return User != null; }
 		}
 
 		// Blog
@@ -58,8 +56,7 @@ namespace ACTS.Core.Entities
 		public TeacherMap()
 		{
 			this.HasOptional(x => x.User)
-				.WithOptionalPrincipal()
-				.Map(x => x.MapKey(nameof(Teacher.UserKey)));
+				.WithOptionalPrincipal();
 		}
 	}
 }

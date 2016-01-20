@@ -34,5 +34,8 @@ namespace ACTS.UI.Areas.Admin.Models
 		public IList<RoleItem> Roles { get; set; }
 
 		public IEnumerable<string> SelectedRoles { get { return Roles.Where(r => r.Selected).Select(r => r.Value); } }
+
+		[Display(Name = "Teacher")]
+		public int? PairTeacherId { get; set; }
 	}
 }

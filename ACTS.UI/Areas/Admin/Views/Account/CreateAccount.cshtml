@@ -5,22 +5,32 @@
 	ViewBag.Title = "Create account";
 }
 
-@section Styles{
+@section Styles {
+	@Styles.Render("~/Content/css/select2")
 	<!-- iCheck -->
 	<link href="~/Content/iCheck/square/blue.css" rel="stylesheet" />
 }
 
-@section Scripts{
+@section Scripts {
+	@Scripts.Render("~/bundles/select2")
+	<script>
+		$(document).ready(function () {
+			$(".select2").select2({
+				allowClear: true,
+				placeholder: "The teacher is absent."
+			});
+		});
+	</script>
 	<!-- iCheck -->
 	<script src="~/Scripts/jquery.icheck.min.js"></script>
 	<script>
-			$(function () {
-				$('input').iCheck({
-					checkboxClass: 'icheckbox_square-blue',
-					radioClass: 'iradio_square-blue',
-					increaseArea: '20%' // optional
-				});
+		$(function () {
+			$('input').iCheck({
+				checkboxClass: 'icheckbox_square-blue',
+				radioClass: 'iradio_square-blue',
+				increaseArea: '20%' // optional
 			});
+		});
 	</script>
 }
 
@@ -43,7 +53,10 @@
 					<div class="form-group">
 						@Html.LabelFor(model => model.UserName)
 						@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-						@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "User name" } })
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user "></i></span>
+							@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "User name" } })
+						</div>
 					</div>
 
 					<div class="form-group">
@@ -57,19 +70,46 @@
 					<div class="form-group">
 						@Html.LabelFor(model => model.Password)
 						@Html.ValidationMessageFor(model => Model.Password, "", new { @class = "text-danger" })
-						@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-key "></i></span>
+							@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+						</div>
 					</div>
 
 					<div class="form-group">
 						@Html.LabelFor(model => model.ConfirmPassword)
 						@Html.ValidationMessageFor(model => Model.ConfirmPassword, "", new { @class = "text-danger" })
-						@Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Confirm password" } })
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-key "></i></span>
+							@Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Confirm password" } })
+						</div>
 					</div>
 
 					<div class="form-group">
 						@Html.LabelFor(model => model.Roles)
 						@Html.ValidationMessageFor(model => model.Roles, "", new { @class = "text-danger" })
 						@Html.EditorFor(model => model.Roles)
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.PairTeacherId)
+						@Html.ValidationMessageFor(model => model.PairTeacherId, "", new { @class = "text-danger" })
+						@*<div class="input-group">
+							<span class="input-group-addon checkbox">
+								@Html.CheckBoxFor(model => model.PairWithTeacher)
+								@Html.LabelFor(model => model.PairWithTeacher)
+							</span>*@
+
+							@*<div class="checkbox icheck">
+								@Html.CheckBoxFor(model => model.)
+								@Html.LabelFor(model => model.Selected, Model.Value)
+							</div>*@
+							
+
+							@*@Html.ListBoxFor(model => model.Teachers, Model.Teachers, new { @class = "select2", data_live_search = "true" } )*@
+						@*@Html.Partial("_PartialSelect", Model.Teachers)*@
+						@Html.DropDownListFor(model => model.PairTeacherId, ViewBag.Teachers as IEnumerable<SelectListItem>, "The teacher is absent.", new { @class = "form-control" })
+						@*</div>*@
 					</div>
 				</div>
 				<!-- /.box-body -->

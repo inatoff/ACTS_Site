@@ -1,11 +1,14 @@
 namespace ACTS.Core.Migrations
 {
+	using Concrete;
+	using Entities;
 	using Identity;
 	using Microsoft.AspNet.Identity;
 	using Microsoft.AspNet.Identity.EntityFramework;
 	using System;
 	using System.Data.Entity;
 	using System.Data.Entity.Migrations;
+	using System.IO;
 	using System.Linq;
 
 	internal sealed class Configuration : DbMigrationsConfiguration<ACTS.Core.Concrete.EFDbContext>
@@ -54,6 +57,44 @@ namespace ACTS.Core.Migrations
 				userManager.Create(teacher, "SuperP@ss");
 
 				userManager.AddToRole(teacher.Id, "Teacher");
+			}
+
+			var teacherRepository = new EFTeacherRepository();
+
+
+			if (!teacherRepository.Teachers.Any())
+			{
+				using (var fs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\Теленик.jpg", FileMode.Open))
+				{
+					var teacher = new Teacher()
+					{
+						FullName = "Теленик Сергій Федорович",
+						Degree = "д.т.н., професор",
+						Position = "ЗАВІДУВАЧ КАФЕДРИ голова НМК МОН України \"Автоматика та управління\" керівник циклу математичних дисциплін",
+						Photo = new byte [fs.Length],
+						PhotoMimeType = "jpg"
+					};
+					fs.Read(teacher.Photo, 0, (int)fs.Length);
+					teacher.PhotoMimeType = "jpg";
+
+					teacherRepository.CreateTeacher(teacher);
+				}
+
+				using (var fs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\Новацкий.jpg", FileMode.Open))
+				{
+					var teacher = new Teacher()
+					{
+						FullName = "Новацький Анатолій Олександрович",
+						Degree = "к.т.н., доцент",
+						Position = "ПЕРШИЙ ЗАСТУПНИК заступник з навчально-виховної роботи відповідальний за заочну форму навчання керівник циклу \"Комп'ютерна електроніка та мікропроцесорна техніка\"",
+						Photo = new byte[fs.Length],
+						PhotoMimeType = "jpg"
+					};
+					fs.Read(teacher.Photo, 0, (int)fs.Length);
+					teacher.PhotoMimeType = "jpg";
+
+					teacherRepository.CreateTeacher(teacher);
+				}
 			}
 
 			base.Seed(context);

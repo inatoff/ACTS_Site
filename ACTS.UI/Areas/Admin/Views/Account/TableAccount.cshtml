@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ACTS.UI.Areas.Admin.Models.InfoAccountViewModel>
+@model IEnumerable<ACTS.UI.Areas.Admin.Models.InfoAccountViewModel>
 
 @{
 	ViewBag.Title = "Table of accounts";
@@ -27,6 +27,7 @@
 							<th>UserName</th>
 							<th>Email</th>
 							<th>Roles</th>
+							<th>Teacher</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
@@ -58,6 +59,15 @@
 									</ul>
 								</td>
 								<td>
+									@if (string.IsNullOrWhiteSpace(item.TeacherName))
+									{
+										@:None
+									} else
+									{
+										@item.TeacherName
+									}
+								</td>
+								<td>
 									@using (Html.BeginForm("Delete", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
 									{
 										@Html.Hidden("Id", item.Id)
@@ -76,6 +86,7 @@
 							<th>UserName</th>
 							<th>Email</th>
 							<th>Roles</th>
+							<th>Teacher</th>
 							<th>Actions</th>
 						</tr>
 					</tfoot>

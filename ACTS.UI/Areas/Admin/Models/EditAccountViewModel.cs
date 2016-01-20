@@ -22,6 +22,9 @@ namespace ACTS.UI.Areas.Admin.Models
 		[Display(Name = "Account roles")]
 		public IList<RoleItem> Roles { get; set; }
 
+		[Display(Name = "Teacher")]
+		public int? PairTeacherId { get; set; }
+
 		public IEnumerable<string> SelectedRoles { get { return Roles.Where(r => r.Selected).Select(r => r.Value); } }
 		public IEnumerable<string> UnselectedRoles { get { return Roles.Where(r => !r.Selected).Select(r => r.Value); } }
 	}

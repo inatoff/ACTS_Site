@@ -10,15 +10,17 @@ using ACTS.Core.Identity;
 using ACTS.UI.Areas.Admin.Models;
 using ACTS.Core.Concrete;
 using ACTS.UI.Helpers;
+using ACTS.Core.Abstract;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
 	[Authorize]
 	public class AccountController : Controller
 	{
-
-		public AccountController()
+		private ITeacherRepository _teacherRepository;
+		public AccountController(ITeacherRepository teacherRepository)
 		{
+			_teacherRepository = teacherRepository;
 		}
 
 		public ApplicationUserManager UserManager
@@ -50,25 +52,39 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					Id = user.Id,
 					Email = user.Email,
 					UserName = user.UserName,
-					TeacherKey = user.TeacherKey,
+					TeacherName = user.Teacher?.FullName,
 					Roles = await UserManager.GetRolesAsync(user.Id)
 				};
 			});
-
 
 			var model = await Task.WhenAll(tasks);
 
 			return View("TableAccount", model);
 		}
 
+		private void InitTeachersItems(object selectedValue = null)
+		{
+			SelectList teachersItems;
+			if (selectedValue == null)
+				teachersItems = new SelectList(_teacherRepository.NoPairTeachers, "TeacherId", "FullName");
+			else
+				teachersItems = new SelectList(_teacherRepository.GetNoPairTeachersWithSelected((int)selectedValue).AsEnumerable(),
+											  "TeacherId", "FullName", selectedValue);
+
+			ViewBag.Teachers = teachersItems;
+		}
+		
 		[HttpGet]
 		public ActionResult Create()
 		{
 			var model = new AccountViewModel() {
-				Roles = (RoleManager.Roles.Select(r => new RoleItem() { Value = r.Name })
+				Roles = RoleManager.Roles.Select(r => new RoleItem() { Value = r.Name })
 										  .OrderBy(r => r.Value)
-										  .ToList())
+										  .ToList()
 			};
+
+			InitTeachersItems();
+
 			return View("CreateAccount", model);
 		}
 
@@ -90,16 +106,25 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					foreach (var error in result.Errors)
 						ModelState.AddModelError("", error);
 
+					InitTeachersItems(model.PairTeacherId);
+
 					return View("CreateAccount", model);
 				}
 
-				await UserManager.AddToRolesAsync(user.Id, model.SelectedRoles.ToArray());
+				if (model.PairTeacherId.HasValue)
+					_teacherRepository.AddPairToUser(model.PairTeacherId.Value, user.Id);
+
+				if (!result.Succeeded)
+					TempData.AddMessage(MessageType.Warning, result.Errors);
+
+				result = await UserManager.AddToRolesAsync(user.Id, model.SelectedRoles.ToArray());
 
 				TempData.AddMessage(new Message(MessageType.Success, $"User \"{user.UserName}\" successfully created."));
 
 				return RedirectToAction(nameof(Table));
 			}
 
+			InitTeachersItems(model.PairTeacherId);
 			// there is something wrong with the data values         
 			return View("CreateAccount", model);
 		}
@@ -125,6 +150,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				UserName = user.UserName,
 				Roles = roles.Select(r => new RoleItem() { Value = r.Name, Selected = userRoles.Contains(r.Name) }).ToList()
 			};
+
+			InitTeachersItems(user.Teacher?.TeacherId);
 
 			return View("EditAccount", model);
 		}
@@ -152,17 +179,23 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				if (!result.Succeeded)
 					TempData.AddMessage(MessageType.Warning, result.Errors);
 
-				result = await UserManager.AddToRolesAsync(model.Id, model.SelectedRoles.Except(userRoles).ToArray());//.Where(r => !userRoles.Contains(r) && ).ToArray());
+				result = await UserManager.AddToRolesAsync(model.Id, model.SelectedRoles.Except(userRoles).ToArray());
 
 				if (!result.Succeeded)
 					TempData.AddMessage(MessageType.Warning, result.Errors);
+
+				if (user.HasTeacher)
+					_teacherRepository.RemovePairToUser(user.Teacher.TeacherId);
+				if (model.PairTeacherId.HasValue)
+					_teacherRepository.AddPairToUser(model.PairTeacherId.Value, user.Id);
 
 				TempData.AddMessage(new Message(MessageType.Success, $"User \"{user.UserName}\" successfully saved."));
 
 				return RedirectToAction(nameof(Table));
 			}
 
-			// there is something wrong with the data values         
+			InitTeachersItems(model.PairTeacherId);
+			// there is something wrong with the data values
 			return View("EditAccount", model);
 		}
 
