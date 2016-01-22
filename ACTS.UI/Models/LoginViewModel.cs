@@ -10,7 +10,7 @@ namespace ACTS.UI.Models
 	public class LoginViewModel
 	{
 		[Required]
-		[Display(Name = "Email or Login")]
+		[Display(Name = "Email or login")]
 		public string EmailOrLogin { get; set; }
 
 		[Required]
