@@ -12,7 +12,7 @@ namespace ACTS.UI.Areas.Admin.Models
 		public int Id { get; set; }
 
 		[Required]
-		[Display(Name = "User name")]
+		[Display(Name = "User name*")]
 		public string UserName { get; set; }
 
 		[EmailAddress]

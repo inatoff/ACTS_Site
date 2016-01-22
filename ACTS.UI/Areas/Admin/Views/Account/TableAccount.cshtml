@@ -70,6 +70,7 @@
 								<td>
 									@using (Html.BeginForm("Delete", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
 									{
+										@Html.AntiForgeryToken()
 										@Html.Hidden("Id", item.Id)
 										<ul class="list-unstyled">
 											<li><a href="@Url.Action("Edit", "Account", new { item.Id })" class="btn btn-link"><i class="fa fa-edit ">&nbsp;Edit</i></a></li>

@@ -34,6 +34,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Edit(Employee employee, HttpPostedFileBase image)
 		{
 			if (ModelState.IsValid)
@@ -60,6 +61,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Create(Employee employee, HttpPostedFileBase image)
 		{
 			if (ModelState.IsValid)
@@ -81,6 +83,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Delete(int employeeId)
 		{
 			Employee deletedEmployee = repository.DeleteEmployee(employeeId);

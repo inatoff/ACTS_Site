@@ -11,6 +11,7 @@ namespace ACTS.Core.Entities
 
 		[Required(ErrorMessage = "Please enter a title")]
 		[StringLength(500, ErrorMessage = "Title: Length should not exceed 500 characters")]
+		[Display(Name = "Title*")]
 		public string Title { get; set; }
 
 		[HiddenInput(DisplayValue = false)]

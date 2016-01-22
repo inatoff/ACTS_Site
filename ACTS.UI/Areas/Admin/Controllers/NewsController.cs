@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
-    [Authorize]
+	[Authorize]
 	public class NewsController : Controller
 	{
 		private INewsRepository repository;
@@ -33,6 +33,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Edit(News news, HttpPostedFileBase image)
 		{
 			if (ModelState.IsValid)
@@ -54,6 +55,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Create(News news, HttpPostedFileBase image)
 		{
 			if (ModelState.IsValid)
@@ -80,6 +82,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Delete(int newsId)
 		{
 			News deletedNews = repository.DeleteNews(newsId);

@@ -32,6 +32,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Edit(Teacher teacher, HttpPostedFileBase image)
 		{
 			if (ModelState.IsValid)
@@ -58,6 +59,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Create(Teacher teacher, HttpPostedFileBase image)
 		{
 			if (ModelState.IsValid)
@@ -79,6 +81,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Delete(int teacherId)
 		{
 			Teacher deletedTeacher = repository.DeleteTeacher(teacherId);

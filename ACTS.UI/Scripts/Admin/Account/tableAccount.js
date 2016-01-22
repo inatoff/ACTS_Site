@@ -8,6 +8,7 @@
        { className: "dt-center" },
        { className: "dt-center" },
        { className: "dt-center" },
+       { className: "dt-center" },
        { className: "dt-center", orderable: false }
         ],
         lengthMenu: [

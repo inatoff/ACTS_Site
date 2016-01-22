@@ -13,7 +13,7 @@ namespace ACTS.Core.Abstract
 
 		[Required(ErrorMessage = "Please enter a name")]
 		[StringLength(70, ErrorMessage = "Full name: Length should not exceed 70 characters")]
-		[Display(Name = "Full name")]
+		[Display(Name = "Full name*")]
 		public string FullName { get; set; } // Полное имя
 
 		//public string Name { get; set; } // Имя
@@ -23,10 +23,12 @@ namespace ACTS.Core.Abstract
 		//public string Surname { get; set; } // Фамилия
 
 		[Required(ErrorMessage = "Please enter a position")]
-		[StringLength(500, ErrorMessage = "FullName: Length should not exceed 500 characters")]
+		[StringLength(500, ErrorMessage = "Position: Length should not exceed 500 characters")]
+		[Display(Name = "Position*")]
+		[DataType(DataType.MultilineText)]
 		public string Position { get; set; } // Должность
 
-		[Display(Name = "Image")]
+		[Display(Name = "Photo")]
 		public byte[] Photo { get; set; }
 
 		public string PhotoMimeType { get; set; }

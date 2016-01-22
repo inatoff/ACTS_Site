@@ -9,11 +9,13 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace ACTS.Core.Entities
 {
 	 public class Teacher : Worker
 	{
+		[HiddenInput(DisplayValue = false)]
 		public int TeacherId { get; set; }
 
 		public string Degree { get; set; } // Научная степень    

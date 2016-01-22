@@ -2,6 +2,7 @@
 @model ACTS.UI.Areas.Admin.Models.AccountViewModel
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
+	ViewBag.CurrentTreeView = "Create";
 	ViewBag.Title = "Create account";
 }
 
@@ -15,10 +16,7 @@
 	@Scripts.Render("~/bundles/select2")
 	<script>
 		$(document).ready(function () {
-			$(".select2").select2({
-				allowClear: true,
-				placeholder: "The teacher is absent."
-			});
+			$(".select2").select2();
 		});
 	</script>
 	<!-- iCheck -->
@@ -43,7 +41,7 @@
 			<!-- /.box-header -->
 			<!-- form start -->
 			@*TODO: Rustam помоги сделать что бы когда оно проверяет и там неправильные даные то виглядела как http://bootstrap-3.ru/css.php#forms-control-validation*@
-			@using (Html.BeginForm("Create", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+			@using (Html.BeginForm("Create", "Account", FormMethod.Post))
 			{
 				<div class="box-body">
 					@Html.AntiForgeryToken()
@@ -94,22 +92,7 @@
 					<div class="form-group">
 						@Html.LabelFor(model => model.PairTeacherId)
 						@Html.ValidationMessageFor(model => model.PairTeacherId, "", new { @class = "text-danger" })
-						@*<div class="input-group">
-							<span class="input-group-addon checkbox">
-								@Html.CheckBoxFor(model => model.PairWithTeacher)
-								@Html.LabelFor(model => model.PairWithTeacher)
-							</span>*@
-
-							@*<div class="checkbox icheck">
-								@Html.CheckBoxFor(model => model.)
-								@Html.LabelFor(model => model.Selected, Model.Value)
-							</div>*@
-							
-
-							@*@Html.ListBoxFor(model => model.Teachers, Model.Teachers, new { @class = "select2", data_live_search = "true" } )*@
-						@*@Html.Partial("_PartialSelect", Model.Teachers)*@
-						@Html.DropDownListFor(model => model.PairTeacherId, ViewBag.Teachers as IEnumerable<SelectListItem>, "The teacher is absent.", new { @class = "form-control" })
-						@*</div>*@
+						@Html.DropDownListFor(model => model.PairTeacherId, ViewBag.Teachers as IEnumerable<SelectListItem>, "The teacher is absent.", new { @class = "select2 form-control", style = "width: 100%;" })
 					</div>
 				</div>
 				<!-- /.box-body -->

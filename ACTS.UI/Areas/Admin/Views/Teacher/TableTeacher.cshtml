@@ -82,7 +82,7 @@
 										@:None
 									} else
 									{
-										<img alt="Teacher image" width="100" height="100" src="@Url.Action("GetImage", "Teacher", new { area = "", item.TeacherId })" />
+										<img alt="Teacher image" width="80" height="115" src="@Url.Action("GetImage", "Teacher", new { area = "", item.TeacherId })" />
 									}
 								</td>
 								<td>
@@ -98,6 +98,7 @@
 								<td>
 									@using (Html.BeginForm("Delete", "Teacher", FormMethod.Post, new { enctype = "multipart/form-data" }))
 									{
+										@Html.AntiForgeryToken()
 										@Html.Hidden("TeacherId", item.TeacherId)
 										<ul class="list-unstyled">
 											<li><a href="@Url.Action("Edit", "Teacher", new { item.TeacherId })" class="btn btn-link"><i class="fa fa-edit ">&nbsp;Edit</i></a></li>

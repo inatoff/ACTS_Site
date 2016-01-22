@@ -89,6 +89,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> Create(AccountViewModel model)
 		{
 			if (ModelState.IsValid)
@@ -157,6 +158,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> Edit(EditAccountViewModel model)
 		{
 			if (ModelState.IsValid)
@@ -172,9 +174,21 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				user.UserName = model.UserName;
 				user.Email = model.Email;
 
+				var result = await UserManager.UpdateAsync(user);
+
+				if (!result.Succeeded)
+				{
+					foreach (var error in result.Errors)
+						ModelState.AddModelError("", error);
+
+					InitTeachersItems(model.PairTeacherId);
+
+					return View("EditAccount", model);
+				}
+
 				var userRoles = await UserManager.GetRolesAsync(model.Id); // роли редактируемого юзера
 
-				var result = await UserManager.RemoveFromRolesAsync(model.Id, userRoles.Intersect(model.UnselectedRoles).ToArray());
+				result = await UserManager.RemoveFromRolesAsync(model.Id, userRoles.Intersect(model.UnselectedRoles).ToArray());
 
 				if (!result.Succeeded)
 					TempData.AddMessage(MessageType.Warning, result.Errors);
@@ -200,6 +214,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> Delete(int Id)
 		{
 			using (var manager = UserManager)

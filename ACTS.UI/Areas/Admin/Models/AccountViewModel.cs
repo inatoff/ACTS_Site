@@ -12,17 +12,17 @@ namespace ACTS.UI.Areas.Admin.Models
 	public class AccountViewModel
 	{
 		[Required]
-		[Display(Name = "User name")] 
+		[Display(Name = "User name*")] 
 		public string UserName { get; set; }
 
 		[Required]
-		[Display(Name = "Password")]
+		[Display(Name = "Password*")]
 		[DataType(DataType.Password)]
 		[System.ComponentModel.DataAnnotations.Compare("ConfirmPassword", ErrorMessage = "The new password and confirmation password do not match")]
 		public string Password { get; set; }
 
 		[Required]
-		[Display(Name = "Confirm password")]
+		[Display(Name = "Confirm password*")]
 		[DataType(DataType.Password)]
 		public string ConfirmPassword { get; set; } 
 

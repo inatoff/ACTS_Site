@@ -645,6 +645,7 @@
     <Compile Include="Areas\Admin\Controllers\TeacherController.cs" />
     <Compile Include="Areas\Admin\Models\AccountViewModel.cs" />
     <Compile Include="Areas\Admin\Models\EditAccountViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ProfileViewModel.cs" />
     <Compile Include="Areas\Admin\Models\RoleItem.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -660,6 +661,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CultureHelper.cs" />
+    <Compile Include="Helpers\DescriptionHelper.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\SignInStatusHelper.cs" />
     <Compile Include="Helpers\TempDataDictionaryHelper.cs" />
@@ -703,6 +705,7 @@
     <Content Include="Areas\Admin\Views\Account\EditorTemplates\RoleItem.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartialMessager.cshtml" />
     <Content Include="Areas\Admin\Views\Account\EditAccount.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Profile.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
