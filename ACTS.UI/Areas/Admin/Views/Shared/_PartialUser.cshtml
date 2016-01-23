@@ -95,7 +95,7 @@
 				<!-- Menu Body -->
 				<li class="user-footer">
 					<div class="pull-left">
-						<a href="@Url.Action("Profile","Admin")" class="btn btn-default btn-flat"><i class="fa fa-user fa-fw"></i> Profile</a>
+						<a href="@Url.Action("Index", "Account")" class="btn btn-default btn-flat"><i class="fa fa-user fa-fw"></i> My account</a>
 					</div>
 					@using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "pull-right"  }))
 					{

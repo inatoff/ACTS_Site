@@ -52,7 +52,7 @@
 						@Html.LabelFor(model => model.Email)
 						@Html.ValidationMessageFor(model => Model.Email, "", new { @class = "text-danger" })
 						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+							<span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
 							@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
 						</div>
 					</div>
@@ -73,10 +73,10 @@
 
 				<div class="box-footer">
 					<button type="submit" class="btn btn-primary">
-						<i class="fa fa-save"></i>&nbsp;Save
+						<i class="fa fa-edit"></i>&nbsp;Save
 					</button>
 					<a type="button" class="btn btn-default pull-right" href="@Url.Action("Table", "Account")">
-						<i class="fa fa-times"></i>&nbsp;Cancel and return to Table
+						<i class="fa fa-undo"></i>&nbsp;Cancel and return to Table
 					</a>
 				</div>
 			}

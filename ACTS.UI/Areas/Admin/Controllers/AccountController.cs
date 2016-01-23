@@ -11,6 +11,7 @@ using ACTS.UI.Areas.Admin.Models;
 using ACTS.Core.Concrete;
 using ACTS.UI.Helpers;
 using ACTS.Core.Abstract;
+using Microsoft.AspNet.Identity;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
@@ -31,6 +32,20 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		public ApplicationRoleManager RoleManager
 		{
 			get { return new ApplicationRoleManager(); }
+		}
+
+		public ActionResult Index()
+		{
+			ApplicationUser user = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(HttpContext.User.Identity.GetUserId<int>());
+
+			var model = new ProfileViewModel()
+			{
+				Id = user.Id,
+				UserName = user.UserName,
+				Email = user.Email
+			};
+
+			return View(model);
 		}
 
 		public async Task<ActionResult> Table()
