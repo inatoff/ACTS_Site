@@ -23,7 +23,6 @@ namespace ACTS.Core.Entities
 		[EmailAddress]
 		public string Email { get; set; }
 
-		//social Links
 
 		[Url]
 		[Display(Name = "Intellect url")]
@@ -48,9 +47,15 @@ namespace ACTS.Core.Entities
 			get { return User != null; }
 		}
 
-		// Blog
+		// PersonalPage
 
-		public virtual ICollection<Post> Blog { get; set; }
+        public virtual IList<string> Projects { get; set; }
+
+        public virtual IList<string> Publications { get; set; }
+
+        public virtual IList<string> ScienceInterests { get; set; }
+
+        public virtual Blog Blog { get; set; }
 	}
 
 	public class TeacherMap : EntityTypeConfiguration<Teacher>

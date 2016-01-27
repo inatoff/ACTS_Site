@@ -37,7 +37,7 @@ namespace ACTS.UI.Infrastructure
 			ninjectKernel.Bind<IEmployeeRepository>().To<EFEmployeeRepository>();
 			ninjectKernel.Bind<ITeacherRepository>().To<EFTeacherRepository>();
 			ninjectKernel.Bind<INewsRepository>().To<EFNewsRepository>();
-			ninjectKernel.Bind<IPostRepository>().To<EFPostRepository>();
+			ninjectKernel.Bind<IBlogRepository>().To<EFBlogRepository>();
 			//ninjectKernel.Bind<UserManager<IdentityUser>>().To<IdentityUserManager>();
 			//ninjectKernel.Bind<SignInManager<IdentityUser, string>>().To<IdentitySignInManager>();
 		}

@@ -433,6 +433,10 @@
     <Content Include="Scripts\i18n\vi.js" />
     <Content Include="Scripts\i18n\zh-CN.js" />
     <Content Include="Scripts\i18n\zh-TW.js" />
+    <Content Include="Areas\Blog\Views\Blog\BlogMenu.cshtml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
@@ -443,6 +447,7 @@
     <Content Include="Scripts\jquery.icheck.min.js.map" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\tinymce\changelog.txt" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Scripts\tinymce\langs\ru.js" />
@@ -647,8 +652,10 @@
     <Compile Include="Areas\Admin\Models\EditAccountViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ProfileViewModel.cs" />
     <Compile Include="Areas\Admin\Models\RoleItem.cs" />
+    <Compile Include="Areas\Blog\BlogAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Areas\Blog\Controllers\BlogController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\ForEnrolleeController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -670,6 +677,7 @@
     <Compile Include="Areas\Admin\Models\InfoAccountViewModel.cs" />
     <Compile Include="Infrastructure\SecurityAttribute.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Areas\Blog\Models\BlogMenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -706,6 +714,10 @@
     <Content Include="Areas\Admin\Views\Shared\_PartialMessager.cshtml" />
     <Content Include="Areas\Admin\Views\Account\EditAccount.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Blog\Views\web.config" />
+    <Content Include="Areas\Blog\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Blog\Views\Shared\_BlogLayout.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -717,6 +729,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\actsScripts\" />
+    <Folder Include="Views\Blog\" />
     <Folder Include="Views\Employee\Enrollee\" />
     <Folder Include="Views\ForEnrollee\" />
     <Folder Include="Views\ForStudent\" />
