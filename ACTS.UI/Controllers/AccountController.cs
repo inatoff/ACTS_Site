@@ -122,8 +122,7 @@ namespace ACTS.UI.Controllers
 
 			return View(model);
 		}
-
-		//
+        
 		// POST: /Account/LogOff
 		[HttpPost]
 		[ValidateAntiForgeryToken]
