@@ -133,6 +133,14 @@ namespace ACTS.UI.Controllers
 			return RedirectToAction("Index", "Home");
 		}
 
+		[HttpPost]
+		public JsonResult doesUserNameExist(string userName)
+		{
+			ApplicationUser user;
+			user = UserManager.FindByName(userName);
+			return Json(user == null);
+		}
+
 		#region Helpers
 		private IAuthenticationManager AuthenticationManager
 		{
@@ -157,6 +165,14 @@ namespace ACTS.UI.Controllers
 			} else
 			{
 				return RedirectToAction("Index", "Home");
+			}
+		}
+
+		private void AddErrors(IdentityResult result)
+		{
+			foreach (var error in result.Errors)
+			{
+				ModelState.AddModelError("", error);
 			}
 		}
 		#endregion

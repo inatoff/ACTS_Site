@@ -1,8 +1,8 @@
-﻿@model ACTS.UI.Areas.Admin.Models.ProfileViewModel
+﻿@model ACTS.UI.Areas.Admin.Models.MyAccountViewModel
 
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
-	ViewBag.Title = "Profile";
+	ViewBag.Title = "My account";
 }
 
 <div class="row">
@@ -11,17 +11,15 @@
 			<div class="box-header with-border">
 				<div class="box-title"> Change user name</div>
 			</div>
-			@using (Html.BeginForm("ChangeUserName", "Account", new { area = "" }, FormMethod.Post))
+			@using (Html.BeginForm("ChangeUserName", "MyAccount", FormMethod.Post))
 			{
 				<div class="box-body">
 					@Html.AntiForgeryToken()
-					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-					@Html.HiddenFor(model => model.Id)
-
+					@Html.HiddenFor(model => model.OldUserName)
 					<div class="form-group">
 						@Html.LabelFor(model => model.UserName)
-						<p class="help-block">@Html.DescriptionFor(model => model.UserName)</p>
 						@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+						<p class="help-block">@Html.DescriptionFor(model => model.UserName)</p>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
 							@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "User name" } })
@@ -31,7 +29,7 @@
 
 				<div class="box-footer">
 					<button type="submit" class="btn btn-primary">
-						<i class="fa fa-save">&nbsp;</i>Update user name
+						<i class="fa fa-save">&nbsp;</i> Update user name
 					</button>
 				</div>
 			}
@@ -43,17 +41,16 @@
 			<div class="box-header with-border">
 				<div class="box-title"> Change emaill</div>
 			</div>
-			@using (Html.BeginForm("ChangeEmail", "Account", new { area = "" }, FormMethod.Post))
+			@using (Html.BeginForm("ChangeEmail", "MyAccount", FormMethod.Post))
 			{
 				<div class="box-body">
 					@Html.AntiForgeryToken()
-					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-					@Html.HiddenFor(model => model.Id)
+					@Html.HiddenFor(model => model.OldEmail)
 
 					<div class="form-group">
 						@Html.LabelFor(model => model.Email)
-						<p class="help-block">@Html.DescriptionFor(model => model.Email)</p>
 						@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+						<p class="help-block">@Html.DescriptionFor(model => model.Email)</p>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 							@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
@@ -75,12 +72,10 @@
 			<div class="box-header with-border">
 				<div class="box-title">Change password</div>
 			</div>
-			@using (Html.BeginForm("ChangePassword", "Account", new { area = "" }, FormMethod.Post))
+			@using (Html.BeginForm("ChangePassword", "MyAccount", FormMethod.Post))
 			{
 				<div class="box-body">
 					@Html.AntiForgeryToken()
-					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-					@Html.HiddenFor(model => model.Id)
 
 					<div class="form-group">
 						@Html.LabelFor(model => model.CurrentPassword)
@@ -93,11 +88,11 @@
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.Password)
-						@Html.ValidationMessageFor(model => Model.Password, "", new { @class = "text-danger" })
+						@Html.LabelFor(model => model.NewPassword)
+						@Html.ValidationMessageFor(model => Model.NewPassword, "", new { @class = "text-danger" })
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-key "></i></span>
-							@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+							@Html.EditorFor(model => model.NewPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
 						</div>
 					</div>
 
@@ -141,11 +136,10 @@
 									<h4 class="modal-title" id="deleteModalLabel">Are you sure you want to do this?</h4>
 								</div>
 
-								@using (Html.BeginForm("DeleteCurrent", "Account", new { area = "" }, FormMethod.Post))
+								@using (Html.BeginForm("DeleteCurrent", "MyAccount", FormMethod.Post))
 								{
 									<div class="modal-body">
 										@Html.AntiForgeryToken()
-										@Html.HiddenFor(model => model.Id)
 
 										<div class="form-group has-feedback">
 											<label for="EmailOrLogin">Email or login:</label>
@@ -154,7 +148,7 @@
 										</div>
 
 										<div class="form-group has-feedback">
-											<label for="confirmation_phrase">
+											<label for="ConfirmationPhrase">
 												To verify, type
 												<span class="confirmation_phrase noselect">delete my account</span>
 												below:

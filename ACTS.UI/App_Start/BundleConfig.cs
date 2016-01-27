@@ -30,6 +30,13 @@ namespace ACTS.UI
 			bundles.Add(new ScriptBundle("~/bundles/select2")
 				.Include("~/Scripts/select2.js"));
 
+			bundles.Add(new ScriptBundle("~/bundles/jqueryval")
+				.Include("~/Scripts/jquery.validate.js")
+				.Include("~/Scripts/jquery.validate.unobtrusive.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/expressive")
+				.Include("~/Scripts/expressive.annotations.validate.js"));
+
 			bundles.Add(new StyleBundle("~/Content/css")
 				.Include("~/Content/bootstrap.css",
 						"~/Content/font-awesome.css"));

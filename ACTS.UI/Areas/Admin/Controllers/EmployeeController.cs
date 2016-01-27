@@ -12,6 +12,7 @@ using ACTS.UI.Areas.Admin.Models;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
+	[Authorize(Roles = "Admin")]
 	public class EmployeeController : Controller
 	{
 		private IEmployeeRepository repository;

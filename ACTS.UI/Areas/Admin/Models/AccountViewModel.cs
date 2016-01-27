@@ -12,18 +12,21 @@ namespace ACTS.UI.Areas.Admin.Models
 	public class AccountViewModel
 	{
 		[Required]
-		[Display(Name = "User name*")] 
+		[MinLength(5)]
+		[Display(Name = "User name*")]
+		[Remote("doesUserNameExist", "Account", AreaReference.UseRoot, HttpMethod = "POST", ErrorMessage = "User name already exists. Please enter a different user name.")]
 		public string UserName { get; set; }
 
 		[Required]
 		[Display(Name = "Password*")]
+		[StringLength(100, ErrorMessage = "The {0} have to be {2} characters.", MinimumLength = 8)]
 		[DataType(DataType.Password)]
-		[System.ComponentModel.DataAnnotations.Compare("ConfirmPassword", ErrorMessage = "The new password and confirmation password do not match")]
 		public string Password { get; set; }
 
 		[Required]
 		[Display(Name = "Confirm password*")]
 		[DataType(DataType.Password)]
+		[System.ComponentModel.DataAnnotations.Compare(nameof(Password), ErrorMessage = "The new password and confirmation password do not match.")]
 		public string ConfirmPassword { get; set; } 
 
 		[Display(Name ="Email adress")]

@@ -23,7 +23,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		public ActionResult Table()
 		{
 			IEnumerable<News> uncos = repository.Uncos.OrderBy(n => n.NewsId);
-			return View("TableUncos", uncos);
+			return View("TableNews", uncos);
 		}
 
 		public ActionResult Edit(int newsId)
