@@ -37,6 +37,7 @@ namespace ACTS.Core.Concrete
 					dbEntry.FullName = teacher.FullName;
 					dbEntry.Position = teacher.Position;
 					dbEntry.Degree = teacher.Degree;
+                    dbEntry.Rank = teacher.Rank;
 					dbEntry.Photo = teacher.Photo;
 					dbEntry.PhotoMimeType = teacher.PhotoMimeType;
 					dbEntry.Email = teacher.Email;
@@ -87,6 +88,7 @@ namespace ACTS.Core.Concrete
 				dbEntry.FullName = teacher.FullName;
 				dbEntry.Position = teacher.Position;
 				dbEntry.Degree = teacher.Degree;
+                dbEntry.Rank = teacher.Rank;
 				dbEntry.Photo = teacher.Photo;
 				dbEntry.PhotoMimeType = teacher.PhotoMimeType;
 				dbEntry.Email = teacher.Email;

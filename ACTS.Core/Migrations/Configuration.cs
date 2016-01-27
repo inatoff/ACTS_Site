@@ -75,6 +75,7 @@ namespace ACTS.Core.Migrations
                     {
                         FullName = "Теленик Сергій Федорович",
                         Degree = "д.т.н., професор",
+                        Rank = Rank.Head,
                         Position = "ЗАВІДУВАЧ КАФЕДРИ голова НМК МОН України \"Автоматика та управління\" керівник циклу математичних дисциплін",
                         Photo = new byte[fs.Length],
                         PhotoMimeType = "jpg"
@@ -94,6 +95,7 @@ namespace ACTS.Core.Migrations
                     {
                         FullName = "Новацький Анатолій Олександрович",
                         Degree = "к.т.н., доцент",
+                        Rank = Rank.FirstVice,
                         Position = "ПЕРШИЙ ЗАСТУПНИК заступник з навчально-виховної роботи відповідальний за заочну форму навчання керівник циклу \"Комп'ютерна електроніка та мікропроцесорна техніка\"",
                         Photo = new byte[fs.Length],
                         PhotoMimeType = "jpg"

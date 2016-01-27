@@ -1,0 +1,41 @@
+﻿@model ACTS.Core.Entities.Teacher
+<div class="personWrapper">
+    <div class="personAvatar">
+        <img @Model.Photo>
+    </div>
+    <div class="personName">
+        @Model.FullName
+    </div>
+    <div class="personPosition">
+        @Model.Position
+    </div>
+    <div class="personDescription">
+        <p>Степень:@Model.Degree</p>
+        <p><strong>Дисциплины:</strong></p>
+        <ul>
+            @{
+                foreach (var item in Model.Disciplines)
+                {
+                    <li>
+                        item
+                    </li>
+                }
+            }
+        </ul>
+        <p><strong>Интересы:</strong></p>
+        <ul>
+            @{
+                foreach (var item in Model.ScienceInterests)
+                {
+                    <li>
+                        item
+                    </li>
+                }
+            }
+        </ul>
+        @if (Model.Blog != null)
+        {
+            @Html.Action("Персональная страница", "Index", new { area="Peoples", controller="PersonalPage", nameSlug=Model.NameSlug})
+        }
+    </div>
+</div>
