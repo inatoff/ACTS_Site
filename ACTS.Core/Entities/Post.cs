@@ -23,5 +23,7 @@ namespace ACTS.Core.Entities
 		[DataType(DataType.MultilineText)]
 		[AllowHtml]
 		public string Content { get; set; }
-	}
+         
+        public virtual Blog Blog { get; set; }
+    }
 }

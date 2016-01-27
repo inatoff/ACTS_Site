@@ -67,7 +67,7 @@ namespace ACTS.UI.Controllers
                 if (User.IsInRole("Teacher"))
                 {
                     var blog = _blogRepository.GetBlogByAuthorNameSlug(nameSlug);
-                    if (User.Identity.Name == blog.Author.User.UserName)
+                    if (User.Identity.Name == blog.Teacher.User.UserName)
                     {
                         items.Add(new BlogMenuItem()
                         {

@@ -23,6 +23,8 @@ namespace ACTS.Core.Entities
 		[EmailAddress]
 		public string Email { get; set; }
 
+        [Display(Name = "Slug")]
+        public string NameSlug { get; set; }
 
 		[Url]
 		[Display(Name = "Intellect url")]
@@ -53,7 +55,7 @@ namespace ACTS.Core.Entities
 
         public virtual IList<string> Publications { get; set; }
 
-        public virtual IList<string> ScienceInterests { get; set; }
+        public IList<string> ScienceInterests { get; set; }
 
         public virtual Blog Blog { get; set; }
 	}

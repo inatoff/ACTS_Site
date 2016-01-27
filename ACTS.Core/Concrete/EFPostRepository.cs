@@ -66,7 +66,7 @@ namespace ACTS.Core.Concrete
 
         public Blog GetBlogByAuthorNameSlug(string slug)
         {
-            return Blogs.FirstOrDefault(b => b.Author.NameSlug == slug);
+            return Blogs.FirstOrDefault(b => b.Teacher.NameSlug == slug);
         }
     } 
 }

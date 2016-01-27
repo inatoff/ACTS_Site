@@ -7,13 +7,13 @@ namespace ACTS.Core.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class initIdentity : IMigrationMetadata
+    public sealed partial class InitDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initIdentity));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201601101740031_initIdentity"; }
+            get { return "201601271215143_InitDb"; }
         }
         
         string IMigrationMetadata.Source

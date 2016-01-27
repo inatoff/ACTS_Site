@@ -75,6 +75,7 @@
     <Compile Include="Concrete\EFPostRepository.cs" />
     <Compile Include="Concrete\EFTeacherRepository.cs" />
     <Compile Include="Abstract\IBlogRepository.cs" />
+    <Compile Include="Define.cs" />
     <Compile Include="Entities\Blog.cs" />
     <Compile Include="Identity\ApplicationRole.cs" />
     <Compile Include="Identity\ApplicationUser.cs" />
@@ -88,29 +89,9 @@
     <Compile Include="Identity\ApplicationUserStore.cs" />
     <Compile Include="Identity\ApplicationRoleStore.cs" />
     <Compile Include="Identity\ApplicationUserRole.cs" />
-    <Compile Include="Migrations\201512151348041_maybeItWorks.cs" />
-    <Compile Include="Migrations\201512151348041_maybeItWorks.Designer.cs">
-      <DependentUpon>201512151348041_maybeItWorks.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512182341358_TeachersWorkerEmployee.cs" />
-    <Compile Include="Migrations\201512182341358_TeachersWorkerEmployee.Designer.cs">
-      <DependentUpon>201512182341358_TeachersWorkerEmployee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512191246164_TeachersWorkerEmployee_ver2.cs" />
-    <Compile Include="Migrations\201512191246164_TeachersWorkerEmployee_ver2.Designer.cs">
-      <DependentUpon>201512191246164_TeachersWorkerEmployee_ver2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512212001558_requeredFilds.cs" />
-    <Compile Include="Migrations\201512212001558_requeredFilds.Designer.cs">
-      <DependentUpon>201512212001558_requeredFilds.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601101740031_initIdentity.cs" />
-    <Compile Include="Migrations\201601101740031_initIdentity.Designer.cs">
-      <DependentUpon>201601101740031_initIdentity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601201453446_relation_User_Teacher.cs" />
-    <Compile Include="Migrations\201601201453446_relation_User_Teacher.Designer.cs">
-      <DependentUpon>201601201453446_relation_User_Teacher.cs</DependentUpon>
+    <Compile Include="Migrations\201601271215143_InitDb.cs" />
+    <Compile Include="Migrations\201601271215143_InitDb.Designer.cs">
+      <DependentUpon>201601271215143_InitDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -122,26 +103,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512151348041_maybeItWorks.resx">
-      <DependentUpon>201512151348041_maybeItWorks.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512182341358_TeachersWorkerEmployee.resx">
-      <DependentUpon>201512182341358_TeachersWorkerEmployee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512191246164_TeachersWorkerEmployee_ver2.resx">
-      <DependentUpon>201512191246164_TeachersWorkerEmployee_ver2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512212001558_requeredFilds.resx">
-      <DependentUpon>201512212001558_requeredFilds.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601101740031_initIdentity.resx">
-      <DependentUpon>201601101740031_initIdentity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601201453446_relation_User_Teacher.resx">
-      <DependentUpon>201601201453446_relation_User_Teacher.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601271215143_InitDb.resx">
+      <DependentUpon>201601271215143_InitDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Migrations\ImagesForSeed\Новацкий.jpg" />
     <Content Include="Migrations\ImagesForSeed\Теленик.jpg" />
