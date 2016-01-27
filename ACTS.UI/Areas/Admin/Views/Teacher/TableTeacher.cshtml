@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<ACTS.Core.Entities.Teacher>
 
 @{
+	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
 	ViewBag.Title = "Table of teacher";
 	ViewBag.CurrentTreeView = "Tables";
 }

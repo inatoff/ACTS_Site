@@ -29,13 +29,13 @@ namespace ACTS.UI.Controllers
 				cookie.Expires = DateTime.Now.AddYears(1);
 			}
 			Response.Cookies.Add(cookie);
-			if (!string.IsNullOrEmpty(returnUrl)) 
+			if (Url.IsLocalUrl(returnUrl))
 				return Redirect(returnUrl);
 			return RedirectToAction("Index");
 		}   
-        public ActionResult Contacts()
-        {
-            return View();
-        }
+		public ActionResult Contacts()
+		{
+			return View();
+		}
 	}
 }

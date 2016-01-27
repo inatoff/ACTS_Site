@@ -24,8 +24,8 @@ namespace ACTS.Core.Identity
 	{
 		public ApplicationUserMap()
 		{
-            this.HasOptional(x => x.Teacher)
-                .WithOptionalPrincipal();
+			this.HasOptional(x => x.Teacher)
+				.WithOptionalPrincipal();
 		}
 	}
 }

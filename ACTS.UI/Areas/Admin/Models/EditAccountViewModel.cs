@@ -12,6 +12,7 @@ namespace ACTS.UI.Areas.Admin.Models
 		public int Id { get; set; }
 
 		[Required]
+		[MinLength(5)]
 		[Display(Name = "User name*")]
 		public string UserName { get; set; }
 

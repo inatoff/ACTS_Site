@@ -54,7 +54,7 @@ namespace ACTS.UI.Helpers
 			}
 		}
 
-		public static void AddMessage(this TempDataDictionary tempData, MessageType type, IEnumerable<string> bodies)
+		public static void AddMessages(this TempDataDictionary tempData, MessageType type, IEnumerable<string> bodies)
 		{
 			var messages = bodies.Select(b => new Message(type, b));
 

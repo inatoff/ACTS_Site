@@ -8,6 +8,8 @@ using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ACTS.Core.Identity;
+using ACTS.UI.Areas.Admin.Models;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
@@ -19,5 +21,20 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			return View();
 		}
+
+		//public ActionResult MyAccount()
+		//{
+		//	var model = new ProfileViewModel();
+		//	using (var manager = new ApplicationUserManager())
+		//	{
+		//		ApplicationUser user = manager.FindById(User.Identity.GetUserId<int>());
+
+		//		ViewBag.ReturnUrl = Url.Action();
+		//		model.UserName = user.UserName;
+		//		model.Email = user.Email;
+		//	}
+
+		//	return View(model);
+		//}
 	}
 }

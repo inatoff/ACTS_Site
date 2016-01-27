@@ -61,10 +61,10 @@
 							<span>Dashboard</span>
 						</a>
 					</li>
-					<li class="@IsActivePage("Profile")">
-						<a href="@Url.Action("Index", "Account")">
+					<li class="@IsActivePage("Index")">
+						<a href="@Url.Action("Index", "MyAccount")">
 							<i class="fa fa-user"></i>
-							<span>Account</span>
+							<span>My account</span>
 						</a>
 					</li>
 					<li class="treeview @IsActiveTreeView("Tables")">
@@ -74,7 +74,7 @@
 							<i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li class="@IsActivePage("TableUncos")"><a href="@Url.Action("Table","News")"><i class="fa fa-circle-o"></i>Uncos</a></li>
+							<li class="@IsActivePage("TableNews")"><a href="@Url.Action("Table","News")"><i class="fa fa-circle-o"></i>Uncos</a></li>
 							<li class="@IsActivePage("TableEmployee")"><a href="@Url.Action("Table", "Employee")"><i class="fa fa-circle-o"></i>Employees</a></li>
 							<li class="@IsActivePage("TableTeacher")"><a href="@Url.Action("Table", "Teacher")"><i class="fa fa-circle-o"></i>Teachers</a></li>
 							<li class="@IsActivePage("TableAccount")"><a href="@Url.Action("Table", "Account")"><i class="fa fa-circle-o"></i>Accounts</a></li>
@@ -133,6 +133,9 @@
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/bootstrap")
 	@Scripts.Render("~/bundles/admin")
+@*засунуть куда нужно потом*@
+	@Scripts.Render("~/bundles/jqueryval")
+	@Scripts.Render("~/bundles/expressive")
 	@RenderSection("scripts", required: false)
 </body>
 </html>

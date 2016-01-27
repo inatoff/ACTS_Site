@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
+	[Authorize(Roles = "Admin")]
 	public class TeacherController : Controller
 	{
 		private ITeacherRepository repository;

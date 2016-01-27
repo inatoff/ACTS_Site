@@ -7,8 +7,8 @@ using System.Web.Mvc;
 
 namespace ACTS.Core.Entities
 {
-    public class Event
-    {
+	public class Event
+	{
 		[HiddenInput(DisplayValue = false)]
 		public int EventId { get; set; }
 

@@ -34,45 +34,32 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			get { return new ApplicationRoleManager(); }
 		}
 
-		public ActionResult Index()
-		{
-			ApplicationUser user = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(HttpContext.User.Identity.GetUserId<int>());
-
-			var model = new ProfileViewModel()
-			{
-				Id = user.Id,
-				UserName = user.UserName,
-				Email = user.Email
-			};
-
-			return View(model);
-		}
-
 		public async Task<ActionResult> Table()
 		{
-			//Func<ApplicationUser, Task<AccountInfoViewModel>> funk = async (user) => {
-			//	return new AccountInfoViewModel {
-			//		Id = user.Id,
-			//		Email = user.Email,
-			//		UserName = user.UserName,
-			//		TeacherKey = user.TeacherKey,
-			//		Roles = await UserManager.GetRolesAsync(user.Id)
-			//	};
-			//};
+			IEnumerable<InfoAccountViewModel> model;
+			using (var userManager = UserManager)
+			{
+				var users = userManager.Users;
 
-			var users = UserManager.Users;
+				var tasks = users.Select(async delegate (ApplicationUser user)
+				{
+					InfoAccountViewModel infoAccount;
 
-			var tasks = users.Select(async delegate (ApplicationUser user) {
-				return new InfoAccountViewModel {
-					Id = user.Id,
-					Email = user.Email,
-					UserName = user.UserName,
-					TeacherName = user.Teacher?.FullName,
-					Roles = await UserManager.GetRolesAsync(user.Id)
-				};
-			});
+					using (var perQueryManager = UserManager)
+						infoAccount = new InfoAccountViewModel
+						{
+							Id = user.Id,
+							Email = user.Email,
+							UserName = user.UserName,
+							TeacherName = user.Teacher?.FullName,
+							Roles = await perQueryManager.GetRolesAsync(user.Id)
+						};
 
-			var model = await Task.WhenAll(tasks);
+					return infoAccount;
+				});
+
+				model = await Task.WhenAll(tasks);
+			}
 
 			return View("TableAccount", model);
 		}
@@ -92,11 +79,11 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		[HttpGet]
 		public ActionResult Create()
 		{
-			var model = new AccountViewModel() {
-				Roles = RoleManager.Roles.Select(r => new RoleItem() { Value = r.Name })
-										  .OrderBy(r => r.Value)
-										  .ToList()
-			};
+			var model = new AccountViewModel();
+			using (var manager = RoleManager)
+				model.Roles = manager.Roles.Select(r => new RoleItem() { Value = r.Name })
+										   .OrderBy(r => r.Value)
+										   .ToList();
 
 			InitTeachersItems();
 
@@ -115,27 +102,30 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					LockoutEnabled = true
 				};
 
-				var result = await UserManager.CreateAsync(user, model.Password);
-
-				if (!result.Succeeded)
+				using (var manager = UserManager)
 				{
-					foreach (var error in result.Errors)
-						ModelState.AddModelError("", error);
+					var result = await manager.CreateAsync(user, model.Password);
 
-					InitTeachersItems(model.PairTeacherId);
+					if (!result.Succeeded)
+					{
+						foreach (var error in result.Errors)
+							ModelState.AddModelError("", error);
 
-					return View("CreateAccount", model);
+						InitTeachersItems(model.PairTeacherId);
+
+						return View("CreateAccount", model);
+					}
+
+					if (model.PairTeacherId.HasValue)
+						_teacherRepository.AddPairToUser(model.PairTeacherId.Value, user.Id);
+
+					if (!result.Succeeded)
+						TempData.AddMessages(MessageType.Warning, result.Errors);
+
+					result = await manager.AddToRolesAsync(user.Id, model.SelectedRoles.ToArray());
+
+					TempData.AddMessage(new Message(MessageType.Success, $"User \"{user.UserName}\" successfully created."));
 				}
-
-				if (model.PairTeacherId.HasValue)
-					_teacherRepository.AddPairToUser(model.PairTeacherId.Value, user.Id);
-
-				if (!result.Succeeded)
-					TempData.AddMessage(MessageType.Warning, result.Errors);
-
-				result = await UserManager.AddToRolesAsync(user.Id, model.SelectedRoles.ToArray());
-
-				TempData.AddMessage(new Message(MessageType.Success, $"User \"{user.UserName}\" successfully created."));
 
 				return RedirectToAction(nameof(Table));
 			}
@@ -148,26 +138,34 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		[HttpGet]
 		public async Task<ActionResult> Edit(int Id)
 		{
-			var user = await UserManager.FindByIdAsync(Id);
-
-			if (user == null)
+			EditAccountViewModel model;
+			using (var userManager = UserManager)
 			{
-				TempData.AddMessage(MessageType.Warning, $"User with ID = {Id} was not found.");
-				return RedirectToAction(nameof(Table));
+				var user = await userManager.FindByIdAsync(Id);
+
+				if (user == null)
+				{
+					TempData.AddMessage(MessageType.Warning, $"User with ID = {Id} was not found.");
+					return RedirectToAction(nameof(Table));
+				}
+
+				using (var roleManager = RoleManager)
+				{
+					var roles = roleManager.Roles.AsEnumerable();
+
+					var userRoles = await userManager.GetRolesAsync(Id);
+
+					model = new EditAccountViewModel()
+					{
+						Id = user.Id,
+						Email = user.Email,
+						UserName = user.UserName,
+						Roles = roles.Select(r => new RoleItem() { Value = r.Name, Selected = userRoles.Contains(r.Name) }).ToList()
+					};
+				}
+
+				InitTeachersItems(user.Teacher?.TeacherId);
 			}
-
-			var roles = RoleManager.Roles.AsEnumerable();
-
-			var userRoles = await UserManager.GetRolesAsync(Id);
-
-			var model = new EditAccountViewModel() {
-				Id = user.Id,
-				Email = user.Email,
-				UserName = user.UserName,
-				Roles = roles.Select(r => new RoleItem() { Value = r.Name, Selected = userRoles.Contains(r.Name) }).ToList()
-			};
-
-			InitTeachersItems(user.Teacher?.TeacherId);
 
 			return View("EditAccount", model);
 		}
@@ -178,47 +176,50 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var user = await UserManager.FindByIdAsync(model.Id);
-
-				if (user == null)
+				using (var manager = UserManager)
 				{
-					TempData.AddMessage(MessageType.Danger, $"User with ID = {model.Id} was not found.");
-					return RedirectToAction(nameof(Table));
+					var user = await manager.FindByIdAsync(model.Id);
+
+					if (user == null)
+					{
+						TempData.AddMessage(MessageType.Danger, $"User with ID = {model.Id} was not found.");
+						return RedirectToAction(nameof(Table));
+					}
+
+					user.UserName = model.UserName;
+					user.Email = model.Email;
+
+					var result = await manager.UpdateAsync(user);
+
+					if (!result.Succeeded)
+					{
+						foreach (var error in result.Errors)
+							ModelState.AddModelError("", error);
+
+						InitTeachersItems(model.PairTeacherId);
+
+						return View("EditAccount", model);
+					}
+
+					var userRoles = await manager.GetRolesAsync(model.Id); // роли редактируемого юзера
+
+					result = await manager.RemoveFromRolesAsync(model.Id, userRoles.Intersect(model.UnselectedRoles).ToArray());
+
+					if (!result.Succeeded)
+						TempData.AddMessages(MessageType.Warning, result.Errors);
+
+					result = await manager.AddToRolesAsync(model.Id, model.SelectedRoles.Except(userRoles).ToArray());
+
+					if (!result.Succeeded)
+						TempData.AddMessages(MessageType.Warning, result.Errors);
+
+					if (user.HasTeacher)
+						_teacherRepository.RemovePairToUser(user.Teacher.TeacherId);
+					if (model.PairTeacherId.HasValue)
+						_teacherRepository.AddPairToUser(model.PairTeacherId.Value, user.Id);
+
+					TempData.AddMessage(new Message(MessageType.Success, $"User \"{user.UserName}\" successfully saved."));
 				}
-
-				user.UserName = model.UserName;
-				user.Email = model.Email;
-
-				var result = await UserManager.UpdateAsync(user);
-
-				if (!result.Succeeded)
-				{
-					foreach (var error in result.Errors)
-						ModelState.AddModelError("", error);
-
-					InitTeachersItems(model.PairTeacherId);
-
-					return View("EditAccount", model);
-				}
-
-				var userRoles = await UserManager.GetRolesAsync(model.Id); // роли редактируемого юзера
-
-				result = await UserManager.RemoveFromRolesAsync(model.Id, userRoles.Intersect(model.UnselectedRoles).ToArray());
-
-				if (!result.Succeeded)
-					TempData.AddMessage(MessageType.Warning, result.Errors);
-
-				result = await UserManager.AddToRolesAsync(model.Id, model.SelectedRoles.Except(userRoles).ToArray());
-
-				if (!result.Succeeded)
-					TempData.AddMessage(MessageType.Warning, result.Errors);
-
-				if (user.HasTeacher)
-					_teacherRepository.RemovePairToUser(user.Teacher.TeacherId);
-				if (model.PairTeacherId.HasValue)
-					_teacherRepository.AddPairToUser(model.PairTeacherId.Value, user.Id);
-
-				TempData.AddMessage(new Message(MessageType.Success, $"User \"{user.UserName}\" successfully saved."));
 
 				return RedirectToAction(nameof(Table));
 			}
@@ -234,7 +235,6 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			using (var manager = UserManager)
 			{
-
 				var user = await manager.FindByIdAsync(Id);
 
 				if (user == null)
@@ -258,7 +258,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				if (result.Succeeded)
 					TempData.AddMessage(new Message(MessageType.Success, $"User \"{user.UserName}\" successfully deleted."));
 				else
-					TempData.AddMessage(MessageType.Warning, result.Errors);
+					TempData.AddMessages(MessageType.Warning, result.Errors);
 			}
 
 			return RedirectToAction(nameof(Table));

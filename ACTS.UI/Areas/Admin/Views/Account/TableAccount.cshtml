@@ -1,6 +1,7 @@
 @model IEnumerable<ACTS.UI.Areas.Admin.Models.InfoAccountViewModel>
 
 @{
+	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
 	ViewBag.Title = "Table of accounts";
 	ViewBag.CurrentTreeView = "Tables";
 }
