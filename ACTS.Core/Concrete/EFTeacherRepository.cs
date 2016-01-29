@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ACTS.Core.Entities;
 using ACTS.Core.Identity;
 using System.Collections;
+using System.Data.Entity;
 
 namespace ACTS.Core.Concrete
 {
@@ -18,8 +19,11 @@ namespace ACTS.Core.Concrete
 		{
 			get { return context.Teachers; }
 		}
-
-		public IQueryable<Teacher> NoPairTeachers
+        public async Task<IEnumerable<Teacher>> GetAllTeachersAsync()
+        {
+            return await context.Teachers.ToListAsync();
+        }
+        public IQueryable<Teacher> NoPairTeachers
 		{
 			get { return context.Teachers.Where(t => t.User == null); }
 		}

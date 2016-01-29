@@ -1,7 +1,14 @@
 ﻿@model ACTS.Core.Entities.Teacher
 <div class="personWrapper">
-    <div class="personAvatar">
-        <img @Model.Photo>
+    <div class="person__avatar">
+        @if (Model.Photo == null)
+        {
+            @:None
+									}
+        else
+        {
+            <img alt="Teacher image" width="100" height="150"  src="@Url.Action("GetImage", "Teacher", new { area = "", Model.TeacherId })" />}
+        
     </div>
     <div class="personName">
         @Model.FullName
@@ -12,7 +19,7 @@
     <div class="personDescription">
         <p>Степень:@Model.Degree</p>
         <p><strong>Дисциплины:</strong></p>
-        <ul>
+        @*<ul>
             @{
                 foreach (var item in Model.Disciplines)
                 {
@@ -32,7 +39,7 @@
                     </li>
                 }
             }
-        </ul>
+        </ul>*@
         @if (Model.Blog != null)
         {
             @Html.Action("Персональная страница", "Index", new { area="Peoples", controller="PersonalPage", nameSlug=Model.NameSlug})

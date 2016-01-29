@@ -20,5 +20,6 @@ namespace ACTS.Core.Abstract
 		Teacher GetTeacherById(int teacherId);
         Teacher GetTeacherByUrlSlug(string urlSlug);
         Teacher DeleteTeacher(int teacherID);
+        Task<IEnumerable<Teacher>> GetAllTeachersAsync();
 	}
 }

@@ -1,10 +1,12 @@
 ﻿using ACTS.Core.Abstract;
+using ACTS.Core.Concrete;
 using ACTS.Core.Entities;
 using ACTS.UI.App_LocalResources;
 using ACTS.UI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,13 +15,13 @@ namespace ACTS.UI.Controllers
 	public class TeacherController : BaseController
 	{
 		private ITeacherRepository repository;
-        
-		public TeacherController(ITeacherRepository employeeRepository)
-		{
-			repository = employeeRepository;
-		}
 
-		public FileContentResult GetImage(int teacherId)
+        public TeacherController(ITeacherRepository employeeRepository)
+        {
+            repository = employeeRepository;
+        }
+
+        public FileContentResult GetImage(int teacherId)
 		{
 			Teacher news = repository.GetTeacherById(teacherId);
 			if (news != null)
@@ -31,9 +33,10 @@ namespace ACTS.UI.Controllers
 			}
 		}
 
-        public ViewResult TeachingStaff()
+        public async Task<ViewResult> TeachingStaff()
         {
-            return View(repository.Teachers);
+            IEnumerable<Teacher> teachers = await repository.GetAllTeachersAsync();
+            return View(teachers);
         }        
 	}
 }
