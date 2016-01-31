@@ -1,9 +1,9 @@
 ﻿<li class="dropdown">
-    <span style="display:block; padding:10px 15px;padding-top:15px; color:#777; cursor:pointer;">@GlobalRes.Department<b class="caret"></b></span>
+    <span>@GlobalRes.Department<b class="caret"></b></span>
     <ul class="dropdown-menu">
         <li><a href="@Url.Action("About", "Department")">@GlobalRes.About</a></li>
         <li><a href="@Url.Action("History", "Department")">@GlobalRes.History</a></li>
-        <li><a href="@Url.Action("TeachingStaff", "Department")">@GlobalRes.TeachingStaff</a></li>
+        <li><a href="@Url.Action("TeachingStaff", "Teacher")">@GlobalRes.TeachingStaff</a></li>
         <li><a href="@Url.Action("ServicePersonell", "Department")">@GlobalRes.ServicePersonell</a></li>
         <li><a href="@Url.Action("OurGraduates", "Department")">@GlobalRes.OurGraduates</a></li>
         <li><a href="@Url.Action("Placement", "Department")">@GlobalRes.Placement</a></li>
@@ -41,3 +41,5 @@
     </ul>
 </li>   
 <li><a href="@Url.Action("Contacts","Home")">@GlobalRes.Contact</a></li>
+<li>@{Html.RenderAction("AuthenticationLink", new { controller = "Account"}); }</li>
+<li style=""></li>

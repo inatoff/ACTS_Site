@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ACTS.Core.Entities;
 using ACTS.Core.Identity;
 using System.Collections;
+using System.Data.Entity;
 
 namespace ACTS.Core.Concrete
 {
@@ -18,8 +19,11 @@ namespace ACTS.Core.Concrete
 		{
 			get { return context.Teachers; }
 		}
-
-		public IQueryable<Teacher> NoPairTeachers
+        public async Task<IEnumerable<Teacher>> GetAllTeachersAsync()
+        {
+            return await context.Teachers.ToListAsync();
+        }
+        public IQueryable<Teacher> NoPairTeachers
 		{
 			get { return context.Teachers.Where(t => t.User == null); }
 		}
@@ -37,6 +41,7 @@ namespace ACTS.Core.Concrete
 					dbEntry.FullName = teacher.FullName;
 					dbEntry.Position = teacher.Position;
 					dbEntry.Degree = teacher.Degree;
+                    dbEntry.Rank = teacher.Rank;
 					dbEntry.Photo = teacher.Photo;
 					dbEntry.PhotoMimeType = teacher.PhotoMimeType;
 					dbEntry.Email = teacher.Email;
@@ -87,6 +92,7 @@ namespace ACTS.Core.Concrete
 				dbEntry.FullName = teacher.FullName;
 				dbEntry.Position = teacher.Position;
 				dbEntry.Degree = teacher.Degree;
+                dbEntry.Rank = teacher.Rank;
 				dbEntry.Photo = teacher.Photo;
 				dbEntry.PhotoMimeType = teacher.PhotoMimeType;
 				dbEntry.Email = teacher.Email;
@@ -131,5 +137,12 @@ namespace ACTS.Core.Concrete
 		{
 			return context.Teachers.Where(t => t.User == null || t.TeacherId == teacherId);
 		}
-	}
+
+
+        public void InitBlog(int teacherId)
+        {
+            Teacher teacher = context.Teachers.FirstOrDefault(t => t.TeacherId == teacherId);
+            teacher.Blog = new Blog();
+        }
+    }
 }

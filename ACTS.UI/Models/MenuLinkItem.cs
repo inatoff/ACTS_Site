@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ACTS.UI.Models
 {
-    public class BlogMenuItem
+    public class MenuLinkItem
     {
         public string Text { get; set; }
         public string Action { get; set; }

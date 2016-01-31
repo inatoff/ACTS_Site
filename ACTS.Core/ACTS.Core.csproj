@@ -93,6 +93,14 @@
     <Compile Include="Migrations\201601271215143_InitDb.Designer.cs">
       <DependentUpon>201601271215143_InitDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601272158144_AddedRanksToTeachers.cs" />
+    <Compile Include="Migrations\201601272158144_AddedRanksToTeachers.Designer.cs">
+      <DependentUpon>201601272158144_AddedRanksToTeachers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601272217593_AddedDisciplinesToTeacher.cs" />
+    <Compile Include="Migrations\201601272217593_AddedDisciplinesToTeacher.Designer.cs">
+      <DependentUpon>201601272217593_AddedDisciplinesToTeacher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -105,6 +113,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201601271215143_InitDb.resx">
       <DependentUpon>201601271215143_InitDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601272158144_AddedRanksToTeachers.resx">
+      <DependentUpon>201601272158144_AddedRanksToTeachers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601272217593_AddedDisciplinesToTeacher.resx">
+      <DependentUpon>201601272217593_AddedDisciplinesToTeacher.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -20,6 +20,8 @@ namespace ACTS.Core.Entities
 
 		public string Degree { get; set; } // Научная степень    
 
+        public Rank Rank { get; set; }
+
 		[EmailAddress]
 		public string Email { get; set; }
 
@@ -51,12 +53,14 @@ namespace ACTS.Core.Entities
 
 		// PersonalPage
 
-        public virtual IList<string> Projects { get; set; }
-
-        public virtual IList<string> Publications { get; set; }
+        public IList<string> Disciplines { get; set; }
 
         public IList<string> ScienceInterests { get; set; }
 
+        public virtual IList<string> Projects { get; set; }
+
+        public virtual IList<string> Publications { get; set; }
+        
         public virtual Blog Blog { get; set; }
 	}
 
@@ -68,4 +72,13 @@ namespace ACTS.Core.Entities
 				.WithOptionalPrincipal();
 		}
 	}
+
+    public enum Rank
+    {
+        Head,
+        FirstVice,
+        Vice,
+        Teacher,
+        Assistant
+    }
 }
