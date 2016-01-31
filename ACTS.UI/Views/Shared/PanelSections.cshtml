@@ -1,5 +1,5 @@
 ﻿<li class="dropdown">
-    <span style="display:block; padding:10px 15px;padding-top:15px; color:#777; cursor:pointer;">@GlobalRes.Department<b class="caret"></b></span>
+    <span>@GlobalRes.Department<b class="caret"></b></span>
     <ul class="dropdown-menu">
         <li><a href="@Url.Action("About", "Department")">@GlobalRes.About</a></li>
         <li><a href="@Url.Action("History", "Department")">@GlobalRes.History</a></li>
@@ -41,5 +41,5 @@
     </ul>
 </li>   
 <li><a href="@Url.Action("Contacts","Home")">@GlobalRes.Contact</a></li>
-<li class="dropdown"><span>@{Html.RenderAction("AuthenticationLink", new { controller = "Account", area = "" }); }</span></li>
+<li>@{Html.RenderAction("AuthenticationLink", new { controller = "Account"}); }</li>
 <li style=""></li>
