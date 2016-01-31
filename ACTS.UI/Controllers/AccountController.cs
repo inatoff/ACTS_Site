@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ACTS.UI.Helpers;
 using ACTS.Core.Identity;
+using ACTS.UI.Infrastructure;
 
 namespace ACTS.UI.Controllers
 {
@@ -64,12 +65,9 @@ namespace ACTS.UI.Controllers
 			// но вместе с етим мы можем иметь ситуацию когда кто то битый час пытаеться войти 
 			// не зная почему его не пускает
 			if (string.IsNullOrWhiteSpace(returnUrl) ? false : returnUrl.ToLower().StartsWith("/admin"))
-			{
 				if (!User.IsInRole("Admin") && User.Identity.IsAuthenticated)
-				{
 					ModelState.AddModelError("", "Not enough rights for the current account.");
-				}
-			}
+
 			return View();
 		}
 
@@ -88,41 +86,43 @@ namespace ACTS.UI.Controllers
 				// возможно даже на оборот
 				//if (MailHelper.IsValidEmail(model.EmailOrLogin))
 				//{
-					var user = await UserManager.FindByEmailAsync(model.EmailOrLogin);
+				var user = await UserManager.FindByEmailAsync(model.EmailOrLogin);
 
-					if (user != null)
-						userName = user.UserName;
+				if (user != null)
+					userName = user.UserName;
 				//}
-				
+
 
 				var signInResult = await SignInManager.PasswordSignInAsync(userName, model.Password, model.RememberMe, shouldLockout: true);
 
 				switch (signInResult)
 				{
 					case SignInStatus.Success:
-					return RedirectToLocal(returnUrl);
+						return RedirectToLocal(returnUrl);
 
 					case SignInStatus.LockedOut:
-					ModelState.AddModelError("", "This account is locked. Try again later.");
-					break;
+						ModelState.AddModelError("", "This account is locked. Try again later.");
+						break;
 
 					//case SignInStatus.RequiresVerification:
 					//return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
 
 					case SignInStatus.Failure:
-					ModelState.AddModelError("", "Username or password is incorrect"/*"Невірний логін або пароль."*/);
-					break;
+						ModelState.AddModelError("", "Username or password is incorrect"/*"Невірний логін або пароль."*/);
+						break;
 
 					// я думаю это не достижимый код, но пускай будет
 					default:
-					ModelState.AddModelError("", "Failed login attempts."/*"Неудачная попытка входа."*/);
-					break;
+						ModelState.AddModelError("", "Failed login attempts."/*"Неудачная попытка входа."*/);
+						break;
 				}
 			}
 
+			ViewBag.ReturnUrl = returnUrl;
+
 			return View(model);
 		}
-        
+
 		// POST: /Account/LogOff
 		[HttpPost]
 		[ValidateAntiForgeryToken]
@@ -138,6 +138,84 @@ namespace ACTS.UI.Controllers
 			ApplicationUser user;
 			user = UserManager.FindByName(userName);
 			return Json(user == null);
+		}
+
+		//
+		// GET: /Account/ForgotPassword
+		[AllowAnonymous]
+		public ActionResult ForgotPassword(string returnUrl)
+		{
+			ViewBag.ReturnUrl = returnUrl;
+			return View();
+		}
+
+		//
+		// POST: /Account/ForgotPassword
+		[HttpPost]
+		[AllowAnonymous]
+		[ValidateAntiForgeryToken]
+		public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model, string returnUrl)
+		{
+			ViewBag.ReturnUrl = returnUrl;
+
+			if (ModelState.IsValid)
+			{
+				var user = await UserManager.FindByEmailAsync(model.Email);
+				if (user == null)
+					// Не показывать, что пользователь не существует или не подтвержден
+					return View("ForgotPasswordConfirmation");
+
+				//Дополнительные сведения о том, как включить подтверждение учетной записи и сброс пароля, см.по адресу: http://go.microsoft.com/fwlink/?LinkID=320771
+				//Отправка сообщения электронной почты с этой ссылкой
+				string token = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+				var callbackUrl = Url.Action(nameof(ResetPassword), "Account", new { userId = user.Id, token }, protocol: Request.Url.Scheme);
+
+				var emailModel = new
+				{
+					user.UserName,
+					CallbackUrl = callbackUrl
+				};
+
+				string body = EmailBodyFactory.GetEmailBody(emailModel, "ForgotPassword");
+				await UserManager.SendEmailAsync(user.Id, "Відновлення пароля", body);
+				return View("ForgotPasswordConfirmation");
+			}
+
+			// Появление этого сообщения означает наличие ошибки; повторное отображение формы
+			return View(model);
+		}
+
+		//
+		// GET: /Account/ResetPassword
+		[AllowAnonymous]
+		public ActionResult ResetPassword(int userId, string token)
+		{
+			var model = new ResetPasswordViewModel()
+			{
+				Token = token,
+				UserId = userId
+			};
+
+			return token == null ? View("Error") : View(model);
+		}
+
+		//
+		// POST: /Account/ResetPassword
+		[HttpPost]
+		[AllowAnonymous]
+		[ValidateAntiForgeryToken]
+		public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
+		{
+			if (ModelState.IsValid)
+			{
+				var result = await UserManager.ResetPasswordAsync(model.UserId, model.Token, model.NewPassword);
+				if (result.Succeeded)
+					return View("Login");
+
+				AddErrors(result);
+			}
+
+			return View(model);
 		}
 
 		#region Helpers
@@ -161,7 +239,8 @@ namespace ACTS.UI.Controllers
 			if (Url.IsLocalUrl(returnUrl))
 			{
 				return Redirect(returnUrl);
-			} else
+			}
+			else
 			{
 				return RedirectToAction("Index", "Home");
 			}
@@ -170,9 +249,7 @@ namespace ACTS.UI.Controllers
 		private void AddErrors(IdentityResult result)
 		{
 			foreach (var error in result.Errors)
-			{
 				ModelState.AddModelError("", error);
-			}
 		}
 		#endregion
 	}

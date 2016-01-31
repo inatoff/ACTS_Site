@@ -1,4 +1,4 @@
-#define RustamPC
+//#define RustamPC
 namespace ACTS.Core.Migrations
 {
 	using Concrete;
@@ -66,43 +66,43 @@ namespace ACTS.Core.Migrations
 			if (!teacherRepository.Teachers.Any())
 			{
 #if RustamPC
-                using (var fs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\Теленик.jpg", FileMode.Open))
+				using (var fs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\Теленик.jpg", FileMode.Open))
 #else
-                using (var fs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\Теленик.jpg", FileMode.Open))
+				using (var fs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\Теленик.jpg", FileMode.Open))
 #endif
-                {
-                    var teacher = new Teacher()
-                    {
-                        FullName = "Теленик Сергій Федорович",
-                        Degree = "д.т.н., професор",
-                        Position = "ЗАВІДУВАЧ КАФЕДРИ голова НМК МОН України \"Автоматика та управління\" керівник циклу математичних дисциплін",
-                        Photo = new byte[fs.Length],
-                        PhotoMimeType = "jpg"
-                    };
-                    fs.Read(teacher.Photo, 0, (int)fs.Length);
-                    teacher.PhotoMimeType = "jpg";
+				{
+					var teacher = new Teacher()
+					{
+						FullName = "Теленик Сергій Федорович",
+						Degree = "д.т.н., професор",
+						Position = "ЗАВІДУВАЧ КАФЕДРИ голова НМК МОН України \"Автоматика та управління\" керівник циклу математичних дисциплін",
+						Photo = new byte[fs.Length],
+						PhotoMimeType = "jpg"
+					};
+					fs.Read(teacher.Photo, 0, (int)fs.Length);
+					teacher.PhotoMimeType = "jpg";
 
-                    teacherRepository.CreateTeacher(teacher);
-                }
+					teacherRepository.CreateTeacher(teacher);
+				}
 #if RustamPC
-                using (var fs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\Новацкий.jpg", FileMode.Open))
+				using (var fs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\Новацкий.jpg", FileMode.Open))
 #else
-                using (var fs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\Новацкий.jpg", FileMode.Open))
+				using (var fs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\Новацкий.jpg", FileMode.Open))
 #endif
-                {
-                    var teacher = new Teacher()
-                    {
-                        FullName = "Новацький Анатолій Олександрович",
-                        Degree = "к.т.н., доцент",
-                        Position = "ПЕРШИЙ ЗАСТУПНИК заступник з навчально-виховної роботи відповідальний за заочну форму навчання керівник циклу \"Комп'ютерна електроніка та мікропроцесорна техніка\"",
-                        Photo = new byte[fs.Length],
-                        PhotoMimeType = "jpg"
-                    };
-                    fs.Read(teacher.Photo, 0, (int)fs.Length);
-                    teacher.PhotoMimeType = "jpg";
+				{
+					var teacher = new Teacher()
+					{
+						FullName = "Новацький Анатолій Олександрович",
+						Degree = "к.т.н., доцент",
+						Position = "ПЕРШИЙ ЗАСТУПНИК заступник з навчально-виховної роботи відповідальний за заочну форму навчання керівник циклу \"Комп'ютерна електроніка та мікропроцесорна техніка\"",
+						Photo = new byte[fs.Length],
+						PhotoMimeType = "jpg"
+					};
+					fs.Read(teacher.Photo, 0, (int)fs.Length);
+					teacher.PhotoMimeType = "jpg";
 
-                    teacherRepository.CreateTeacher(teacher);
-                }
+					teacherRepository.CreateTeacher(teacher);
+				}
 			}
 
 			base.Seed(context);

@@ -1,106 +1,106 @@
 ﻿@{
-    var culture = CultureHelper.GetImplementedCulture(UICulture);
-    //var lang = CultureHelper.GetCurrentNeutralCulture();
+	var culture = CultureHelper.GetImplementedCulture(UICulture);
+	//var lang = CultureHelper.GetCurrentNeutralCulture();
 }
 @helper LanguageLinkBuilder(string culture, string currentCulture)
-    {
-        @:<a
-        if (culture == currentCulture)
-        {
-           @:class="selectedLanguage"
-        }
-        @:href="@Url.Action("SetCulture", "Home", new { culture = culture, returnUrl = Url.Action() })">@culture</a>
-    }
+	{
+		@:<a
+		if (culture == currentCulture)
+		{
+		   @:class="selectedLanguage"
+		}
+		@:href="@Url.Action("SetCulture", "Home", new { culture = culture, returnUrl = Url.Action() })">@culture</a>
+	}
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" lang="@CultureHelper.GetCurrentNeutralCulture()" />
-    <title>@ViewBag.Title</title>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1" lang="@CultureHelper.GetCurrentNeutralCulture()" />
+	<title>@ViewBag.Title</title>
+	<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link href="~/Content/bootstrap.css" rel="stylesheet" />
+	<link href="~/Content/Site.css" rel="stylesheet" /> 
 </head>
 <body style="height:100%">
-    <div class="container">
-        <nav class="navbar navbar-default navbar-static-top" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="@Url.Action("Index", "Home")">
-                    <img src="~/Content/Images/logo.png" style="max-height:100%" />
-                </a>
-            </div> 
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @{
-                        if (ViewBag.CurrentPage != "main")
-                        {
-                            <li><a href="@Url.Action("Index", "Home")">@GlobalRes.Main</a></li>
-                        }
-                    }
-                    <!--Генерация панели навигации из PartialView PanelSections-->
-                    @Html.Partial("PanelSections")
-                </ul>
-                <!--Выбор локализации -->
-                <ul class="nav navbar-nav navbar-right">
-                    @foreach (var lang in CultureHelper.Cultures)
-                    {
-                        <li class="@lang
-                            @if (culture == lang) {
+	<div class="container">
+		<nav class="navbar navbar-default navbar-static-top" role="navigation">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="@Url.Action("Index", "Home")">
+					<img src="~/Content/Images/logo.png" style="max-height:100%" />
+				</a>
+			</div> 
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					@{
+						if (ViewBag.CurrentPage != "main")
+						{
+							<li><a href="@Url.Action("Index", "Home")">@GlobalRes.Main</a></li>
+						}
+					}
+					<!--Генерация панели навигации из PartialView PanelSections-->
+					@Html.Partial("PanelSections")
+				</ul>
+				<!--Выбор локализации -->
+				<ul class="nav navbar-nav navbar-right">
+					@foreach (var lang in CultureHelper.Cultures)
+					{
+						<li class="@lang
+							@if (culture == lang) {
 								 @:selectedLanguage
 							}
-                        ">
-                            <a href="@Url.Action("SetCulture", "Home", new {
-                                  culture = lang,
-                                  returnUrl = Url.Action()
-                              })"></a>
-                        </li>
-                    }
-                </ul>
-                <!--Поиск-->
-                @*<form class="navbar-form navbar-right">
-                    <input type="text" class="form-control" placeholder="@GlobalRes.Search">
-                </form>*@
-            </div>
+						">
+							<a href="@Url.Action("SetCulture", "Home", new {
+								  culture = lang,
+								  returnUrl = Url.Action()
+							  })"></a>
+						</li>
+					}
+				</ul>
+				<!--Поиск-->
+				@*<form class="navbar-form navbar-right">
+					<input type="text" class="form-control" placeholder="@GlobalRes.Search">
+				</form>*@
+			</div>
 
-        </nav>
+		</nav>
 
-    </div>
-    @if (ViewBag.CurrentPage == "main")
-    {
-    <div id="carousel" class="container carousel slide" data-ride="carousel">
-        
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="~/Content/Images/actsSlide1.jpg" alt="First slide" > 
-            </div>
-            <div class="item">
-                <img src="~/Content/Images/actsSlide2.jpg" alt="Second slide">
-            </div>
-            <div class="item">
-                <img src="~/Content/Images/actsSlide3.jpg" alt="Third slide">
-            </div>
-            <div class="item">
-                <img src="~/Content/Images/actsSlide4.jpg" alt="Third slide">
-            </div>
-        </div>
-    </div>
-    }
-    <div class="container" style="height:100%">
-        @RenderBody()
+	</div>
+	@if (ViewBag.CurrentPage == "main")
+	{
+	<div id="carousel" class="container carousel slide" data-ride="carousel">
+		
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img src="~/Content/Images/actsSlide1.jpg" alt="First slide" > 
+			</div>
+			<div class="item">
+				<img src="~/Content/Images/actsSlide2.jpg" alt="Second slide">
+			</div>
+			<div class="item">
+				<img src="~/Content/Images/actsSlide3.jpg" alt="Third slide">
+			</div>
+			<div class="item">
+				<img src="~/Content/Images/actsSlide4.jpg" alt="Third slide">
+			</div>
+		</div>
+	</div>
+	}
+	<div class="container" style="height:100%">
+		@RenderBody()
 
-        @if (ViewBag.CurrentPage != "main") { Html.RenderAction("FooterStringUncos", "News"); }
-        @if (ViewBag.CurrentPage == "main") { @Html.Partial("Footer"); }    
-    </div>
-    <script src="~/Scripts/jquery-2.1.4.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
+		@if (ViewBag.CurrentPage != "main") { Html.RenderAction("FooterStringUncos", "News"); }
+		@if (ViewBag.CurrentPage == "main") { @Html.Partial("Footer"); }    
+	</div>
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
 </body>
 </html>
 

@@ -9,9 +9,33 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using ACTS.Core.Concrete;
 using ACTS.Core.Identity;
+using System.Net.Mail;
+using System.Net;
+using System.Net.Configuration;
+using System.Configuration;
 
 namespace ACTS.UI
 {
+	public class EmailService : IIdentityMessageService
+	{
+		public async Task SendAsync(IdentityMessage message)
+		{
+			var smtpSection = (SmtpSection)ConfigurationManager.GetSection("system.net/mailSettings/smtp");
+			string fromAddress = smtpSection.From;
+
+			using (var smtp = new SmtpClient())
+			using (var mailMessage = new MailMessage(fromAddress, message.Destination)
+			{
+				Subject = message.Subject,
+				Body = message.Body,
+				IsBodyHtml = true
+			})
+			{
+				await new SmtpClient().SendMailAsync(mailMessage);
+			}
+		}
+	}
+
 	// Настройка диспетчера пользователей приложения. UserManager определяется в ASP.NET Identity и используется приложением.
 	public class ApplicationUserManager : UserManager<ApplicationUser, int>
 	{
@@ -37,6 +61,8 @@ namespace ACTS.UI
 			this.UserLockoutEnabledByDefault = true;
 			this.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(1);
 			this.MaxFailedAccessAttemptsBeforeLockout = 3;
+
+			this.EmailService = new EmailService();
 		}
 
 		public ApplicationUserManager(EFDbContext context)
@@ -67,9 +93,11 @@ namespace ACTS.UI
 			
 			var dataProtectionProvider = options.DataProtectionProvider;
 			if (dataProtectionProvider != null)
-				manager.UserTokenProvider = 
-					new DataProtectorTokenProvider<ApplicationUser, int>(dataProtectionProvider.Create("ASP.NET Identity"));
-
+			{
+				var tokenProvider = new DataProtectorTokenProvider<ApplicationUser, int>(dataProtectionProvider.Create("ASP.NET Identity", "ACTS.WebSite"));
+				tokenProvider.TokenLifespan = TimeSpan.FromHours(6.0);
+				manager.UserTokenProvider = tokenProvider;
+			}
 			return manager;
 		}
 	}

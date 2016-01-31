@@ -27,6 +27,7 @@ namespace ACTS.UI
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
 			ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+			EmailBodyFactory.DefaultPathToTemplates = Server.MapPath("~/EmailTemplates/");
 		}
 	}
 }

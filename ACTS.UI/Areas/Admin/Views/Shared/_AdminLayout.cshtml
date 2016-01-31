@@ -106,7 +106,8 @@
 					<li><a href="@Url.Action("Dashboard", "Admin")"><i class="fa fa-dashboard"></i> Home</a></li>
 					@if (!string.IsNullOrEmpty(ViewBag.CurrentTreeView))
 					{
-						<li> @ViewBag.CurrentTreeView</li>}
+						<li> @ViewBag.CurrentTreeView</li>
+					}
 					<li class="active"> @ViewBag.Title</li>
 				</ol>
 			</div>
