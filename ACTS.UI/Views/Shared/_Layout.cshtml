@@ -1,9 +1,10 @@
 ﻿@{
     var culture = CultureHelper.GetImplementedCulture(UICulture);
-    //var lang = CultureHelper.GetCurrentNeutralCulture(); 
+    //var lang = CultureHelper.GetCurrentNeutralCulture();
 }
 @helper LanguageLinkBuilder(string culture, string currentCulture)
-	{
+{
+    {
 		@:<a
 		if (culture == currentCulture)
 		{
@@ -11,17 +12,18 @@
 		}
 		@:href="@Url.Action("SetCulture", "Home", new { culture = culture, returnUrl = Url.Action() })">@culture</a>
 	}
+}
 
 <!DOCTYPE html>
 
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1" lang="@CultureHelper.GetCurrentNeutralCulture()" />
-	<title>@ViewBag.Title</title>
-	<link rel="icon" href="/favicon.ico" type="image/x-icon" />
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-	<link href="~/Content/bootstrap.css" rel="stylesheet" />
-	<link href="~/Content/Site.css" rel="stylesheet" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1" lang="@CultureHelper.GetCurrentNeutralCulture()" />
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
 </head>
 <body style="height:100%">
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -91,13 +93,16 @@
                 </div>
             </div>
         </div>
+    }
+    <div class="container" style="height:100%">
+        @RenderBody()
 
         @if (ViewBag.CurrentPage != "main") { Html.RenderAction("FooterStringUncos", "News"); }
         @if (ViewBag.CurrentPage == "main")
         { @Html.Partial("Footer");
         }
     </div>
-    <script src="~/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Scripts/jquery-2.2.0.js"></script> 
     <script src="~/Scripts/bootstrap.js"></script>
 </body>
 </html>

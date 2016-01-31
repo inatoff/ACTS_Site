@@ -97,7 +97,7 @@
 					<div class="pull-left">
 						<a href="@Url.Action("Index", "MyAccount")" class="btn btn-default btn-flat"><i class="fa fa-user fa-fw"></i> My account</a>
 					</div>
-					@using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "pull-right"  }))
+					@using (Html.BeginForm("Logout", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "pull-right"  }))
 					{
 						@Html.AntiForgeryToken()
 						<a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-default btn-flat">

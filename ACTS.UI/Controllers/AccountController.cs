@@ -124,10 +124,10 @@ namespace ACTS.UI.Controllers
 			return View(model);
 		}
 
-		// POST: /Account/LogOff
+		// POST: /Account/Logout
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult LogOff()
+		public ActionResult Logout()
 		{
 			AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
 			return RedirectToAction("Index", "Home");

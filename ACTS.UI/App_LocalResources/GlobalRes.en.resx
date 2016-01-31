@@ -187,7 +187,10 @@
     <value>Laboratories</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Login</value>
+    <value>Log in</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Log out</value>
   </data>
   <data name="Magistracy" xml:space="preserve">
     <value>Magistracy</value>

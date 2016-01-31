@@ -268,6 +268,15 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Вийти.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Магістратура.
         /// </summary>
         public static string Magistracy {

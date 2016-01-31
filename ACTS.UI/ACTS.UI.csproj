@@ -452,9 +452,6 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="EmailTemplates\ForgotPassword.cshtml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
@@ -470,7 +467,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\tinymce\changelog.txt" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Scripts\tinymce\langs\ru.js" />
@@ -747,7 +743,6 @@
     <Content Include="Areas\Admin\Views\Shared\_PartialMessager.cshtml" />
     <Content Include="Areas\Admin\Views\Account\EditAccount.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="EmailTemplates\_EmailLayout.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />

@@ -138,8 +138,7 @@
   <data name="BlogEditProfile" xml:space="preserve">
     <value>Профіль</value>
   </data>
-  <data name="B
-        terests" xml:space="preserve">
+  <data name="B&#xD;&#xA;        terests" xml:space="preserve">
     <value>Наукові інтереси</value>
   </data>
   <data name="BlogMain" xml:space="preserve">
@@ -246,5 +245,8 @@
   </data>
   <data name="UsefulLinks" xml:space="preserve">
     <value>Корисні посилання</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Вийти</value>
   </data>
 </root>

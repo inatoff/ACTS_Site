@@ -189,6 +189,9 @@
   <data name="Login" xml:space="preserve">
     <value>Войти</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
   <data name="Magistracy" xml:space="preserve">
     <value>Магистратура</value>
   </data>
