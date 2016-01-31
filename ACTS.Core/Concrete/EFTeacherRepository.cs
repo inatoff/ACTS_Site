@@ -137,5 +137,12 @@ namespace ACTS.Core.Concrete
 		{
 			return context.Teachers.Where(t => t.User == null || t.TeacherId == teacherId);
 		}
-	}
+
+
+        public void InitBlog(int teacherId)
+        {
+            Teacher teacher = context.Teachers.FirstOrDefault(t => t.TeacherId == teacherId);
+            teacher.Blog = new Blog();
+        }
+    }
 }

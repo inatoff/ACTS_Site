@@ -36,6 +36,7 @@ li.dropdown span{
     color:#777; 
     cursor:pointer;
 }
+ 
 
 li.en{   
     color:transparent; 
@@ -84,7 +85,10 @@ li {
 
 }
 
-
+.TeacherPhoto {
+    width:100px;
+    height:150px;
+}
 
 
 /*из http://acts.kpi.ua/app/themes/wp-theme-acts-main/css/style.css */ 

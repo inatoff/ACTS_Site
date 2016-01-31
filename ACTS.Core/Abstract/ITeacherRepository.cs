@@ -15,7 +15,8 @@ namespace ACTS.Core.Abstract
 		IQueryable<Teacher> GetNoPairTeachersWithSelected(int teacherId);
 		void CreateTeacher(Teacher teacher);
 		void UpdateTeacher(Teacher teacher);
-		void AddPairToUser(int teacherId, int userId);
+        void InitBlog(int teacherId);
+        void AddPairToUser(int teacherId, int userId);
 		void RemovePairToUser(int teacherId);
 		Teacher GetTeacherById(int teacherId);
         Teacher GetTeacherByUrlSlug(string urlSlug);

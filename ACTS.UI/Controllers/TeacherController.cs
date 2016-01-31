@@ -8,35 +8,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.Mvc; 
+using Microsoft.AspNet.Identity;
 
 namespace ACTS.UI.Controllers
 {
-	public class TeacherController : BaseController
-	{
-		private ITeacherRepository repository;
+    public class TeacherController : BaseController
+    {
+        private ITeacherRepository _repository;
+        private ApplicationUserManager _manager;
 
-        public TeacherController(ITeacherRepository employeeRepository)
+
+        public TeacherController(ITeacherRepository employeeRepository, ApplicationUserManager manager)
         {
-            repository = employeeRepository;
+            _repository = employeeRepository;
+            _manager = manager;
         }
 
         public FileContentResult GetImage(int teacherId)
-		{
-			Teacher news = repository.GetTeacherById(teacherId);
-			if (news != null)
-			{
-				return File(news.Photo, news.PhotoMimeType);
-			} else
-			{
-				return null;
-			}
-		}
+        {
+            Teacher news = _repository.GetTeacherById(teacherId);
+            if (news != null)
+            {
+                return File(news.Photo, news.PhotoMimeType);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public async Task<ViewResult> TeachingStaff()
         {
-            IEnumerable<Teacher> teachers = await repository.GetAllTeachersAsync();
+            IEnumerable<Teacher> teachers = await _repository.GetAllTeachersAsync();
             return View(teachers);
-        }        
-	}
+        }
+
+        [Authorize(Roles = "Teacher")]
+        public new ActionResult Profile()
+        {
+            return RedirectToAction("Profile", "ProfileController", new { area = "Peoples" });
+        }
+}
 }

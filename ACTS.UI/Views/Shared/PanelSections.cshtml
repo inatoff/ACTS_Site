@@ -41,3 +41,5 @@
     </ul>
 </li>   
 <li><a href="@Url.Action("Contacts","Home")">@GlobalRes.Contact</a></li>
+<li class="dropdown"><span>@{Html.RenderAction("AuthenticationLink", new { controller = "Account", area = "" }); }</span></li>
+<li style=""></li>

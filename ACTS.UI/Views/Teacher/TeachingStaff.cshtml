@@ -1,20 +1,23 @@
 ﻿@model IEnumerable<ACTS.Core.Entities.Teacher>
-@{
+@{ 
     var Head = ACTS.Core.Entities.Rank.Head;
     var FirstVice = ACTS.Core.Entities.Rank.FirstVice;
 }
-<div>
-    @{
-        foreach (var teacher in Model)
-        {
-            if (teacher.Rank == Head||teacher.Rank==FirstVice)
+<divc class="row">
+    @Html.Partial("DepartmentNav")
+    <div class="col-md-9">
+        @{
+            foreach (var teacher in Model)
             {
-                <div class="col-md-12">
-                    @Html.Partial("personInfo", )
-                </div>
+                if (teacher.Rank == Head || teacher.Rank == FirstVice)
+                {
+                    <div class="col-md-12">
+                        @Html.Partial("personInfo", teacher)
+                    </div>
+                }
+                @Html.Partial("personInfo", teacher);
             }
-            @Html.Partial("personInfo", teacher);
         }
-    }
-</div>
-<p>This would be awesome page</p>
+    </div>
+    <p>This would be awesome page</p>
+</divc>

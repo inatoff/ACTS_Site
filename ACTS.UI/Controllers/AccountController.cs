@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ACTS.UI.Helpers;
 using ACTS.Core.Identity;
+using ACTS.UI.App_LocalResources;
 
 namespace ACTS.UI.Controllers
 {
@@ -139,6 +140,25 @@ namespace ACTS.UI.Controllers
 			user = UserManager.FindByName(userName);
 			return Json(user == null);
 		}
+
+        [AllowAnonymous]
+        public PartialViewResult AuthenticationLink()
+        {
+            var item = new MenuLinkItem();
+            if (User.Identity.IsAuthenticated)
+            {
+                item.Text = GlobalRes.BlogEditProfile;
+                item.Action = "Edit";
+                item.RouteInfo = new { controller = "Profile", area = "Peoples" };
+            }
+            else
+            {
+                item.Text = GlobalRes.Login;
+                item.Action = "Login";
+                item.RouteInfo = new { controller = "Account", area = ""};
+            }
+            return PartialView("MenuLinkItem", item);
+        }
 
 		#region Helpers
 		private IAuthenticationManager AuthenticationManager

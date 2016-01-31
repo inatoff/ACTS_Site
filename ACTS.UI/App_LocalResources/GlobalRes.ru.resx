@@ -129,6 +129,30 @@
   <data name="Advertisment" xml:space="preserve">
     <value>Объявления</value>
   </data>
+  <data name="BlogAddPost" xml:space="preserve">
+    <value>Добавить пост</value>
+  </data>
+  <data name="BlogEdit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="BlogEditProfile" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="BlogInterests" xml:space="preserve">
+    <value>Научные интересы</value>
+  </data>
+  <data name="BlogMain" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="BlogProjects" xml:space="preserve">
+    <value>Проекты</value>
+  </data>
+  <data name="BlogPublications" xml:space="preserve">
+    <value>Основные публикации</value>
+  </data>
+  <data name="BlogRemovePost" xml:space="preserve">
+    <value>Удалить пост</value>
+  </data>
   <data name="ConditionsOfAdmissions" xml:space="preserve">
     <value>Требования при поступлении</value>
   </data>
@@ -161,6 +185,9 @@
   </data>
   <data name="Laboratories" xml:space="preserve">
     <value>Лаборатории</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Войти</value>
   </data>
   <data name="Magistracy" xml:space="preserve">
     <value>Магистратура</value>

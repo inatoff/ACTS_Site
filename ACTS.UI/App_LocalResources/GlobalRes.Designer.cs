@@ -97,7 +97,7 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Додати публікацію.
+        ///   Looks up a localized string similar to Додати пост.
         /// </summary>
         public static string BlogAddPost {
             get {
@@ -115,20 +115,11 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Редагувати профіль.
+        ///   Looks up a localized string similar to Профіль.
         /// </summary>
         public static string BlogEditProfile {
             get {
                 return ResourceManager.GetString("BlogEditProfile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Наукові інтереси.
-        /// </summary>
-        public static string BlogInterests {
-            get {
-                return ResourceManager.GetString("BlogInterests", resourceCulture);
             }
         }
         
@@ -160,7 +151,7 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Видалити публікацію.
+        ///   Looks up a localized string similar to Видалити пост.
         /// </summary>
         public static string BlogRemovePost {
             get {
@@ -264,6 +255,15 @@ namespace ACTS.UI.App_LocalResources {
         public static string Laboratories {
             get {
                 return ResourceManager.GetString("Laboratories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Увійти.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
             }
         }
         
