@@ -70,7 +70,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			using (var manager = new ApplicationUserManager())
 			{
 				ApplicationUser user = manager.FindById(CurrentUserId);
-				model = new MyAccountViewModel(user.UserName, user.Email);
+				model = new MyAccountViewModel(user.UserName, user.Email ?? string.Empty);
 			}
 
 			return View(model);
@@ -88,8 +88,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				var result = await UserManager.UpdateAsync(currentUser);
 
 				if (result.Succeeded)
-					TempData.AddMessage(new Message(MessageType.Success,
-						$"You have successfully changed your username from \"{model.CurrentUserName}\" on \"{model.UserName}\"."));
+					TempData.AddMessage(MessageType.Success,
+						$"You have successfully changed your username from \"{model.CurrentUserName}\" on \"{model.UserName}\".");
 				else
 					TempData.AddMessages(MessageType.Warning, result.Errors);
 			}
@@ -103,8 +103,21 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			int userId = CurrentUserId;
 
-			string token = await UserManager.GenerateUserTokenAsync("ChangeEmail", userId);
 			var user = await UserManager.FindByIdAsync(userId);
+
+			if (string.IsNullOrWhiteSpace(user.Email))
+			{
+				var result = await UserManager.SetEmailAsync(userId, model.Email);
+
+				if (result.Succeeded)
+					TempData.AddMessage(MessageType.Success, $"You have successfully changed your email on \"{model.Email}\".");
+				else
+					TempData.AddMessages(MessageType.Warning, result.Errors);
+
+				return RedirectToAction(nameof(Index));
+			}
+
+			string token = await UserManager.GenerateUserTokenAsync("ChangeEmail", userId);
 
 			var emailModel = new
 			{
@@ -129,7 +142,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				var result = await UserManager.SetEmailAsync(userId, email);
 
 				if (result.Succeeded)
-					TempData.AddMessage(new Message(MessageType.Success, $"You have successfully changed your email on \"{email}\"."));
+					TempData.AddMessage(MessageType.Success, $"You have successfully changed your email on \"{email}\".");
 				else
 					TempData.AddMessages(MessageType.Warning, result.Errors);
 			}
@@ -148,8 +161,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				var result = await UserManager.ChangePasswordAsync(CurrentUserId, model.CurrentPassword, model.NewPassword);
 
 				if (result.Succeeded)
-					TempData.AddMessage(new Message(MessageType.Success,
-						$"You have successfully changed your password."));
+					TempData.AddMessage(MessageType.Success, $"You have successfully changed your password.");
 				else
 					TempData.AddMessages(MessageType.Warning, result.Errors);
 			}
@@ -178,6 +190,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					TempData.AddMessages(MessageType.Warning, result.Errors);
 					return RedirectToAction(nameof(Index));
 				}
+
+				HttpContext.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
 
 				return RedirectToAction(nameof(Index), "Home", new { area = "" });
 			}

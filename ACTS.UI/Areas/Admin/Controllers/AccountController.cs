@@ -75,7 +75,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 			ViewBag.Teachers = teachersItems;
 		}
-		
+
 		[HttpGet]
 		public ActionResult Create()
 		{
@@ -104,7 +104,19 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 				using (var manager = UserManager)
 				{
-					var result = await manager.CreateAsync(user, model.Password);
+					var result = await manager.PasswordValidator.ValidateAsync(model.Password);
+
+					if (!result.Succeeded)
+					{
+						foreach (var error in result.Errors)
+							ModelState.AddModelError("Password", error);
+
+						InitTeachersItems(model.PairTeacherId);
+
+						return View("CreateAccount", model);
+					}
+
+					result = await manager.CreateAsync(user, model.Password);
 
 					if (!result.Succeeded)
 					{
@@ -124,7 +136,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 					result = await manager.AddToRolesAsync(user.Id, model.SelectedRoles.ToArray());
 
-					TempData.AddMessage(new Message(MessageType.Success, $"User \"{user.UserName}\" successfully created."));
+					TempData.AddMessage(MessageType.Success, $"User \"{user.UserName}\" successfully created.");
 				}
 
 				return RedirectToAction(nameof(Table));
@@ -218,7 +230,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					if (model.PairTeacherId.HasValue)
 						_teacherRepository.AddPairToUser(model.PairTeacherId.Value, user.Id);
 
-					TempData.AddMessage(new Message(MessageType.Success, $"User \"{user.UserName}\" successfully saved."));
+					TempData.AddMessage(MessageType.Success, $"User \"{user.UserName}\" successfully saved.");
 				}
 
 				return RedirectToAction(nameof(Table));
@@ -233,9 +245,9 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> Delete(int Id)
 		{
-			using (var manager = UserManager)
+			using (var userManager = UserManager)
 			{
-				var user = await manager.FindByIdAsync(Id);
+				var user = await userManager.FindByIdAsync(Id);
 
 				if (user == null)
 				{
@@ -243,20 +255,23 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					return RedirectToAction(nameof(Table));
 				}
 
-				//var rolesForUser = await manager.GetRolesAsync(Id);
+				if (await userManager.IsInRoleAsync(user.Id, "Admin"))
+					using (var roleManager = RoleManager)
+						if ((await roleManager.FindByNameAsync("Admin")).Users.Count() < 2)
+						{
+							TempData.AddMessage(MessageType.Warning, $"You can not delete the only user with administrative rights.");
+							return RedirectToAction(nameof(Table));
+						}
+						else if (user.Id == User.Identity.GetUserId<int>())
+						{
+							TempData.AddMessage(MessageType.Warning, $"You can not delete yourself here, go to \"My account\" for this.");
+							return RedirectToAction(nameof(Table));
+						}
 
-				//var result = await manager.RemoveFromRolesAsync(Id, rolesForUser.ToArray());
-
-				//if (!result.Succeeded)
-				//{
-				//	TempData.AddMessage(MessangeType.Danger, result.Errors);
-				//	return RedirectToAction(nameof(Table));
-				//}
-
-				var result = await manager.DeleteAsync(user);
+				var result = await userManager.DeleteAsync(user);
 
 				if (result.Succeeded)
-					TempData.AddMessage(new Message(MessageType.Success, $"User \"{user.UserName}\" successfully deleted."));
+					TempData.AddMessage(MessageType.Success, $"User \"{user.UserName}\" successfully deleted.");
 				else
 					TempData.AddMessages(MessageType.Warning, result.Errors);
 			}

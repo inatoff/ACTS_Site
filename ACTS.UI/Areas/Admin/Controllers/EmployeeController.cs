@@ -90,7 +90,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			Employee deletedEmployee = repository.DeleteEmployee(employeeId);
 			if (deletedEmployee != null)
 			{
-				TempData.AddMessage(new Message(MessageType.Success, $"Employee \"{deletedEmployee.FullName}\" successfully deleted."));
+				TempData.AddMessage(MessageType.Success, $"Employee \"{deletedEmployee.FullName}\" successfully deleted.");
 			}
 			return RedirectToAction(nameof(Table));
 		}
