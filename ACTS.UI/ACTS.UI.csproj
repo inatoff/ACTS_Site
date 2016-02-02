@@ -672,6 +672,7 @@
     <Compile Include="Areas\Admin\Models\AccountViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ChangePasswordViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ChangeEmailViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\DeleteCurrentViewModel.cs" />
     <Compile Include="Areas\Admin\Models\EditAccountViewModel.cs" />
     <Compile Include="Areas\Admin\Models\MyAccountViewModel.cs" />
     <Compile Include="Areas\Admin\Models\RoleItem.cs" />

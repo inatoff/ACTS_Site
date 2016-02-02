@@ -7,9 +7,9 @@ namespace ACTS.UI.Areas.Admin.Models
 	{
 		[Required]
 		[Display(Name = "User name*", Description = "You can change your username, which impacts how you sign in.")]
-		[AssertThat("UserName != OldUserName", ErrorMessage = "User name not changed.")]
+		[AssertThat("UserName != CurrentUserName", ErrorMessage = "User name not changed.")]
 		[MinLength(5)]
 		public string UserName { get; set; }
-		public string OldUserName { get; set; }
+		public string CurrentUserName { get; set; }
 	}
 }

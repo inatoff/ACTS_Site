@@ -10,19 +10,29 @@ namespace ACTS.UI.Areas.Admin.Models
 {
 	public class MyAccountViewModel
 	{
+		#region ChangeUserName
+
 		[Required]
 		[Display(Name = "User name*", Description = "You can change your username, which impacts how you sign in.")]
-		[AssertThat("UserName != OldUserName", ErrorMessage = "User name not changed.")]
+		[AssertThat("UserName != CurrentUserName", ErrorMessage = "User name not changed.")]
 		[MinLength(5)]
 		public string UserName { get; set; }
-		public string OldUserName { get; set; }
+		public string CurrentUserName { get; set; } 
+
+		#endregion
+
+		#region ChangeEmail
 
 		[Display(Name = "Email adress*", Description = "Changing your email address is an easy, two-step process. Specify the new email address you want to use, and we will send an email to that address allowing you to complete the update.")]
-		[AssertThat("Email != OldEmail", ErrorMessage = "Email not changed.")]
+		[AssertThat("Email != CurrentEmail", ErrorMessage = "Email not changed.")]
 		[DataType(DataType.EmailAddress)]
 		[EmailAddress]
 		public string Email { get; set; }
-		public string OldEmail { get; set; }
+		public string CurrentEmail { get; set; }
+
+		#endregion
+
+		#region ChangePassword
 
 		[Required]
 		[Display(Name = "Current password*")]
@@ -39,12 +49,33 @@ namespace ACTS.UI.Areas.Admin.Models
 		[Display(Name = "Confirm password*")]
 		[DataType(DataType.Password)]
 		[Compare(nameof(NewPassword), ErrorMessage = "The new password and confirmation password do not match.")]
-		public string ConfirmPassword { get; set; }
+		public string ConfirmPassword { get; set; } 
 
-		//[AssertThat("ConfirmationPhrase == Phrase", ErrorMessage = "Write 'delete my account'")]
-		[Compare(nameof(Phrase), ErrorMessage = "Write 'delete my account'.")]
+		#endregion
+
+		#region DeleteCurrentUser
+
+		[Required]
+		[Display(Name = "Your username or email")]
+		[AssertThat("EmailOrUserName == CurrentUserName || EmailOrUserName == CurrentEmail")]
+		public string EmailOrUserName { get; set; }
+
+		[Required]
+		[AssertThat("Trim(ConfirmationPhrase) == 'delete my account'")]
 		public string ConfirmationPhrase { get; set; }
 
-		public string Phrase { get; set; } = "delete my account";
+		#endregion
+
+		public MyAccountViewModel()
+		{
+		}
+
+		public MyAccountViewModel(string userName, string email)
+		{
+			CurrentUserName = userName;
+			UserName = userName;
+			CurrentEmail = email;
+			Email = email;
+		}
 	}
 }

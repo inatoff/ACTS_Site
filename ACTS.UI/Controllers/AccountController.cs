@@ -81,13 +81,13 @@ namespace ACTS.UI.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				string userName = model.EmailOrLogin;
+				string userName = model.EmailOrUserName;
 
 				// не уверен что валидация емейла хоть как то увеличит производительность
 				// возможно даже на оборот
 				//if (MailHelper.IsValidEmail(model.EmailOrLogin))
 				//{
-				var user = await UserManager.FindByEmailAsync(model.EmailOrLogin);
+				var user = await UserManager.FindByEmailAsync(model.EmailOrUserName);
 
 				if (user != null)
 					userName = user.UserName;
@@ -149,24 +149,24 @@ namespace ACTS.UI.Controllers
 			ViewBag.ReturnUrl = returnUrl;
 			return View();
 		}
-        [AllowAnonymous]
-        public PartialViewResult AuthenticationLink()
-        {
-            var item = new MenuLinkItem();
-            if (User.Identity.IsAuthenticated)
-            {
-                item.Text = GlobalRes.BlogEditProfile;
-                item.Action = "Edit";
-                item.RouteInfo = new { controller = "Profile", area = "Peoples" };
-            }
-            else
-            {
-                item.Text = GlobalRes.Login;
-                item.Action = "Login";
-                item.RouteInfo = new { controller = "Account", area = ""};
-            }
-            return PartialView("MenuLinkItem", item);
-        }
+		[AllowAnonymous]
+		public PartialViewResult AuthenticationLink()
+		{
+			var item = new MenuLinkItem();
+			if (User.Identity.IsAuthenticated)
+			{
+				item.Text = GlobalRes.BlogEditProfile;
+				item.Action = "Edit";
+				item.RouteInfo = new { controller = "Profile", area = "Peoples" };
+			}
+			else
+			{
+				item.Text = GlobalRes.Login;
+				item.Action = "Login";
+				item.RouteInfo = new { controller = "Account", area = ""};
+			}
+			return PartialView("MenuLinkItem", item);
+		}
 
 		//
 		// POST: /Account/ForgotPassword

@@ -46,9 +46,9 @@
 				@Html.AntiForgeryToken()
 				@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-				<p>@Html.ValidationMessageFor(model => Model.EmailOrLogin, "", new { @class = "text-danger" })</p>
+				<p>@Html.ValidationMessageFor(model => Model.EmailOrUserName, "", new { @class = "text-danger" })</p>
 				<div class="form-group has-feedback">
-					@Html.TextBoxFor(m => m.EmailOrLogin, new { @class = "form-control", placeholder = "Login or Email" })
+					@Html.TextBoxFor(m => m.EmailOrUserName, new { @class = "form-control", placeholder = "Username or email address" })
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 
@@ -92,12 +92,4 @@
 		});
 	</script>
 </body>
-
-
-
-
-
-
-
-
 </html>

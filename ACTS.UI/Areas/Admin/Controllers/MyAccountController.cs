@@ -20,16 +20,18 @@ namespace ACTS.UI.Areas.Admin.Controllers
 	public class MyAccountController : Controller
 	{
 		private ApplicationUserManager _userManager;
+		private ApplicationRoleManager _roleManager;
 
 		public MyAccountController()
 			: base()
 		{
 		}
 
-		public MyAccountController(ApplicationUserManager userManager)
+		public MyAccountController(ApplicationUserManager userManager, ApplicationRoleManager roleManager)
 			: this()
 		{
 			_userManager = userManager;
+			_roleManager = roleManager;
 		}
 
 		public ApplicationUserManager UserManager
@@ -44,6 +46,18 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			}
 		}
 
+		public ApplicationRoleManager RoleManager
+		{
+			get
+			{
+				return _roleManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
+			}
+			set
+			{
+				_roleManager = value;
+			}
+		}
+
 		public int CurrentUserId
 		{
 			get { return User.Identity.GetUserId<int>(); }
@@ -52,13 +66,11 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		// GET: Admin/Manage
 		public ActionResult Index()
 		{
-			var model = new MyAccountViewModel();
+			MyAccountViewModel model;
 			using (var manager = new ApplicationUserManager())
 			{
 				ApplicationUser user = manager.FindById(CurrentUserId);
-
-				model.UserName = model.OldUserName = user.UserName;
-				model.Email = model.OldEmail = user.Email;
+				model = new MyAccountViewModel(user.UserName, user.Email);
 			}
 
 			return View(model);
@@ -77,7 +89,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 				if (result.Succeeded)
 					TempData.AddMessage(new Message(MessageType.Success,
-						$"You have successfully changed your username from \"{model.OldUserName}\" on \"{model.UserName}\"."));
+						$"You have successfully changed your username from \"{model.CurrentUserName}\" on \"{model.UserName}\"."));
 				else
 					TempData.AddMessages(MessageType.Warning, result.Errors);
 			}
@@ -87,25 +99,25 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> ConfirmChangeEmail(ChangeEmailViewModel viewModel)
+		public async Task<ActionResult> ConfirmChangeEmail(ChangeEmailViewModel model)
 		{
 			int userId = CurrentUserId;
 
 			string token = await UserManager.GenerateUserTokenAsync("ChangeEmail", userId);
 			var user = await UserManager.FindByIdAsync(userId);
 
-			var model = new
+			var emailModel = new
 			{
 				user.UserName,
-				viewModel.Email,
-				CallbackUrl = Url.Action("ChangeEmail", "MyAccount", new { userId, email = viewModel.Email, token }, Request.Url.Scheme)
+				model.Email,
+				CallbackUrl = Url.Action("ChangeEmail", "MyAccount", new { userId, email = model.Email, token }, Request.Url.Scheme)
 			};
 
-			string body = EmailBodyFactory.GetEmailBody(model, "ConfirmChangeEmail");
+			string body = EmailBodyFactory.GetEmailBody(emailModel, "ConfirmChangeEmail");
 
 			await UserManager.SendEmailAsync(CurrentUserId, "Змінити емейл", body);
 
-			TempData.AddMessage(MessageType.Info, $"We sent a verification email to {viewModel.OldEmail}. Please follow the instructions in it.");
+			TempData.AddMessage(MessageType.Info, $"We sent a verification email to {model.CurrentEmail}. Please follow the instructions in it.");
 
 			return RedirectToAction(nameof(Index));
 		}
@@ -140,6 +152,34 @@ namespace ACTS.UI.Areas.Admin.Controllers
 						$"You have successfully changed your password."));
 				else
 					TempData.AddMessages(MessageType.Warning, result.Errors);
+			}
+
+			return RedirectToAction(nameof(Index));
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<ActionResult> DeleteCurrent(DeleteCurrentViewModel model)
+		{
+			if (ModelState.IsValid)
+			{
+				if ((await RoleManager.FindByNameAsync("Admin")).Users.Count() < 2)
+				{
+					TempData.AddMessage(MessageType.Warning, $"You can not delete the only user with administrative rights.");
+					return RedirectToAction(nameof(Index));
+				}
+
+				var user = await UserManager.FindByIdAsync(CurrentUserId);
+
+				var result = await UserManager.DeleteAsync(user);
+
+				if (!result.Succeeded)
+				{
+					TempData.AddMessages(MessageType.Warning, result.Errors);
+					return RedirectToAction(nameof(Index));
+				}
+
+				return RedirectToAction(nameof(Index), "Home", new { area = "" });
 			}
 
 			return RedirectToAction(nameof(Index));

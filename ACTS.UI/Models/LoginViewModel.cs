@@ -10,8 +10,8 @@ namespace ACTS.UI.Models
 	public class LoginViewModel
 	{
 		[Required]
-		[Display(Name = "Email or login")]
-		public string EmailOrLogin { get; set; }
+		[Display(Name = "Username or email address")]
+		public string EmailOrUserName { get; set; }
 
 		[Required]
 		[DataType(DataType.Password)]
