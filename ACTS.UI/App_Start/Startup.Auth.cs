@@ -27,7 +27,7 @@ namespace ACTS.UI
 			{
 				AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
 				LoginPath = new PathString("/Account/Login"),
-				ExpireTimeSpan = TimeSpan.FromMinutes(30.0),
+				ExpireTimeSpan = TimeSpan.FromHours(1.0),
 				Provider = new CookieAuthenticationProvider
 				{
 					OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser, int>(

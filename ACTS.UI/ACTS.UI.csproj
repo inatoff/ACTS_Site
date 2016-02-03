@@ -377,6 +377,7 @@
     <Content Include="Scripts\Admin\News\tableUncos.js" />
     <Content Include="Scripts\Admin\Account\tableAccount.js" />
     <Content Include="Scripts\Admin\Teacher\tableTeacher.js" />
+    <Content Include="Scripts\Admin\validationOptions.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\app.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -743,7 +744,6 @@
     <Content Include="Areas\Admin\Views\Account\EditorTemplates\RoleItem.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartialMessager.cshtml" />
     <Content Include="Areas\Admin\Views\Account\EditAccount.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="EmailTemplates\_EmailLayout.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />

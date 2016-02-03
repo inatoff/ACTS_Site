@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using ACTS.Core.Identity;
 using System.Web.Mvc;
+using ExpressiveAnnotations.Attributes;
 
 namespace ACTS.UI.Areas.Admin.Models
 {
@@ -30,8 +31,12 @@ namespace ACTS.UI.Areas.Admin.Models
 		public string ConfirmPassword { get; set; } 
 
 		[Display(Name ="Email adress")]
+		[RequiredIf("SendVerification == true", AllowEmptyStrings = false, ErrorMessage = "The {0} field is required if Send verification is specified.")]
 		[EmailAddress]
 		public string Email { get; set; }
+
+		[Display(Name = "Send verification")]
+		public bool SendVerification { get; set; }
 
 		[Display(Name = "Account roles")]
 		public IList<RoleItem> Roles { get; set; }
