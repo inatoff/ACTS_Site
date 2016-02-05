@@ -373,6 +373,7 @@
     <Content Include="Areas\Admin\Views\Teacher\CreateTeacher.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartialUser.cshtml" />
     <Content Include="Scripts\Admin\Employee\tableEmployee.js" />
+    <Content Include="Scripts\Admin\fileinputOptions.js" />
     <Content Include="Scripts\Admin\initTinyEditor.js" />
     <Content Include="Scripts\Admin\News\tableUncos.js" />
     <Content Include="Scripts\Admin\Account\tableAccount.js" />

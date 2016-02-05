@@ -14,21 +14,6 @@
 	@Scripts.Render("~/bundles/jqueryval-admin")
 	@Scripts.Render("~/bundles/expressive")
 	@Scripts.Render("~/bundles/fileinput")
-	<script>
-		$(document).on('ready', function () {
-			$("#input-image").fileinput({
-				previewFileType: "image",
-				browseClass: "btn btn-success",
-				browseLabel: "Pick Image",
-				browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
-				removeClass: "btn btn-danger",
-				removeLabel: "Delete",
-				removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
-				showUpload: false,
-				maxFileSize: 5120
-			});
-		});
-	</script>
 }
 
 <div class="row">
@@ -39,8 +24,7 @@
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
-			@*TODO Rustam помоги сделать что бы когда оно проверяет и там неправильные даные то виглядела как http://bootstrap-3.ru/css.php#forms-control-validation*@
-			@using (Html.BeginForm("Create", "Teacher", FormMethod.Post, new { enctype = "multipart/form-data" }))
+			@using (Html.BeginForm("Create", "Teacher", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
 			{
 				<div class="box-body">
 					@Html.AntiForgeryToken()
@@ -48,71 +32,105 @@
 					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.FullName)
-						@Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
-						@Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Full name" } })
-					</div>
-
-					<div class="form-group">
-						@Html.LabelFor(model => model.Position)
-						@Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
-						@Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control", placeholder = "Position", style = "width: 100%;" } })
-					</div>
-
-					<div class="form-group">
-						@Html.LabelFor(model => model.Degree)
-						@Html.ValidationMessageFor(model => model.Degree, "", new { @class = "text-danger" })
-						@Html.EditorFor(model => model.Degree, new { htmlAttributes = new { @class = "form-control", placeholder = "Degree" } })
-					</div>
-
-					<div class="form-group">
-						@Html.LabelFor(model => model.Email)
-						@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
-							@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+						@Html.LabelFor(model => model.FullName, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Full name" } })
+							@Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger help-block" }, "p")
 						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.Intellect)
-						@Html.ValidationMessageFor(model => model.Intellect, "", new { @class = "text-danger" })
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-fw fa-info"></i></span>
-							@Html.EditorFor(model => model.Intellect, new { htmlAttributes = new { @class = "form-control", placeholder = "Intellect url" } })
+						@Html.LabelFor(model => model.Position, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control", placeholder = "Position", style = "width: 100%;" } })
+							@Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger help-block" }, "p")
 						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.Vk)
-						@Html.ValidationMessageFor(model => model.Vk, "", new { @class = "text-danger" })
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-fw fa-vk"></i></span>
-							@Html.EditorFor(model => model.Vk, new { htmlAttributes = new { @class = "form-control", placeholder = "Vkontakte url" } })
+						@Html.LabelFor(model => model.Degree, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.EditorFor(model => model.Degree, new { htmlAttributes = new { @class = "form-control", placeholder = "Degree" } })
+							@Html.ValidationMessageFor(model => model.Degree, "", new { @class = "text-danger help-block" }, "p")
 						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.Twitter)
-						@Html.ValidationMessageFor(model => model.Twitter, "", new { @class = "text-danger" })
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-fw fa-twitter"></i></span>
-							@Html.EditorFor(model => model.Twitter, new { htmlAttributes = new { @class = "form-control", placeholder = "Twitter url" } })
+						@Html.LabelFor(model => model.Email, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
+								@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+							</div>
+							@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger help-block" }, "p")
 						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.Facebook)
-						@Html.ValidationMessageFor(model => model.Facebook, "", new { @class = "text-danger" })
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-fw fa-facebook"></i></span>
-							@Html.EditorFor(model => model.Facebook, new { htmlAttributes = new { @class = "form-control", placeholder = "Facebook url" } })
+						@Html.LabelFor(model => model.NameSlug, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.EditorFor(model => model.NameSlug, new { htmlAttributes = new { @class = "form-control", placeholder = "Slug" } })
+							@Html.ValidationMessageFor(model => model.NameSlug, "", new { @class = "text-danger help-block" }, "p")
 						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.Photo)
-						<input id="input-image" class="file-loading" accept="image/*" type="file" name="Image" />
+						@Html.LabelFor(model => model.Intellect, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-fw fa-info"></i></span>
+								@Html.EditorFor(model => model.Intellect, new { htmlAttributes = new { @class = "form-control", placeholder = "Intellect url" } })
+							</div>
+							@Html.ValidationMessageFor(model => model.Intellect, "", new { @class = "text-danger help-block" }, "p")
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.Vk, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-fw fa-vk"></i></span>
+								@Html.EditorFor(model => model.Vk, new { htmlAttributes = new { @class = "form-control", placeholder = "Vkontakte url" } })
+							</div>
+							@Html.ValidationMessageFor(model => model.Vk, "", new { @class = "text-danger help-block" }, "p")
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.Twitter, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-fw fa-twitter"></i></span>
+								@Html.EditorFor(model => model.Twitter, new { htmlAttributes = new { @class = "form-control", placeholder = "Twitter url" } })
+							</div>
+							@Html.ValidationMessageFor(model => model.Twitter, "", new { @class = "text-danger help-block" }, "p")
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.Facebook, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-fw fa-facebook"></i></span>
+								@Html.EditorFor(model => model.Facebook, new { htmlAttributes = new { @class = "form-control", placeholder = "Facebook url" } })
+							</div>
+							@Html.ValidationMessageFor(model => model.Facebook, "", new { @class = "text-danger help-block" }, "p")
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.Photo, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							<input id="input-image" class="file-loading form-control" accept="image/*" type="file" name="Image" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.Rank, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.EnumDropDownListFor(model => model.Rank, new { @class = "form-control" })
+							@Html.ValidationMessageFor(model => model.Rank, "", new { @class = "text-danger help-block" }, "p")
+						</div>
 					</div>
 				</div>
 					<!-- /.box-body -->

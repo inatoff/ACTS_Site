@@ -46,7 +46,6 @@ namespace ACTS.UI.Areas.Admin.Models
 		[StringLength(100, ErrorMessage = "The {0} have to be {2} characters.", MinimumLength = 8)]
 		public string NewPassword { get; set; }
 
-		[Required]
 		[Display(Name = "Confirm password*")]
 		[DataType(DataType.Password)]
 		[Compare(nameof(NewPassword), ErrorMessage = "The new password and confirmation password do not match.")]

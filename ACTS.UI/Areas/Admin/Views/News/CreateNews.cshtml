@@ -16,21 +16,6 @@
 	@Scripts.Render("~/bundles/tinymce")
 	<script src="~/Scripts/Admin/initTinyEditor.js"></script>
 	@Scripts.Render("~/bundles/fileinput")
-	<script>
-		$(document).on('ready', function() {
-			$("#input-image").fileinput({
-				previewFileType: "image",
-				browseClass: "btn btn-success",
-				browseLabel: "Pick Image",
-				browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
-				removeClass: "btn btn-danger",
-				removeLabel: "Delete",
-				removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
-				showUpload: false,
-				maxFileSize: 5120
-			});
-		});
-	</script>
 }
 
 <div class="row">
@@ -42,28 +27,34 @@
 			<!-- /.box-header -->
 			<!-- form start -->
 			@*TODO: Rustam помоги сделать что бы когда оно проверяет и там неправильные даные то виглядела как http://bootstrap-3.ru/css.php#forms-control-validation*@
-			@using (Html.BeginForm("Create", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+			@using (Html.BeginForm("Create", "News", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart /form-data" }))
 			{
 				<div class="box-body">
 					@Html.AntiForgeryToken()
 
-					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+					@Html.ValidationSummary(true, "", new { @class = "text-danger help-block" })
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.Title)
-						@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger", placeholder = "Title" })
-						@Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.LabelFor(model => model.Title, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+							@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger help-block", placeholder = "Title" }, "p")
+						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.ImageData)
-						<input id="input-image" class="file-loading" accept="image/*" type="file" name="Image" />
+						@Html.LabelFor(model => model.ImageData, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							<input id="input-image" class="file-loading form-control" accept="image/*" type="file" name="Image" />
+						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.Content)
-						@Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger", placeholder = "Content" })
-						@Html.TextAreaFor(model => model.Content, new { @class = "tinymceEditor" })
+						@Html.LabelFor(model => model.Content, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.TextAreaFor(model => model.Content, new { @class = "tinymceEditor" })
+							@Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger help-block", placeholder = "Content" }, "p")
+						</div>
 					</div>
 				</div>
 					<!-- /.box-body -->

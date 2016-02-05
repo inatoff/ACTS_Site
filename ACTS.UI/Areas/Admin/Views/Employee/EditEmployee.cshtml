@@ -13,21 +13,6 @@
 	@Scripts.Render("~/bundles/jqueryval-admin")
 	@Scripts.Render("~/bundles/expressive")
 	@Scripts.Render("~/bundles/fileinput")
-	<script>
-		$(document).on('ready', function() {
-			$("#input-image").fileinput({
-				previewFileType: "image",
-				browseClass: "btn btn-success",
-				browseLabel: "Pick Image",
-				browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
-				removeClass: "btn btn-danger",
-				removeLabel: "Delete",
-				removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
-				showUpload: false,
-				maxFileSize: 5120
-			});
-		});
-	</script>
 }
 
 <div class="row">
@@ -39,7 +24,7 @@
 			<!-- /.box-header -->
 			<!-- form start -->
 			@*TODO Rustam помоги сделать что бы когда оно проверяет и там неправильные даные то виглядела как http://bootstrap-3.ru/css.php#forms-control-validation*@
-			@using (Html.BeginForm("Edit", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+			@using (Html.BeginForm("Edit", "Employee", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
 			{
 				<div class="box-body">
 					@Html.AntiForgeryToken()
@@ -50,41 +35,52 @@
 					@Html.HiddenFor(model => model.PhotoMimeType)
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.FullName)
-						@Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
-						@Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Full name" } })
+						@Html.LabelFor(model => Model.FullName, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.EditorFor(model => Model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Full name" } })
+							@Html.ValidationMessageFor(model => Model.FullName, "", new { @class = "text-danger help-block" }, "p")
+						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.Position)
-						@Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
-						@Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control", placeholder = "Position", style = "width: 100%;" } })
+						@Html.LabelFor(model => Model.Position, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.EditorFor(model => Model.Position, new { htmlAttributes = new { @class = "form-control", placeholder = "Position", style = "width: 100%;" } })
+							@Html.ValidationMessageFor(model => Model.Position, "", new { @class = "text-danger help-block" }, "p")
+						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.Photo)
-						<div>
+						@Html.LabelFor(model => Model.Photo, "Current photo", new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
 							@if (Model.Photo == null)
 							{
-								@:None
-							} else
+								<p class="form-control-static">
+									None
+								</p>
+							}
+							else
 							{
-								<img alt="Employee image" class="img-thumbnail" style="max-width:100%" src="@Url.Action("GetImage", "Employee", new { area = "", Model.EmployeeId })" />
+								<img alt="Employee image" class="img-thumbnail" style="max-width:100%;max-height:400px" src="@Url.Action("GetImage", "Employee", new { area = "", Model.EmployeeId })" />
 							}
 						</div>
 					</div>
+
 					<div class="form-group">
-						@Html.LabelFor(model => model.Photo, "Upload new photo:")
-						<input id="input-image" class="file-loading" accept="image/*" type="file" name="Image" />
+						@Html.LabelFor(model => Model.Photo, "Upload new photo:", new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							<input id="input-image" class="file-loading form-control" accept="image/*" type="file" name="Image" />
+						</div>
+						@Html.ValidationMessageFor(model => Model.Photo, "", new { @class = "text-danger help-block" }, "p")
 					</div>
 				</div>
 					<!-- /.box-body -->
 
 					<div class="box-footer">
-						<button type="submit" class="btn btn-lg btn-primary">
+						<button type="submit" class="btn btn-primary">
 							<i class="fa fa-edit"></i>&nbsp;Save
 						</button>
-						<a type="button" class="btn btn-lg btn-default pull-right" href="@Url.Action("Table", "Employee")">
+						<a type="button" class="btn btn-default pull-right" href="@Url.Action("Table", "Employee")">
 							<i class="fa fa-undo"></i>&nbsp;Cancel and return to Table
 						</a>
 					</div>

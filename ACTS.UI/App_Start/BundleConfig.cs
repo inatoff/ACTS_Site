@@ -25,7 +25,8 @@ namespace ACTS.UI
 				.Include("~/Scripts/dataTables.bootstrap.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/fileinput")
-				.Include("~/Scripts/fileinput.js"));
+				.Include("~/Scripts/fileinput.js")
+				.Include("~/Scripts/Admin/fileinputOptions.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/select2")
 				.Include("~/Scripts/select2.js"));

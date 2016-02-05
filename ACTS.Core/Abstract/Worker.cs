@@ -11,7 +11,7 @@ namespace ACTS.Core.Abstract
 	{
 		//obligatory Fields
 
-		[Required(ErrorMessage = "Please enter a name")]
+		[Required(AllowEmptyStrings = false)]
 		[StringLength(70, ErrorMessage = "Full name: Length should not exceed 70 characters")]
 		[Display(Name = "Full name*")]
 		public string FullName { get; set; } // Полное имя
@@ -22,7 +22,7 @@ namespace ACTS.Core.Abstract
 
 		//public string Surname { get; set; } // Фамилия
 
-		[Required(ErrorMessage = "Please enter a position")]
+		[Required(AllowEmptyStrings = false)]
 		[StringLength(500, ErrorMessage = "Position: Length should not exceed 500 characters")]
 		[Display(Name = "Position*")]
 		[DataType(DataType.MultilineText)]

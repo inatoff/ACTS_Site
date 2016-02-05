@@ -73,9 +73,9 @@ namespace ACTS.Core.Entities
 		}
 	}
 
-    public enum Rank
-    {
-        Head,
+	public enum Rank
+	{
+		/*[Display(Name ="Голова")]*/Head,
         FirstVice,
         Vice,
         Teacher,

@@ -36,7 +36,7 @@
 			<!-- /.box-header -->
 			<!-- form start -->
 			@*TODO Rustam помоги сделать что бы когда оно проверяет и там неправильные даные то виглядела как http://bootstrap-3.ru/css.php#forms-control-validation*@
-			@using (Html.BeginForm("Edit", "Account", FormMethod.Post))
+			@using (Html.BeginForm("Edit", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
 			{
 				<div class="box-body">
 					@Html.AntiForgeryToken()
@@ -45,30 +45,41 @@
 					@Html.HiddenFor(model => model.Id)
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.UserName)
-						@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-						@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "User name" } })
-					</div>
-
-					<div class="form-group">
-						@Html.LabelFor(model => model.Email)
-						@Html.ValidationMessageFor(model => Model.Email, "", new { @class = "text-danger" })
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
-							@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+						@Html.LabelFor(model => model.UserName, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+								@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "User name" } })
+							</div>
+							@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" }, "p")
 						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.Roles)
-						@Html.ValidationMessageFor(model => model.Roles, "", new { @class = "text-danger" })
-						@Html.EditorFor(model => model.Roles)
+						@Html.LabelFor(model => model.Email, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+								@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+							</div>
+							@Html.ValidationMessageFor(model => Model.Email, "", new { @class = "text-danger help-block" }, "p")
+						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.PairTeacherId)
-						@Html.ValidationMessageFor(model => model.PairTeacherId, "", new { @class = "text-danger" })
-						@Html.DropDownListFor(model => model.PairTeacherId, ViewBag.Teachers as IEnumerable<SelectListItem>, "The teacher is absent.", new { @class = "select2 form-control", style = "width: 100%;" })
+						@Html.LabelFor(model => model.Roles, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.EditorFor(model => model.Roles)
+							@Html.ValidationMessageFor(model => model.Roles, "", new { @class = "text-danger help-block" }, "p")
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.PairTeacherId, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.DropDownListFor(model => model.PairTeacherId, ViewBag.Teachers as IEnumerable<SelectListItem>, "The teacher is absent.", new { @class = "select2 form-control", style = "width: 100%;" })
+							@Html.ValidationMessageFor(model => model.PairTeacherId, "", new { @class = "text-danger help-block" }, "p")
+						</div>
 					</div>
 				</div>
 				<!-- /.box-body -->

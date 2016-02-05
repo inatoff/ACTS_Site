@@ -24,7 +24,6 @@ namespace ACTS.UI.Areas.Admin.Models
 		[DataType(DataType.Password)]
 		public string Password { get; set; }
 
-		[Required]
 		[Display(Name = "Confirm password*")]
 		[DataType(DataType.Password)]
 		[System.ComponentModel.DataAnnotations.Compare(nameof(Password), ErrorMessage = "The new password and confirmation password do not match.")]
