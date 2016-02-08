@@ -20,6 +20,9 @@
 		<div class="box box-primary">
 			<div class="box-header">
 				<h3 class="box-title">Uncos</h3>
+				<div class="box-tools pull-right">
+					<a href="@Url.Action("Create", "News")" class="label label-primary"><i class="fa fa-fw fa-pencil"></i>&nbsp;Create new news</a>
+				</div>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -52,7 +55,8 @@
 									@if (item.Modified.HasValue)
 									{
 										@item.Modified.Value.ToLocalTime().ToShortDateString()
-									} else
+									}
+									else
 									{
 										@:None
 									}
@@ -61,7 +65,8 @@
 									@if (item.ImageData == null)
 									{
 										@:None
-										} else
+										}
+									else
 									{
 										<img alt="News image" width="100" height="100" src="@Url.Action("GetImage", "News", new { area = "", item.NewsId })" />
 									}
@@ -98,9 +103,6 @@
 				</table>
 			</div>
 			<!-- /.box-body -->
-			<div class="box-footer">
-				<a href="@Url.Action("Create", "News")" class="btn btn-primary"><i class="fa fa-fw fa-pencil"></i>&nbsp;Create new news</a>
-			</div>
 		</div>
 		<!-- /.box -->
 	</div>

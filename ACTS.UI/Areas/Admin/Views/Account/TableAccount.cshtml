@@ -18,8 +18,14 @@
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
-			<div class="box-header"><h3 class="box-title">Accounts</h3></div>
+			<div class="box-header">
+				<h3 class="box-title">Accounts</h3>
 
+				<div class="box-tools pull-right">
+					<a href="@Url.Action("Create", "Account")" class="label label-primary"><i class="fa fa-fw fa-pencil">&nbsp;</i>Create new account</a>
+				</div>
+				<!-- /.box-tools -->
+			</div>
 			<div class="box-body">
 				<table id="dataTablePlagin" class="table table-bordered table-striped table-hover">
 					<thead>
@@ -46,7 +52,8 @@
 									@if (string.IsNullOrWhiteSpace(item.Email))
 									{
 										@:None
-									} else
+									}
+									else
 									{
 										@item.Email
 									}
@@ -63,7 +70,8 @@
 									@if (string.IsNullOrWhiteSpace(item.TeacherName))
 									{
 										@:None
-									} else
+									}
+									else
 									{
 										@item.TeacherName
 									}
@@ -95,10 +103,6 @@
 				</table>
 			</div>
 			<!-- /.box-body -->
-
-			<div class="box-footer">
-				<a href="@Url.Action("Create", "Account")" class="btn btn-primary fa fa-edit">&nbsp;Create new account</a>
-			</div>
 		</div>
 		<!-- /.box -->
 	</div>
