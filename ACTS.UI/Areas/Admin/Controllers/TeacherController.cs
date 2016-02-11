@@ -1,5 +1,6 @@
 ﻿using ACTS.Core.Abstract;
 using ACTS.Core.Entities;
+using ACTS.UI.App_LocalResources;
 using ACTS.UI.Areas.Admin.Models;
 using ACTS.UI.Controllers;
 using ACTS.UI.Helpers;
@@ -46,7 +47,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					image.InputStream.Read(teacher.Photo, 0, image.ContentLength);
 				}
 				repository.UpdateTeacher(teacher);
-				TempData.AddMessage(MessageType.Success, $"Teacher with name \"{teacher.FullName}\" successfully saved.");
+				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.TeacherSavedMsg, teacher.FullName));
 				return RedirectToAction(nameof(Table));
 			} else
 			{
@@ -73,7 +74,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					image.InputStream.Read(teacher.Photo, 0, image.ContentLength);
 				}
 				repository.CreateTeacher(teacher);
-				TempData.AddMessage(MessageType.Success, $"Teacher with name \"{teacher.FullName}\" successfully created.");
+				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.TeacherCreatedMsg, teacher.FullName));
 				return RedirectToAction(nameof(Table));
 			} else
 			{
@@ -89,7 +90,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			Teacher deletedTeacher = repository.DeleteTeacher(teacherId);
 			if (deletedTeacher != null)
 			{
-				TempData.AddMessage(MessageType.Success, $"Teacher with name \"{deletedTeacher.FullName}\" successfully deleted.");
+				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.TeacherDeletedMsg, deletedTeacher.FullName));
 			}
 			return RedirectToAction(nameof(Table));
 		}

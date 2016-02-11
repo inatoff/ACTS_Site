@@ -241,6 +241,51 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ви не можете видалити себе тут, перейдіть в розділ &quot;Мій рахунок&quot; для цього..
+        /// </summary>
+        public static string CanNotDeleteHimSelfHere {
+            get {
+                return ResourceManager.GetString("CanNotDeleteHimSelfHere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ви не можете видалити єдиного користувача з правами адміністратора..
+        /// </summary>
+        public static string CanNotDeleteOnlyAdminUser {
+            get {
+                return ResourceManager.GetString("CanNotDeleteOnlyAdminUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ви успішно змінили свою електронну пошту на &quot;{0}&quot;..
+        /// </summary>
+        public static string ChangedEmailMsg {
+            get {
+                return ResourceManager.GetString("ChangedEmailMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ви успішно змінили свій пароль..
+        /// </summary>
+        public static string ChangedPasswordMsg {
+            get {
+                return ResourceManager.GetString("ChangedPasswordMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ви успішно змінили своє ім&apos;я користувача з &quot;{0}&quot; на &quot;{1}&quot;..
+        /// </summary>
+        public static string ChangedUserNameMsg {
+            get {
+                return ResourceManager.GetString("ChangedUserNameMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Змінити електрону пошту.
         /// </summary>
         public static string ChangeEmail {
@@ -610,11 +655,38 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Робітник &quot;{0}&quot; успішно створений..
+        /// </summary>
+        public static string EmployeeCreatedMsg {
+            get {
+                return ResourceManager.GetString("EmployeeCreatedMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Робітник &quot;{0}&quot; успішно видалений..
+        /// </summary>
+        public static string EmployeeDeletedMsg {
+            get {
+                return ResourceManager.GetString("EmployeeDeletedMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Робітники.
         /// </summary>
         public static string Employees {
             get {
                 return ResourceManager.GetString("Employees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Робітник &quot;{0}&quot; успішно збережений..
+        /// </summary>
+        public static string EmployeeSavedMsg {
+            get {
+                return ResourceManager.GetString("EmployeeSavedMsg", resourceCulture);
             }
         }
         
@@ -633,6 +705,15 @@ namespace ACTS.UI.App_LocalResources {
         public static string FacebookUrl {
             get {
                 return ResourceManager.GetString("FacebookUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ви не змогли змінити адресу електронної пошти на &quot;{0}&quot;. {1} Можливо, це сталося через закінчення відведених 6 годин для виконання операції..
+        /// </summary>
+        public static string FailedChangeEmailMsg {
+            get {
+                return ResourceManager.GetString("FailedChangeEmailMsg", resourceCulture);
             }
         }
         
@@ -826,7 +907,7 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на  Вийти.
+        ///   Ищет локализованную строку, похожую на Вийти.
         /// </summary>
         public static string Logout {
             get {
@@ -894,6 +975,33 @@ namespace ACTS.UI.App_LocalResources {
         public static string News {
             get {
                 return ResourceManager.GetString("News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Новина з заголовком &quot;{0}&quot; успішно створена..
+        /// </summary>
+        public static string NewsCreatedMsg {
+            get {
+                return ResourceManager.GetString("NewsCreatedMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Новина з заголовком &quot;{0}&quot; успішно видалена..
+        /// </summary>
+        public static string NewsDeletedMsg {
+            get {
+                return ResourceManager.GetString("NewsDeletedMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Новина з заголовком &quot;{0}&quot; успішно збережена..
+        /// </summary>
+        public static string NewsSavedMsg {
+            get {
+                return ResourceManager.GetString("NewsSavedMsg", resourceCulture);
             }
         }
         
@@ -1087,6 +1195,15 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ми надіслали лист з підтвердженням на {0}. Будь ласка, дотримуйтесь інструкцій в листі..
+        /// </summary>
+        public static string SendVerificationEmailMsg {
+            get {
+                return ResourceManager.GetString("SendVerificationEmailMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Допоміжний персонал.
         /// </summary>
         public static string ServicePersonell {
@@ -1222,11 +1339,38 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Викладач з ім&apos;ям &quot;{0}&quot; успішно створений..
+        /// </summary>
+        public static string TeacherCreatedMsg {
+            get {
+                return ResourceManager.GetString("TeacherCreatedMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Викладач з ім&apos;ям &quot;{0}&quot; успішно видалений..
+        /// </summary>
+        public static string TeacherDeletedMsg {
+            get {
+                return ResourceManager.GetString("TeacherDeletedMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Викладачі.
         /// </summary>
         public static string Teachers {
             get {
                 return ResourceManager.GetString("Teachers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Викладач з ім&apos;ям &quot;{0}&quot; успішно збережений..
+        /// </summary>
+        public static string TeacherSavedMsg {
+            get {
+                return ResourceManager.GetString("TeacherSavedMsg", resourceCulture);
             }
         }
         
@@ -1330,11 +1474,47 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Користувач &quot;{0}&quot; успішно створений..
+        /// </summary>
+        public static string UserCreatedMsg {
+            get {
+                return ResourceManager.GetString("UserCreatedMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Користувач &quot;{0}&quot; успішно видалений..
+        /// </summary>
+        public static string UserDeletedMsg {
+            get {
+                return ResourceManager.GetString("UserDeletedMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Ім&apos;я користувача.
         /// </summary>
         public static string UserName {
             get {
                 return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Користувач з індифікатором = {0} не знайдений..
+        /// </summary>
+        public static string UserNoFound {
+            get {
+                return ResourceManager.GetString("UserNoFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Користувач &quot;{0}&quot; успішно збережений..
+        /// </summary>
+        public static string UserSavedMsg {
+            get {
+                return ResourceManager.GetString("UserSavedMsg", resourceCulture);
             }
         }
         

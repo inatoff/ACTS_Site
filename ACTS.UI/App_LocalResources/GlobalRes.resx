@@ -180,6 +180,21 @@
   <data name="CancelAndReturnToTable" xml:space="preserve">
     <value>Відмінити та повернутися до таблиці</value>
   </data>
+  <data name="CanNotDeleteHimSelfHere" xml:space="preserve">
+    <value>Ви не можете видалити себе тут, перейдіть в розділ "Мій рахунок" для цього.</value>
+  </data>
+  <data name="CanNotDeleteOnlyAdminUser" xml:space="preserve">
+    <value>Ви не можете видалити єдиного користувача з правами адміністратора.</value>
+  </data>
+  <data name="ChangedEmailMsg" xml:space="preserve">
+    <value>Ви успішно змінили свою електронну пошту на "{0}".</value>
+  </data>
+  <data name="ChangedPasswordMsg" xml:space="preserve">
+    <value>Ви успішно змінили свій пароль.</value>
+  </data>
+  <data name="ChangedUserNameMsg" xml:space="preserve">
+    <value>Ви успішно змінили своє ім'я користувача з "{0}" на "{1}".</value>
+  </data>
   <data name="ChangeEmail" xml:space="preserve">
     <value>Змінити електрону пошту</value>
   </data>
@@ -303,14 +318,26 @@
   <data name="Employee" xml:space="preserve">
     <value>Робітник</value>
   </data>
+  <data name="EmployeeCreatedMsg" xml:space="preserve">
+    <value>Робітник "{0}" успішно створений.</value>
+  </data>
+  <data name="EmployeeDeletedMsg" xml:space="preserve">
+    <value>Робітник "{0}" успішно видалений.</value>
+  </data>
   <data name="Employees" xml:space="preserve">
     <value>Робітники</value>
+  </data>
+  <data name="EmployeeSavedMsg" xml:space="preserve">
+    <value>Робітник "{0}" успішно збережений.</value>
   </data>
   <data name="English" xml:space="preserve">
     <value>Англійська</value>
   </data>
   <data name="FacebookUrl" xml:space="preserve">
     <value>Facebook URL-адреса</value>
+  </data>
+  <data name="FailedChangeEmailMsg" xml:space="preserve">
+    <value>Ви не змогли змінити адресу електронної пошти на "{0}". {1} Можливо, це сталося через закінчення відведених 6 годин для виконання операції.</value>
   </data>
   <data name="FDP" xml:space="preserve">
     <value>Довузівська підготовка</value>
@@ -376,7 +403,7 @@
     <value>Увійдіть, щоб почати сеанс</value>
   </data>
   <data name="Logout" xml:space="preserve">
-    <value> Вийти</value>
+    <value>Вийти</value>
   </data>
   <data name="Magistracy" xml:space="preserve">
     <value>Магістратура</value>
@@ -398,6 +425,15 @@
   </data>
   <data name="News" xml:space="preserve">
     <value>Новина</value>
+  </data>
+  <data name="NewsCreatedMsg" xml:space="preserve">
+    <value>Новина з заголовком "{0}" успішно створена.</value>
+  </data>
+  <data name="NewsDeletedMsg" xml:space="preserve">
+    <value>Новина з заголовком "{0}" успішно видалена.</value>
+  </data>
+  <data name="NewsSavedMsg" xml:space="preserve">
+    <value>Новина з заголовком "{0}" успішно збережена.</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>Немає</value>
@@ -462,6 +498,9 @@
   <data name="SendEmail" xml:space="preserve">
     <value>Відправити лист</value>
   </data>
+  <data name="SendVerificationEmailMsg" xml:space="preserve">
+    <value>Ми надіслали лист з підтвердженням на {0}. Будь ласка, дотримуйтесь інструкцій в листі.</value>
+  </data>
   <data name="ServicePersonell" xml:space="preserve">
     <value>Допоміжний персонал</value>
   </data>
@@ -507,8 +546,17 @@
   <data name="TeacherAbsent" xml:space="preserve">
     <value>Викладач відсутій</value>
   </data>
+  <data name="TeacherCreatedMsg" xml:space="preserve">
+    <value>Викладач з ім'ям "{0}" успішно створений.</value>
+  </data>
+  <data name="TeacherDeletedMsg" xml:space="preserve">
+    <value>Викладач з ім'ям "{0}" успішно видалений.</value>
+  </data>
   <data name="Teachers" xml:space="preserve">
     <value>Викладачі</value>
+  </data>
+  <data name="TeacherSavedMsg" xml:space="preserve">
+    <value>Викладач з ім'ям "{0}" успішно збережений.</value>
   </data>
   <data name="TeachingStaff" xml:space="preserve">
     <value>Педагогічний склад</value>
@@ -543,8 +591,20 @@
   <data name="UsefulLinks" xml:space="preserve">
     <value>Корисні посилання</value>
   </data>
+  <data name="UserCreatedMsg" xml:space="preserve">
+    <value>Користувач "{0}" успішно створений.</value>
+  </data>
+  <data name="UserDeletedMsg" xml:space="preserve">
+    <value>Користувач "{0}" успішно видалений.</value>
+  </data>
   <data name="UserName" xml:space="preserve">
     <value>Ім'я користувача</value>
+  </data>
+  <data name="UserNoFound" xml:space="preserve">
+    <value>Користувач з індифікатором = {0} не знайдений.</value>
+  </data>
+  <data name="UserSavedMsg" xml:space="preserve">
+    <value>Користувач "{0}" успішно збережений.</value>
   </data>
   <data name="Version" xml:space="preserve">
     <value>Версія</value>

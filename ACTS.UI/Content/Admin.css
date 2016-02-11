@@ -156,3 +156,8 @@ textarea{
 .mce-fullscreen {
     z-index: 1030 !important;
 }
+
+.field-validation-error {
+    margin-top: 5px;
+    margin-bottom: 0;
+}

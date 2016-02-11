@@ -180,6 +180,21 @@
   <data name="CancelAndReturnToTable" xml:space="preserve">
     <value>Cancel and return to Table</value>
   </data>
+  <data name="CanNotDeleteHimSelfHere" xml:space="preserve">
+    <value>You can not delete yourself here, go to "My account" for this.</value>
+  </data>
+  <data name="CanNotDeleteOnlyAdminUser" xml:space="preserve">
+    <value>You can not delete the only user with administrative rights.</value>
+  </data>
+  <data name="ChangedEmailMsg" xml:space="preserve">
+    <value>You have successfully changed your email on "{0}".</value>
+  </data>
+  <data name="ChangedPasswordMsg" xml:space="preserve">
+    <value>You have successfully changed your password.</value>
+  </data>
+  <data name="ChangedUserNameMsg" xml:space="preserve">
+    <value>You have successfully changed your username from "{0}" on "{1}".</value>
+  </data>
   <data name="ChangeEmail" xml:space="preserve">
     <value>Change e-mail</value>
   </data>
@@ -303,14 +318,26 @@
   <data name="Employee" xml:space="preserve">
     <value>Employee</value>
   </data>
+  <data name="EmployeeCreatedMsg" xml:space="preserve">
+    <value>Employee "{0}" successfully created.</value>
+  </data>
+  <data name="EmployeeDeletedMsg" xml:space="preserve">
+    <value>Employee "{0}" successfully deleted.</value>
+  </data>
   <data name="Employees" xml:space="preserve">
     <value>Employees</value>
+  </data>
+  <data name="EmployeeSavedMsg" xml:space="preserve">
+    <value>Employee "{0}" successfully saved.</value>
   </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
   </data>
   <data name="FacebookUrl" xml:space="preserve">
     <value>Facebook URL</value>
+  </data>
+  <data name="FailedChangeEmailMsg" xml:space="preserve">
+    <value>You failed change the email on "{0}".{1}Maybe it happened because of the expiration of the allotted 6 hours to perform the operation.</value>
   </data>
   <data name="FDP" xml:space="preserve">
     <value>Pregraduate preparing</value>
@@ -376,7 +403,7 @@
     <value>Sign in to start your session</value>
   </data>
   <data name="Logout" xml:space="preserve">
-    <value> Log out</value>
+    <value>Log out</value>
   </data>
   <data name="Magistracy" xml:space="preserve">
     <value>Magistracy</value>
@@ -398,6 +425,15 @@
   </data>
   <data name="News" xml:space="preserve">
     <value>News</value>
+  </data>
+  <data name="NewsCreatedMsg" xml:space="preserve">
+    <value>News with title "{0}" successfully created.</value>
+  </data>
+  <data name="NewsDeletedMsg" xml:space="preserve">
+    <value>News with title "{0}" successfully deleted.</value>
+  </data>
+  <data name="NewsSavedMsg" xml:space="preserve">
+    <value>News with title "{0}" successfully saved.</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>None</value>
@@ -462,6 +498,9 @@
   <data name="SendEmail" xml:space="preserve">
     <value>Send e-mail</value>
   </data>
+  <data name="SendVerificationEmailMsg" xml:space="preserve">
+    <value>We sent a verification email to {0}. Please follow the instructions in it.</value>
+  </data>
   <data name="ServicePersonell" xml:space="preserve">
     <value>Service Personell</value>
   </data>
@@ -507,8 +546,17 @@
   <data name="TeacherAbsent" xml:space="preserve">
     <value>The teacher is absent</value>
   </data>
+  <data name="TeacherCreatedMsg" xml:space="preserve">
+    <value>Teacher with name "{0}" successfully created.</value>
+  </data>
+  <data name="TeacherDeletedMsg" xml:space="preserve">
+    <value>Teacher with name "{0}" successfully deleted.</value>
+  </data>
   <data name="Teachers" xml:space="preserve">
     <value>Teachers</value>
+  </data>
+  <data name="TeacherSavedMsg" xml:space="preserve">
+    <value>Teacher with name "{0}" successfully saved.</value>
   </data>
   <data name="TeachingStaff" xml:space="preserve">
     <value>Teaching staff</value>
@@ -543,8 +591,20 @@
   <data name="UsefulLinks" xml:space="preserve">
     <value>Useful Links</value>
   </data>
+  <data name="UserCreatedMsg" xml:space="preserve">
+    <value>User "{0}" successfully created.</value>
+  </data>
+  <data name="UserDeletedMsg" xml:space="preserve">
+    <value>User "{0}" successfully deleted.</value>
+  </data>
   <data name="UserName" xml:space="preserve">
     <value>User name</value>
+  </data>
+  <data name="UserNoFound" xml:space="preserve">
+    <value>User with ID = {0} was not found.</value>
+  </data>
+  <data name="UserSavedMsg" xml:space="preserve">
+    <value>User "{0}" successfully saved.</value>
   </data>
   <data name="Version" xml:space="preserve">
     <value>Version</value>

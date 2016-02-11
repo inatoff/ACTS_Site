@@ -29,7 +29,7 @@
 				<div class="box-body">
 					@Html.AntiForgeryToken()
 
-					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+					@Html.ValidationSummary(true, "", new { @class = "text-red" })
 					@Html.HiddenFor(model => model.NewsId)
 					@Html.HiddenFor(model => model.ImageMimeType)
 					@Html.HiddenFor(model => model.ImageData)
@@ -38,7 +38,7 @@
 						@Html.LabelFor(model => model.Title, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
 							@Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-							@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger help-block", placeholder = GlobalRes.Title }, "p")
+							@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-red", placeholder = GlobalRes.Title }, "p")
 						</div>
 					</div>
 
@@ -68,7 +68,7 @@
 						@Html.LabelFor(model => model.Content, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
 							@Html.TextAreaFor(model => model.Content, new { @class = "tinymceEditor form-control" })
-							@Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger help-block", placeholder = GlobalRes.Content }, "p")
+							@Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-red", placeholder = GlobalRes.Content }, "p")
 						</div>
 					</div>
 

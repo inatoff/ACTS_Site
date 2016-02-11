@@ -297,4 +297,10 @@
   <data name="UsefulLinks" xml:space="preserve">
     <value>Полезные ссылки</value>
   </data>
+  <data name="UserCreatedMsg" xml:space="preserve">
+    <value>Пользователь "{0}" успешно создан.</value>
+  </data>
+  <data name="UserNoFound" xml:space="preserve">
+    <value>Пользователь с индефикатором = {0} не найден.</value>
+  </data>
 </root>

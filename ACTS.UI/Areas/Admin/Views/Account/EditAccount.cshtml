@@ -30,7 +30,7 @@
 				<div class="box-body">
 					@Html.AntiForgeryToken()
 
-					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+					@Html.ValidationSummary(true, "", new { @class = "text-red" })
 					@Html.HiddenFor(model => model.Id)
 
 					<div class="form-group">
@@ -40,7 +40,7 @@
 								<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 								@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = GlobalRes.UserName } })
 							</div>
-							@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" }, "p")
+							@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-red" }, "p")
 						</div>
 					</div>
 
@@ -51,7 +51,7 @@
 								<span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
 								@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = GlobalRes.Email } })
 							</div>
-							@Html.ValidationMessageFor(model => Model.Email, "", new { @class = "text-danger help-block" }, "p")
+							@Html.ValidationMessageFor(model => Model.Email, "", new { @class = "text-red" }, "p")
 						</div>
 					</div>
 
@@ -59,7 +59,7 @@
 						@Html.LabelFor(model => model.Roles, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
 							@Html.EditorFor(model => model.Roles)
-							@Html.ValidationMessageFor(model => model.Roles, "", new { @class = "text-danger help-block" }, "p")
+							@Html.ValidationMessageFor(model => model.Roles, "", new { @class = "text-red" }, "p")
 						</div>
 					</div>
 
@@ -67,7 +67,7 @@
 						@Html.LabelFor(model => model.PairTeacherId, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
 							@Html.DropDownListFor(model => model.PairTeacherId, ViewBag.Teachers as IEnumerable<SelectListItem>, GlobalRes.TeacherAbsent, new { @class = "select2 form-control", style = "width: 100%;" })
-							@Html.ValidationMessageFor(model => model.PairTeacherId, "", new { @class = "text-danger help-block" }, "p")
+							@Html.ValidationMessageFor(model => model.PairTeacherId, "", new { @class = "text-red" }, "p")
 						</div>
 					</div>
 				</div>

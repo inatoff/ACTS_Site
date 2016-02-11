@@ -1,4 +1,5 @@
 ﻿using ACTS.Core.Identity;
+using ACTS.UI.App_LocalResources;
 using ACTS.UI.Areas.Admin.Models;
 using ACTS.UI.Controllers;
 using ACTS.UI.Helpers;
@@ -90,7 +91,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 				if (result.Succeeded)
 					TempData.AddMessage(MessageType.Success,
-						$"You have successfully changed your username from \"{model.CurrentUserName}\" on \"{model.UserName}\".");
+						string.Format(GlobalRes.ChangedUserNameMsg, model.CurrentUserName, model.UserName));
 				else
 					TempData.AddMessages(MessageType.Warning, result.Errors);
 			}
@@ -111,7 +112,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				var result = await UserManager.SetEmailAsync(userId, model.Email);
 
 				if (result.Succeeded)
-					TempData.AddMessage(MessageType.Success, $"You have successfully changed your email on \"{model.Email}\".");
+					TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.ChangedEmailMsg, model.Email));
 				else
 					TempData.AddMessages(MessageType.Warning, result.Errors);
 
@@ -131,7 +132,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 			await UserManager.SendEmailAsync(CurrentUserId, "Змінити емейл", body);
 
-			TempData.AddMessage(MessageType.Info, $"We sent a verification email to {model.CurrentEmail}. Please follow the instructions in it.");
+			TempData.AddMessage(MessageType.Info, string.Format(GlobalRes.SendVerificationEmailMsg, model.CurrentEmail));
 
 			return RedirectToAction(nameof(Index));
 		}
@@ -143,12 +144,13 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				var result = await UserManager.SetEmailAsync(userId, email);
 
 				if (result.Succeeded)
-					TempData.AddMessage(MessageType.Success, $"You have successfully changed your email on \"{email}\".");
+					TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.ChangedEmailMsg, email));
 				else
 					TempData.AddMessages(MessageType.Warning, result.Errors);
 			}
 			else
-				TempData.AddMessage(MessageType.Warning, $"You failed change the email on \"{email}\".{Environment.NewLine}Maybe it happened because of the expiration of the allotted 24 hours to perform the operation.");
+				TempData.AddMessage(MessageType.Warning, 
+					string.Format(GlobalRes.FailedChangeEmailMsg, email, Environment.NewLine));
 
 			return RedirectToAction(nameof(Index));
 		}
@@ -162,7 +164,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				var result = await UserManager.ChangePasswordAsync(CurrentUserId, model.CurrentPassword, model.NewPassword);
 
 				if (result.Succeeded)
-					TempData.AddMessage(MessageType.Success, $"You have successfully changed your password.");
+					TempData.AddMessage(MessageType.Success, GlobalRes.ChangedPasswordMsg);
 				else
 					TempData.AddMessages(MessageType.Warning, result.Errors);
 			}
@@ -178,7 +180,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			{
 				if ((await RoleManager.FindByNameAsync("Admin")).Users.Count() < 2)
 				{
-					TempData.AddMessage(MessageType.Warning, $"You can not delete the only user with administrative rights.");
+					TempData.AddMessage(MessageType.Warning, GlobalRes.CanNotDeleteOnlyAdminUser);
 					return RedirectToAction(nameof(Index));
 				}
 

@@ -44,15 +44,15 @@
 			@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
 			{
 				@Html.AntiForgeryToken()
-				@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+				@Html.ValidationSummary(true, "", new { @class = "text-red" })
 
-				<p>@Html.ValidationMessageFor(model => Model.EmailOrUserName, "", new { @class = "text-danger" })</p>
+				@Html.ValidationMessageFor(model => Model.EmailOrUserName, "", new { @class = "text-red" }, "p")
 				<div class="form-group has-feedback">
 					@Html.TextBoxFor(m => m.EmailOrUserName, new { @class = "form-control", placeholder = GlobalRes.EmailOrUserName })
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 
-				<p>@Html.ValidationMessageFor(model => Model.Password, "", new { @class = "text-danger" })</p>
+				@Html.ValidationMessageFor(model => Model.Password, "", new { @class = "text-red" }, "p")
 				<div class="form-group has-feedback">
 					@Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = GlobalRes.Password })
 					<span class="glyphicon glyphicon-lock form-control-feedback"></span>

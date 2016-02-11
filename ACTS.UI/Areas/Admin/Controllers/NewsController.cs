@@ -1,5 +1,6 @@
 ﻿using ACTS.Core.Abstract;
 using ACTS.Core.Entities;
+using ACTS.UI.App_LocalResources;
 using ACTS.UI.Areas.Admin.Models;
 using ACTS.UI.Controllers;
 using ACTS.UI.Helpers;
@@ -46,13 +47,18 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					image.InputStream.Read(news.ImageData, 0, image.ContentLength);
 				}
 				repository.UpdateNews(news);
-				TempData.AddMessage(MessageType.Success, $"News with title \"{news.Title}\" successfully saved.");
+				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.NewsSavedMsg, news.Title)); 
 				return RedirectToAction(nameof(Table));
 			} else
 			{
 				// there is something wrong with the data values         
 				return View("EditNews", news);
 			}
+		}
+
+		public ActionResult Create()
+		{
+			return View("CreateNews");
 		}
 
 		[HttpPost]
@@ -68,18 +74,14 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					image.InputStream.Read(news.ImageData, 0, image.ContentLength);
 				}
 				repository.CreateNews(news);
-				TempData.AddMessage(MessageType.Success, $"News with title \"{news.Title}\" successfully created.");
+				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.NewsCreatedMsg, news.Title));
 				return RedirectToAction(nameof(Table));
-			} else
+			}
+			else
 			{
 				// there is something wrong with the data values         
 				return View("EditNews");
 			}
-		}
-
-		public ActionResult Create()
-		{
-			return View("CreateNews");
 		}
 
 		[HttpPost]
@@ -89,7 +91,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			News deletedNews = repository.DeleteNews(newsId);
 			if (deletedNews != null)
 			{
-				TempData.AddMessage(MessageType.Success, $"News with title \"{deletedNews.Title}\" successfully deleted.");
+				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.NewsDeletedMsg, deletedNews.Title));
 			}
 			return RedirectToAction(nameof(Table));
 		}
