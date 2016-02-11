@@ -2,7 +2,7 @@
 
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
-	ViewBag.Title = "Edit employee";
+	ViewBag.Title = GlobalRes.EditEmployee;
 }
 
 @section Styles{
@@ -12,14 +12,14 @@
 @section Scripts{
 	@Scripts.Render("~/bundles/jqueryval-admin")
 	@Scripts.Render("~/bundles/expressive")
-	@Scripts.Render("~/bundles/fileinput")
+	@Scripts.Render(GlobalRes.fileinputPath)
 }
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<div class="box-header with-border">
-				<h3 class="box-title">Redact @Model.FullName</h3>
+				<h3 class="box-title">@GlobalRes.Redact @Model.FullName</h3>
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
@@ -37,7 +37,7 @@
 					<div class="form-group">
 						@Html.LabelFor(model => Model.FullName, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
-							@Html.EditorFor(model => Model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Full name" } })
+							@Html.EditorFor(model => Model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = GlobalRes.FullName } })
 							@Html.ValidationMessageFor(model => Model.FullName, "", new { @class = "text-danger help-block" }, "p")
 						</div>
 					</div>
@@ -45,18 +45,18 @@
 					<div class="form-group">
 						@Html.LabelFor(model => Model.Position, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
-							@Html.EditorFor(model => Model.Position, new { htmlAttributes = new { @class = "form-control", placeholder = "Position", style = "width: 100%;" } })
+							@Html.EditorFor(model => Model.Position, new { htmlAttributes = new { @class = "form-control", placeholder = GlobalRes.Position, style = "width: 100%;" } })
 							@Html.ValidationMessageFor(model => Model.Position, "", new { @class = "text-danger help-block" }, "p")
 						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => Model.Photo, "Current photo", new { @class = "col-md-3 col-lg-2 control-label" })
+						@Html.LabelFor(model => Model.Photo, GlobalRes.CurrentPhoto, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
 							@if (Model.Photo == null)
 							{
 								<p class="form-control-static">
-									None
+									@GlobalRes.None
 								</p>
 							}
 							else
@@ -67,7 +67,7 @@
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => Model.Photo, "Upload new photo:", new { @class = "col-md-3 col-lg-2 control-label" })
+						@Html.LabelFor(model => Model.Photo, GlobalRes.UploadNewPhoto, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
 							<input id="input-image" class="file-loading form-control" accept="image/*" type="file" name="Image" />
 						</div>
@@ -78,10 +78,10 @@
 
 					<div class="box-footer">
 						<button type="submit" class="btn btn-primary">
-							<i class="fa fa-edit"></i>&nbsp;Save
+							<i class="fa fa-edit"></i>&nbsp;@GlobalRes.Save
 						</button>
 						<a type="button" class="btn btn-default pull-right" href="@Url.Action("Table", "Employee")">
-							<i class="fa fa-undo"></i>&nbsp;Cancel and return to Table
+							<i class="fa fa-undo"></i>&nbsp;@GlobalRes.CancelAndReturnToTable
 						</a>
 					</div>
 				}

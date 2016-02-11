@@ -42,7 +42,7 @@ namespace ACTS.UI.Controllers
 			var uncos = repository.Uncos.Where(delegate (News n) {
 				if (n.Modified.HasValue)
 					return (DateTime.UtcNow - n.Modified.Value).TotalDays < 365;
-				return (DateTime.UtcNow - n.Create.Value).TotalDays < 365;
+				return (DateTime.UtcNow - n.Created.Value).TotalDays < 365;
 			});
 			Random rand = new Random();
 			var randomNumbers = uncos.Select(r => rand.Next()).ToArray();
@@ -56,7 +56,7 @@ namespace ACTS.UI.Controllers
 
 		public PartialViewResult NavLastUncos()
 		{
-			IEnumerable<News> last3uncos = repository.Uncos.OrderBy(n => n.Create).Take(3);
+			IEnumerable<News> last3uncos = repository.Uncos.OrderBy(n => n.Created).Take(3);
 			return PartialView(last3uncos);
 		}
 

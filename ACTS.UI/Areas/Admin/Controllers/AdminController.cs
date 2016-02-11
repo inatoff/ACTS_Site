@@ -10,12 +10,14 @@ using System.Web;
 using System.Web.Mvc;
 using ACTS.Core.Identity;
 using ACTS.UI.Areas.Admin.Models;
+using ACTS.UI.Controllers;
+using ACTS.UI.Helpers;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
 	//[Security(Roles = "Admin", RedirectUrl = "Admin/Account/Login")]
 	[Authorize(Roles = "Admin")]
-	public class AdminController : Controller
+	public class AdminController : BaseController
 	{
 		public ActionResult Dashboard()
 		{

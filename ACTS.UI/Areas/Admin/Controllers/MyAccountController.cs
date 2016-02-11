@@ -1,5 +1,6 @@
 ﻿using ACTS.Core.Identity;
 using ACTS.UI.Areas.Admin.Models;
+using ACTS.UI.Controllers;
 using ACTS.UI.Helpers;
 using ACTS.UI.Infrastructure;
 using ACTS.UI.Models;
@@ -17,7 +18,7 @@ using System.Web.UI.WebControls;
 namespace ACTS.UI.Areas.Admin.Controllers
 {
 	[Authorize(Roles = "Admin")]
-	public class MyAccountController : Controller
+	public class MyAccountController : BaseController
 	{
 		private ApplicationUserManager _userManager;
 		private ApplicationRoleManager _roleManager;

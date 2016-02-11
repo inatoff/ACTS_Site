@@ -1,6 +1,7 @@
 ﻿using ACTS.Core.Abstract;
 using ACTS.Core.Entities;
 using ACTS.UI.Areas.Admin.Models;
+using ACTS.UI.Controllers;
 using ACTS.UI.Helpers;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Web.Mvc;
 namespace ACTS.UI.Areas.Admin.Controllers
 {
 	[Authorize(Roles = "Admin")]
-	public class TeacherController : Controller
+	public class TeacherController : BaseController
 	{
 		private ITeacherRepository repository;
 

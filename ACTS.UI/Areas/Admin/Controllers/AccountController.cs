@@ -12,11 +12,12 @@ using ACTS.Core.Concrete;
 using ACTS.UI.Helpers;
 using ACTS.Core.Abstract;
 using Microsoft.AspNet.Identity;
+using ACTS.UI.Controllers;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
 	[Authorize]
-	public class AccountController : Controller
+	public class AccountController : BaseController
 	{
 		private ITeacherRepository _teacherRepository;
 		public AccountController(ITeacherRepository teacherRepository)

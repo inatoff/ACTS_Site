@@ -153,6 +153,15 @@
   <data name="BlogRemovePost" xml:space="preserve">
     <value>Удалить пост</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="ChangeEmail" xml:space="preserve">
+    <value>Изменить электронную почту</value>
+  </data>
+  <data name="CheckYourEmail" xml:space="preserve">
+    <value>Проверьте свою электронную почту</value>
+  </data>
   <data name="ConditionsOfAdmissions" xml:space="preserve">
     <value>Требования при поступлении</value>
   </data>
@@ -168,11 +177,29 @@
   <data name="Department" xml:space="preserve">
     <value>Кафедра</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="EmailOrUserName" xml:space="preserve">
+    <value>Имя пользователя или адрес электронной почты</value>
+  </data>
   <data name="FDP" xml:space="preserve">
     <value>Довузовская подготовка</value>
   </data>
   <data name="ForEnrollee" xml:space="preserve">
     <value>Абитуриенту</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Забыли пароль</value>
+  </data>
+  <data name="ForgotPasswordConfirmationMsg" xml:space="preserve">
+    <value>Мы только что отправили Вам письмо со ссылкой для сброса пароля!</value>
+  </data>
+  <data name="ForgotPasswordMsg" xml:space="preserve">
+    <value>Введите адрес электронной почты, и мы вышлем вам ссылку для восстановления пароля</value>
+  </data>
+  <data name="ForgotPasswordQuestion" xml:space="preserve">
+    <value>Забыли пароль?</value>
   </data>
   <data name="ForStudent" xml:space="preserve">
     <value>Студенту</value>
@@ -183,11 +210,17 @@
   <data name="HomeIndexTitle" xml:space="preserve">
     <value>Автоматика и Управление в Технических Системах (АУТС)</value>
   </data>
+  <data name="IForgotMyPassword" xml:space="preserve">
+    <value>Я забыл свой пароль</value>
+  </data>
   <data name="Laboratories" xml:space="preserve">
     <value>Лаборатории</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Войти</value>
+  </data>
+  <data name="LoginMsg" xml:space="preserve">
+    <value>Войдите, чтобы начать сеанс</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Выйти</value>
@@ -216,6 +249,12 @@
   <data name="Researches" xml:space="preserve">
     <value>Исследования</value>
   </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Сброс пароля</value>
+  </data>
+  <data name="ResetPasswordMsg" xml:space="preserve">
+    <value>Введите свой пароль</value>
+  </data>
   <data name="Schedule" xml:space="preserve">
     <value>Расписание</value>
   </data>
@@ -231,11 +270,17 @@
   <data name="Search" xml:space="preserve">
     <value>Поиск</value>
   </data>
+  <data name="SendEmail" xml:space="preserve">
+    <value>Отправить письмо</value>
+  </data>
   <data name="ServicePersonell" xml:space="preserve">
     <value>Вспомогательный персонал</value>
   </data>
   <data name="SessionSchedule" xml:space="preserve">
     <value>Расписание Сессии</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Войти</value>
   </data>
   <data name="Specialties" xml:space="preserve">
     <value>Специальности</value>
@@ -245,6 +290,9 @@
   </data>
   <data name="TeachingStaff" xml:space="preserve">
     <value>Научно-педагогический состав</value>
+  </data>
+  <data name="UpdateEmail" xml:space="preserve">
+    <value>Обновить электронную почту</value>
   </data>
   <data name="UsefulLinks" xml:space="preserve">
     <value>Полезные ссылки</value>

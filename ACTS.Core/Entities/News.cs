@@ -13,13 +13,13 @@ namespace ACTS.Core.Entities
 		[HiddenInput(DisplayValue = false)]
 		public int NewsId { get; set; }
 
-		[Required(AllowEmptyStrings = false, ErrorMessage = "Please enter a title")]
-		[StringLength(500, ErrorMessage = "Title: Length should not exceed 500 characters")]
+		[Required(AllowEmptyStrings = false)]
+		[StringLength(500, ErrorMessage = "Title: Length should not exceed {1} characters")]
 		[Display(Name = "Title*")]
 		public string Title { get; set; }
 
 		[HiddenInput(DisplayValue = false)]
-		public DateTime? Create { get; set; }
+		public DateTime? Created { get; set; }
 
 		[HiddenInput(DisplayValue = false)]
 		public DateTime? Modified { get; set; }

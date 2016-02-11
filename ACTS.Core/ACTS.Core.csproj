@@ -97,9 +97,9 @@
     <Compile Include="Migrations\201601272158144_AddedRanksToTeachers.Designer.cs">
       <DependentUpon>201601272158144_AddedRanksToTeachers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601272217593_AddedDisciplinesToTeacher.cs" />
-    <Compile Include="Migrations\201601272217593_AddedDisciplinesToTeacher.Designer.cs">
-      <DependentUpon>201601272217593_AddedDisciplinesToTeacher.cs</DependentUpon>
+    <Compile Include="Migrations\201602101343215_PropCreated.cs" />
+    <Compile Include="Migrations\201602101343215_PropCreated.Designer.cs">
+      <DependentUpon>201602101343215_PropCreated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,8 +117,8 @@
     <EmbeddedResource Include="Migrations\201601272158144_AddedRanksToTeachers.resx">
       <DependentUpon>201601272158144_AddedRanksToTeachers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601272217593_AddedDisciplinesToTeacher.resx">
-      <DependentUpon>201601272217593_AddedDisciplinesToTeacher.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602101343215_PropCreated.resx">
+      <DependentUpon>201602101343215_PropCreated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

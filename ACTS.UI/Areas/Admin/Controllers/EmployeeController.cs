@@ -9,11 +9,12 @@ using ACTS.Core.Abstract;
 using ACTS.Core.Entities;
 using ACTS.UI.Helpers;
 using ACTS.UI.Areas.Admin.Models;
+using ACTS.UI.Controllers;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
 	[Authorize(Roles = "Admin")]
-	public class EmployeeController : Controller
+	public class EmployeeController : BaseController
 	{
 		private IEmployeeRepository repository;
 

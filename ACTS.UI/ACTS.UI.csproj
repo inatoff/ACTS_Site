@@ -317,6 +317,8 @@
     <Content Include="Content\Images\actsSlide2.jpg" />
     <Content Include="Content\Images\actsSlide4.jpg" />
     <Content Include="Content\Images\en.png" />
+    <Content Include="Content\Images\flag_great_britain.png" />
+    <Content Include="Content\Images\flag_ukraine.png" />
     <Content Include="Content\Images\icon-admin_user-blue.png" />
     <Content Include="Content\Images\ru.png" />
     <Content Include="Content\Images\uk.png" />
@@ -372,12 +374,14 @@
     <Content Include="Areas\Admin\Views\Employee\CreateEmployee.cshtml" />
     <Content Include="Areas\Admin\Views\Teacher\CreateTeacher.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartialUser.cshtml" />
-    <Content Include="Scripts\Admin\Employee\tableEmployee.js" />
+    <Content Include="Scripts\Admin\fileinputOptions_uk.js" />
     <Content Include="Scripts\Admin\fileinputOptions.js" />
+    <Content Include="Scripts\Admin\initDataTable.js" />
+    <Content Include="Scripts\Admin\initDataTable_uk.js" />
+    <Content Include="Scripts\Admin\initSelect2.js" />
+    <Content Include="Scripts\Admin\initTinyEditor_uk.js" />
     <Content Include="Scripts\Admin\initTinyEditor.js" />
-    <Content Include="Scripts\Admin\News\tableUncos.js" />
-    <Content Include="Scripts\Admin\Account\tableAccount.js" />
-    <Content Include="Scripts\Admin\Teacher\tableTeacher.js" />
+    <Content Include="Scripts\Admin\init_iCheck.js" />
     <Content Include="Scripts\Admin\validationOptions.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\app.min.js" />

@@ -2,47 +2,32 @@
 @model ACTS.UI.Areas.Admin.Models.AccountViewModel
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
-	ViewBag.CurrentTreeView = "Create";
-	ViewBag.Title = "Create account";
+	ViewBag.CurrentTreeView = GlobalRes.Create;
+	ViewBag.Title = GlobalRes.CreateAccount;
 }
 
 @section Styles {
 	@Styles.Render("~/Content/css/select2")
 	<!-- iCheck -->
-	<link href="~/Content/iCheck/square/blue.css" rel="stylesheet" />
+	@Styles.Render("~/Content/css/iCheck/blue")
 }
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval-admin")
 	@Scripts.Render("~/bundles/expressive")
 	@Scripts.Render("~/bundles/select2")
-	<script>
-		$(document).ready(function () {
-			$(".select2").select2();
-		});
-	</script>
 	<!-- iCheck -->
-	<script src="~/Scripts/jquery.icheck.min.js"></script>
-	<script type="text/javascript">
-		$(function () {
-			$('input').iCheck({
-				checkboxClass: 'icheckbox_square-blue',
-				radioClass: 'iradio_square-blue',
-				increaseArea: '20%' // optional
-			});
-		});
-	</script>
+	@Scripts.Render("~/bundles/iCheck")
 }
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<div class="box-header with-border">
-				<h3 class="box-title"> Create account</h3>
+				<h3 class="box-title">@GlobalRes.CreateAccount</h3>
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
-			@*TODO: Rustam помоги сделать что бы когда оно проверяет и там неправильные даные то виглядела как http://bootstrap-3.ru/css.php#forms-control-validation*@
 			@using (Html.BeginForm("Create", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
 			{
 				<div class="box-body">
@@ -55,7 +40,7 @@
 						<div class="col-md-8 col-lg-9">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-								@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "User name" } })
+								@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = GlobalRes.UserName } })
 							</div>
 							@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" }, "p")
 						</div>
@@ -66,7 +51,7 @@
 						<div class="col-md-8 col-lg-9">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
-								@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+								@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = GlobalRes.Email } })
 							</div>
 							@Html.ValidationMessageFor(model => Model.Email, "", new { @class = "text-danger help-block" }, "p")
 						</div>
@@ -87,7 +72,7 @@
 						<div class="col-md-8 col-lg-9">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-								@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+								@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = GlobalRes.Password } })
 							</div>
 							@Html.ValidationMessageFor(model => Model.Password, "", new { @class = "text-danger help-block" }, "p")
 						</div>
@@ -97,7 +82,7 @@
 						<div class="col-md-8 col-lg-9">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-								@Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Confirm password" } })
+								@Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = GlobalRes.ConfirmPassword } })
 							</div>
 							@Html.ValidationMessageFor(model => Model.ConfirmPassword, "", new { @class = "text-danger help-block" }, "p")
 						</div>
@@ -114,7 +99,7 @@
 					<div class="form-group">
 						@Html.LabelFor(model => model.PairTeacherId, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
-							@Html.DropDownListFor(model => model.PairTeacherId, ViewBag.Teachers as IEnumerable<SelectListItem>, "The teacher is absent.", new { @class = "select2 form-control", style = "width: 100%;" })
+							@Html.DropDownListFor(model => model.PairTeacherId, ViewBag.Teachers as IEnumerable<SelectListItem>, GlobalRes.TeacherAbsent, new { @class = "select2 form-control", style = "width: 100%;" })
 							@Html.ValidationMessageFor(model => model.PairTeacherId, "", new { @class = "text-danger help-block" }, "p")
 						</div>
 					</div>
@@ -123,10 +108,10 @@
 
 				<div class="box-footer">
 					<button type="submit" class="btn btn-primary">
-						<i class="fa fa-save"></i>&nbsp;Create
+						<i class="fa fa-save"></i>&nbsp;@GlobalRes.Create
 					</button>
 					<a type="button" class="btn btn-default pull-right" href="@Url.Action("Table", "Account")">
-						<i class="fa fa-undo"></i>&nbsp;Cancel and return to Table
+						<i class="fa fa-undo"></i>&nbsp;@GlobalRes.CancelAndReturnToTable
 					</a>
 				</div>
 			}

@@ -8,15 +8,15 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Log in</title>
+	<title>@GlobalRes.SignIn</title>
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	@Styles.Render("~/Content/css")
 	<!-- Theme style -->
-	<link href="~/Content/AdminLTE.css" rel="stylesheet" />
-	<link href="~/Content/Login.css" rel="stylesheet" />
+	<link href="@Url.Content("~/Content/AdminLTE.css")" rel="stylesheet" />
+	<link href="@Url.Content("~/Content/Login.css")" rel="stylesheet" />
 	<!-- iCheck -->
-	<link href="~/Content/iCheck/square/blue.css" rel="stylesheet" />
+	@Styles.Render("~/Content/css/iCheck/blue")
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,16 +30,16 @@
 		<div class="login-logo">
 			@if (string.IsNullOrWhiteSpace(ViewBag.ReturnUrl) ? false : ViewBag.ReturnUrl.ToLower().StartsWith("/admin"))
 			{
-				<a href="@Url.Action("Dashboard","Admin", new { area = "Admin" })"><b>Admin</b>ACTS</a>
+				<a href="@Url.Action("Dashboard","Admin", new { area = "Admin" })"><b>@GlobalRes.Admin</b>@GlobalRes.ACTS</a>
 			}
 			else
 			{
-				<a href="@Url.Action("Index","Home")"><b>ACTS</b>KPI</a>
+				<a href="@Url.Action("Index","Home")"><b>@GlobalRes.ACTS</b>@GlobalRes.KPI</a>
 			}
 		</div>
 		<!-- /.login-logo -->
 		<div class="login-box-body">
-			<p class="login-box-msg">Sign in to start your session</p>
+			<p class="login-box-msg">@GlobalRes.LoginMsg</p>
 
 			@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
 			{
@@ -48,13 +48,13 @@
 
 				<p>@Html.ValidationMessageFor(model => Model.EmailOrUserName, "", new { @class = "text-danger" })</p>
 				<div class="form-group has-feedback">
-					@Html.TextBoxFor(m => m.EmailOrUserName, new { @class = "form-control", placeholder = "Username or email address" })
+					@Html.TextBoxFor(m => m.EmailOrUserName, new { @class = "form-control", placeholder = GlobalRes.EmailOrUserName })
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 
 				<p>@Html.ValidationMessageFor(model => Model.Password, "", new { @class = "text-danger" })</p>
 				<div class="form-group has-feedback">
-					@Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+					@Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = GlobalRes.Password })
 					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 				</div>
 
@@ -67,12 +67,12 @@
 					</div>
 					<!-- /.col -->
 					<div class="col-xs-4">
-						<button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+						<button type="submit" class="btn btn-primary btn-block btn-flat">@GlobalRes.SignIn</button>
 					</div>
 					<!-- /.col -->
 				</div>
 			}
-			<a href="@Url.Action("ForgotPassword","Account")">I forgot my password</a>
+			<a href="@Url.Action("ForgotPassword","Account")">@GlobalRes.IForgotMyPassword</a>
 
 		</div>
 		<!-- /.login-box-body -->
@@ -81,15 +81,6 @@
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/bootstrap")
 	<!-- iCheck -->
-	<script src="~/Scripts/jquery.icheck.min.js"></script>
-	<script>
-		$(function () {
-			$('input').iCheck({
-				checkboxClass: 'icheckbox_square-blue',
-				radioClass: 'iradio_square-blue',
-				increaseArea: '20%' // optional
-			});
-		});
-	</script>
+	@Scripts.Render("~/bundles/iCheck")
 </body>
 </html>

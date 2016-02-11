@@ -17,7 +17,7 @@ using ACTS.UI.App_LocalResources;
 namespace ACTS.UI.Controllers
 {
 	[Authorize]
-	public class AccountController : Controller
+	public class AccountController : BaseController
 	{
 		private ApplicationUserManager _userManager;
 		private ApplicationSignInManager _signInManager;

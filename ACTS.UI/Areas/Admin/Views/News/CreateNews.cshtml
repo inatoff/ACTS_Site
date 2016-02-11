@@ -2,8 +2,8 @@
 
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
-	ViewBag.Title = "Create news";
-	ViewBag.CurrentTreeView = "Create";
+	ViewBag.Title = GlobalRes.CreateNews;
+	ViewBag.CurrentTreeView = GlobalRes.Create;
 }
 
 @section Styles{
@@ -13,21 +13,19 @@
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval-admin")
 	@Scripts.Render("~/bundles/expressive")
-	@Scripts.Render("~/bundles/tinymce")
-	<script src="~/Scripts/Admin/initTinyEditor.js"></script>
-	@Scripts.Render("~/bundles/fileinput")
+	@Scripts.Render(GlobalRes.tinymcePath)
+	@Scripts.Render(GlobalRes.fileinputPath)
 }
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<div class="box-header with-border">
-				<h3 class="box-title"> Create news</h3>
+				<h3 class="box-title"> @GlobalRes.CreateNews</h3>
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
-			@*TODO: Rustam помоги сделать что бы когда оно проверяет и там неправильные даные то виглядела как http://bootstrap-3.ru/css.php#forms-control-validation*@
-			@using (Html.BeginForm("Create", "News", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart /form-data" }))
+			@using (Html.BeginForm("Create", "News", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
 			{
 				<div class="box-body">
 					@Html.AntiForgeryToken()
@@ -38,7 +36,7 @@
 						@Html.LabelFor(model => model.Title, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
 							@Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-							@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger help-block", placeholder = "Title" }, "p")
+							@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger help-block", placeholder = GlobalRes.Title }, "p")
 						</div>
 					</div>
 
@@ -53,7 +51,7 @@
 						@Html.LabelFor(model => model.Content, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
 							@Html.TextAreaFor(model => model.Content, new { @class = "tinymceEditor" })
-							@Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger help-block", placeholder = "Content" }, "p")
+							@Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger help-block", placeholder = GlobalRes.Content }, "p")
 						</div>
 					</div>
 				</div>
@@ -61,10 +59,10 @@
 
 				<div class="box-footer">
 					<button type="submit" class="btn btn-primary">
-						<i class="fa fa-save"></i>&nbsp;Create
+						<i class="fa fa-save"></i>&nbsp;&nbsp;@GlobalRes.Create
 					</button>
 					<a type="button" class="btn btn-default pull-right" href="@Url.Action("Table", "News")">
-						<i class="fa fa-undo"></i>&nbsp;Cancel and return to Table
+						<i class="fa fa-undo"></i>&nbsp;@GlobalRes.CancelAndReturnToTable
 					</a>
 				</div>
 			}

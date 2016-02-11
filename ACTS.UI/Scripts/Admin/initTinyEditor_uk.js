@@ -1,4 +1,5 @@
 ﻿tinymce.init({
+    language: "uk",
     selector: "textarea.tinymceEditor",
     theme: "modern",
     resize: true,

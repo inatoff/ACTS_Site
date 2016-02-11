@@ -2,8 +2,8 @@
 
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
-	ViewBag.CurrentTreeView = "Create";
-	ViewBag.Title = "Create Employee";
+	ViewBag.CurrentTreeView = GlobalRes.Create;
+	ViewBag.Title = GlobalRes.CreateEmployee;
 }
 
 @section Styles{
@@ -13,14 +13,14 @@
 @section Scripts{
 	@Scripts.Render("~/bundles/jqueryval-admin")
 	@Scripts.Render("~/bundles/expressive")
-	@Scripts.Render("~/bundles/fileinput")
+	@Scripts.Render(GlobalRes.fileinputPath)
 }
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<div class="box-header with-border">
-				<h3 class="box-title"> Create employee</h3>
+				<h3 class="box-title">@GlobalRes.CreateEmployee</h3>
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
@@ -35,7 +35,7 @@
 					<div class="form-group">
 						@Html.LabelFor(model => Model.FullName, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
-							@Html.EditorFor(model => Model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Full name" } })
+							@Html.EditorFor(model => Model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = GlobalRes.FullName } })
 							@Html.ValidationMessageFor(model => Model.FullName, "", new { @class = "text-danger help-block" }, "p")
 						</div>
 					</div>
@@ -43,7 +43,7 @@
 					<div class="form-group">
 						@Html.LabelFor(model => Model.Position, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
-							@Html.EditorFor(model => Model.Position, new { htmlAttributes = new { @class = "form-control", placeholder = "Position", style = "width: 100%;" } })
+							@Html.EditorFor(model => Model.Position, new { htmlAttributes = new { @class = "form-control", placeholder = GlobalRes.Position, style = "width: 100%;" } })
 							@Html.ValidationMessageFor(model => Model.Position, "", new { @class = "text-danger help-block" }, "p")
 						</div>
 					</div>
@@ -60,10 +60,10 @@
 
 				<div class="box-footer">
 					<button type="submit" class="btn btn-primary">
-						<i class="fa fa-save"></i>&nbsp;Create
+						<i class="fa fa-save"></i>&nbsp;@GlobalRes.Create
 					</button>
 					<a type="button" class="btn btn-default pull-right" href="@Url.Action("Table", "Employee")">
-						<i class="fa fa-undo"></i>&nbsp;Cancel and return to Table
+						<i class="fa fa-undo"></i>&nbsp;@GlobalRes.CancelAndReturnToTable
 					</a>
 				</div>
 			}
