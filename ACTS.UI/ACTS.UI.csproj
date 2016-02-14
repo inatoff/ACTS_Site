@@ -351,6 +351,7 @@
     <Content Include="Content\skins\_all-skins.min.css" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Site.css" />
+    <None Include="EmailTemplates\ConfirmRegistration.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
