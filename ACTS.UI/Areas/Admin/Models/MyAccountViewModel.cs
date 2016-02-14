@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ExpressiveAnnotations.Attributes;
+using ACTS.Localization.Resources;
+using ACTS.Localization;
+using ACTS.UI.App_LocalResources;
 
 namespace ACTS.UI.Areas.Admin.Models
 {
@@ -12,21 +15,24 @@ namespace ACTS.UI.Areas.Admin.Models
 	{
 		#region ChangeUserName
 
-		[Display(Name = "User name*", Description = "You can change your username, which impacts how you sign in.")]
-		[AssertThat("UserName != CurrentUserName", ErrorMessage = "User name not changed.")]
+		[CustomRequired]
+		[Display(Name = nameof(DisplayRes.UserNameName), Description = nameof(DisplayRes.UserNameDescription),
+			ShortName = nameof(DisplayRes.UserNameShortName), ResourceType = typeof(DisplayRes))]
+		[AssertThat("UserName != CurrentUserName",
+			ErrorMessageResourceName = nameof(GlobalRes.UserNameNotChangedErrMsg), ErrorMessageResourceType = typeof(GlobalRes))]
 		[MinLength(5)]
-		[Required]
 		public string UserName { get; set; }
-		public string CurrentUserName { get; set; } 
+		public string CurrentUserName { get; set; }
 
 		#endregion
 
 		#region ChangeEmail
 
-		[Display(Name = "Email adress*", Description = "Changing your email address is an easy, two-step process. Specify the new email address you want to use, and we will send an email to current address allowing you to complete the update.")]
-		[AssertThat("Email != CurrentEmail", ErrorMessage = "Email not changed.")]
-		[EmailAddress]
-		[Required]
+		[Display(Name = nameof(DisplayRes.EmailAddressName), Description = nameof(DisplayRes.ChangeEmailDescription), ResourceType = typeof(DisplayRes))]
+		[AssertThat("Email != CurrentEmail",
+			ErrorMessageResourceName = nameof(GlobalRes.EmailNotChangedErrMsg), ErrorMessageResourceType = typeof(GlobalRes))]
+		[EmailAddress(ErrorMessageResourceName = nameof(EmailAddressRes.EmailErrMsg), ErrorMessageResourceType = typeof(EmailAddressRes))]
+		[CustomRequired]
 		public string Email { get; set; }
 		public string CurrentEmail { get; set; }
 
@@ -34,32 +40,34 @@ namespace ACTS.UI.Areas.Admin.Models
 
 		#region ChangePassword
 
-		[Required]
-		[Display(Name = "Current password*")]
+		[CustomRequired]
+		[Display(Name = nameof(DisplayRes.OldPasswordName), ResourceType = typeof(DisplayRes))]
 		[DataType(DataType.Password)]
 		public string CurrentPassword { get; set; }
 
-		[Required]
-		[Display(Name = "New password*")]
+		[CustomRequired]
+		[Display(Name = nameof(DisplayRes.NewPasswordName), ResourceType = typeof(DisplayRes))]
 		[DataType(DataType.Password)]
-		[StringLength(100, ErrorMessage = "The {0} have to be {2} characters.", MinimumLength = 8)]
+		[CustomMaxLength(100)]
+		[CustomMinLength(8)]
 		public string NewPassword { get; set; }
 
-		[Display(Name = "Confirm password*")]
+		[Display(Name = nameof(DisplayRes.ConfirmPasswordName), ResourceType = typeof(DisplayRes))]
 		[DataType(DataType.Password)]
-		[Compare(nameof(NewPassword), ErrorMessage = "The new password and confirmation password do not match.")]
-		public string ConfirmPassword { get; set; } 
+		[Compare(nameof(NewPassword),
+			ErrorMessageResourceName = nameof(CompareRes.ComparePasswordErrMsg), ErrorMessageResourceType = typeof(CompareRes))]
+		public string ConfirmPassword { get; set; }
 
 		#endregion
 
 		#region DeleteCurrentUser
 
-		[Required]
-		[Display(Name = "Your username or email")]
+		[CustomRequired]
+		[Display(Name = nameof(DisplayRes.EmailOrUserNameName), ResourceType = typeof(DisplayRes))]
 		[AssertThat("EmailOrUserName == CurrentUserName || EmailOrUserName == CurrentEmail")]
 		public string EmailOrUserName { get; set; }
 
-		[Required]
+		[CustomRequired]
 		[AssertThat("Trim(ConfirmationPhrase) == 'delete my account'")]
 		public string ConfirmationPhrase { get; set; }
 

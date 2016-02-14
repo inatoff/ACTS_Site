@@ -8,42 +8,49 @@ using ACTS.Core.Identity;
 using System.Web.Mvc;
 using ExpressiveAnnotations.Attributes;
 using System.ComponentModel;
+using ACTS.UI.App_LocalResources;
+using ACTS.Localization.Resources;
+using ACTS.Localization;
 
 namespace ACTS.UI.Areas.Admin.Models
 {
 	public class AccountViewModel
 	{
-		[Required]
-		[MinLength(5)]
-		[Display(Name = "User name*")]
-		[Remote("doesUserNameExist", "Account", AreaReference.UseRoot, HttpMethod = "POST", ErrorMessage = "User name already exists. Please enter a different user name.")]
+		[CustomRequired]
+		[CustomMinLength(5)]
+		[Display(Name = nameof(DisplayRes.UserNameName), ShortName = nameof(DisplayRes.UserNameShortName), ResourceType = typeof(DisplayRes))]
+		[Remote("doesUserNameExist", "Account", AreaReference.UseRoot, HttpMethod = "POST", 
+			ErrorMessageResourceName = nameof(GlobalRes.UserNameExistErrMsg), ErrorMessageResourceType = typeof(GlobalRes))]
 		public string UserName { get; set; }
 
-		[Required]
-		[Display(Name = "Password*")]
-		[StringLength(100, ErrorMessage = "The {0} have to be {2} characters.", MinimumLength = 8)]
+		[CustomRequired]
+		[Display(Name = nameof(DisplayRes.PasswordName), ResourceType = typeof(DisplayRes))]
+		[CustomMaxLength(100)]
+		[CustomMinLength(8)]
 		[DataType(DataType.Password)]
 		public string Password { get; set; }
 
-		[Display(Name = "Confirm password*")]
+		[Display(Name = nameof(DisplayRes.ConfirmPasswordName), ResourceType = typeof(DisplayRes))]
 		[DataType(DataType.Password)]
-		[System.ComponentModel.DataAnnotations.Compare(nameof(Password), ErrorMessage = "The new password and confirmation password do not match.")]
-		public string ConfirmPassword { get; set; } 
+		[System.ComponentModel.DataAnnotations.Compare(nameof(Password), 
+			ErrorMessageResourceName = nameof(CompareRes.ComparePasswordErrMsg), ErrorMessageResourceType = typeof(CompareRes))]
+		public string ConfirmPassword { get; set; }
 
-		[Display(Name ="Email adress")]
-		[RequiredIf("SendVerification == true", AllowEmptyStrings = false, ErrorMessage = "The {0} field is required if Send verification is specified.")]
-		[EmailAddress]
+		[Display(Name = nameof(DisplayRes.EmailAddressName), ResourceType = typeof(DisplayRes))]
+		[RequiredIf("SendVerification == true",
+			ErrorMessageResourceName = nameof(RequiredRes.RequiredIfSendVerificationErrMsg), ErrorMessageResourceType = typeof(RequiredRes))]
+		[EmailAddress(ErrorMessageResourceName = nameof(EmailAddressRes.EmailErrMsg), ErrorMessageResourceType = typeof(EmailAddressRes))]
 		public string Email { get; set; }
 
-		[Display(Name = "Send verification")]
+		[Display(Name = nameof(DisplayRes.SendVerificationName), ResourceType = typeof(DisplayRes))]
 		public bool SendVerification { get; set; }
 
-		[Display(Name = "Account roles")]
+		[Display(Name = nameof(DisplayRes.RolesName), ResourceType = typeof(DisplayRes))]
 		public IList<RoleItem> Roles { get; set; }
 
 		public IEnumerable<string> SelectedRoles { get { return Roles.Where(r => r.Selected).Select(r => r.Value); } }
 
-		[Display(Name = "Teacher")]
+		[Display(Name = nameof(DisplayRes.PairTeacherIdName), ResourceType = typeof(DisplayRes))]
 		public int? PairTeacherId { get; set; }
 	}
 }

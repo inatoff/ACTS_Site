@@ -69,7 +69,7 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="name" use="text-red" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
               <xsd:attribute ref="xml:space" />
@@ -87,7 +87,7 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="text-red" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
               <xsd:attribute ref="xml:space" />
@@ -98,7 +98,7 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="text-red" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -196,7 +196,7 @@
     <value>Ви успішно змінили своє ім'я користувача з "{0}" на "{1}".</value>
   </data>
   <data name="ChangeEmail" xml:space="preserve">
-    <value>Змінити електрону пошту</value>
+    <value>Змінити електронну пошту</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Змінити пароль</value>
@@ -262,7 +262,7 @@
     <value>uk</value>
   </data>
   <data name="CurrentPassword" xml:space="preserve">
-    <value>Теперішній пароль</value>
+    <value>Старий пароль</value>
   </data>
   <data name="CurrentPhoto" xml:space="preserve">
     <value>Поточна фотографія</value>
@@ -310,7 +310,10 @@
     <value>Редагувати викладача</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Електрона пошта</value>
+    <value>Електронна пошта</value>
+  </data>
+  <data name="EmailNotChangedErrMsg" xml:space="preserve">
+    <value>Адреса електронної пошти не змінена. Не можна використовувати ваш поточний адрес для її зміни.</value>
   </data>
   <data name="EmailOrUserName" xml:space="preserve">
     <value>Ім'я користувача або адресу електронної пошти</value>
@@ -577,7 +580,7 @@
     <value>Новини</value>
   </data>
   <data name="UpdateEmail" xml:space="preserve">
-    <value>Обновити електрону пошту</value>
+    <value>Обновити електронну пошту</value>
   </data>
   <data name="UpdatePassword" xml:space="preserve">
     <value>Обновити пароль</value>
@@ -599,6 +602,12 @@
   </data>
   <data name="UserName" xml:space="preserve">
     <value>Ім'я користувача</value>
+  </data>
+  <data name="UserNameExistErrMsg" xml:space="preserve">
+    <value>Таке ім'я користувача вже існує. Будь ласка, введіть інше ім'я.</value>
+  </data>
+  <data name="UserNameNotChangedErrMsg" xml:space="preserve">
+    <value>Ім'я користувача не змінено. Не можна використовувати ваше поточне ім'я користувача для його зміни.</value>
   </data>
   <data name="UserNoFound" xml:space="preserve">
     <value>Користувач з індифікатором = {0} не знайдений.</value>

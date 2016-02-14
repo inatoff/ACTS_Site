@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ACTS.Localization;
+using ACTS.Localization.Resources;
+using ACTS.UI.App_LocalResources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,16 +12,16 @@ namespace ACTS.UI.Models
 {
 	public class LoginViewModel
 	{
-		[Required]
-		[Display(Name = "Username or email address")]
+		[CustomRequired]
+		[Display(Name = nameof(DisplayRes.EmailOrUserNameName), ResourceType = typeof(DisplayRes))]
 		public string EmailOrUserName { get; set; }
 
-		[Required]
+		[CustomRequired]
 		[DataType(DataType.Password)]
-		[Display(Name = "Password")]
+		[Display(Name = nameof(GlobalRes.Password), ResourceType = typeof(GlobalRes))]
 		public string Password { get; set; }
 
-		[Display(Name = "Remember Me")]
+		[Display(Name = nameof(DisplayRes.RememberMeName), ResourceType = typeof(DisplayRes))]
 		public bool RememberMe { get; set; }
 	}
 }

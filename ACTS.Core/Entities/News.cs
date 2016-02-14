@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ACTS.Localization;
+using ACTS.Localization.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,9 +15,9 @@ namespace ACTS.Core.Entities
 		[HiddenInput(DisplayValue = false)]
 		public int NewsId { get; set; }
 
-		[Required(AllowEmptyStrings = false)]
-		[StringLength(500, ErrorMessage = "Title: Length should not exceed {1} characters")]
-		[Display(Name = "Title*")]
+		[CustomRequired]
+		[CustomMaxLength(500)]
+		[Display(Name = nameof(DisplayRes.TitleName), ResourceType = typeof(DisplayRes))]
 		public string Title { get; set; }
 
 		[HiddenInput(DisplayValue = false)]
@@ -24,7 +26,7 @@ namespace ACTS.Core.Entities
 		[HiddenInput(DisplayValue = false)]
 		public DateTime? Modified { get; set; }
 
-		[Display(Name = "Image")]
+		[Display(Name = nameof(DisplayRes.ImageName), ResourceType = typeof(DisplayRes))]
 		public byte [] ImageData { get; set; }
 
 		[HiddenInput(DisplayValue = false)]
@@ -32,6 +34,7 @@ namespace ACTS.Core.Entities
 
 		[DataType(DataType.MultilineText)]
 		[AllowHtml]
+		[Display(Name = nameof(DisplayRes.ContentName), ResourceType = typeof(DisplayRes))]
 		public string Content { get; set; }
 	}
 }

@@ -69,7 +69,7 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="name" use="text-red" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
               <xsd:attribute ref="xml:space" />
@@ -87,7 +87,7 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="text-red" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
               <xsd:attribute ref="xml:space" />
@@ -98,7 +98,7 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="text-red" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -262,7 +262,7 @@
     <value>en</value>
   </data>
   <data name="CurrentPassword" xml:space="preserve">
-    <value>Current password</value>
+    <value>Old password</value>
   </data>
   <data name="CurrentPhoto" xml:space="preserve">
     <value>Current photo</value>
@@ -311,6 +311,9 @@
   </data>
   <data name="Email" xml:space="preserve">
     <value>E-mail</value>
+  </data>
+  <data name="EmailNotChangedErrMsg" xml:space="preserve">
+    <value>The email address is not changed. You can not use your current address to change.</value>
   </data>
   <data name="EmailOrUserName" xml:space="preserve">
     <value>Username or email address</value>
@@ -599,6 +602,12 @@
   </data>
   <data name="UserName" xml:space="preserve">
     <value>User name</value>
+  </data>
+  <data name="UserNameExistErrMsg" xml:space="preserve">
+    <value>User name already exists. Please enter a different user name.</value>
+  </data>
+  <data name="UserNameNotChangedErrMsg" xml:space="preserve">
+    <value>The user name is not changed. You can not use your current user name to change.</value>
   </data>
   <data name="UserNoFound" xml:space="preserve">
     <value>User with ID = {0} was not found.</value>

@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{49790C4B-668E-42D5-8A67-412E0FB51B53}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ACTS.Localization</RootNamespace>
+    <AssemblyName>ACTS.Localization</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomAttributes\CustomMaxLengthAttribute.cs" />
+    <Compile Include="CustomAttributes\CustomMinLengthAttribute.cs" />
+    <Compile Include="CustomAttributes\CustomRequiredAttribute.cs" />
+    <Compile Include="Resources\CompareAttribute\CompareRes.Designer.cs">
+      <DependentUpon>CompareRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\CompareAttribute\CompareRes.en.Designer.cs">
+      <DependentUpon>CompareRes.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\CompareAttribute\CompareRes.ru.Designer.cs">
+      <DependentUpon>CompareRes.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\DisplayAttribute\DisplayRes.ru.Designer.cs">
+      <DependentUpon>DisplayRes.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\DisplayAttribute\DisplayRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DisplayRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\DisplayAttribute\DisplayRes.en.Designer.cs">
+      <DependentUpon>DisplayRes.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\MaxLengthAttribute\MaxLengthRes.Designer.cs">
+      <DependentUpon>MaxLengthRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\MaxLengthAttribute\MaxLengthRes.en.Designer.cs">
+      <DependentUpon>MaxLengthRes.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\MaxLengthAttribute\MaxLengthRes.ru.Designer.cs">
+      <DependentUpon>MaxLengthRes.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\MinLengthAttribute\MinLengthRes.Designer.cs">
+      <DependentUpon>MinLengthRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\MinLengthAttribute\MinLengthRes.en.Designer.cs">
+      <DependentUpon>MinLengthRes.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\MinLengthAttribute\MinLengthRes.ru.Designer.cs">
+      <DependentUpon>MinLengthRes.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\EmailAddressAttribute\EmailAddressRes.Designer.cs">
+      <DependentUpon>EmailAddressRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\EmailAddressAttribute\EmailAddressRes.en.Designer.cs">
+      <DependentUpon>EmailAddressRes.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\EmailAddressAttribute\EmailAddressRes.ru.Designer.cs">
+      <DependentUpon>EmailAddressRes.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\RequiredAttribute\RequiredRes.Designer.cs">
+      <DependentUpon>RequiredRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\RequiredAttribute\RequiredRes.en.Designer.cs">
+      <DependentUpon>RequiredRes.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\RequiredAttribute\RequiredRes.ru.Designer.cs">
+      <DependentUpon>RequiredRes.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\CompareAttribute\CompareRes.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CompareRes.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\CompareAttribute\CompareRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CompareRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\CompareAttribute\CompareRes.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CompareRes.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\DisplayAttribute\DisplayRes.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisplayRes.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\DisplayAttribute\DisplayRes.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisplayRes.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\DisplayAttribute\DisplayRes.resx">
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisplayRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\MaxLengthAttribute\MaxLengthRes.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaxLengthRes.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\MaxLengthAttribute\MaxLengthRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaxLengthRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\MaxLengthAttribute\MaxLengthRes.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaxLengthRes.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\MinLengthAttribute\MinLengthRes.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MinLengthRes.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\MinLengthAttribute\MinLengthRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MinLengthRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\MinLengthAttribute\MinLengthRes.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MinLengthRes.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\EmailAddressAttribute\EmailAddressRes.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EmailAddressRes.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\EmailAddressAttribute\EmailAddressRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EmailAddressRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\EmailAddressAttribute\EmailAddressRes.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EmailAddressRes.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\RequiredAttribute\RequiredRes.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RequiredRes.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\RequiredAttribute\RequiredRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RequiredRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\RequiredAttribute\RequiredRes.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RequiredRes.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

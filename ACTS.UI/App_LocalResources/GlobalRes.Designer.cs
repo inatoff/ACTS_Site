@@ -286,7 +286,7 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Змінити електрону пошту.
+        ///   Ищет локализованную строку, похожую на Змінити електронну пошту.
         /// </summary>
         public static string ChangeEmail {
             get {
@@ -484,7 +484,7 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Теперішній пароль.
+        ///   Ищет локализованную строку, похожую на Старий пароль.
         /// </summary>
         public static string CurrentPassword {
             get {
@@ -628,11 +628,20 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Електрона пошта.
+        ///   Ищет локализованную строку, похожую на Електронна пошта.
         /// </summary>
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Адреса електронної пошти не змінена. Не можна використовувати ваш поточний адрес для її зміни..
+        /// </summary>
+        public static string EmailNotChangedErrMsg {
+            get {
+                return ResourceManager.GetString("EmailNotChangedErrMsg", resourceCulture);
             }
         }
         
@@ -1429,7 +1438,7 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Обновити електрону пошту.
+        ///   Ищет локализованную строку, похожую на Обновити електронну пошту.
         /// </summary>
         public static string UpdateEmail {
             get {
@@ -1497,6 +1506,24 @@ namespace ACTS.UI.App_LocalResources {
         public static string UserName {
             get {
                 return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Таке ім&apos;я користувача вже існує. Будь ласка, введіть інше ім&apos;я..
+        /// </summary>
+        public static string UserNameExistErrMsg {
+            get {
+                return ResourceManager.GetString("UserNameExistErrMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ім&apos;я користувача не змінено. Не можна використовувати ваше поточне ім&apos;я користувача для його зміни..
+        /// </summary>
+        public static string UserNameNotChangedErrMsg {
+            get {
+                return ResourceManager.GetString("UserNameNotChangedErrMsg", resourceCulture);
             }
         }
         

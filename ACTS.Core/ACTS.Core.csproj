@@ -125,6 +125,12 @@
     <Content Include="Migrations\ImagesForSeed\Новацкий.jpg" />
     <Content Include="Migrations\ImagesForSeed\Теленик.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ACTS.Localization\ACTS.Localization.csproj">
+      <Project>{49790c4b-668e-42d5-8a67-412e0fb51b53}</Project>
+      <Name>ACTS.Localization</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

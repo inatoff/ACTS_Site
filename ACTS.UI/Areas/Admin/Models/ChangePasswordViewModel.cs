@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ACTS.Localization;
+using ACTS.Localization.Resources;
+using ACTS.UI.App_LocalResources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,21 +12,22 @@ namespace ACTS.UI.Areas.Admin.Models
 {
 	public class ChangePasswordViewModel
 	{
-		[Required]
-		[Display(Name = "Current password*")]
+		[CustomRequired]
+		[Display(Name = nameof(DisplayRes.OldPasswordName), ResourceType = typeof(DisplayRes))]
 		[DataType(DataType.Password)]
 		public string CurrentPassword { get; set; }
 
-		[Required]
-		[Display(Name = "New password*")]
+		[CustomRequired]
+		[Display(Name = nameof(DisplayRes.NewPasswordName), ResourceType = typeof(DisplayRes))]
 		[DataType(DataType.Password)]
-		[StringLength(100, ErrorMessage = "The {0} have to be {2} characters.", MinimumLength = 8)]
+		[CustomMaxLength(100)]
+		[CustomMinLength(8)]
 		public string NewPassword { get; set; }
 
-		[Display(Name = "Confirm password*")]
+		[Display(Name = nameof(DisplayRes.ConfirmPasswordName), ResourceType = typeof(DisplayRes))]
 		[DataType(DataType.Password)]
-		[Compare(nameof(NewPassword), ErrorMessage = "The new password and confirmation password do not match.")]
+		[Compare(nameof(NewPassword), 
+			ErrorMessageResourceName = nameof(CompareRes.ComparePasswordErrMsg), ErrorMessageResourceType = typeof(CompareRes))]
 		public string ConfirmPassword { get; set; }
-
 	}
 }

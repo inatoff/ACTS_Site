@@ -1,4 +1,6 @@
-﻿using ExpressiveAnnotations.Attributes;
+﻿using ACTS.Localization;
+using ACTS.Localization.Resources;
+using ExpressiveAnnotations.Attributes;
 using System.ComponentModel.DataAnnotations;
 
 namespace ACTS.UI.Areas.Admin.Models
@@ -8,13 +10,13 @@ namespace ACTS.UI.Areas.Admin.Models
 		public string CurrentUserName { get; set; }
 		public string CurrentEmail { get; set; }
 
-		[Required]
-		[Display(Name = "Email or login")]
+		[CustomRequired]
+		[Display(Name = nameof(DisplayRes.EmailOrUserNameName), ResourceType = typeof(DisplayRes))]
 		[AssertThat("EmailOrUserName == CurrentUserName || EmailOrUserName == CurrentEmail")]
 		public string EmailOrUserName { get; set; }
 
-		[Display(Name = "To verify, type <span class=\"confirmation_phrase noselect\"> delete my account</span> below:")]
-		[AssertThat("ConfirmationPhrase == 'delete my account'")]
+		[CustomRequired]
+		[AssertThat("Trim(ConfirmationPhrase) == 'delete my account'")]
 		public string ConfirmationPhrase { get; set; }
 	}
 }
