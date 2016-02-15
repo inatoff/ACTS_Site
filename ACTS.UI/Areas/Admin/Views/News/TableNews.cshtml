@@ -25,7 +25,7 @@
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
-				<table id="dataTablePlagin" class="table table-bordered table-striped table-hover">
+				<table id="dataTablePlagin" class="table table-bordered table-striped table-hover hasContent">
 					<thead>
 						<tr>
 							<th>@GlobalRes.Id</th>
@@ -33,7 +33,7 @@
 							<th>@GlobalRes.Created</th>
 							<th>@GlobalRes.Modified</th>
 							<th>@GlobalRes.Image</th>
-							<th class="no-center-body">@GlobalRes.Content</th>
+							<th class="no-center-body hasContent">@GlobalRes.Content</th>
 							<th class="no-orderable">@GlobalRes.Actions</th>
 						</tr>
 					</thead>
@@ -70,8 +70,8 @@
 										<img alt="News image" width="100" height="100" src="@Url.Action("GetImage", "News", new { area = "", item.NewsId })" />
 									}
 								</td>
-								<td>
-									@Html.Raw(item.Content)
+								<td class="hasContent">
+									<div class="hasContent">@Html.Raw(item.Content)</div>
 								</td>
 								<td>
 									@using (Html.BeginForm("Delete", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
