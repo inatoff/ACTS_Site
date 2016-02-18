@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ACTS.Localization;
+using ACTS.Localization.Resources;
+using ACTS.UI.App_LocalResources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,19 +14,19 @@ namespace ACTS.UI.Areas.Admin.Models
 	{
 		public int Id { get; set; }
 
-		[Required]
-		[MinLength(5)]
-		[Display(Name = "User name*")]
+		[CustomRequired]
+		[CustomMinLength(5)]
+		[Display(Name = nameof(DisplayRes.UserNameName), ShortName = nameof(DisplayRes.UserNameShortName), ResourceType = typeof(DisplayRes))]
 		public string UserName { get; set; }
 
-		[EmailAddress]
-		[Display(Name = "Email adress")]
+		[EmailAddress(ErrorMessageResourceName = nameof(EmailAddressRes.EmailErrMsg), ErrorMessageResourceType = typeof(EmailAddressRes))]
+		[Display(Name = nameof(DisplayRes.EmailAddressName), ResourceType = typeof(DisplayRes))]
 		public string Email { get; set; }
 
-		[Display(Name = "Account roles")]
+		[Display(Name = nameof(DisplayRes.RolesName), ResourceType = typeof(DisplayRes))]
 		public IList<RoleItem> Roles { get; set; }
 
-		[Display(Name = "Teacher")]
+		[Display(Name = nameof(DisplayRes.PairTeacherIdName), ResourceType = typeof(DisplayRes))]
 		public int? PairTeacherId { get; set; }
 
 		public IEnumerable<string> SelectedRoles { get { return Roles.Where(r => r.Selected).Select(r => r.Value); } }

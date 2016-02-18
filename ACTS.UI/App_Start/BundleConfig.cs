@@ -8,34 +8,64 @@ namespace ACTS.UI
 		// Дополнительные сведения о Bundling см. по адресу http://go.microsoft.com/fwlink/?LinkId=254725
 		public static void RegisterBundles(BundleCollection bundles)
 		{
+			#region Scripts
+
 			bundles.Add(new ScriptBundle("~/bundles/jquery")
 				.Include("~/Scripts/jquery-{version}.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/jqueryval-admin")
+				.Include("~/Scripts/jquery.validate.js")
+				.Include("~/Scripts/jquery.validate.unobtrusive.js")
+				.Include("~/Scripts/Admin/validationOptions.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/expressive")
+				.Include("~/Scripts/expressive.annotations.validate.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/bootstrap")
 				.Include("~/Scripts/bootstrap.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/admin")
+				//.Include("~/Scripts/jquery.slimscroll.js")
 				.Include("~/Scripts/app.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/tinymce")
-				.Include("~/Scripts/tinymce/tinymce.js"));
-			
+				.Include("~/Scripts/tinymce/tinymce.js")
+				.Include("~/Scripts/Admin/initTinyEditor.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/tinymce-uk")
+				.Include("~/Scripts/tinymce/tinymce.js")
+				.Include("~/Scripts/Admin/initTinyEditor_uk.js"));
+
 			bundles.Add(new ScriptBundle("~/bundles/datatables")
 				.Include("~/Scripts/jquery.dataTables.js")
-				.Include("~/Scripts/dataTables.bootstrap.js"));
+				.Include("~/Scripts/dataTables.bootstrap.js")
+				.Include("~/Scripts/Admin/initDataTable.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/datatables-uk")
+				.Include("~/Scripts/jquery.dataTables.js")
+				.Include("~/Scripts/dataTables.bootstrap.js")
+				.Include("~/Scripts/Admin/initDataTable_uk.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/fileinput")
-				.Include("~/Scripts/fileinput.js"));
+				.Include("~/Scripts/fileinput.js")
+				.Include("~/Scripts/Admin/fileinputOptions.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/fileinput-uk")
+				.Include("~/Scripts/fileinput.js")
+				.Include("~/Scripts/Admin/fileinputOptions_uk.js")
+				.Include("~/Scripts/fileinput_locale_uk.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/select2")
-				.Include("~/Scripts/select2.js"));
+				.Include("~/Scripts/select2.js")
+				.Include("~/Scripts/Admin/initSelect2.js"));
 
-			bundles.Add(new ScriptBundle("~/bundles/jqueryval")
-				.Include("~/Scripts/jquery.validate.js")
-				.Include("~/Scripts/jquery.validate.unobtrusive.js"));
+			bundles.Add(new ScriptBundle("~/bundles/iCheck")
+				.Include("~/Scripts/jquery.icheck.js")
+				.Include("~/Scripts/Admin/init_iCheck.js"));
 
-			bundles.Add(new ScriptBundle("~/bundles/expressive")
-				.Include("~/Scripts/expressive.annotations.validate.js"));
+			#endregion
+
+			#region Styles
 
 			bundles.Add(new StyleBundle("~/Content/css")
 				.Include("~/Content/bootstrap.css",
@@ -54,6 +84,11 @@ namespace ACTS.UI
 
 			bundles.Add(new StyleBundle("~/Content/css/select2")
 				.Include("~/Content/css/select2.css"));
+
+			bundles.Add(new StyleBundle("~/Content/css/iCheck/blue")
+				.Include("~/Content/iCheck/square/blue.css"));
+			
+			#endregion
 		}
 	}
 }

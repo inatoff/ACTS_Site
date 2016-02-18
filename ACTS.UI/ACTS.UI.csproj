@@ -317,6 +317,8 @@
     <Content Include="Content\Images\actsSlide2.jpg" />
     <Content Include="Content\Images\actsSlide4.jpg" />
     <Content Include="Content\Images\en.png" />
+    <Content Include="Content\Images\flag_great_britain.png" />
+    <Content Include="Content\Images\flag_ukraine.png" />
     <Content Include="Content\Images\icon-admin_user-blue.png" />
     <Content Include="Content\Images\ru.png" />
     <Content Include="Content\Images\uk.png" />
@@ -349,6 +351,7 @@
     <Content Include="Content\skins\_all-skins.min.css" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Site.css" />
+    <None Include="EmailTemplates\ConfirmRegistration.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -372,11 +375,15 @@
     <Content Include="Areas\Admin\Views\Employee\CreateEmployee.cshtml" />
     <Content Include="Areas\Admin\Views\Teacher\CreateTeacher.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartialUser.cshtml" />
-    <Content Include="Scripts\Admin\Employee\tableEmployee.js" />
+    <Content Include="Scripts\Admin\fileinputOptions_uk.js" />
+    <Content Include="Scripts\Admin\fileinputOptions.js" />
+    <Content Include="Scripts\Admin\initDataTable.js" />
+    <Content Include="Scripts\Admin\initDataTable_uk.js" />
+    <Content Include="Scripts\Admin\initSelect2.js" />
+    <Content Include="Scripts\Admin\initTinyEditor_uk.js" />
     <Content Include="Scripts\Admin\initTinyEditor.js" />
-    <Content Include="Scripts\Admin\News\tableUncos.js" />
-    <Content Include="Scripts\Admin\Account\tableAccount.js" />
-    <Content Include="Scripts\Admin\Teacher\tableTeacher.js" />
+    <Content Include="Scripts\Admin\init_iCheck.js" />
+    <Content Include="Scripts\Admin\validationOptions.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\app.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -662,6 +669,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\AdapterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
@@ -674,6 +682,7 @@
     <Compile Include="Areas\Admin\Models\AccountViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ChangePasswordViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ChangeEmailViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\DeleteCurrentViewModel.cs" />
     <Compile Include="Areas\Admin\Models\EditAccountViewModel.cs" />
     <Compile Include="Areas\Admin\Models\MyAccountViewModel.cs" />
     <Compile Include="Areas\Admin\Models\RoleItem.cs" />
@@ -745,7 +754,6 @@
     <Content Include="Areas\Admin\Views\Account\EditorTemplates\RoleItem.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartialMessager.cshtml" />
     <Content Include="Areas\Admin\Views\Account\EditAccount.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="EmailTemplates\_EmailLayout.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
@@ -774,6 +782,10 @@
     <ProjectReference Include="..\ACTS.Core\ACTS.Core.csproj">
       <Project>{dbc44466-fa2a-4e36-9357-8b7629a4727b}</Project>
       <Name>ACTS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ACTS.Localization\ACTS.Localization.csproj">
+      <Project>{49790c4b-668e-42d5-8a67-412e0fb51b53}</Project>
+      <Name>ACTS.Localization</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

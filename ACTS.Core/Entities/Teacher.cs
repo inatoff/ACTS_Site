@@ -1,5 +1,6 @@
 using ACTS.Core.Abstract;
 using ACTS.Core.Identity;
+using ACTS.Localization.Resources;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -13,35 +14,48 @@ using System.Web.Mvc;
 
 namespace ACTS.Core.Entities
 {
-	 public class Teacher : Worker
+	public enum Rank
+	{
+		// TODO: rustam переведи, а то я без понятия как ето перевести
+		Head,
+		FirstVice,
+		Vice,
+		Teacher,
+		Assistant
+	}
+
+	public class Teacher : Worker
 	{
 		[HiddenInput(DisplayValue = false)]
 		public int TeacherId { get; set; }
 
+		[Display(Name = nameof(DisplayRes.DegreeName), ResourceType = typeof(DisplayRes))]
 		public string Degree { get; set; } // Научная степень    
 
-        public Rank Rank { get; set; }
+		[Display(Name = nameof(DisplayRes.RankName), ResourceType = typeof(DisplayRes))]
+		public Rank Rank { get; set; }
 
-		[EmailAddress]
+		[EmailAddress(ErrorMessageResourceName = nameof(EmailAddressRes.EmailErrMsg), ErrorMessageResourceType = typeof(EmailAddressRes))]
+		[Display(Name = nameof(DisplayRes.EmailName), ResourceType = typeof(DisplayRes))]
 		public string Email { get; set; }
 
-        [Display(Name = "Slug")]
-        public string NameSlug { get; set; }
+		[Display(Name = nameof(DisplayRes.SlugName), ResourceType = typeof(DisplayRes))]
+		public string NameSlug { get; set; }
 
 		[Url]
-		[Display(Name = "Intellect url")]
+		[Display(Name = nameof(DisplayRes.IntellectName), ResourceType = typeof(DisplayRes))]
 		public string Intellect { get; set; }
 
 		[Url]
-		[Display(Name = "Vkontakte url")]
+		[Display(Name = nameof(DisplayRes.VkontakteName), ResourceType = typeof(DisplayRes))]
 		public string Vk { get; set; }
 
 		[Url]
-		[Display(Name = "Facebook url")]
+		[Display(Name = nameof(DisplayRes.FacebookName), ResourceType = typeof(DisplayRes))]
 		public string Facebook { get; set; }
 
 		[Url]
-		[Display(Name = "Twitter url")]
+		[Display(Name = nameof(DisplayRes.TwitterName), ResourceType = typeof(DisplayRes))]
 		public string Twitter { get; set; }
 
 		public virtual ApplicationUser User { get; set; }
@@ -53,15 +67,15 @@ namespace ACTS.Core.Entities
 
 		// PersonalPage
 
-        public IList<string> Disciplines { get; set; }
+		public IList<string> Disciplines { get; set; }
 
-        public IList<string> ScienceInterests { get; set; }
+		public IList<string> ScienceInterests { get; set; }
 
-        public virtual IList<string> Projects { get; set; }
+		public virtual IList<string> Projects { get; set; }
 
-        public virtual IList<string> Publications { get; set; }
-        
-        public virtual Blog Blog { get; set; }
+		public virtual IList<string> Publications { get; set; }
+		
+		public virtual Blog Blog { get; set; }
 	}
 
 	public class TeacherMap : EntityTypeConfiguration<Teacher>
@@ -72,13 +86,4 @@ namespace ACTS.Core.Entities
 				.WithOptionalPrincipal();
 		}
 	}
-
-    public enum Rank
-    {
-        Head,
-        FirstVice,
-        Vice,
-        Teacher,
-        Assistant
-    }
 }

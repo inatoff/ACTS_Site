@@ -5,46 +5,84 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ExpressiveAnnotations.Attributes;
+using ACTS.Localization.Resources;
+using ACTS.Localization;
+using ACTS.UI.App_LocalResources;
 
 namespace ACTS.UI.Areas.Admin.Models
 {
 	public class MyAccountViewModel
 	{
-		[Required]
-		[Display(Name = "User name*", Description = "You can change your username, which impacts how you sign in.")]
-		[AssertThat("UserName != OldUserName", ErrorMessage = "User name not changed.")]
+		#region ChangeUserName
+
+		[CustomRequired]
+		[Display(Name = nameof(DisplayRes.UserNameName), Description = nameof(DisplayRes.UserNameDescription),
+			ShortName = nameof(DisplayRes.UserNameShortName), ResourceType = typeof(DisplayRes))]
+		[AssertThat("UserName != CurrentUserName",
+			ErrorMessageResourceName = nameof(GlobalRes.UserNameNotChangedErrMsg), ErrorMessageResourceType = typeof(GlobalRes))]
 		[MinLength(5)]
 		public string UserName { get; set; }
-		public string OldUserName { get; set; }
+		public string CurrentUserName { get; set; }
 
-		[Display(Name = "Email adress*", Description = "Changing your email address is an easy, two-step process. Specify the new email address you want to use, and we will send an email to that address allowing you to complete the update.")]
-		[AssertThat("Email != OldEmail", ErrorMessage = "Email not changed.")]
-		[DataType(DataType.EmailAddress)]
-		[EmailAddress]
+		#endregion
+
+		#region ChangeEmail
+
+		[Display(Name = nameof(DisplayRes.EmailAddressName), Description = nameof(DisplayRes.ChangeEmailDescription), ResourceType = typeof(DisplayRes))]
+		[AssertThat("Email != CurrentEmail",
+			ErrorMessageResourceName = nameof(GlobalRes.EmailNotChangedErrMsg), ErrorMessageResourceType = typeof(GlobalRes))]
+		[EmailAddress(ErrorMessageResourceName = nameof(EmailAddressRes.EmailErrMsg), ErrorMessageResourceType = typeof(EmailAddressRes))]
+		[CustomRequired]
 		public string Email { get; set; }
-		public string OldEmail { get; set; }
+		public string CurrentEmail { get; set; }
 
-		[Required]
-		[Display(Name = "Current password*")]
+		#endregion
+
+		#region ChangePassword
+
+		[CustomRequired]
+		[Display(Name = nameof(DisplayRes.OldPasswordName), ResourceType = typeof(DisplayRes))]
 		[DataType(DataType.Password)]
 		public string CurrentPassword { get; set; }
 
-		[Required]
-		[Display(Name = "New password*")]
+		[CustomRequired]
+		[Display(Name = nameof(DisplayRes.NewPasswordName), ResourceType = typeof(DisplayRes))]
 		[DataType(DataType.Password)]
-		[StringLength(100, ErrorMessage = "The {0} have to be {2} characters.", MinimumLength = 8)]
+		[CustomMaxLength(100)]
+		[CustomMinLength(8)]
 		public string NewPassword { get; set; }
 
-		[Required]
-		[Display(Name = "Confirm password*")]
+		[Display(Name = nameof(DisplayRes.ConfirmPasswordName), ResourceType = typeof(DisplayRes))]
 		[DataType(DataType.Password)]
-		[Compare(nameof(NewPassword), ErrorMessage = "The new password and confirmation password do not match.")]
+		[Compare(nameof(NewPassword),
+			ErrorMessageResourceName = nameof(CompareRes.ComparePasswordErrMsg), ErrorMessageResourceType = typeof(CompareRes))]
 		public string ConfirmPassword { get; set; }
 
-		//[AssertThat("ConfirmationPhrase == Phrase", ErrorMessage = "Write 'delete my account'")]
-		[Compare(nameof(Phrase), ErrorMessage = "Write 'delete my account'.")]
+		#endregion
+
+		#region DeleteCurrentUser
+
+		[CustomRequired]
+		[Display(Name = nameof(DisplayRes.EmailOrUserNameName), ResourceType = typeof(DisplayRes))]
+		[AssertThat("EmailOrUserName == CurrentUserName || EmailOrUserName == CurrentEmail")]
+		public string EmailOrUserName { get; set; }
+
+		[CustomRequired]
+		[AssertThat("Trim(ConfirmationPhrase) == 'delete my account'")]
 		public string ConfirmationPhrase { get; set; }
 
-		public string Phrase { get; set; } = "delete my account";
+		#endregion
+
+		public MyAccountViewModel()
+		{
+		}
+
+		public MyAccountViewModel(string userName, string email)
+		{
+			CurrentUserName = userName;
+			UserName = userName;
+			CurrentEmail = email;
+			Email = email;
+		}
 	}
 }

@@ -16,7 +16,9 @@
 
 <html>
 <head>
-	<meta name="viewport" content="width=device-width" />
+	<meta name="viewport" content="width=device-width" lang="@CultureHelper.GetCurrentNeutralCulture()" />
+	<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 	<title>@ViewBag.Title</title>
 	@Styles.Render("~/Content/css")
 	@RenderSection("styles", required: false)
@@ -28,13 +30,13 @@
 			<!-- Logo -->
 			<a href="@Url.Action("Dashboard", "Admin")" class="logo">
 				<!-- mini logo for sidebar mini 50x50 pixels -->
-				<span class="logo-mini">ACTS</span>
+				<span class="logo-mini">@GlobalRes.ACTS</span>
 				<!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>Admin</b>ACTS</span>
+				<span class="logo-lg"><b>@GlobalRes.Admin</b>@GlobalRes.ACTS</span>
 			</a>
 
 			<!-- Header Navbar: style can be found in header.less -->
-			<nav class="navbar navbar-static-top" role="navigation">
+			<nav class="navbar" role="navigation">
 				<!-- Sidebar toggle button-->
 				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
 					<span class="sr-only">Toggle navigation</span>
@@ -43,7 +45,38 @@
 					<span class="icon-bar"></span>
 				</a>
 
-				@Html.Partial("_PartialUser")
+				<div class="navbar-custom-menu">
+					<ul class="nav navbar-nav">
+						<li class="dropdown lang-menu">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="fa fa-fw fa-language"></i>&nbsp;@GlobalRes.Language
+							</a>
+							<ul class="dropdown-menu animated-dropdown-menu">
+								<li>
+									<a href="@Url.Action("SetCulture", "Home", new { culture = "uk", returnUrl = Url.Action(), area = "" })">
+										<img src="~/Content/Images/uk.png" alt="Ukrainian flag" />
+										<span>@GlobalRes.Ukrainian</span>
+									</a>
+								</li>
+								<li>
+									<a href="@Url.Action("SetCulture", "Home", new { culture = "en", returnUrl = Url.Action(), area = "" })">
+										<img src="~/Content/Images/en.png" alt="English flag" />
+										<span>@GlobalRes.English</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="javascript:document.getElementById('logoutForm').submit()">
+								<i class="fa fa-fw fa-sign-out"></i>&nbsp;@GlobalRes.Logout
+							</a>
+							@using (Html.BeginForm("Logout", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+							{
+								@Html.AntiForgeryToken()
+							}
+						</li>
+					</ul>
+				</div>
 
 			</nav>
 		</header>
@@ -52,45 +85,47 @@
 		<aside class="main-sidebar">
 			<!-- sidebar: style can be found in sidebar.less -->
 			<section class="sidebar">
+				@Html.Partial("_PartialUser")
+
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu">
-					<li class="header">NAVIGATION</li>
+					<li class="header">@GlobalRes.NAVIGATION</li>
 					<li class="@IsActivePage("Dashboard")">
 						<a href="@Url.Action("Dashboard", "Admin")">
 							<i class="fa fa-dashboard"></i>
-							<span>Dashboard</span>
+							<span>@GlobalRes.Dashboard</span>
 						</a>
 					</li>
 					<li class="@IsActivePage("Index")">
 						<a href="@Url.Action("Index", "MyAccount")">
 							<i class="fa fa-user"></i>
-							<span>My account</span>
+							<span>@GlobalRes.MyAccount</span>
 						</a>
 					</li>
-					<li class="treeview @IsActiveTreeView("Tables")">
+					<li class="treeview @IsActiveTreeView(GlobalRes.Tables)">
 						<a href="#">
 							<i class="fa fa-table"></i>
-							<span>Tables</span>
+							<span>@GlobalRes.Tables</span>
 							<i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li class="@IsActivePage("TableNews")"><a href="@Url.Action("Table","News")"><i class="fa fa-circle-o"></i>Uncos</a></li>
-							<li class="@IsActivePage("TableEmployee")"><a href="@Url.Action("Table", "Employee")"><i class="fa fa-circle-o"></i>Employees</a></li>
-							<li class="@IsActivePage("TableTeacher")"><a href="@Url.Action("Table", "Teacher")"><i class="fa fa-circle-o"></i>Teachers</a></li>
-							<li class="@IsActivePage("TableAccount")"><a href="@Url.Action("Table", "Account")"><i class="fa fa-circle-o"></i>Accounts</a></li>
+							<li class="@IsActivePage("TableNews")"><a href="@Url.Action("Table","News")"><i class="fa fa-circle-o"></i>@GlobalRes.Uncos</a></li>
+							<li class="@IsActivePage("TableEmployee")"><a href="@Url.Action("Table", "Employee")"><i class="fa fa-circle-o"></i>@GlobalRes.Employees</a></li>
+							<li class="@IsActivePage("TableTeacher")"><a href="@Url.Action("Table", "Teacher")"><i class="fa fa-circle-o"></i>@GlobalRes.Teachers</a></li>
+							<li class="@IsActivePage("TableAccount")"><a href="@Url.Action("Table", "Account")"><i class="fa fa-circle-o"></i>@GlobalRes.Accounts</a></li>
 						</ul>
 					</li>
-					<li class="treeview @IsActiveTreeView("Create")">
+					<li class="treeview @IsActiveTreeView(GlobalRes.Create)">
 						<a href="#">
 							<i class="fa fa-pencil"></i>
-							<span>Create</span>
+							<span>@GlobalRes.Create</span>
 							<i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li class="@IsActivePage("CreateNews")"><a href="@Url.Action("Create","News")"><i class="fa fa-circle-o"></i>News</a></li>
-							<li class="@IsActivePage("CreateEmployee")"><a href="@Url.Action("Create", "Employee")"><i class="fa fa-circle-o"></i>Employee</a></li>
-							<li class="@IsActivePage("CreateTeacher")"><a href="@Url.Action("Create", "Teacher")"><i class="fa fa-circle-o"></i>Teacher</a></li>
-							<li class="@IsActivePage("CreateAccount")"><a href="@Url.Action("Create", "Account")"><i class="fa fa-circle-o"></i>Account</a></li>
+							<li class="@IsActivePage("CreateNews")"><a href="@Url.Action("Create","News")"><i class="fa fa-circle-o"></i>@GlobalRes.News</a></li>
+							<li class="@IsActivePage("CreateEmployee")"><a href="@Url.Action("Create", "Employee")"><i class="fa fa-circle-o"></i>@GlobalRes.Employee</a></li>
+							<li class="@IsActivePage("CreateTeacher")"><a href="@Url.Action("Create", "Teacher")"><i class="fa fa-circle-o"></i>@GlobalRes.Teacher</a></li>
+							<li class="@IsActivePage("CreateAccount")"><a href="@Url.Action("Create", "Account")"><i class="fa fa-circle-o"></i>@GlobalRes.Account</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -103,7 +138,7 @@
 				<h1>@ViewBag.Title</h1>
 
 				<ol class="breadcrumb">
-					<li><a href="@Url.Action("Dashboard", "Admin")"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li><a href="@Url.Action("Dashboard", "Admin")"><i class="fa fa-dashboard"></i> @GlobalRes.Home</a></li>
 					@if (!string.IsNullOrEmpty(ViewBag.CurrentTreeView))
 					{
 						<li> @ViewBag.CurrentTreeView</li>
@@ -125,18 +160,15 @@
 		<!-- /.content-wrapper -->
 		<footer class="main-footer">
 			<div class="pull-right hidden-xs">
-				<b>Version</b> alpha 1.0
+				<b>@GlobalRes.Version</b> alpha 1.0
 			</div>
-			<strong>Copyright &copy; 2015 <a href="https://vk.com/inatoff"> Rostik Studio</a>.</strong> All reserved.
+			Сайт створений <strong>Огороднійчуком Д. А.</strong> та <strong>Інатовим Р. М.</strong> в 2016 р.
 		</footer>
 	</section>
 	<!-- ./wrapper -->
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/bootstrap")
 	@Scripts.Render("~/bundles/admin")
-@*засунуть куда нужно потом*@
-	@Scripts.Render("~/bundles/jqueryval")
-	@Scripts.Render("~/bundles/expressive")
 	@RenderSection("scripts", required: false)
 </body>
 </html>

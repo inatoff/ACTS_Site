@@ -5,6 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using ACTS.Core.Concrete;
+using ACTS.Core.Identity;
 
 namespace ACTS.UI
 {
@@ -25,7 +26,22 @@ namespace ACTS.UI
 			app.UseCookieAuthentication(new CookieAuthenticationOptions
 			{
 				AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-				LoginPath = new PathString("/Account/Login")
+				LoginPath = new PathString("/Account/Login"),
+				ExpireTimeSpan = TimeSpan.FromHours(1.0),
+				Provider = new CookieAuthenticationProvider
+				{
+					OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser, int>(
+					validateInterval: TimeSpan.FromMinutes(7.5),
+					regenerateIdentityCallback: (manager, user) => manager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie), 
+					getUserIdCallback: (id) => id.GetUserId<int>()),
+					
+					OnResponseSignOut = context =>
+					{
+						foreach (var cookie in context.Request.Cookies)
+							context.Response.Cookies.Append(cookie.Key, cookie.Value, 
+								new CookieOptions { Expires = DateTime.Now.AddDays(-1) });
+					}
+				},
 			});            
 			app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 

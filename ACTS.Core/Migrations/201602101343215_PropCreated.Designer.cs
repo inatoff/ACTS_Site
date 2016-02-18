@@ -7,13 +7,13 @@ namespace ACTS.Core.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddedDisciplinesToTeacher : IMigrationMetadata
+    public sealed partial class PropCreated : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedDisciplinesToTeacher));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PropCreated));
         
         string IMigrationMetadata.Id
         {
-            get { return "201601272217593_AddedDisciplinesToTeacher"; }
+            get { return "201602101343215_PropCreated"; }
         }
         
         string IMigrationMetadata.Source

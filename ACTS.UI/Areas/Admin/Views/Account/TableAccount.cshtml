@@ -2,8 +2,8 @@
 
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
-	ViewBag.Title = "Table of accounts";
-	ViewBag.CurrentTreeView = "Tables";
+	ViewBag.Title = GlobalRes.TableOfAccounts;
+	ViewBag.CurrentTreeView = GlobalRes.Tables;
 }
 
 @section Styles{
@@ -11,25 +11,30 @@
 }
 
 @section Scripts {
-	@Scripts.Render("~/bundles/datatables")
-	<script src="~/Scripts/Admin/Account/tableAccount.js"></script>
+	@Scripts.Render(GlobalRes.dataTablePath)
 }
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
-			<div class="box-header"><h3 class="box-title">Accounts</h3></div>
+			<div class="box-header">
+				<h3 class="box-title">@GlobalRes.Accounts</h3>
 
+				<div class="box-tools pull-right">
+					<a href="@Url.Action("Create", "Account")" class="label label-primary"><i class="fa fa-fw fa-pencil">&nbsp;</i>@GlobalRes.CreateNewAccount</a>
+				</div>
+				<!-- /.box-tools -->
+			</div>
 			<div class="box-body">
 				<table id="dataTablePlagin" class="table table-bordered table-striped table-hover">
 					<thead>
 						<tr>
-							<th>Id</th>
-							<th>UserName</th>
-							<th>Email</th>
-							<th>Roles</th>
-							<th>Teacher</th>
-							<th>Actions</th>
+							<th>@GlobalRes.Id</th>
+							<th>@GlobalRes.UserName</th>
+							<th>@GlobalRes.Email</th>
+							<th>@GlobalRes.Roles</th>
+							<th>@GlobalRes.Teacher</th>
+							<th class="no-orderable">@GlobalRes.Actions</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -45,8 +50,9 @@
 								<td>
 									@if (string.IsNullOrWhiteSpace(item.Email))
 									{
-										@:None
-									} else
+										@GlobalRes.None
+									}
+									else
 									{
 										@item.Email
 									}
@@ -62,8 +68,9 @@
 								<td>
 									@if (string.IsNullOrWhiteSpace(item.TeacherName))
 									{
-										@:None
-									} else
+										@GlobalRes.None
+									}
+									else
 									{
 										@item.TeacherName
 									}
@@ -74,8 +81,8 @@
 										@Html.AntiForgeryToken()
 										@Html.Hidden("Id", item.Id)
 										<ul class="list-unstyled">
-											<li><a href="@Url.Action("Edit", "Account", new { item.Id })" class="btn btn-link"><i class="fa fa-edit ">&nbsp;Edit</i></a></li>
-											<li><button class="btn btn-link" type="submit"><i class="fa fa-remove text-danger">&nbsp;Delete</i></button></li>
+											<li><a href="@Url.Action("Edit", "Account", new { item.Id })" class="btn btn-link"><i class="fa fa-edit ">&nbsp;@GlobalRes.Edit</i></a></li>
+											<li><button class="btn btn-link" type="submit"><i class="fa fa-remove text-red">&nbsp;@GlobalRes.Delete</i></button></li>
 										</ul>
 									}
 								</td>
@@ -84,21 +91,17 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<th>Id</th>
-							<th>UserName</th>
-							<th>Email</th>
-							<th>Roles</th>
-							<th>Teacher</th>
-							<th>Actions</th>
+							<th>@GlobalRes.Id</th>
+							<th>@GlobalRes.UserName</th>
+							<th>@GlobalRes.Email</th>
+							<th>@GlobalRes.Roles</th>
+							<th>@GlobalRes.Teacher</th>
+							<th>@GlobalRes.Actions</th>
 						</tr>
 					</tfoot>
 				</table>
 			</div>
 			<!-- /.box-body -->
-
-			<div class="box-footer">
-				<a href="@Url.Action("Create", "Account")" class="btn btn-primary btn-lg fa fa-edit">&nbsp;Create new account</a>
-			</div>
 		</div>
 		<!-- /.box -->
 	</div>

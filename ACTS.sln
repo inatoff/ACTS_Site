@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACTS.Core", "ACTS.Core\ACTS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACTS.UI", "ACTS.UI\ACTS.UI.csproj", "{D037F86E-1E24-410B-9218-2B0F19C73AE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACTS.Localization", "ACTS.Localization\ACTS.Localization.csproj", "{49790C4B-668E-42D5-8A67-412E0FB51B53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,13 +23,17 @@ Global
 		{D037F86E-1E24-410B-9218-2B0F19C73AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D037F86E-1E24-410B-9218-2B0F19C73AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D037F86E-1E24-410B-9218-2B0F19C73AE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49790C4B-668E-42D5-8A67-412E0FB51B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49790C4B-668E-42D5-8A67-412E0FB51B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49790C4B-668E-42D5-8A67-412E0FB51B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49790C4B-668E-42D5-8A67-412E0FB51B53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_PrefixTranslations = False
-		RESX_SortFileContentOnSave = True
 		RESX_NeutralResourcesLanguage = uk-UA
+		RESX_SortFileContentOnSave = True
+		RESX_PrefixTranslations = False
 	EndGlobalSection
 EndGlobal

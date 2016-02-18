@@ -12,11 +12,13 @@ using ACTS.Core.Concrete;
 using ACTS.UI.Helpers;
 using ACTS.Core.Abstract;
 using Microsoft.AspNet.Identity;
+using ACTS.UI.Controllers;
+using ACTS.UI.App_LocalResources;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
 	[Authorize]
-	public class AccountController : Controller
+	public class AccountController : BaseController
 	{
 		private ITeacherRepository _teacherRepository;
 		public AccountController(ITeacherRepository teacherRepository)
@@ -75,7 +77,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 			ViewBag.Teachers = teachersItems;
 		}
-		
+
 		[HttpGet]
 		public ActionResult Create()
 		{
@@ -104,7 +106,19 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 				using (var manager = UserManager)
 				{
-					var result = await manager.CreateAsync(user, model.Password);
+					var result = await manager.PasswordValidator.ValidateAsync(model.Password);
+
+					if (!result.Succeeded)
+					{
+						foreach (var error in result.Errors)
+							ModelState.AddModelError("Password", error);
+
+						InitTeachersItems(model.PairTeacherId);
+
+						return View("CreateAccount", model);
+					}
+
+					result = await manager.CreateAsync(user, model.Password);
 
 					if (!result.Succeeded)
 					{
@@ -124,7 +138,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 					result = await manager.AddToRolesAsync(user.Id, model.SelectedRoles.ToArray());
 
-					TempData.AddMessage(new Message(MessageType.Success, $"User \"{user.UserName}\" successfully created."));
+					TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.UserCreatedMsg, user.UserName));
 				}
 
 				return RedirectToAction(nameof(Table));
@@ -145,7 +159,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 				if (user == null)
 				{
-					TempData.AddMessage(MessageType.Warning, $"User with ID = {Id} was not found.");
+					TempData.AddMessage(MessageType.Warning, string.Format(GlobalRes.UserNoFound, Id));
 					return RedirectToAction(nameof(Table));
 				}
 
@@ -182,7 +196,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 					if (user == null)
 					{
-						TempData.AddMessage(MessageType.Danger, $"User with ID = {model.Id} was not found.");
+						TempData.AddMessage(MessageType.Danger, string.Format(GlobalRes.UserNoFound, model.Id));
 						return RedirectToAction(nameof(Table));
 					}
 
@@ -218,7 +232,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					if (model.PairTeacherId.HasValue)
 						_teacherRepository.AddPairToUser(model.PairTeacherId.Value, user.Id);
 
-					TempData.AddMessage(new Message(MessageType.Success, $"User \"{user.UserName}\" successfully saved."));
+					TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.UserSavedMsg, user.UserName));
 				}
 
 				return RedirectToAction(nameof(Table));
@@ -233,30 +247,33 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> Delete(int Id)
 		{
-			using (var manager = UserManager)
+			using (var userManager = UserManager)
 			{
-				var user = await manager.FindByIdAsync(Id);
+				var user = await userManager.FindByIdAsync(Id);
 
 				if (user == null)
 				{
-					TempData.AddMessage(MessageType.Warning, $"User with ID = {Id} was not found.");
+					TempData.AddMessage(MessageType.Warning, string.Format(GlobalRes.UserNoFound, Id));
 					return RedirectToAction(nameof(Table));
 				}
 
-				//var rolesForUser = await manager.GetRolesAsync(Id);
+				if (await userManager.IsInRoleAsync(user.Id, "Admin"))
+					using (var roleManager = RoleManager)
+						if ((await roleManager.FindByNameAsync("Admin")).Users.Count() < 2)
+						{
+							TempData.AddMessage(MessageType.Warning, GlobalRes.CanNotDeleteOnlyAdminUser);
+							return RedirectToAction(nameof(Table));
+						}
+						else if (user.Id == User.Identity.GetUserId<int>())
+						{
+							TempData.AddMessage(MessageType.Warning, GlobalRes.CanNotDeleteHimSelfHere);
+							return RedirectToAction(nameof(Table));
+						}
 
-				//var result = await manager.RemoveFromRolesAsync(Id, rolesForUser.ToArray());
-
-				//if (!result.Succeeded)
-				//{
-				//	TempData.AddMessage(MessangeType.Danger, result.Errors);
-				//	return RedirectToAction(nameof(Table));
-				//}
-
-				var result = await manager.DeleteAsync(user);
+				var result = await userManager.DeleteAsync(user);
 
 				if (result.Succeeded)
-					TempData.AddMessage(new Message(MessageType.Success, $"User \"{user.UserName}\" successfully deleted."));
+					TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.UserDeletedMsg, user.UserName));
 				else
 					TempData.AddMessages(MessageType.Warning, result.Errors);
 			}

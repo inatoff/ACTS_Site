@@ -21,7 +21,7 @@ namespace ACTS.Core.Concrete
 		{
 			if (news.NewsId == 0)
 			{
-				news.Create = DateTime.UtcNow;
+				news.Created = DateTime.UtcNow;
 				context.Uncos.Add(news);
 			} else
 			{
@@ -73,7 +73,7 @@ namespace ACTS.Core.Concrete
 
 		public void CreateNews(News news)
 		{
-			news.Create = DateTime.UtcNow;
+			news.Created = DateTime.UtcNow;
 			context.Uncos.Add(news);
 
 			context.SaveChanges();

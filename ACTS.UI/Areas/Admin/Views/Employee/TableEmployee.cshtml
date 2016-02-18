@@ -2,8 +2,8 @@
 
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
-	ViewBag.Title = "Table of employees";
-	ViewBag.CurrentTreeView = "Tables";
+	ViewBag.Title = GlobalRes.TableOfEmployees;
+	ViewBag.CurrentTreeView = GlobalRes.Tables;
 }
 
 @section Styles{
@@ -11,24 +11,28 @@
 }
 
 @section Scripts {
-	@Scripts.Render("~/bundles/datatables")
-	<script src="~/Scripts/Admin/Employee/tableEmployee.js"></script>
+	@Scripts.Render(GlobalRes.dataTablePath)
 }
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
-			<div class="box-header"><h3 class="box-title">Employees</h3></div>
+			<div class="box-header">
+				<h3 class="box-title">@GlobalRes.Employees</h3>
+				<div class="box-tools pull-right">
+					<a href="@Url.Action("Create", "Employee")" class="label label-primary"><i class="fa fa-fw fa-pencil"></i>&nbsp;@GlobalRes.CreateNewEmployee</a>
+				</div>
+			</div>
 
 			<div class="box-body">
 				<table id="dataTablePlagin" class="table table-bordered table-striped table-hover">
 					<thead>
 						<tr>
-							<th>Id</th>
-							<th>Full name</th>
-							<th>Position</th>
-							<th>Image</th>
-							<th>Actions</th>
+							<th>@GlobalRes.Id</th>
+							<th>@GlobalRes.FullName</th>
+							<th>@GlobalRes.Position</th>
+							<th>@GlobalRes.Image</th>
+							<th class="no-orderable">@GlobalRes.Actions</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -47,8 +51,9 @@
 								<td>
 									@if (item.Photo == null)
 									{
-										@:None
-									} else
+										@GlobalRes.None
+									}
+									else
 									{
 										<img alt="Employee image" width="100" height="100" src="@Url.Action("GetImage", "Employee", new { area = "", item.EmployeeId })" />
 									}
@@ -59,9 +64,9 @@
 										@Html.AntiForgeryToken()
 										@Html.Hidden("EmployeeId", item.EmployeeId)
 										<ul class="list-unstyled">
-											<li><a href="@Url.Action("Edit", "Employee", new { item.EmployeeId })" class="btn btn-link"><i class="fa fa-edit ">&nbsp;Edit</i></a></li>
-											<li><a href="@Url.Action("PageNews", "Employee", new { item.EmployeeId })" class="btn btn-link"><i class="fa fa-home ">&nbsp;On Main</i></a></li>
-											<li><button class="btn btn-link" type="submit"><i class="fa fa-remove text-danger">&nbsp;Delete</i></button></li>
+											<li><a href="@Url.Action("Edit", "Employee", new { item.EmployeeId })" class="btn btn-link"><i class="fa fa-edit ">&nbsp;@GlobalRes.Edit</i></a></li>
+											<li><a href="@Url.Action("PageNews", "Employee", new { item.EmployeeId })" class="btn btn-link"><i class="fa fa-home ">&nbsp;@GlobalRes.OnMain</i></a></li>
+											<li><button class="btn btn-link" type="submit"><i class="fa fa-remove text-red">&nbsp;@GlobalRes.Delete</i></button></li>
 										</ul>
 									}
 								</td>
@@ -70,19 +75,16 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<th>Id</th>
-							<th>Full name</th>
-							<th>Position</th>
-							<th>Image</th>
-							<th>Actions</th>
+							<th>@GlobalRes.Id</th>
+							<th>@GlobalRes.FullName</th>
+							<th>@GlobalRes.Position</th>
+							<th>@GlobalRes.Image</th>
+							<th>@GlobalRes.Actions</th>
 						</tr>
 					</tfoot>
 				</table>
 			</div>
 			<!-- /.box-body -->
-			<div class="box-footer">
-				<a href="@Url.Action("Create", "Employee")" class="btn btn-primary"><i class="fa fa-fw fa-pencil"></i>&nbsp;Create new employee</a>
-			</div>
 		</div>
 		<!-- /.box -->
 	</div>

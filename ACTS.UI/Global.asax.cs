@@ -7,8 +7,7 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using ExpressiveAnnotations.Attributes;
-using ExpressiveAnnotations.MvcUnobtrusive.Validators;
+using ACTS.UI.App_Start;
 
 namespace ACTS.UI
 {
@@ -17,11 +16,8 @@ namespace ACTS.UI
 
 		protected void Application_Start()
 		{
-			DataAnnotationsModelValidatorProvider.RegisterAdapter(
-				typeof(RequiredIfAttribute), typeof(RequiredIfValidator));
-			DataAnnotationsModelValidatorProvider.RegisterAdapter(
-				typeof(AssertThatAttribute), typeof(AssertThatValidator));
 			AreaRegistration.RegisterAllAreas();
+			AdapterConfig.RegisterAdapters();
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

@@ -40,7 +40,7 @@ namespace ACTS.UI
 	public class ApplicationUserManager : UserManager<ApplicationUser, int>
 	{
 		public ApplicationUserManager(IUserStore<ApplicationUser, int> store)
-			:base(store)
+			: base(store)
 		{
 			// Настройка логики проверки имен пользователей
 			this.UserValidator = new UserValidator<ApplicationUser, int>(this) {
@@ -66,12 +66,12 @@ namespace ACTS.UI
 		}
 
 		public ApplicationUserManager(EFDbContext context)
-			:base(new ApplicationUserStore(context))
+			: this(new ApplicationUserStore(context))
 		{
 		}
 
 		public ApplicationUserManager()
-			:base(new ApplicationUserStore(new EFDbContext()))
+			: this(new ApplicationUserStore(new EFDbContext()))
 		{
 		}
 
@@ -94,7 +94,7 @@ namespace ACTS.UI
 			var dataProtectionProvider = options.DataProtectionProvider;
 			if (dataProtectionProvider != null)
 			{
-				var tokenProvider = new DataProtectorTokenProvider<ApplicationUser, int>(dataProtectionProvider.Create("ASP.NET Identity", "ACTS.WebSite"));
+				var tokenProvider = new DataProtectorTokenProvider<ApplicationUser, int>(dataProtectionProvider.Create("ACTS Website"));
 				tokenProvider.TokenLifespan = TimeSpan.FromHours(6.0);
 				manager.UserTokenProvider = tokenProvider;
 			}
@@ -125,12 +125,12 @@ namespace ACTS.UI
 		}
 
 		public ApplicationRoleManager(EFDbContext context)
-			:base(new ApplicationRoleStore(context))
+			: this(new ApplicationRoleStore(context))
 		{
 		}
 
 		public ApplicationRoleManager()
-			:base(new ApplicationRoleStore(new EFDbContext()))
+			: this(new ApplicationRoleStore(new EFDbContext()))
 		{
 		}
 

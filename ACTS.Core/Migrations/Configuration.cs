@@ -70,18 +70,18 @@ namespace ACTS.Core.Migrations
 #else
 				using (var fs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\Теленик.jpg", FileMode.Open))
 #endif
-                {
-                    var teacher = new Teacher()
-                    {
-                        FullName = "Теленик Сергій Федорович",
-                        Degree = "д.т.н., професор",
-                        Rank = Rank.Head,
-                        Position = "ЗАВІДУВАЧ КАФЕДРИ голова НМК МОН України \"Автоматика та управління\" керівник циклу математичних дисциплін",
-                        Photo = new byte[fs.Length],
-                        PhotoMimeType = "jpg"
-                    };
-                    fs.Read(teacher.Photo, 0, (int)fs.Length);
-                    teacher.PhotoMimeType = "jpg";
+				{
+					var teacher = new Teacher()
+					{
+						FullName = "Теленик Сергій Федорович",
+						Degree = "д.т.н., професор",
+						Rank = Rank.Head,
+						Position = "ЗАВІДУВАЧ КАФЕДРИ голова НМК МОН України \"Автоматика та управління\" керівник циклу математичних дисциплін",
+						Photo = new byte[fs.Length],
+						PhotoMimeType = "jpg"
+					};
+					fs.Read(teacher.Photo, 0, (int)fs.Length);
+					teacher.PhotoMimeType = "jpg";
 
 					teacherRepository.CreateTeacher(teacher);
 				}
@@ -90,18 +90,18 @@ namespace ACTS.Core.Migrations
 #else
 				using (var fs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\Новацкий.jpg", FileMode.Open))
 #endif
-                {
-                    var teacher = new Teacher()
-                    {
-                        FullName = "Новацький Анатолій Олександрович",
-                        Degree = "к.т.н., доцент",
-                        Rank = Rank.FirstVice,
-                        Position = "ПЕРШИЙ ЗАСТУПНИК заступник з навчально-виховної роботи відповідальний за заочну форму навчання керівник циклу \"Комп'ютерна електроніка та мікропроцесорна техніка\"",
-                        Photo = new byte[fs.Length],
-                        PhotoMimeType = "jpg"
-                    };
-                    fs.Read(teacher.Photo, 0, (int)fs.Length);
-                    teacher.PhotoMimeType = "jpg";
+				{
+					var teacher = new Teacher()
+					{
+						FullName = "Новацький Анатолій Олександрович",
+						Degree = "к.т.н., доцент",
+						Rank = Rank.FirstVice,
+						Position = "ПЕРШИЙ ЗАСТУПНИК заступник з навчально-виховної роботи відповідальний за заочну форму навчання керівник циклу \"Комп'ютерна електроніка та мікропроцесорна техніка\"",
+						Photo = new byte[fs.Length],
+						PhotoMimeType = "jpg"
+					};
+					fs.Read(teacher.Photo, 0, (int)fs.Length);
+					teacher.PhotoMimeType = "jpg";
 
 					teacherRepository.CreateTeacher(teacher);
 				}

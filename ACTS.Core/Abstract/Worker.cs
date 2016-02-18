@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ACTS.Localization;
+using ACTS.Localization.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,9 +13,9 @@ namespace ACTS.Core.Abstract
 	{
 		//obligatory Fields
 
-		[Required(ErrorMessage = "Please enter a name")]
-		[StringLength(70, ErrorMessage = "Full name: Length should not exceed 70 characters")]
-		[Display(Name = "Full name*")]
+		[CustomRequired]
+		[CustomMaxLength(70)]
+		[Display(Name = nameof(DisplayRes.FullNameName), ResourceType = typeof(DisplayRes))]
 		public string FullName { get; set; } // Полное имя
 
 		//public string Name { get; set; } // Имя
@@ -22,13 +24,13 @@ namespace ACTS.Core.Abstract
 
 		//public string Surname { get; set; } // Фамилия
 
-		[Required(ErrorMessage = "Please enter a position")]
-		[StringLength(500, ErrorMessage = "Position: Length should not exceed 500 characters")]
-		[Display(Name = "Position*")]
+		[CustomRequired]
+		[CustomMaxLength(500)]
+		[Display(Name = nameof(DisplayRes.PositionName), ResourceType = typeof(DisplayRes))]
 		[DataType(DataType.MultilineText)]
 		public string Position { get; set; } // Должность
 
-		[Display(Name = "Photo")]
+		[Display(Name = nameof(DisplayRes.PhotoName), ResourceType = typeof(DisplayRes))]
 		public byte[] Photo { get; set; }
 
 		public string PhotoMimeType { get; set; }

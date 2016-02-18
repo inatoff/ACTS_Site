@@ -2,8 +2,8 @@
 
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
-	ViewBag.Title = "Table of news";
-	ViewBag.CurrentTreeView = "Tables";
+	ViewBag.Title = GlobalRes.TableOfNews;
+	ViewBag.CurrentTreeView = GlobalRes.Tables;
 }
 
 @section Styles{
@@ -11,28 +11,30 @@
 }
 
 @section Scripts {
-	@Scripts.Render("~/bundles/datatables")
-	<script src="~/Scripts/Admin/News/tableUncos.js"></script>
+	@Scripts.Render(GlobalRes.dataTablePath)
 }
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<div class="box-header">
-				<h3 class="box-title">Uncos</h3>
+				<h3 class="box-title">@GlobalRes.Uncos</h3>
+				<div class="box-tools pull-right">
+					<a href="@Url.Action("Create", "News")" class="label label-primary"><i class="fa fa-fw fa-pencil"></i>&nbsp;@GlobalRes.CreateNewNews</a>
+				</div>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
-				<table id="dataTablePlagin" class="table table-bordered table-striped table-hover">
+				<table id="dataTablePlagin" class="table table-bordered table-striped table-hover hasContent">
 					<thead>
 						<tr>
-							<th>Id</th>
-							<th>Title</th>
-							<th>Create</th>
-							<th>Modified</th>
-							<th>Image</th>
-							<th>Content</th>
-							<th>Actions</th>
+							<th>@GlobalRes.Id</th>
+							<th>@GlobalRes.Title</th>
+							<th>@GlobalRes.Created</th>
+							<th>@GlobalRes.Modified</th>
+							<th>@GlobalRes.Image</th>
+							<th class="no-center-body hasContent">@GlobalRes.Content</th>
+							<th class="no-orderable">@GlobalRes.Actions</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -46,28 +48,30 @@
 									@item.Title
 								</td>
 								<td>
-									@item.Create.Value.ToLocalTime().ToShortDateString()
+									@item.Created.Value.ToLocalTime().ToShortDateString()
 								</td>
 								<td>
 									@if (item.Modified.HasValue)
 									{
 										@item.Modified.Value.ToLocalTime().ToShortDateString()
-									} else
+									}
+									else
 									{
-										@:None
+										@GlobalRes.None
 									}
 								</td>
 								<td>
 									@if (item.ImageData == null)
 									{
-										@:None
-										} else
+										@GlobalRes.None
+									}
+									else
 									{
 										<img alt="News image" width="100" height="100" src="@Url.Action("GetImage", "News", new { area = "", item.NewsId })" />
 									}
 								</td>
-								<td>
-									@Html.Raw(item.Content)
+								<td class="hasContent">
+									<div class="hasContent">@Html.Raw(item.Content)</div>
 								</td>
 								<td>
 									@using (Html.BeginForm("Delete", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -75,9 +79,9 @@
 										@Html.AntiForgeryToken()
 										@Html.Hidden("NewsID", item.NewsId)
 										<ul class="list-unstyled">
-											<li><a href="@Url.Action("Edit", "News", new { item.NewsId })" class="btn btn-link"><i class="fa fa-edit">&nbsp;Edit</i></a></li>
-											<li><a href="@Url.Action("PageNews", "News", new { item.NewsId })" class="btn btn-link"><i class="fa fa-home">&nbsp;On Main</i></a></li>
-											<li><button class="btn btn-link" type="submit"><i class="fa fa-remove text-danger">&nbsp;Delete</i></button></li>
+											<li><a href="@Url.Action("Edit", "News", new { item.NewsId })" class="btn btn-link"><i class="fa fa-edit">&nbsp;@GlobalRes.Edit</i></a></li>
+											<li><a href="@Url.Action("PageNews", "News", new { item.NewsId })" class="btn btn-link"><i class="fa fa-home">&nbsp;@GlobalRes.OnMain</i></a></li>
+											<li><button class="btn btn-link" type="submit"><i class="fa fa-remove text-red">&nbsp;@GlobalRes.Delete</i></button></li>
 										</ul>
 									}
 								</td>
@@ -86,21 +90,18 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<th>Id</th>
-							<th>Title</th>
-							<th>Create</th>
-							<th>Modified</th>
-							<th>Image</th>
-							<th>Content</th>
-							<th>Actions</th>
+							<th>@GlobalRes.Id</th>
+							<th>@GlobalRes.Title</th>
+							<th>@GlobalRes.Created</th>
+							<th>@GlobalRes.Modified</th>
+							<th>@GlobalRes.Image</th>
+							<th>@GlobalRes.Content</th>
+							<th>@GlobalRes.Actions</th>
 						</tr>
 					</tfoot>
 				</table>
 			</div>
 			<!-- /.box-body -->
-			<div class="box-footer">
-				<a href="@Url.Action("Create", "News")" class="btn btn-primary"><i class="fa fa-fw fa-pencil"></i>&nbsp;Create new news</a>
-			</div>
 		</div>
 		<!-- /.box -->
 	</div>
