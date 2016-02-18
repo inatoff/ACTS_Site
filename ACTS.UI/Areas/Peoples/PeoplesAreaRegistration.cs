@@ -15,6 +15,11 @@ namespace ACTS.UI.Areas.Peoples
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
+                name: "ToDefaultPeoplesArea",
+                url: "PersonalPage/{nameSlug}/{action}",
+                defaults: new { controller = "PersonalPage", action = "Index"});
+
+            context.MapRoute(
                 "Peoples_default",
                 "Peoples/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }

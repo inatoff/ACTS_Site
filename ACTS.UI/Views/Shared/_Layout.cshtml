@@ -26,6 +26,26 @@
     <link href="~/Content/Site.css" rel="stylesheet" />
 </head>
 <body style="height:100%">
+    @if (ViewBag.CurrentPage == "main")
+    {
+        <div id="carousel" class="carousel slide" data-ride="carousel">
+
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="~/Content/Images/actsSlide1.jpg" alt="First slide">
+                </div>
+                <div class="item">
+                    <img src="~/Content/Images/actsSlide2.jpg" alt="Second slide">
+                </div>
+                <div class="item">
+                    <img src="~/Content/Images/actsSlide3.jpg" alt="Third slide">
+                </div>
+                <div class="item">
+                    <img src="~/Content/Images/actsSlide4.jpg" alt="Third slide">
+                </div>
+            </div>
+        </div>
+    }
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -51,7 +71,23 @@
                     @Html.Partial("PanelSections")
                 </ul>
                 <!--Выбор локализации -->
-                <ul class="nav navbar-nav navbar-right">
+                <ul style="margin-right:5px" class="nav navbar-nav navbar-right">
+                    <li>
+                        @{Html.RenderAction("AuthenticationLink", new { controller = "Account" }); }
+                    </li>
+                    <li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("Logout", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+                            }
+                            <a href="javascript:document.getElementById('logoutForm').submit()">
+                                @GlobalRes.Logout
+                            </a>
+
+                        }
+                    </li>
                     @foreach (var lang in CultureHelper.Cultures)
                     {
                         <li class="@lang
@@ -74,26 +110,7 @@
         </div>
     </nav>
 
-    @if (ViewBag.CurrentPage == "main")
-    {
-        <div id="carousel" class="container carousel slide" data-ride="carousel">
-
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img src="~/Content/Images/actsSlide1.jpg" alt="First slide">
-                </div>
-                <div class="item">
-                    <img src="~/Content/Images/actsSlide2.jpg" alt="Second slide">
-                </div>
-                <div class="item">
-                    <img src="~/Content/Images/actsSlide3.jpg" alt="Third slide">
-                </div>
-                <div class="item">
-                    <img src="~/Content/Images/actsSlide4.jpg" alt="Third slide">
-                </div>
-            </div>
-        </div>
-    }
+   
     <div class="container" style="height:100%">
         @RenderBody()
 

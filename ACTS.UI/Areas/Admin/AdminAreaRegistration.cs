@@ -21,7 +21,7 @@ namespace ACTS.UI.Areas.Admin
 			);
 
 			context.MapRoute(
-				name: "ToDefaultAdminAreaAction",
+				name: "ToDefaultAdminAreaAction",   
 				url: "Admin",
 				defaults: new { controller = "Admin", action = "Dashboard" }
 			);

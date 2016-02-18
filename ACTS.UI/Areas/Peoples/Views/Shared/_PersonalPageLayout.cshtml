@@ -1,0 +1,28 @@
+﻿@{ 
+    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_PersonalPageLayout</title>
+</head>
+<body>
+    <div> @ViewBag.Name
+    </div>
+    <div>
+        @ViewBag.Degree
+    </div>
+    <div>
+        @*@Html.Partial("PersonalPageNavigation")*@
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <div>
+        @*@Html.Partial("Footer")*@
+    </div>
+</body>
+</html>

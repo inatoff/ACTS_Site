@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace ACTS.UI.Areas.Peoples.Models
 {
@@ -28,12 +29,9 @@ namespace ACTS.UI.Areas.Peoples.Models
         public string NewPassword { get; set; }
 
         [Display(Name = "Confirm Password")]
-        [Compare("NewPassword", ErrorMessage = "Passwords are not the same")]
+        [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessage = "Passwords are not the same")]
         public string ConfirmPassword { get; set; }
-
-        [Display(Name = "Slug")]
-        public string NameSlug { get; set; }
-
+         
         [Url]
         [Display(Name = "Intellect url")]
         public string Intellect { get; set; }

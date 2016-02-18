@@ -1,6 +1,7 @@
 ﻿using ACTS.Core.Abstract;
 using ACTS.Core.Concrete;
 using ACTS.Core.Entities;
+using ACTS.Core.Identity;
 using ACTS.UI.Areas.Peoples.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -16,6 +17,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
     [Authorize(Roles = "Teacher, Admin")]
     public class ProfileController : Controller
     {
+
         // GET: Peoples/Profile
         private ITeacherRepository repository;
 
@@ -24,9 +26,19 @@ namespace ACTS.UI.Areas.Peoples.Controllers
             repository = repo;
         }
 
+        public int CurrentUserId
+        {
+            get { return User.Identity.GetUserId<int>(); }
+        }
+
+        private ApplicationUserStore UserStore
+        {
+            get { return new ApplicationUserStore(new EFDbContext()); }
+        }
+
         private ApplicationUserManager UserManager
         {
-            get { return new ApplicationUserManager(); }
+            get { return new ApplicationUserManager(UserStore); }
         }
 
         [HttpGet]
@@ -35,17 +47,16 @@ namespace ACTS.UI.Areas.Peoples.Controllers
             TeacherAccountViewModel model;
             using (var userManager = UserManager)
             {
-                var userId = User.Identity.GetUserId<int>();
-                var currentTeacher = repository.GetTeacherById(userId);
-                var currentUser = await userManager.FindByIdAsync(userId);
+                var currentUserId = CurrentUserId;
+                var currentUser = await userManager.FindByIdAsync(currentUserId);
+                var currentTeacher = repository.GetTeacherById(currentUser.Teacher.TeacherId);
 
                 model = new TeacherAccountViewModel()
                 {
                     //Part of account info
                     AccountEmail = currentUser.Email,
-                    //Part of teacher info
+                    //Part of teacher info 
                     Email = currentTeacher.Email,
-                    NameSlug = currentTeacher.NameSlug,
                     Degree = currentTeacher.Degree,
                     Intellect = currentTeacher.Intellect,
                     Facebook = currentTeacher.Facebook,
@@ -59,7 +70,96 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                 };
             }
 
-            return View();
+            return View("Edit",model);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(TeacherAccountViewModel model)
+        {
+            using (var userManager = UserManager)
+            {
+                var currentUserId = CurrentUserId;
+                var currentUser = await userManager.FindByIdAsync(currentUserId);
+                var currentTeacher = repository.GetTeacherById(currentUser.Teacher.TeacherId);
+                if (string.IsNullOrWhiteSpace(model.Password))
+                {
+                    ModelState.AddModelError("PageError", "Password must be supplied");
+                }
+                else
+                {
+                    if (ModelState.IsValid && await CheckCurrentPasswordAsync(currentUserId, model.Password))
+                    {
+                        if (!string.IsNullOrWhiteSpace(model.NewPassword))
+                        {
+                            var result = await userManager.ChangePasswordAsync(currentUserId, model.Password, model.NewPassword);
+                            if (result.Succeeded)
+                            {
+                                //TODO: Messenger
+                            }
+                            else
+                            {
+                                foreach (var item in result.Errors)
+                                {
+                                    ModelState.AddModelError("Password", item);
+                                }
+                            }
+                        }
+                        //TODO: Messenger
+                        repository.UpdateTeacherByProfile(currentTeacher.TeacherId, new Teacher
+                        {
+                            Degree = model.Degree,
+                            Email = model.Email,
+
+                            Intellect = model.Intellect,
+                            Vk = model.Vk,
+                            Facebook = model.Facebook,
+                            Twitter = model.Twitter,
+
+                            Disciplines = model.Disciplines,
+                            Projects = model.Projects,
+                            Publications = model.Publications,
+                            ScienceInterests = model.ScienceInterests
+                        });
+                    }
+                }
+                return View("Edit",model);
+            }
+        }
+
+        private async Task<bool> CheckCurrentPasswordAsync(int id, string password)
+        {
+            using (var userManager = UserManager)
+            {
+                var currentUser = userManager.FindByIdAsync(id).Result;
+                return await userManager.CheckPasswordAsync(currentUser, password);
+            }
+        }
+
+        private async Task<RedirectToRouteResult> InitPersonalPage()
+        {
+            using (var userManager = UserManager)
+            {
+                var currentId = CurrentUserId;
+                var currentUser = await userManager.FindByIdAsync(currentId);
+                if (currentUser.Teacher.Blog != null)
+                {
+                    //TODO: Message you already have a blog
+                    return RedirectToRoute("ToDefaultPeoplesArea", new { nameSlug = currentUser.Teacher.NameSlug });
+                }
+                else
+                {
+                    repository.InitPersonalPage(currentId);
+                    return RedirectToRoute("ToDefaultPeoplesArea", new { nameSlug = currentUser.Teacher.NameSlug });
+                }
+            }
+        }
+
+        
+        //[HttpPost]
+        //public async Task<ActionResult> Edit(TeacherAccountViewModel model)
+        //{
+
+        //}
     }
 }

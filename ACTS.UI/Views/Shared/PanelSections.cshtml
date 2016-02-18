@@ -41,20 +41,3 @@
     </ul>
 </li>
 <li><a href="@Url.Action("Contacts","Home")">@GlobalRes.Contact</a></li>
-<li>
-    @{Html.RenderAction("AuthenticationLink", new { controller = "Account" }); }
-</li>
-@if (User.Identity.IsAuthenticated)
-{
-    <li>
-       @using (Html.BeginForm("Logout", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "logoutForm" }))
-       {
-       @Html.AntiForgeryToken()
-       }
-       <a href="javascript:document.getElementById('logoutForm').submit()">
-            @GlobalRes.Logout
-       </a>
-    </li>
-}
-
-<li style=""></li>
