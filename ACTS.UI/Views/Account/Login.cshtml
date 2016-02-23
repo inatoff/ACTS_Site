@@ -48,13 +48,13 @@
 
 				@Html.ValidationMessageFor(model => Model.EmailOrUserName, "", new { @class = "text-red" }, "p")
 				<div class="form-group has-feedback">
-					@Html.TextBoxFor(m => m.EmailOrUserName, new { @class = "form-control", placeholder = GlobalRes.EmailOrUserName })
+					@Html.TextBoxFor(m => m.EmailOrUserName, new { @class = "form-control", placeholder = GlobalRes.EmailOrUserName, autofocus = true, tabindex = "1" })
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 
 				@Html.ValidationMessageFor(model => Model.Password, "", new { @class = "text-red" }, "p")
 				<div class="form-group has-feedback">
-					@Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = GlobalRes.Password })
+					@Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = GlobalRes.Password, tabindex = "2" })
 					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 				</div>
 
@@ -67,18 +67,18 @@
 					</div>
 					<!-- /.col -->
 					<div class="col-xs-4">
-						<button type="submit" class="btn btn-primary btn-block btn-flat">@GlobalRes.SignIn</button>
+						<button type="submit" class="btn btn-primary btn-block btn-flat" tabindex="3">@GlobalRes.SignIn</button>
 					</div>
 					<!-- /.col -->
 				</div>
 			}
 			@if (string.IsNullOrWhiteSpace(ViewBag.ReturnUrl))
 			{
-				<a href="@Url.Action("ForgotPassword", "Account")"> @GlobalRes.IForgotMyPassword</a>
+				<a href="@Url.Action("ForgotPassword", "Account", new { tabindex = "4" })"> @GlobalRes.IForgotMyPassword</a>
 			}
 			else
 			{
-				<a href="@Url.Action("ForgotPassword", "Account", new { returnUrl = Url.Action("Login", "Account", new { returnUrl = ViewBag.ReturnUrl }) })">
+				<a href="@Url.Action("ForgotPassword", "Account", new { tabindex = "4", returnUrl = Url.Action("Login", "Account", new { returnUrl = ViewBag.ReturnUrl }) })">
 					@GlobalRes.IForgotMyPassword
 				</a>
 			}

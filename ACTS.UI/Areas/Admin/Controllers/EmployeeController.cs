@@ -11,28 +11,30 @@ using ACTS.UI.Helpers;
 using ACTS.UI.Areas.Admin.Models;
 using ACTS.UI.Controllers;
 using ACTS.UI.App_LocalResources;
+using Ninject.Extensions.Logging;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
 	[Authorize(Roles = "Admin")]
 	public class EmployeeController : BaseController
 	{
-		private IEmployeeRepository repository;
-
-		public EmployeeController(IEmployeeRepository employeeRepository)
+		private IEmployeeRepository _repository;
+		private readonly ILogger _logger;
+		public EmployeeController(IEmployeeRepository employeeRepository, ILoggerFactory loggerFactory)
 		{
-			repository = employeeRepository;
+			_repository = employeeRepository;
+			_logger = loggerFactory.GetCurrentClassLogger();
 		}
 
 		public ActionResult Table()
 		{
-			IEnumerable<Employee> employees = repository.Employees.OrderBy(em => em.EmployeeId);
+			IEnumerable<Employee> employees = _repository.Employees.OrderBy(em => em.EmployeeId);
 			return View("TableEmployee", employees);
 		}
 
 		public ActionResult Edit(int employeeId)
 		{
-			Employee employee = repository.GetEmployeeById(employeeId);
+			Employee employee = _repository.GetEmployeeById(employeeId);
 			return View("EditEmployee", employee);
 		}
 
@@ -48,8 +50,10 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					employee.Photo = new byte[image.ContentLength];
 					image.InputStream.Read(employee.Photo, 0, image.ContentLength);
 				}
-				repository.UpdateEmployee(employee);
+				_repository.UpdateEmployee(employee);
 				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.EmployeeSavedMsg, employee.FullName));
+				_logger.Info("Employee \"{0}\" saved by {1}.", employee.FullName, User.Identity.Name);
+
 				return RedirectToAction(nameof(Table), new { area = "Admin" });
 			} else
 			{
@@ -75,8 +79,10 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					employee.Photo = new byte[image.ContentLength];
 					image.InputStream.Read(employee.Photo, 0, image.ContentLength);
 				}
-				repository.CreateEmployee(employee);
+				_repository.CreateEmployee(employee);
 				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.EmployeeSavedMsg, employee.FullName));
+				_logger.Info("Employee \"{0}\" created by {1}.", employee.FullName, User.Identity.Name);
+
 				return RedirectToAction(nameof(Table), new { area = "Admin" });
 			} else
 			{
@@ -89,10 +95,11 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Delete(int employeeId)
 		{
-			Employee deletedEmployee = repository.DeleteEmployee(employeeId);
+			Employee deletedEmployee = _repository.DeleteEmployee(employeeId);
 			if (deletedEmployee != null)
 			{
 				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.EmployeeDeletedMsg, deletedEmployee.FullName));
+				_logger.Info("Employee \"{0}\" deleted by {1}.", deletedEmployee.FullName, User.Identity.Name);
 			}
 			return RedirectToAction(nameof(Table));
 		}

@@ -126,6 +126,9 @@
   <data name="Account" xml:space="preserve">
     <value>Account</value>
   </data>
+  <data name="AccountLockedMsg" xml:space="preserve">
+    <value>This account is locked. Try again later.</value>
+  </data>
   <data name="Accounts" xml:space="preserve">
     <value>Accounts</value>
   </data>
@@ -173,6 +176,9 @@
   </data>
   <data name="BlogRemovePost" xml:space="preserve">
     <value>Delete Post</value>
+  </data>
+  <data name="CallSite" xml:space="preserve">
+    <value>Call site</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
@@ -271,7 +277,10 @@
     <value>Dashboard</value>
   </data>
   <data name="dataTablePath" xml:space="preserve">
-    <value>~/bundles/datatables</value>
+    <value>~/bundles/datatables/init</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
   </data>
   <data name="Degree" xml:space="preserve">
     <value>Degree</value>
@@ -293,6 +302,9 @@
   </data>
   <data name="Department" xml:space="preserve">
     <value>Department</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
@@ -336,11 +348,17 @@
   <data name="English" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="Exception" xml:space="preserve">
+    <value>Exception</value>
+  </data>
   <data name="FacebookUrl" xml:space="preserve">
     <value>Facebook URL</value>
   </data>
   <data name="FailedChangeEmailMsg" xml:space="preserve">
     <value>You failed change the email on "{0}".{1}Maybe it happened because of the expiration of the allotted 6 hours to perform the operation.</value>
+  </data>
+  <data name="FailedLoginAttemptsMsg" xml:space="preserve">
+    <value>Failed login attempts.</value>
   </data>
   <data name="FDP" xml:space="preserve">
     <value>Pregraduate preparing</value>
@@ -387,6 +405,9 @@
   <data name="Image" xml:space="preserve">
     <value>Image</value>
   </data>
+  <data name="IncorrectUserNameOrPasswordMsg" xml:space="preserve">
+    <value>Username (Email) or password is incorrect.</value>
+  </data>
   <data name="IntellectUrl" xml:space="preserve">
     <value>Intellect URL</value>
   </data>
@@ -398,6 +419,15 @@
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="Logger" xml:space="preserve">
+    <value>Logger</value>
+  </data>
+  <data name="Logging" xml:space="preserve">
+    <value>Logging</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Log in</value>
@@ -413,6 +443,9 @@
   </data>
   <data name="Main" xml:space="preserve">
     <value>Main</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
   </data>
   <data name="Modified" xml:space="preserve">
     <value>Modified</value>
@@ -440,6 +473,9 @@
   </data>
   <data name="None" xml:space="preserve">
     <value>None</value>
+  </data>
+  <data name="NotEnoughRightsMsg" xml:space="preserve">
+    <value>Not enough rights for the current account.</value>
   </data>
   <data name="OnMain" xml:space="preserve">
     <value>On Main</value>
@@ -524,6 +560,9 @@
   </data>
   <data name="Specialties" xml:space="preserve">
     <value>Specialties</value>
+  </data>
+  <data name="StackTrace" xml:space="preserve">
+    <value>Stack trace</value>
   </data>
   <data name="StudentRating" xml:space="preserve">
     <value>Student Rating</value>

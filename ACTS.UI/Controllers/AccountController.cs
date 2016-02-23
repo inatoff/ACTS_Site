@@ -13,6 +13,7 @@ using ACTS.UI.Helpers;
 using ACTS.Core.Identity;
 using ACTS.UI.Infrastructure;
 using ACTS.UI.App_LocalResources;
+using Ninject.Extensions.Logging;
 
 namespace ACTS.UI.Controllers
 {
@@ -21,12 +22,15 @@ namespace ACTS.UI.Controllers
 	{
 		private ApplicationUserManager _userManager;
 		private ApplicationSignInManager _signInManager;
+		private readonly ILogger _logger;
 
-		public AccountController()
+		public AccountController(ILoggerFactory loggerFactory)
 		{
+			_logger = loggerFactory.GetCurrentClassLogger();
 		}
 
-		public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+		public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ILoggerFactory loggerFactory)
+			:this(loggerFactory)
 		{
 			UserManager = userManager;
 			SignInManager = signInManager;
@@ -67,7 +71,7 @@ namespace ACTS.UI.Controllers
 			// не зная почему его не пускает
 			if (string.IsNullOrWhiteSpace(returnUrl) ? false : returnUrl.ToLower().StartsWith("/admin"))
 				if (!User.IsInRole("Admin") && User.Identity.IsAuthenticated)
-					ModelState.AddModelError("", "Not enough rights for the current account.");
+					ModelState.AddModelError("", GlobalRes.NotEnoughRightsMsg);
 
 			return View();
 		}
@@ -99,22 +103,26 @@ namespace ACTS.UI.Controllers
 				switch (signInResult)
 				{
 					case SignInStatus.Success:
+						_logger.Trace("User {0} is logged in.", userName);
 						return RedirectToLocal(returnUrl);
 
 					case SignInStatus.LockedOut:
-						ModelState.AddModelError("", "This account is locked. Try again later.");
+						ModelState.AddModelError("", GlobalRes.AccountLockedMsg);
+						_logger.Trace("Account with username \"{0}\" locked. The number of attempts has exceeded {1}.", userName, UserManager.MaxFailedAccessAttemptsBeforeLockout);
 						break;
 
 					//case SignInStatus.RequiresVerification:
 					//return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
 
 					case SignInStatus.Failure:
-						ModelState.AddModelError("", "Username or password is incorrect"/*"Невірний логін або пароль."*/);
+						ModelState.AddModelError("", GlobalRes.IncorrectUserNameOrPasswordMsg);
+						_logger.Trace("Failed login attempt with EmailOrUserName = {0}.", model.EmailOrUserName);
 						break;
 
 					// я думаю это не достижимый код, но пускай будет
 					default:
-						ModelState.AddModelError("", "Failed login attempts."/*"Неудачная попытка входа."*/);
+						ModelState.AddModelError("", GlobalRes.FailedLoginAttemptsMsg);
+						_logger.Trace("Failed login attempt with EmailOrUserName = {0}.", model.EmailOrUserName);
 						break;
 				}
 			}
@@ -129,7 +137,10 @@ namespace ACTS.UI.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Logout()
 		{
+			var userName = User.Identity.Name;  
 			AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+			_logger.Trace("User {0} is logged out.", userName);
+
 			return RedirectToAction("Index", "Home");
 		}
 
@@ -141,14 +152,6 @@ namespace ACTS.UI.Controllers
 			return Json(user == null);
 		}
 
-		//
-		// GET: /Account/ForgotPassword
-		[AllowAnonymous]
-		public ActionResult ForgotPassword(string returnUrl)
-		{
-			ViewBag.ReturnUrl = returnUrl;
-			return View();
-		}
 		[AllowAnonymous]
 		public PartialViewResult AuthenticationLink()
 		{
@@ -169,6 +172,15 @@ namespace ACTS.UI.Controllers
 		}
 
 		//
+		// GET: /Account/ForgotPassword
+		[AllowAnonymous]
+		public ActionResult ForgotPassword(string returnUrl)
+		{
+			ViewBag.ReturnUrl = returnUrl;
+			return View();
+		}
+
+		//
 		// POST: /Account/ForgotPassword
 		[HttpPost]
 		[AllowAnonymous]
@@ -183,6 +195,7 @@ namespace ACTS.UI.Controllers
 				if (user == null)
 					// Не показывать, что пользователь не существует или не подтвержден
 					return View("ForgotPasswordConfirmation");
+				_logger.Trace("User \"{0}\" send request to reset password.", user.UserName);
 
 				//Дополнительные сведения о том, как включить подтверждение учетной записи и сброс пароля, см.по адресу: http://go.microsoft.com/fwlink/?LinkID=320771
 				//Отправка сообщения электронной почты с этой ссылкой
@@ -191,12 +204,14 @@ namespace ACTS.UI.Controllers
 
 				var emailModel = new
 				{
-					user.UserName,
+					UserName = user.UserName,
 					CallbackUrl = callbackUrl
 				};
 
 				string body = EmailBodyFactory.GetEmailBody(emailModel, "ForgotPassword");
 				await UserManager.SendEmailAsync(user.Id, "Відновлення пароля", body);
+				_logger.Debug("Send verification email to {0} for reset password.", user.UserName);
+
 				return View("ForgotPasswordConfirmation");
 			}
 
@@ -229,7 +244,10 @@ namespace ACTS.UI.Controllers
 			{
 				var result = await UserManager.ResetPasswordAsync(model.UserId, model.Token, model.NewPassword);
 				if (result.Succeeded)
+				{
+					_logger.Info("User \"{0}\" reseted password.", User.Identity.Name);
 					return View("Login");
+				}
 
 				AddErrors(result);
 			}

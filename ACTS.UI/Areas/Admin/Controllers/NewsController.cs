@@ -4,6 +4,7 @@ using ACTS.UI.App_LocalResources;
 using ACTS.UI.Areas.Admin.Models;
 using ACTS.UI.Controllers;
 using ACTS.UI.Helpers;
+using Ninject.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,22 +16,24 @@ namespace ACTS.UI.Areas.Admin.Controllers
 	[Authorize]
 	public class NewsController : BaseController
 	{
-		private INewsRepository repository;
+		private INewsRepository _repository;
+		private readonly ILogger _logger;
 
-		public NewsController(INewsRepository newsRepository)
+		public NewsController(INewsRepository newsRepository, ILoggerFactory loggerFactory)
 		{
-			repository = newsRepository;
+			_repository = newsRepository;
+			_logger = loggerFactory.GetCurrentClassLogger();
 		}
 
 		public ActionResult Table()
 		{
-			IEnumerable<News> uncos = repository.Uncos.OrderBy(n => n.NewsId);
+			IEnumerable<News> uncos = _repository.Uncos.OrderBy(n => n.NewsId);
 			return View("TableNews", uncos);
 		}
 
 		public ActionResult Edit(int newsId)
 		{
-			News news = repository.GetNewsById(newsId);
+			News news = _repository.GetNewsById(newsId);
 			return View("EditNews", news);
 		}
 
@@ -46,8 +49,10 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					news.ImageData = new byte[image.ContentLength];
 					image.InputStream.Read(news.ImageData, 0, image.ContentLength);
 				}
-				repository.UpdateNews(news);
-				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.NewsSavedMsg, news.Title)); 
+				_repository.UpdateNews(news);
+				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.NewsSavedMsg, news.Title));
+				_logger.Info("News \"{0}\" saved by {1}.", news.Title, User.Identity.Name);
+
 				return RedirectToAction(nameof(Table));
 			} else
 			{
@@ -73,8 +78,10 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					news.ImageData = new byte[image.ContentLength];
 					image.InputStream.Read(news.ImageData, 0, image.ContentLength);
 				}
-				repository.CreateNews(news);
+				_repository.CreateNews(news);
 				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.NewsCreatedMsg, news.Title));
+				_logger.Info("News \"{0}\" created by {1}.", news.Title, User.Identity.Name);
+
 				return RedirectToAction(nameof(Table));
 			}
 			else
@@ -88,10 +95,11 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Delete(int newsId)
 		{
-			News deletedNews = repository.DeleteNews(newsId);
+			News deletedNews = _repository.DeleteNews(newsId);
 			if (deletedNews != null)
 			{
 				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.NewsDeletedMsg, deletedNews.Title));
+				_logger.Info("News \"{0}\" deleted by {1}.", deletedNews.Title, User.Identity.Name);
 			}
 			return RedirectToAction(nameof(Table));
 		}

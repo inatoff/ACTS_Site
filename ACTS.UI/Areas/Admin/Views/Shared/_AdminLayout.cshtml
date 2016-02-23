@@ -98,7 +98,7 @@
 					</li>
 					<li class="@IsActivePage("Index")">
 						<a href="@Url.Action("Index", "MyAccount")">
-							<i class="fa fa-user"></i>
+							<i class="fa fa-gears"></i>
 							<span>@GlobalRes.MyAccount</span>
 						</a>
 					</li>
@@ -127,6 +127,12 @@
 							<li class="@IsActivePage("CreateTeacher")"><a href="@Url.Action("Create", "Teacher")"><i class="fa fa-circle-o"></i>@GlobalRes.Teacher</a></li>
 							<li class="@IsActivePage("CreateAccount")"><a href="@Url.Action("Create", "Account")"><i class="fa fa-circle-o"></i>@GlobalRes.Account</a></li>
 						</ul>
+					</li>
+					<li class="@IsActivePage("Logging")">
+						<a href="@Url.Action("Index", "Log")">
+							<i class="fa fa-file-archive-o"></i>
+							<span>@GlobalRes.Logging</span>
+						</a>
 					</li>
 				</ul>
 			</section>

@@ -38,6 +38,8 @@ namespace ACTS.UI.Infrastructure
 			ninjectKernel.Bind<ITeacherRepository>().To<EFTeacherRepository>();
 			ninjectKernel.Bind<INewsRepository>().To<EFNewsRepository>();
 			ninjectKernel.Bind<IBlogRepository>().To<EFBlogRepository>();
+			ninjectKernel.Bind<ILogRepository>().To<EFLogRepository>();
+			//ninjectKernel.Load<NLogModule>();
 			//ninjectKernel.Bind<UserManager<IdentityUser>>().To<IdentityUserManager>();
 			//ninjectKernel.Bind<SignInManager<IdentityUser, string>>().To<IdentitySignInManager>();
 		}

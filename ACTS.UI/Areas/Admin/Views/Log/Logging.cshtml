@@ -1,0 +1,117 @@
+﻿@model IEnumerable<ACTS.Core.Logging.LogEntry>
+
+@{
+	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
+	ViewBag.Title = GlobalRes.Logging;
+}
+
+@section Styles{
+	@Styles.Render("~/Content/css/datatables")
+}
+
+@section Scripts {
+	@Scripts.Render("~/bundles/datatables")
+	@Scripts.Render(GlobalRes.dataTablePath)
+}
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-primary">
+			<div class="box-header">
+				<h3 class="box-title">@GlobalRes.Logging</h3>
+				<div class="box-tools pull-right">
+					<a href="@Url.Action("Rss", "Log")" class="label label-primary"><i class="fa fa-fw fa-rss"></i>&nbsp;Rss</a>
+				</div>
+			</div>
+
+			<div class="box-body">
+				<table id="dataTablePlagin" class="table table-bordered table-striped table-hover">
+					<thead>
+						<tr>
+							<th class="desc">@GlobalRes.Id</th>
+							<th>@GlobalRes.Level</th>
+							<th class="time">@GlobalRes.Date</th>
+							<th>@GlobalRes.Logger</th>
+							<th>@GlobalRes.Message</th>
+							<th class="no-center-body">@GlobalRes.CallSite</th>
+							<th class="no-center-body">@GlobalRes.StackTrace</th>
+							<th>@GlobalRes.Exception</th>
+							<th>@GlobalRes.UserName</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td>
+									@item.LogEntryId
+								</td>
+								<td>
+									@item.Level
+								</td>
+								<td>
+									@item.UtcDate.ToLocalTime().ToString("yyyy/MM/dd hh:mm:ss.fff tt")
+								</td>
+								<td>
+									@item.Logger
+								</td>
+								<td>
+									@item.Message
+								</td>
+								<td>
+									@item.CallSite
+								</td>
+								<td>
+									@item.StackTrace
+								</td>
+								<td>
+									@if (!string.IsNullOrEmpty(item.Exception))
+									{
+										<!-- Button trigger modal -->
+										<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exceptionalModal"><i class="fa fa-open">&nbsp;</i>@GlobalRes.Details</button>
+
+										<!-- Modal -->
+										<div class="modal fade" id="exceptionalModal" tabindex="-1" role="dialog" aria-labelledby="exceptionalModalLabel">
+											<div class="vertical-alignment-helper">
+												<div class="modal-dialog modal-lg vertical-align-center" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+															<h4 class="modal-title" id="exceptionalModalLabel">@GlobalRes.Exception</h4>
+															<div class="modal-body">
+																<pre style="text-align:left">@item.Exception</pre>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									}
+
+								</td>
+								<td>
+									@item.Username
+								</td>
+							</tr>
+						}
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>@GlobalRes.Id</th>
+							<th>@GlobalRes.Level</th>
+							<th>@GlobalRes.Date</th>
+							<th>@GlobalRes.Logger</th>
+							<th>@GlobalRes.Message</th>
+							<th>@GlobalRes.CallSite</th>
+							<th>@GlobalRes.StackTrace</th>
+							<th>@GlobalRes.Exception</th>
+							<th>@GlobalRes.UserName</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
+</div>

@@ -21,6 +21,24 @@ namespace ACTS.UI.Areas.Admin
 			);
 
 			context.MapRoute(
+				name: "ToDefaultLoggingAction",
+				url: "Admin/Logging",
+				defaults: new { controller = "Log", action = "Index" }
+			);
+
+			context.MapRoute(
+				name: "ToLogsRssFeed",
+				url: "Admin/Logging/Rss",
+				defaults: new { controller = "Log", action = "Rss" }
+			);
+
+			context.MapRoute(
+				name: "ToLoggingAction",
+				url: "Admin/Logging/LastFor{nomDays}Days",
+				defaults: new { controller = "Log", action = "Logging" }
+			);
+
+			context.MapRoute(
 				name: "ToDefaultAdminAreaAction",
 				url: "Admin",
 				defaults: new { controller = "Admin", action = "Dashboard" }
