@@ -484,6 +484,8 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Areas\Peoples\Views\Profile\Edit.cshtml" />
+    <Content Include="Areas\Peoples\Views\Shared\_PersonalPageLayout.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -706,6 +708,7 @@
     <Compile Include="Areas\Admin\Models\RoleItem.cs" />
     <Compile Include="Areas\Peoples\Controllers\PersonalPageController.cs" />
     <Compile Include="Areas\Peoples\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Peoples\Models\PersonalPageViewModel.cs" />
     <Compile Include="Areas\Peoples\Models\TeacherAccountViewModel.cs" />
     <Compile Include="Areas\Peoples\PeoplesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -796,8 +799,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Peoples\Views\PersonalPage\" />
-    <Folder Include="Areas\Peoples\Views\Profile\" />
-    <Folder Include="Areas\Peoples\Views\Shared\" />
     <Folder Include="Scripts\actsScripts\" />
     <Folder Include="Views\Blog\" />
     <Folder Include="Views\Employee\Enrollee\" />

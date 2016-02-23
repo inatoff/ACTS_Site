@@ -68,9 +68,9 @@ namespace ACTS.Core.Concrete
 		}
 
 
-        public Teacher GetTeacherByUrlSlug(string nameSlug)
+        public async Task<Teacher> GetTeacherByUrlSlugAsync(string nameSlug)
         {
-            return Teachers.FirstOrDefault(p => p.NameSlug == nameSlug);
+            return await Teachers.FirstOrDefaultAsync(p => p.NameSlug == nameSlug);
         }
 
         public Teacher GetTeacherById(int teacherId)
@@ -105,7 +105,31 @@ namespace ACTS.Core.Concrete
 
 			context.SaveChanges();
 		}
-		public void AddPairToUser(int teacherId, int userId)
+
+        public void UpdateTeacherByProfile(int id, Teacher teacher)
+        {
+            Teacher dbEntry = context.Teachers.Find(id);
+            if (dbEntry != null)
+            {                  
+                dbEntry.Degree = teacher.Degree;
+                dbEntry.Email = teacher.Email;
+                // social Links
+                dbEntry.Intellect = teacher.Intellect;
+                dbEntry.Vk = teacher.Vk;
+                dbEntry.Facebook = teacher.Facebook;
+                dbEntry.Twitter = teacher.Twitter;
+
+                dbEntry.Disciplines = teacher.Disciplines;
+                dbEntry.Projects = teacher.Projects;
+                dbEntry.Publications = teacher.Publications;
+                dbEntry.ScienceInterests = teacher.ScienceInterests;
+            }
+
+            context.SaveChanges();
+        }
+
+
+        public void AddPairToUser(int teacherId, int userId)
 		{
 			var user = context.Users.Find(userId);
 			var teacher = GetTeacherById(teacherId);
@@ -139,10 +163,12 @@ namespace ACTS.Core.Concrete
 		}
 
 
-        public void InitBlog(int teacherId)
+        public void InitPersonalPage(int teacherId)
         {
-            Teacher teacher = context.Teachers.FirstOrDefault(t => t.TeacherId == teacherId);
+            Teacher teacher = context.Teachers.FirstOrDefaultAsync(t => t.TeacherId == teacherId).Result;
             teacher.Blog = new Blog();
+            context.SaveChangesAsync();
         }
+        
     }
 }
