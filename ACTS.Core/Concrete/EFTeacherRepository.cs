@@ -14,7 +14,6 @@ namespace ACTS.Core.Concrete
 	public class EFTeacherRepository : ITeacherRepository
 	{
 		private EFDbContext context = new EFDbContext();
-
 		public IQueryable<Teacher> Teachers
 		{
 			get { return context.Teachers; }
@@ -161,14 +160,6 @@ namespace ACTS.Core.Concrete
 		{
 			return context.Teachers.Where(t => t.User == null || t.TeacherId == teacherId);
 		}
-
-
-        public void InitPersonalPage(int teacherId)
-        {
-            Teacher teacher = context.Teachers.FirstOrDefaultAsync(t => t.TeacherId == teacherId).Result;
-            teacher.Blog = new Blog();
-            context.SaveChangesAsync();
-        }
         
     }
 }

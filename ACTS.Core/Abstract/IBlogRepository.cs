@@ -1,5 +1,6 @@
 ﻿using ACTS.Core.Entities;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ACTS.Core.Abstract
 {
@@ -12,5 +13,7 @@ namespace ACTS.Core.Abstract
         Blog GetBlogByAuthorNameSlug(string slug);
 		Post GetPostById(int postId);
 		Post DeletePost(int postID);
+        Task InitBlog(Teacher teacher);
+        Task<IQueryable<Post>> GetPostsByTag(string[] tags);
 	}
 }

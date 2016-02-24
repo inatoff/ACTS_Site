@@ -68,5 +68,18 @@ namespace ACTS.Core.Concrete
         {
             return Blogs.FirstOrDefault(b => b.Teacher.NameSlug == slug);
         }
+
+        public async Task InitBlog(Teacher teacher)
+        {
+            var dbEntry = await context.Teachers.FindAsync(teacher);
+            dbEntry.Blog = new Blog();
+            await context.SaveChangesAsync();            
+        }
+
+        //TODO
+        public Task<IQueryable<Post>> GetPostsByTag(string[] tags)
+        {
+            throw new NotImplementedException();
+        }
     } 
 }
