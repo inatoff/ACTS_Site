@@ -7,6 +7,7 @@ using ACTS.UI.Infrastructure;
 using ACTS.UI.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Ninject.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,14 +24,16 @@ namespace ACTS.UI.Areas.Admin.Controllers
 	{
 		private ApplicationUserManager _userManager;
 		private ApplicationRoleManager _roleManager;
+		private readonly ILogger _logger;
 
-		public MyAccountController()
+		public MyAccountController(ILoggerFactory loggerFactory)
 			: base()
 		{
+			_logger = loggerFactory.GetCurrentClassLogger();
 		}
 
-		public MyAccountController(ApplicationUserManager userManager, ApplicationRoleManager roleManager)
-			: this()
+		public MyAccountController(ApplicationUserManager userManager, ApplicationRoleManager roleManager, ILoggerFactory loggerFactory)
+			: this(loggerFactory)
 		{
 			_userManager = userManager;
 			_roleManager = roleManager;
@@ -90,8 +93,11 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				var result = await UserManager.UpdateAsync(currentUser);
 
 				if (result.Succeeded)
+				{
 					TempData.AddMessage(MessageType.Success,
 						string.Format(GlobalRes.ChangedUserNameMsg, model.CurrentUserName, model.UserName));
+					_logger.Info("User \"{0}\" changed username on \"{1}\".", model.CurrentUserName, model.UserName);
+				}
 				else
 					TempData.AddMessages(MessageType.Warning, result.Errors);
 			}
@@ -103,6 +109,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> ConfirmChangeEmail(ChangeEmailViewModel model)
 		{
+			_logger.Debug("User \"{0}\" send request to change email from \"{0}\" on \"{1}\".", model.CurrentEmail, model.Email);
 			int userId = CurrentUserId;
 
 			var user = await UserManager.FindByIdAsync(userId);
@@ -123,7 +130,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 			var emailModel = new
 			{
-				user.UserName,
+				UserName = user.UserName,
 				model.Email,
 				CallbackUrl = Url.Action("ChangeEmail", "MyAccount", new { userId, email = model.Email, token }, Request.Url.Scheme)
 			};
@@ -133,6 +140,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			await UserManager.SendEmailAsync(CurrentUserId, "Змінити емейл", body);
 
 			TempData.AddMessage(MessageType.Info, string.Format(GlobalRes.SendVerificationEmailMsg, model.CurrentEmail));
+			_logger.Debug("Send verification email to {1} for change email by request \"{0}\".", user.UserName, model.CurrentEmail);
 
 			return RedirectToAction(nameof(Index));
 		}
@@ -151,6 +159,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			else
 				TempData.AddMessage(MessageType.Warning, 
 					string.Format(GlobalRes.FailedChangeEmailMsg, email, Environment.NewLine));
+			_logger.Info("User \"{0}\" changed email on \"{1}\".", User.Identity.Name, email);
 
 			return RedirectToAction(nameof(Index));
 		}
@@ -164,7 +173,10 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				var result = await UserManager.ChangePasswordAsync(CurrentUserId, model.CurrentPassword, model.NewPassword);
 
 				if (result.Succeeded)
+				{
 					TempData.AddMessage(MessageType.Success, GlobalRes.ChangedPasswordMsg);
+					_logger.Info("User \"{0}\" changed password.", User.Identity.Name);
+				}
 				else
 					TempData.AddMessages(MessageType.Warning, result.Errors);
 			}
@@ -195,6 +207,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				}
 
 				HttpContext.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+				_logger.Info("User \"{0}\" deleted himself.", User.Identity.Name);
 
 				return RedirectToAction(nameof(Index), "Home", new { area = "" });
 			}

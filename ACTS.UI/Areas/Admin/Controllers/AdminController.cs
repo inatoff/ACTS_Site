@@ -1,17 +1,15 @@
 ﻿using ACTS.Core.Abstract;
 using ACTS.Core.Entities;
-using Microsoft.AspNet.Identity.Owin;
-using ACTS.UI.Infrastructure;
 using System;
 using System.Collections.Generic;
-using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ACTS.Core.Identity;
 using ACTS.UI.Areas.Admin.Models;
 using ACTS.UI.Controllers;
 using ACTS.UI.Helpers;
+using Ninject.Extensions.Logging;
+using ACTS.UI.Infrastructure;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
@@ -19,9 +17,21 @@ namespace ACTS.UI.Areas.Admin.Controllers
 	[Authorize(Roles = "Admin")]
 	public class AdminController : BaseController
 	{
+		private readonly ILogger _logger;
+		public AdminController(ILoggerFactory loggerFactory)
+		{
+			_logger = loggerFactory.GetCurrentClassLogger();
+		}
+
 		public ActionResult Dashboard()
 		{
 			return View();
+		}
+
+		public ActionResult Test()
+		{
+			_logger.Debug("hello from Admin:TestAction");
+			throw new ApplicationException(message: "test");
 		}
 
 		//public ActionResult MyAccount()

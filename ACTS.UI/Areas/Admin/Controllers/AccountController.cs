@@ -1,28 +1,26 @@
-﻿using System;
+﻿using ACTS.Core.Abstract;
+using ACTS.Core.Identity;
+using ACTS.UI.App_LocalResources;
+using ACTS.UI.Areas.Admin.Models;
+using ACTS.UI.Controllers;
+using ACTS.UI.Helpers;
+using Microsoft.AspNet.Identity;
+using Ninject.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity.Owin;
-using ACTS.UI.Models;
 using System.Threading.Tasks;
-using ACTS.Core.Identity;
-using ACTS.UI.Areas.Admin.Models;
-using ACTS.Core.Concrete;
-using ACTS.UI.Helpers;
-using ACTS.Core.Abstract;
-using Microsoft.AspNet.Identity;
-using ACTS.UI.Controllers;
-using ACTS.UI.App_LocalResources;
+using System.Web.Mvc;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
 	[Authorize]
 	public class AccountController : BaseController
 	{
+		private readonly ILogger _logger;
 		private ITeacherRepository _teacherRepository;
-		public AccountController(ITeacherRepository teacherRepository)
+		public AccountController(ITeacherRepository teacherRepository, ILoggerFactory loggerFactory)
 		{
+			_logger = loggerFactory.GetCurrentClassLogger();
 			_teacherRepository = teacherRepository;
 		}
 
@@ -141,6 +139,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.UserCreatedMsg, user.UserName));
 				}
 
+				_logger.Info("User \"{0}\" created by {1}.", user.UserName, User.Identity.Name);
+
 				return RedirectToAction(nameof(Table));
 			}
 
@@ -233,6 +233,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 						_teacherRepository.AddPairToUser(model.PairTeacherId.Value, user.Id);
 
 					TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.UserSavedMsg, user.UserName));
+					_logger.Info("User \"{0}\" saved by {1}.", user.UserName, User.Identity.Name);
 				}
 
 				return RedirectToAction(nameof(Table));
@@ -276,6 +277,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.UserDeletedMsg, user.UserName));
 				else
 					TempData.AddMessages(MessageType.Warning, result.Errors);
+
+				_logger.Info("User \"{0}\" deleted by {1}.", user.UserName, User.Identity.Name);
 			}
 
 			return RedirectToAction(nameof(Table));

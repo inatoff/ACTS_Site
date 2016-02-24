@@ -64,11 +64,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ILogRepository.cs" />
     <Compile Include="Abstract\IEmployeeRepository.cs" />
     <Compile Include="Abstract\IEventRepository.cs" />
     <Compile Include="Abstract\INewsRepository.cs" />
     <Compile Include="Abstract\ITeacherRepository.cs" />
     <Compile Include="Abstract\Worker.cs" />
+    <Compile Include="Concrete\EFLogRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFEmployeeRepository.cs" />
     <Compile Include="Concrete\EFEventRepository.cs" />
@@ -89,6 +91,8 @@
     <Compile Include="Identity\ApplicationUserStore.cs" />
     <Compile Include="Identity\ApplicationRoleStore.cs" />
     <Compile Include="Identity\ApplicationUserRole.cs" />
+    <Compile Include="Logging\LogEntry.cs" />
+    <Compile Include="Logging\LogLevel.cs" />
     <Compile Include="Migrations\201601271215143_InitDb.cs" />
     <Compile Include="Migrations\201601271215143_InitDb.Designer.cs">
       <DependentUpon>201601271215143_InitDb.cs</DependentUpon>
@@ -100,6 +104,10 @@
     <Compile Include="Migrations\201602101343215_PropCreated.cs" />
     <Compile Include="Migrations\201602101343215_PropCreated.Designer.cs">
       <DependentUpon>201602101343215_PropCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602221936271_Logging.cs" />
+    <Compile Include="Migrations\201602221936271_Logging.Designer.cs">
+      <DependentUpon>201602221936271_Logging.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602101343215_PropCreated.resx">
       <DependentUpon>201602101343215_PropCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602221936271_Logging.resx">
+      <DependentUpon>201602221936271_Logging.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

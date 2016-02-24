@@ -38,12 +38,12 @@ namespace ACTS.UI
 
 			bundles.Add(new ScriptBundle("~/bundles/datatables")
 				.Include("~/Scripts/jquery.dataTables.js")
-				.Include("~/Scripts/dataTables.bootstrap.js")
+				.Include("~/Scripts/dataTables.bootstrap.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/datatables/init")
 				.Include("~/Scripts/Admin/initDataTable.js"));
 
-			bundles.Add(new ScriptBundle("~/bundles/datatables-uk")
-				.Include("~/Scripts/jquery.dataTables.js")
-				.Include("~/Scripts/dataTables.bootstrap.js")
+			bundles.Add(new ScriptBundle("~/bundles/datatables-uk/init")
 				.Include("~/Scripts/Admin/initDataTable_uk.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/fileinput")

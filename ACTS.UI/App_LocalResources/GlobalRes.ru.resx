@@ -123,6 +123,9 @@
   <data name="AboutDepartment" xml:space="preserve">
     <value>О кафедре</value>
   </data>
+  <data name="AccountLockedMsg" xml:space="preserve">
+    <value>Эта учетная запись заблокирована. Попробуйте позже.</value>
+  </data>
   <data name="Achievments" xml:space="preserve">
     <value>Достижения</value>
   </data>
@@ -174,8 +177,14 @@
   <data name="CurrentLang" xml:space="preserve">
     <value>ru</value>
   </data>
+  <data name="Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
   <data name="Department" xml:space="preserve">
     <value>Кафедра</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Детали</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Электронная почта</value>
@@ -185,6 +194,9 @@
   </data>
   <data name="EmailOrUserName" xml:space="preserve">
     <value>Имя пользователя или адрес электронной почты</value>
+  </data>
+  <data name="FailedLoginAttemptsMsg" xml:space="preserve">
+    <value>Неудачная попытка входа.</value>
   </data>
   <data name="FDP" xml:space="preserve">
     <value>Довузовская подготовка</value>
@@ -216,8 +228,17 @@
   <data name="IForgotMyPassword" xml:space="preserve">
     <value>Я забыл свой пароль</value>
   </data>
+  <data name="IncorrectUserNameOrPasswordMsg" xml:space="preserve">
+    <value>Неверное имя (емейл) пользователя или пароль.</value>
+  </data>
   <data name="Laboratories" xml:space="preserve">
     <value>Лаборатории</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Уровень</value>
+  </data>
+  <data name="Logging" xml:space="preserve">
+    <value>Логирование</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Войти</value>
@@ -233,6 +254,9 @@
   </data>
   <data name="Main" xml:space="preserve">
     <value>Главная</value>
+  </data>
+  <data name="NotEnoughRightsMsg" xml:space="preserve">
+    <value>Не хватает прав для текущей учетной записи.</value>
   </data>
   <data name="OpenDoors" xml:space="preserve">
     <value>Дни открытых дверей</value>

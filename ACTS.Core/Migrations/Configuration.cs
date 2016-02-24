@@ -1,4 +1,4 @@
-#define RustamPC
+//#define RustamPC
 namespace ACTS.Core.Migrations
 {
 	using Concrete;

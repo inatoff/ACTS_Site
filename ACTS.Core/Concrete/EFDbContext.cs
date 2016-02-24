@@ -7,6 +7,7 @@ using System.Data.Entity;
 using ACTS.Core.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ACTS.Core.Identity;
+using ACTS.Core.Logging;
 
 namespace ACTS.Core.Concrete
 {
@@ -19,8 +20,9 @@ namespace ACTS.Core.Concrete
 		public DbSet<News> Uncos { get; set; }
 		public DbSet<Event> Events { get; set; }
 		public DbSet<Teacher> Teachers { get; set; }
-        public DbSet<Blog> Blogs { get; set; }
+		public DbSet<Blog> Blogs { get; set; }
 		public DbSet<Post> Posts { get; set; }
+		public DbSet<LogEntry> LogEntries { get; set; }
 
 		public EFDbContext() : base("ACTSdbConnection")
 		{

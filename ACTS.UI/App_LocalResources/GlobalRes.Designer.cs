@@ -88,6 +88,15 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Цей обліковий запис був заблокований. Спробуйте ще раз пізніше..
+        /// </summary>
+        public static string AccountLockedMsg {
+            get {
+                return ResourceManager.GetString("AccountLockedMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Облікові записи.
         /// </summary>
         public static string Accounts {
@@ -219,6 +228,15 @@ namespace ACTS.UI.App_LocalResources {
         public static string BlogRemovePost {
             get {
                 return ResourceManager.GetString("BlogRemovePost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Місце виклику.
+        /// </summary>
+        public static string CallSite {
+            get {
+                return ResourceManager.GetString("CallSite", resourceCulture);
             }
         }
         
@@ -511,11 +529,20 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на ~/bundles/datatables-uk.
+        ///   Ищет локализованную строку, похожую на ~/bundles/datatables-uk/init.
         /// </summary>
         public static string dataTablePath {
             get {
                 return ResourceManager.GetString("dataTablePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Дата.
+        /// </summary>
+        public static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
             }
         }
         
@@ -579,6 +606,15 @@ namespace ACTS.UI.App_LocalResources {
         public static string Department {
             get {
                 return ResourceManager.GetString("Department", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Подробиці.
+        /// </summary>
+        public static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
             }
         }
         
@@ -709,6 +745,15 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Помилка.
+        /// </summary>
+        public static string Exception {
+            get {
+                return ResourceManager.GetString("Exception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Facebook URL-адреса.
         /// </summary>
         public static string FacebookUrl {
@@ -723,6 +768,15 @@ namespace ACTS.UI.App_LocalResources {
         public static string FailedChangeEmailMsg {
             get {
                 return ResourceManager.GetString("FailedChangeEmailMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Невдала спроба входу..
+        /// </summary>
+        public static string FailedLoginAttemptsMsg {
+            get {
+                return ResourceManager.GetString("FailedLoginAttemptsMsg", resourceCulture);
             }
         }
         
@@ -862,6 +916,15 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Невірний ім&apos;я (емейл) користувача або пароль..
+        /// </summary>
+        public static string IncorrectUserNameOrPasswordMsg {
+            get {
+                return ResourceManager.GetString("IncorrectUserNameOrPasswordMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Intellect URL-адреса.
         /// </summary>
         public static string IntellectUrl {
@@ -894,6 +957,33 @@ namespace ACTS.UI.App_LocalResources {
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Рівень.
+        /// </summary>
+        public static string Level {
+            get {
+                return ResourceManager.GetString("Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Логувальник.
+        /// </summary>
+        public static string Logger {
+            get {
+                return ResourceManager.GetString("Logger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Логування.
+        /// </summary>
+        public static string Logging {
+            get {
+                return ResourceManager.GetString("Logging", resourceCulture);
             }
         }
         
@@ -939,6 +1029,15 @@ namespace ACTS.UI.App_LocalResources {
         public static string Main {
             get {
                 return ResourceManager.GetString("Main", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Повідомлення.
+        /// </summary>
+        public static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
             }
         }
         
@@ -1020,6 +1119,15 @@ namespace ACTS.UI.App_LocalResources {
         public static string None {
             get {
                 return ResourceManager.GetString("None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Бракує прав для поточного облікового запису..
+        /// </summary>
+        public static string NotEnoughRightsMsg {
+            get {
+                return ResourceManager.GetString("NotEnoughRightsMsg", resourceCulture);
             }
         }
         
@@ -1272,6 +1380,15 @@ namespace ACTS.UI.App_LocalResources {
         public static string Specialties {
             get {
                 return ResourceManager.GetString("Specialties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Трасування стека.
+        /// </summary>
+        public static string StackTrace {
+            get {
+                return ResourceManager.GetString("StackTrace", resourceCulture);
             }
         }
         
