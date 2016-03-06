@@ -95,8 +95,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
 
             return View(post);
         }
-
-
+        
         [HttpPost]
         [Route("edit/{postId}")]
         [ValidateAntiForgeryToken]
