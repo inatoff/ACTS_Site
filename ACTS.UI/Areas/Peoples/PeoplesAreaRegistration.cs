@@ -20,6 +20,12 @@ namespace ACTS.UI.Areas.Peoples
                 defaults: new { controller = "PersonalPage", action = "Index"});
 
             context.MapRoute(
+                name: "TeachersBlog",
+                url: "PersonalPage/{nameSlug}/Blog/{postSlug}",
+                defaults: new { controller = "Blog", action = "Index" });
+
+
+            context.MapRoute(
                 "Peoples_default",
                 "Peoples/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }

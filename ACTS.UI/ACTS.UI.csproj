@@ -706,6 +706,7 @@
     <Compile Include="Areas\Admin\Models\EditAccountViewModel.cs" />
     <Compile Include="Areas\Admin\Models\MyAccountViewModel.cs" />
     <Compile Include="Areas\Admin\Models\RoleItem.cs" />
+    <Compile Include="Areas\Peoples\Controllers\BlogController.cs" />
     <Compile Include="Areas\Peoples\Controllers\PersonalPageController.cs" />
     <Compile Include="Areas\Peoples\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Peoples\Models\PersonalPageViewModel.cs" />
@@ -727,6 +728,7 @@
     </Compile>
     <Compile Include="Helpers\CultureHelper.cs" />
     <Compile Include="Helpers\DescriptionHelper.cs" />
+    <Compile Include="Helpers\StringExtensionHelper.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\SignInStatusHelper.cs" />
     <Compile Include="Helpers\TempDataDictionaryHelper.cs" />
@@ -798,6 +800,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Peoples\Views\Blog\" />
     <Folder Include="Areas\Peoples\Views\PersonalPage\" />
     <Folder Include="Scripts\actsScripts\" />
     <Folder Include="Views\Blog\" />

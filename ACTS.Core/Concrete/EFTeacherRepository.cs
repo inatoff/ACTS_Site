@@ -160,6 +160,20 @@ namespace ACTS.Core.Concrete
 		{
 			return context.Teachers.Where(t => t.User == null || t.TeacherId == teacherId);
 		}
-        
+
+
+        public async Task InitPersonalPage(Teacher teacher)
+        {
+            var dbEntry = await context.Teachers.FindAsync(teacher);
+            dbEntry.Blog = new Blog();
+            await context.SaveChangesAsync();
+        }
+
+        public async Task<int> GetCurrentUserTeacherIdAsync(int userId)
+        {
+            var currentUser = await context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            var teacher = await context.Teachers.FirstOrDefaultAsync(t => t.TeacherId == currentUser.Teacher.TeacherId);
+            return teacher.TeacherId;
+        }
     }
 }

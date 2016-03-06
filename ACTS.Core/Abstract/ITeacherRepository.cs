@@ -19,8 +19,10 @@ namespace ACTS.Core.Abstract
         void AddPairToUser(int teacherId, int userId);
 		void RemovePairToUser(int teacherId);
         Teacher GetTeacherById(int teacherId);
-        Teacher DeleteTeacher(int teacherID); 
+        Teacher DeleteTeacher(int teacherID);
         Task<Teacher> GetTeacherByUrlSlugAsync(string urlSlug);
+        Task<int> GetCurrentUserTeacherIdAsync(int userId);
         Task<IEnumerable<Teacher>> GetAllTeachersAsync();
-	}
+        Task InitPersonalPage(Teacher teacher);
+    }
 }

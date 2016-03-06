@@ -9,11 +9,11 @@ namespace ACTS.Core.Abstract
 		IQueryable<Post> Posts { get; }
         IQueryable<Blog> Blogs { get; }
 		void CreatePost(Post post);
-        void EditPost(Post post);
+        Task EditPost(int postId, Post post);
         Blog GetBlogByAuthorNameSlug(string slug);
-		Post GetPostById(int postId);
+		Task<Post> GetPostByIdAsync(int postId);
 		Post DeletePost(int postID);
-        Task InitBlog(Teacher teacher);
+        Task InitPersonalPage(Teacher teacher);
         Task<IQueryable<Post>> GetPostsByTag(string[] tags);
 	}
 }

@@ -20,12 +20,10 @@ namespace ACTS.UI.Areas.Peoples.Controllers
 
         // GET: Peoples/Profile
         private ITeacherRepository teacherRepository;
-        private IBlogRepository blogRepository;
 
-        public ProfileController(ITeacherRepository teacherRepo, IBlogRepository blogRepo)
+        public ProfileController(ITeacherRepository teacherRepo)
         {
             teacherRepository = teacherRepo;
-            blogRepository = blogRepo;
             
         }
 
@@ -152,7 +150,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                 }
                 else
                 {
-                    await blogRepository.InitBlog(currentUser.Teacher);
+                    await teacherRepository.InitPersonalPage(currentUser.Teacher);
                     return RedirectToRoute("ToDefaultPeoplesArea", new { nameSlug = currentUser.Teacher.NameSlug });
                 }
             }
