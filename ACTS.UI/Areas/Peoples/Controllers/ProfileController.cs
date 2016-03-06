@@ -19,11 +19,12 @@ namespace ACTS.UI.Areas.Peoples.Controllers
     {
 
         // GET: Peoples/Profile
-        private ITeacherRepository repository;
+        private ITeacherRepository teacherRepository;
 
-        public ProfileController(ITeacherRepository repo)
+        public ProfileController(ITeacherRepository teacherRepo)
         {
-            repository = repo;
+            teacherRepository = teacherRepo;
+            
         }
 
         public int CurrentUserId
@@ -49,7 +50,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
             {
                 var currentUserId = CurrentUserId;
                 var currentUser = await userManager.FindByIdAsync(currentUserId);
-                var currentTeacher = repository.GetTeacherById(currentUser.Teacher.TeacherId);
+                var currentTeacher = teacherRepository.GetTeacherById(currentUser.Teacher.TeacherId);
 
                 model = new TeacherAccountViewModel()
                 {
@@ -81,7 +82,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
             {
                 var currentUserId = CurrentUserId;
                 var currentUser = await userManager.FindByIdAsync(currentUserId);
-                var currentTeacher = repository.GetTeacherById(currentUser.Teacher.TeacherId);
+                var currentTeacher = teacherRepository.GetTeacherById(currentUser.Teacher.TeacherId);
                 if (string.IsNullOrWhiteSpace(model.Password))
                 {
                     ModelState.AddModelError("PageError", "Password must be supplied");
@@ -106,7 +107,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                             }
                         }
                         //TODO: Messenger
-                        repository.UpdateTeacherByProfile(currentTeacher.TeacherId, new Teacher
+                        teacherRepository.UpdateTeacherByProfile(currentTeacher.TeacherId, new Teacher
                         {
                             Degree = model.Degree,
                             Email = model.Email,
@@ -131,7 +132,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
         {
             using (var userManager = UserManager)
             {
-                var currentUser = userManager.FindByIdAsync(id).Result;
+                var currentUser = await userManager.FindByIdAsync(id);
                 return await userManager.CheckPasswordAsync(currentUser, password);
             }
         }
@@ -149,7 +150,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                 }
                 else
                 {
-                    repository.InitPersonalPage(currentId);
+                    await teacherRepository.InitPersonalPage(currentUser.Teacher);
                     return RedirectToRoute("ToDefaultPeoplesArea", new { nameSlug = currentUser.Teacher.NameSlug });
                 }
             }

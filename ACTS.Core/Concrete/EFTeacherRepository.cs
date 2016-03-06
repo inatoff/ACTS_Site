@@ -14,7 +14,6 @@ namespace ACTS.Core.Concrete
 	public class EFTeacherRepository : ITeacherRepository
 	{
 		private EFDbContext context = new EFDbContext();
-
 		public IQueryable<Teacher> Teachers
 		{
 			get { return context.Teachers; }
@@ -163,12 +162,18 @@ namespace ACTS.Core.Concrete
 		}
 
 
-        public void InitPersonalPage(int teacherId)
+        public async Task InitPersonalPage(Teacher teacher)
         {
-            Teacher teacher = context.Teachers.FirstOrDefaultAsync(t => t.TeacherId == teacherId).Result;
-            teacher.Blog = new Blog();
-            context.SaveChangesAsync();
+            var dbEntry = await context.Teachers.FindAsync(teacher);
+            dbEntry.Blog = new Blog();
+            await context.SaveChangesAsync();
         }
-        
+
+        public async Task<int> GetCurrentUserTeacherIdAsync(int userId)
+        {
+            var currentUser = await context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            var teacher = await context.Teachers.FirstOrDefaultAsync(t => t.TeacherId == currentUser.Teacher.TeacherId);
+            return teacher.TeacherId;
+        }
     }
 }

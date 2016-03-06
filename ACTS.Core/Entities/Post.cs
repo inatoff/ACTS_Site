@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace ACTS.Core.Entities
@@ -14,8 +16,11 @@ namespace ACTS.Core.Entities
 		[Display(Name = "Title*")]
 		public string Title { get; set; }
 
+        [Display(Name = "Slug")]
+        public string Slug { get; set; }
+
 		[HiddenInput(DisplayValue = false)]
-		public DateTime? Create { get; set; }
+		public DateTime? Created { get; set; }
 
 		[HiddenInput(DisplayValue = false)]
 		public DateTime? Modified { get; set; }
@@ -23,7 +28,24 @@ namespace ACTS.Core.Entities
 		[DataType(DataType.MultilineText)]
 		[AllowHtml]
 		public string Content { get; set; }
-         
+
+        public IList<string> Tags
+        {
+            get { return _tags; }
+            set { _tags = value; } 
+        }
+
+        public string CombinedTags
+        {
+            get { return string.Join(",", _tags); }
+            set
+            {
+                _tags = value.Split(',').Select(s => s.Trim()).ToList();
+            }
+        }
+
         public virtual Blog Blog { get; set; }
+
+        private IList<string> _tags = new List<string>();
     }
 }

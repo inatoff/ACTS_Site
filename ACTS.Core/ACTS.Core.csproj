@@ -64,6 +64,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ITagRepository.cs" />
+    <Compile Include="Abstract\ILogRepository.cs" />
     <Compile Include="Abstract\IEmployeeRepository.cs" />
     <Compile Include="Abstract\IEventRepository.cs" />
     <Compile Include="Abstract\INewsRepository.cs" />
@@ -75,6 +77,7 @@
     <Compile Include="Concrete\EFEventRepository.cs" />
     <Compile Include="Concrete\EFNewsRepository.cs" />
     <Compile Include="Concrete\EFBlogRepository.cs" />
+    <Compile Include="Concrete\EFTagRepository.cs" />
     <Compile Include="Concrete\EFTeacherRepository.cs" />
     <Compile Include="Abstract\IBlogRepository.cs" />
     <Compile Include="Abstract\ILogRepository.cs" />
