@@ -130,6 +130,9 @@
   <data name="IntellectName" xml:space="preserve">
     <value>Intellect URL</value>
   </data>
+  <data name="Level" xml:space="preserve">
+    <value>Level : </value>
+  </data>
   <data name="NewPasswordName" xml:space="preserve">
     <value>New password*</value>
   </data>
@@ -162,6 +165,9 @@
   </data>
   <data name="SlugName" xml:space="preserve">
     <value>Slug</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Range of dates : </value>
   </data>
   <data name="TitleName" xml:space="preserve">
     <value>Title*</value>

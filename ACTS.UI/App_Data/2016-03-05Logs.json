@@ -1,0 +1,267 @@
+{ "time": "2016-03-05 16:45:47.6379", "level": "DEBUG", "message": "MVC Application initialized." }
+{ "time": "2016-03-05 16:45:47.6959", "level": "TRACE", "message": "MVC Application start configuring." }
+{ "time": "2016-03-05 16:45:51.8835", "level": "TRACE", "message": "MVC Application end configuring." }
+{ "time": "2016-03-05 16:45:52.7481", "level": "TRACE", "message": "Owin start configuring." }
+{ "time": "2016-03-05 16:45:52.7782", "level": "TRACE", "message": "Owin end configuring." }
+{ "time": "2016-03-05 16:45:54.4742", "level": "TRACE", "message": "Start executing action Index from HomeController" }
+{ "time": "2016-03-05 16:45:54.4883", "level": "TRACE", "message": "Executed action Index from HomeController" }
+{ "time": "2016-03-05 16:45:58.3301", "level": "TRACE", "message": "Start executing action AuthenticationLink from AccountController" }
+{ "time": "2016-03-05 16:45:58.3301", "level": "TRACE", "message": "Executed action AuthenticationLink from AccountController" }
+{ "time": "2016-03-05 16:46:12.7141", "level": "TRACE", "message": "Start executing action Login from AccountController" }
+{ "time": "2016-03-05 16:46:12.7171", "level": "TRACE", "message": "Executed action Login from AccountController" }
+{ "time": "2016-03-05 16:46:21.1475", "level": "TRACE", "message": "Start executing action Login from AccountController" }
+{ "time": "2016-03-05 16:46:23.9591", "level": "TRACE", "message": "User admin is logged in." }
+{ "time": "2016-03-05 16:46:24.2399", "level": "TRACE", "message": "Executed action Login from AccountController" }
+{ "time": "2016-03-05 16:46:24.3715", "level": "TRACE", "message": "Start executing action Dashboard from AdminController" }
+{ "time": "2016-03-05 16:46:24.3715", "level": "TRACE", "message": "Executed action Dashboard from AdminController" }
+{ "time": "2016-03-05 16:46:29.8399", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 16:46:29.8399", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 16:49:07.1174", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 16:49:07.1174", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 18:08:21.4645", "level": "DEBUG", "message": "MVC Application initialized." }
+{ "time": "2016-03-05 18:08:21.5311", "level": "TRACE", "message": "MVC Application start configuring." }
+{ "time": "2016-03-05 18:08:22.6757", "level": "TRACE", "message": "MVC Application end configuring." }
+{ "time": "2016-03-05 18:08:23.4084", "level": "TRACE", "message": "Owin start configuring." }
+{ "time": "2016-03-05 18:08:23.4334", "level": "TRACE", "message": "Owin end configuring." }
+{ "time": "2016-03-05 18:08:23.7853", "level": "TRACE", "message": "Start executing action Login from AccountController" }
+{ "time": "2016-03-05 18:08:23.8113", "level": "TRACE", "message": "Executed action Login from AccountController" }
+{ "time": "2016-03-05 18:08:26.2799", "level": "TRACE", "message": "Start executing action Login from AccountController" }
+{ "time": "2016-03-05 18:08:29.0342", "level": "TRACE", "message": "User admin is logged in." }
+{ "time": "2016-03-05 18:08:29.0342", "level": "TRACE", "message": "Executed action Login from AccountController" }
+{ "time": "2016-03-05 18:08:29.0632", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 18:08:29.0632", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 18:08:32.8037", "level": "ERROR", "message": "E:\\study\\ACTS\\ACTS.UI\\Areas\\Admin\\Views\\Log\\Logging.cshtml(58): error CS1061: 'LogViewModel' does not contain a definition for 'StartDate' and no extension method 'StartDate' accepting a first argument of type 'LogViewModel' could be found (are you missing a using directive or an assembly reference?)" }
+{ "time": "2016-03-05 18:20:23.9181", "level": "DEBUG", "message": "MVC Application initialized." }
+{ "time": "2016-03-05 18:20:23.9181", "level": "TRACE", "message": "MVC Application start configuring." }
+{ "time": "2016-03-05 18:20:25.5985", "level": "TRACE", "message": "MVC Application end configuring." }
+{ "time": "2016-03-05 18:20:26.1252", "level": "TRACE", "message": "Owin start configuring." }
+{ "time": "2016-03-05 18:20:26.1603", "level": "TRACE", "message": "Owin end configuring." }
+{ "time": "2016-03-05 18:20:28.9951", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 18:20:29.0111", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 18:22:12.4931", "level": "TRACE", "message": "Start executing action Logging from LogController" }
+{ "time": "2016-03-05 18:22:12.4961", "level": "ERROR", "message": "The parameters dictionary contains a null entry for parameter 'fromData' of non-nullable type 'System.DateTime' for method 'System.Web.Mvc.ActionResult LogsByNDaysAndLevel(System.DateTime, ACTS.Core.Logging.LogLevel)' in 'ACTS.UI.Areas.Admin.Controllers.LogController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.\r\nParameter name: parameters" }
+{ "time": "2016-03-05 18:22:17.3317", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 18:22:17.3317", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 18:23:06.4980", "level": "TRACE", "message": "Start executing action Login from AccountController" }
+{ "time": "2016-03-05 18:23:06.4980", "level": "TRACE", "message": "Executed action Login from AccountController" }
+{ "time": "2016-03-05 18:23:14.2672", "level": "TRACE", "message": "Start executing action Login from AccountController" }
+{ "time": "2016-03-05 18:23:14.3953", "level": "TRACE", "message": "User admin is logged in." }
+{ "time": "2016-03-05 18:23:14.3953", "level": "TRACE", "message": "Executed action Login from AccountController" }
+{ "time": "2016-03-05 18:23:14.5024", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 18:23:14.5024", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 18:23:48.9850", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 18:23:48.9850", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 18:24:26.3340", "level": "ERROR", "message": "The provided anti-forgery token was meant for a different claims-based user than the current user." }
+{ "time": "2016-03-05 18:24:40.2758", "level": "TRACE", "message": "Start executing action Login from AccountController" }
+{ "time": "2016-03-05 18:24:40.2788", "level": "TRACE", "message": "Executed action Login from AccountController" }
+{ "time": "2016-03-05 18:24:41.9367", "level": "TRACE", "message": "Start executing action Login from AccountController" }
+{ "time": "2016-03-05 18:24:42.0139", "level": "TRACE", "message": "User admin is logged in." }
+{ "time": "2016-03-05 18:24:42.0139", "level": "TRACE", "message": "Executed action Login from AccountController" }
+{ "time": "2016-03-05 18:24:42.0420", "level": "TRACE", "message": "Start executing action Index from HomeController" }
+{ "time": "2016-03-05 18:24:42.0435", "level": "TRACE", "message": "Executed action Index from HomeController" }
+{ "time": "2016-03-05 18:24:46.1598", "level": "TRACE", "message": "Start executing action AuthenticationLink from AccountController" }
+{ "time": "2016-03-05 18:24:46.1598", "level": "TRACE", "message": "Executed action AuthenticationLink from AccountController" }
+{ "time": "2016-03-05 18:24:54.5623", "level": "TRACE", "message": "Start executing action Dashboard from AdminController" }
+{ "time": "2016-03-05 18:24:54.5623", "level": "TRACE", "message": "Executed action Dashboard from AdminController" }
+{ "time": "2016-03-05 18:24:56.3569", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 18:24:56.3569", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 18:26:57.9445", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 18:26:57.9445", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 18:27:14.1961", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 18:27:14.1961", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 18:37:05.9736", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 18:37:05.9736", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 18:38:05.4903", "level": "TRACE", "message": "Start executing action Logging from LogController" }
+{ "time": "2016-03-05 18:38:05.4903", "level": "ERROR", "message": "The parameters dictionary contains a null entry for parameter 'fromData' of non-nullable type 'System.DateTime' for method 'System.Web.Mvc.ActionResult LogsByNDaysAndLevel(System.DateTime, ACTS.Core.Logging.LogLevel)' in 'ACTS.UI.Areas.Admin.Controllers.LogController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.\r\nParameter name: parameters" }
+{ "time": "2016-03-05 18:38:34.1096", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 18:38:34.1096", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 18:43:08.2071", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 18:43:08.2071", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 18:43:32.4618", "level": "TRACE", "message": "Start executing action Create from NewsController" }
+{ "time": "2016-03-05 18:43:32.4618", "level": "TRACE", "message": "Executed action Create from NewsController" }
+{ "time": "2016-03-05 18:43:36.1802", "level": "TRACE", "message": "Start executing action Create from NewsController" }
+{ "time": "2016-03-05 18:43:36.1802", "level": "TRACE", "message": "Executed action Create from NewsController" }
+{ "time": "2016-03-05 18:43:41.2221", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 18:43:41.2221", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 18:47:32.0355", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 18:47:32.0355", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 18:47:59.4581", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 18:47:59.4581", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 19:57:42.7945", "level": "TRACE", "message": "Start executing action Login from AccountController" }
+{ "time": "2016-03-05 19:57:42.7945", "level": "TRACE", "message": "Executed action Login from AccountController" }
+{ "time": "2016-03-05 19:57:45.2030", "level": "TRACE", "message": "Start executing action Login from AccountController" }
+{ "time": "2016-03-05 19:57:46.6772", "level": "TRACE", "message": "User admin is logged in." }
+{ "time": "2016-03-05 19:57:46.6772", "level": "TRACE", "message": "Executed action Login from AccountController" }
+{ "time": "2016-03-05 19:57:46.6882", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 19:57:46.6882", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 19:57:49.9177", "level": "ERROR", "message": "The provided anti-forgery token was meant for a different claims-based user than the current user." }
+{ "time": "2016-03-05 19:57:55.2167", "level": "TRACE", "message": "Start executing action Login from AccountController" }
+{ "time": "2016-03-05 19:57:55.2167", "level": "TRACE", "message": "Executed action Login from AccountController" }
+{ "time": "2016-03-05 19:57:56.8644", "level": "TRACE", "message": "Start executing action Login from AccountController" }
+{ "time": "2016-03-05 19:57:56.9230", "level": "TRACE", "message": "User admin is logged in." }
+{ "time": "2016-03-05 19:57:56.9230", "level": "TRACE", "message": "Executed action Login from AccountController" }
+{ "time": "2016-03-05 19:57:56.9400", "level": "TRACE", "message": "Start executing action Index from HomeController" }
+{ "time": "2016-03-05 19:57:56.9400", "level": "TRACE", "message": "Executed action Index from HomeController" }
+{ "time": "2016-03-05 19:57:56.9510", "level": "TRACE", "message": "Start executing action AuthenticationLink from AccountController" }
+{ "time": "2016-03-05 19:57:56.9510", "level": "TRACE", "message": "Executed action AuthenticationLink from AccountController" }
+{ "time": "2016-03-05 19:58:01.0304", "level": "TRACE", "message": "Start executing action Dashboard from AdminController" }
+{ "time": "2016-03-05 19:58:01.0304", "level": "TRACE", "message": "Executed action Dashboard from AdminController" }
+{ "time": "2016-03-05 19:58:03.1974", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 19:58:03.1974", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 20:24:37.1571", "level": "DEBUG", "message": "MVC Application initialized." }
+{ "time": "2016-03-05 20:24:37.2259", "level": "TRACE", "message": "MVC Application start configuring." }
+{ "time": "2016-03-05 20:24:38.1315", "level": "TRACE", "message": "MVC Application end configuring." }
+{ "time": "2016-03-05 20:24:39.1074", "level": "TRACE", "message": "Owin start configuring." }
+{ "time": "2016-03-05 20:24:39.1277", "level": "TRACE", "message": "Owin end configuring." }
+{ "time": "2016-03-05 20:24:43.2503", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 20:24:43.2703", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 20:25:19.5628", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 20:25:19.5628", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 20:26:23.4678", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 20:26:23.4678", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 20:26:44.8468", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 20:26:44.8468", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 20:50:52.2448", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 20:50:52.2458", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 20:52:06.9261", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 20:52:06.9261", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 20:52:22.5656", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 20:52:22.5656", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 20:52:48.6690", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 20:52:48.6690", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 20:58:47.8825", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 20:58:47.8825", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:01:21.9856", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:01:21.9856", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:04:15.9737", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:04:15.9737", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:05:52.6490", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:05:52.6490", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:08:02.5473", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:08:02.5473", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:08:38.2673", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:08:38.2673", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:09:13.4965", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:09:13.4965", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:09:48.8737", "level": "DEBUG", "message": "MVC Application initialized." }
+{ "time": "2016-03-05 21:09:48.9573", "level": "TRACE", "message": "MVC Application start configuring." }
+{ "time": "2016-03-05 21:09:49.8257", "level": "TRACE", "message": "MVC Application end configuring." }
+{ "time": "2016-03-05 21:09:50.2510", "level": "TRACE", "message": "Owin start configuring." }
+{ "time": "2016-03-05 21:09:50.3006", "level": "TRACE", "message": "Owin end configuring." }
+{ "time": "2016-03-05 21:09:50.6511", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:09:51.2583", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:11:04.3144", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:11:04.3144", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:11:18.2800", "level": "TRACE", "message": "Start executing action SetCulture from HomeController" }
+{ "time": "2016-03-05 21:11:18.2800", "level": "TRACE", "message": "Executed action SetCulture from HomeController" }
+{ "time": "2016-03-05 21:11:18.3090", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:11:18.3090", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:17:45.1258", "level": "DEBUG", "message": "MVC Application initialized." }
+{ "time": "2016-03-05 21:17:45.1629", "level": "TRACE", "message": "MVC Application start configuring." }
+{ "time": "2016-03-05 21:17:47.4428", "level": "TRACE", "message": "MVC Application end configuring." }
+{ "time": "2016-03-05 21:17:48.1091", "level": "TRACE", "message": "Owin start configuring." }
+{ "time": "2016-03-05 21:17:48.1221", "level": "TRACE", "message": "Owin end configuring." }
+{ "time": "2016-03-05 21:17:51.9506", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:17:51.9836", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:18:13.0383", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:18:13.0383", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:19:05.5434", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:19:05.5434", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:20:53.4851", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:20:53.4851", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:21:32.5521", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:21:32.5521", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:21:57.3849", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:21:57.3849", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:23:10.6415", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:23:10.6415", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:24:08.3569", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:24:08.3569", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:24:48.8037", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:24:48.8037", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:47:30.6854", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:47:30.6854", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:48:08.0847", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:48:08.0847", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:53:37.1822", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:53:37.1822", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:53:46.6288", "level": "TRACE", "message": "Start executing action Logging from LogController" }
+{ "time": "2016-03-05 21:53:46.6288", "level": "ERROR", "message": "The parameters dictionary contains a null entry for parameter 'fromData' of non-nullable type 'System.DateTime' for method 'System.Web.Mvc.ActionResult LogsByNDaysAndLevel(System.DateTime, ACTS.Core.Logging.LogLevel)' in 'ACTS.UI.Areas.Admin.Controllers.LogController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.\r\nParameter name: parameters" }
+{ "time": "2016-03-05 21:53:52.8310", "level": "TRACE", "message": "Start executing action Logging from LogController" }
+{ "time": "2016-03-05 21:53:52.8310", "level": "ERROR", "message": "The parameters dictionary contains a null entry for parameter 'fromData' of non-nullable type 'System.DateTime' for method 'System.Web.Mvc.ActionResult LogsByNDaysAndLevel(System.DateTime, ACTS.Core.Logging.LogLevel)' in 'ACTS.UI.Areas.Admin.Controllers.LogController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.\r\nParameter name: parameters" }
+{ "time": "2016-03-05 21:54:15.3979", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:54:15.3979", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:55:18.4582", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:55:18.4582", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:55:53.2345", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:55:53.2345", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:56:24.1965", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:56:24.1965", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:57:24.2664", "level": "DEBUG", "message": "MVC Application initialized." }
+{ "time": "2016-03-05 21:57:24.3304", "level": "TRACE", "message": "MVC Application start configuring." }
+{ "time": "2016-03-05 21:57:25.4390", "level": "TRACE", "message": "MVC Application end configuring." }
+{ "time": "2016-03-05 21:57:25.9635", "level": "TRACE", "message": "Owin start configuring." }
+{ "time": "2016-03-05 21:57:25.9820", "level": "TRACE", "message": "Owin end configuring." }
+{ "time": "2016-03-05 21:57:26.2715", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:57:26.8785", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:57:36.4351", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:57:36.4351", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 21:59:55.8719", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 21:59:55.8719", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 22:00:42.3602", "level": "TRACE", "message": "Start executing action Login from AccountController" }
+{ "time": "2016-03-05 22:00:42.3602", "level": "TRACE", "message": "Executed action Login from AccountController" }
+{ "time": "2016-03-05 22:00:49.5112", "level": "TRACE", "message": "Start executing action Login from AccountController" }
+{ "time": "2016-03-05 22:00:50.2919", "level": "TRACE", "message": "User admin is logged in." }
+{ "time": "2016-03-05 22:00:50.2959", "level": "TRACE", "message": "Executed action Login from AccountController" }
+{ "time": "2016-03-05 22:00:50.3571", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 22:00:50.3571", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 22:01:56.0261", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 22:01:56.0281", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 22:03:53.5247", "level": "TRACE", "message": "Start executing action Logging from LogController" }
+{ "time": "2016-03-05 22:03:53.5277", "level": "ERROR", "message": "The parameters dictionary contains a null entry for parameter 'fromData' of non-nullable type 'System.DateTime' for method 'System.Web.Mvc.ActionResult LogsByNDaysAndLevel(System.DateTime, ACTS.Core.Logging.LogLevel)' in 'ACTS.UI.Areas.Admin.Controllers.LogController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.\r\nParameter name: parameters" }
+{ "time": "2016-03-05 22:23:01.3220", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 22:23:01.3220", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 22:23:27.9855", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 22:23:27.9855", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 22:24:15.2014", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 22:24:15.2014", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 22:26:11.1087", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 22:26:11.1087", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 22:43:58.7879", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 22:43:58.7879", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 22:44:23.1896", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 22:44:23.1896", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 22:46:03.6694", "level": "TRACE", "message": "Start executing action SetCulture from HomeController" }
+{ "time": "2016-03-05 22:46:03.6694", "level": "TRACE", "message": "Executed action SetCulture from HomeController" }
+{ "time": "2016-03-05 22:46:03.6854", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 22:46:03.6854", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 22:47:26.7526", "level": "TRACE", "message": "Start executing action Logging from LogController" }
+{ "time": "2016-03-05 22:47:26.7526", "level": "ERROR", "message": "The parameters dictionary contains a null entry for parameter 'fromData' of non-nullable type 'System.DateTime' for method 'System.Web.Mvc.ActionResult LogsByNDaysAndLevel(System.DateTime, ACTS.Core.Logging.LogLevel)' in 'ACTS.UI.Areas.Admin.Controllers.LogController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.\r\nParameter name: parameters" }
+{ "time": "2016-03-05 22:48:45.6363", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 22:48:45.6373", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 22:54:58.6977", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 22:54:58.6977", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 22:55:18.1235", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 22:55:18.1235", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 22:55:56.7668", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 22:55:56.7668", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 22:57:40.5487", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 22:57:40.5487", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 23:05:55.9969", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 23:05:55.9969", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 23:06:21.6153", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 23:06:21.6153", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 23:12:49.8093", "level": "DEBUG", "message": "MVC Application initialized." }
+{ "time": "2016-03-05 23:12:49.8769", "level": "TRACE", "message": "MVC Application start configuring." }
+{ "time": "2016-03-05 23:12:50.8112", "level": "TRACE", "message": "MVC Application end configuring." }
+{ "time": "2016-03-05 23:12:51.2508", "level": "TRACE", "message": "Owin start configuring." }
+{ "time": "2016-03-05 23:12:51.2748", "level": "TRACE", "message": "Owin end configuring." }
+{ "time": "2016-03-05 23:12:51.5105", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 23:12:53.5429", "level": "TRACE", "message": "Executed action Index from LogController" }
+{ "time": "2016-03-05 23:53:32.2154", "level": "DEBUG", "message": "MVC Application initialized." }
+{ "time": "2016-03-05 23:53:32.2314", "level": "TRACE", "message": "MVC Application start configuring." }
+{ "time": "2016-03-05 23:53:34.0093", "level": "TRACE", "message": "MVC Application end configuring." }
+{ "time": "2016-03-05 23:53:34.7042", "level": "TRACE", "message": "Owin start configuring." }
+{ "time": "2016-03-05 23:53:34.7252", "level": "TRACE", "message": "Owin end configuring." }
+{ "time": "2016-03-05 23:53:37.4847", "level": "TRACE", "message": "Start executing action Index from LogController" }
+{ "time": "2016-03-05 23:53:37.5022", "level": "TRACE", "message": "Executed action Index from LogController" }

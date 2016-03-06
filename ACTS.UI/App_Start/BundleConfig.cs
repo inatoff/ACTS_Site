@@ -38,12 +38,12 @@ namespace ACTS.UI
 
 			bundles.Add(new ScriptBundle("~/bundles/datatables")
 				.Include("~/Scripts/jquery.dataTables.js")
-				.Include("~/Scripts/dataTables.bootstrap.js"));
-
-			bundles.Add(new ScriptBundle("~/bundles/datatables/init")
+				.Include("~/Scripts/dataTables.bootstrap.js")
 				.Include("~/Scripts/Admin/initDataTable.js"));
 
-			bundles.Add(new ScriptBundle("~/bundles/datatables-uk/init")
+			bundles.Add(new ScriptBundle("~/bundles/datatables-uk")
+				.Include("~/Scripts/jquery.dataTables.js")
+				.Include("~/Scripts/dataTables.bootstrap.js")
 				.Include("~/Scripts/Admin/initDataTable_uk.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/fileinput")
@@ -62,6 +62,15 @@ namespace ACTS.UI
 			bundles.Add(new ScriptBundle("~/bundles/iCheck")
 				.Include("~/Scripts/jquery.icheck.js")
 				.Include("~/Scripts/Admin/init_iCheck.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/datepicker")
+				.Include("~/Scripts/bootstrap-datepicker.js")
+				.Include("~/Scripts/Admin/initDatepicker.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/datepicker-uk")
+				.Include("~/Scripts/bootstrap-datepicker.js")
+				.Include("~/Scripts/locales/bootstrap-datepicker.uk.min.js")
+				.Include("~/Scripts/Admin/initDatepicker_uk.js"));
 
 			#endregion
 
@@ -87,7 +96,10 @@ namespace ACTS.UI
 
 			bundles.Add(new StyleBundle("~/Content/css/iCheck/blue")
 				.Include("~/Content/iCheck/square/blue.css"));
-			
+
+			bundles.Add(new StyleBundle("~/Content/css/datepicker")
+				.Include("~/Content/bootstrap-datepicker.css"));
+
 			#endregion
 		}
 	}

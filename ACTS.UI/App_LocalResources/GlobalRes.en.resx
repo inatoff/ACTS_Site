@@ -150,6 +150,9 @@
   <data name="Advertisment" xml:space="preserve">
     <value>Advertisment</value>
   </data>
+  <data name="ApplyFilter" xml:space="preserve">
+    <value>Apply filter</value>
+  </data>
   <data name="AreYouSure" xml:space="preserve">
     <value>Are you sure you want to do this?</value>
   </data>
@@ -277,10 +280,13 @@
     <value>Dashboard</value>
   </data>
   <data name="dataTablePath" xml:space="preserve">
-    <value>~/bundles/datatables/init</value>
+    <value>~/bundles/datatables</value>
   </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
+  </data>
+  <data name="datePickerPath" xml:space="preserve">
+    <value>~/bundles/datepicker</value>
   </data>
   <data name="Degree" xml:space="preserve">
     <value>Degree</value>
@@ -608,6 +614,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>to</value>
   </data>
   <data name="TwitterUrl" xml:space="preserve">
     <value>Twitter URL</value>

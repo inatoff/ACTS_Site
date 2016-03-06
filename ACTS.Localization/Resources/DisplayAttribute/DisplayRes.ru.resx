@@ -130,6 +130,9 @@
   <data name="IntellectName" xml:space="preserve">
     <value>Intellect URL-адрес</value>
   </data>
+  <data name="Level" xml:space="preserve">
+    <value>Уровень</value>
+  </data>
   <data name="NewPasswordName" xml:space="preserve">
     <value>Новый пароль*</value>
   </data>

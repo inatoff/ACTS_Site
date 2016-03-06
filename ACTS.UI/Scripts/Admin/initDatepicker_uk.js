@@ -1,0 +1,3 @@
+﻿$('#datepicker').datepicker({
+    language: "uk"
+});

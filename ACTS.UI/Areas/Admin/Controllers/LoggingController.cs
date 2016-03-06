@@ -13,31 +13,41 @@ using ACTS.UI.Areas.Admin.Models;
 using ACTS.UI.Controllers;
 using ACTS.UI.Helpers;
 using System.ServiceModel.Syndication;
+using ACTS.Core.Logging;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
 	//[Security(Roles = "Admin", RedirectUrl = "Admin/Account/Login")]
 	[Authorize(Roles = "Admin")]
-	public class LogController : BaseController
+	public class LoggingController : BaseController
 	{
+#if DEBUG
+		const LogLevel _defaultLevel = LogLevel.Trace;
+#else
+		const LogLevel _level = LogLevel.Info;
+#endif
 		private ILogRepository _repository;
-		public LogController(ILogRepository repository)
+		public LoggingController(ILogRepository repository)
 		{
 			_repository = repository;
 		}
 
-		[ActionName("Logging")]
-		public ActionResult LogsForNDays(double nomDays)
+		[ActionName("ByLevelAndDate")]
+		public ActionResult LogsByNDaysAndLevel(DateTime startDate, DateTime endDate, LogLevel logLevel = _defaultLevel)
 		{
-			var logs = _repository.LastLogsForNomDays(nomDays).OrderByDescending(l => l.UtcDate).AsEnumerable();
-			return View("Logging", logs); 
+			var logs = _repository.GetByDateAndLevel(startDate, endDate, logLevel).OrderByDescending(l => l.UtcDate).AsEnumerable();
+			var model = new LogViewModel(logLevel, startDate, logs);
+
+			return View("Logging", model);
 		}
 
 		[ActionName("Index")]
 		public ActionResult LogsForLastMonth()
 		{
 			var logs = _repository.LastMonthLogs.OrderByDescending(l => l.UtcDate).AsEnumerable();
-			return View("Logging", logs);
+			var model = new LogViewModel(_defaultLevel, DateTime.Now.AddMonths(-1), logs);
+
+			return View("Logging", model);
 		}
 
 		public ActionResult Rss()

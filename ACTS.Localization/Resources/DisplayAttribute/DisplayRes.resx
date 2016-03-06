@@ -130,6 +130,9 @@
   <data name="IntellectName" xml:space="preserve">
     <value>Intellect URL-адреса</value>
   </data>
+  <data name="Level" xml:space="preserve">
+    <value>Рівень : </value>
+  </data>
   <data name="NewPasswordName" xml:space="preserve">
     <value>Новий пароль*</value>
   </data>
@@ -162,6 +165,9 @@
   </data>
   <data name="SlugName" xml:space="preserve">
     <value>Слаг</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Діапазон дат : </value>
   </data>
   <data name="TitleName" xml:space="preserve">
     <value>Заголовок*</value>

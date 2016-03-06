@@ -160,6 +160,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Рівень : .
+        /// </summary>
+        public static string Level {
+            get {
+                return ResourceManager.GetString("Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Новий пароль*.
         /// </summary>
         public static string NewPasswordName {
@@ -255,6 +264,15 @@ namespace ACTS.Localization.Resources {
         public static string SlugName {
             get {
                 return ResourceManager.GetString("SlugName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Діапазон дат : .
+        /// </summary>
+        public static string StartDate {
+            get {
+                return ResourceManager.GetString("StartDate", resourceCulture);
             }
         }
         
