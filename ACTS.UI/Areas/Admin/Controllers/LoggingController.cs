@@ -35,8 +35,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		[ActionName("ByLevelAndDate")]
 		public ActionResult LogsByNDaysAndLevel(DateTime startDate, DateTime endDate, LogLevel logLevel = _defaultLevel)
 		{
-			var logs = _repository.GetByDateAndLevel(startDate, endDate, logLevel).OrderByDescending(l => l.UtcDate).AsEnumerable();
-			var model = new LogViewModel(logLevel, startDate, logs);
+			var logs = _repository.GetByDateAndLevel(startDate.ToUniversalTime(), endDate.ToUniversalTime(), logLevel).OrderByDescending(l => l.UtcDate).AsEnumerable();
+			var model = new LogViewModel(logLevel, startDate, endDate, logs);
 
 			return View("Logging", model);
 		}

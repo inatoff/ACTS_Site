@@ -285,8 +285,8 @@
   <data name="Date" xml:space="preserve">
     <value>Дата</value>
   </data>
-  <data name="datePickerPath" xml:space="preserve">
-    <value>~/bundles/datepicker-uk</value>
+  <data name="dateRangePath" xml:space="preserve">
+    <value>~/bundles/daterange-uk</value>
   </data>
   <data name="Degree" xml:space="preserve">
     <value>Ступінь</value>

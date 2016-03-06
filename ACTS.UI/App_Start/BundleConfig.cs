@@ -63,14 +63,15 @@ namespace ACTS.UI
 				.Include("~/Scripts/jquery.icheck.js")
 				.Include("~/Scripts/Admin/init_iCheck.js"));
 
-			bundles.Add(new ScriptBundle("~/bundles/datepicker")
-				.Include("~/Scripts/bootstrap-datepicker.js")
-				.Include("~/Scripts/Admin/initDatepicker.js"));
+			bundles.Add(new ScriptBundle("~/bundles/daterange")
+				.Include("~/Scripts/moment.js")
+				.Include("~/Scripts/daterangepicker.js")
+				.Include("~/Scripts/Admin/initDateRange.js"));
 
-			bundles.Add(new ScriptBundle("~/bundles/datepicker-uk")
-				.Include("~/Scripts/bootstrap-datepicker.js")
-				.Include("~/Scripts/locales/bootstrap-datepicker.uk.min.js")
-				.Include("~/Scripts/Admin/initDatepicker_uk.js"));
+			bundles.Add(new ScriptBundle("~/bundles/daterange-uk")
+				.Include("~/Scripts/moment-with-locales.js")
+				.Include("~/Scripts/daterangepicker.js")
+				.Include("~/Scripts/Admin/initDateRange_uk.js"));
 
 			#endregion
 
@@ -97,8 +98,8 @@ namespace ACTS.UI
 			bundles.Add(new StyleBundle("~/Content/css/iCheck/blue")
 				.Include("~/Content/iCheck/square/blue.css"));
 
-			bundles.Add(new StyleBundle("~/Content/css/datepicker")
-				.Include("~/Content/bootstrap-datepicker.css"));
+			bundles.Add(new StyleBundle("~/Content/css/daterange")
+				.Include("~/Content/daterangepicker.css"));
 
 			#endregion
 		}

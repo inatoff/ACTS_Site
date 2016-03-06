@@ -12,13 +12,13 @@ namespace ACTS.UI.Areas.Admin.Models
 {
 	public class LogViewModel
 	{
-		[DataType(DataType.Date)]
-		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "MM/dd/yyyy")]
+		[DataType(DataType.DateTime)]
 		[Display(Name = nameof(DisplayRes.StartDate), ResourceType = typeof(DisplayRes))]
+		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "u")]
 		public DateTime StartDate { get; set; }
 
-		[DataType(DataType.Date)]
-		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "MM/dd/yyyy")]
+		[DataType(DataType.DateTime)]
+		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "u")]
 		public DateTime EndDate { get; set; }
 
 		public IEnumerable<LogEntry> Logs { get; set; }

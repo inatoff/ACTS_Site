@@ -60,6 +60,7 @@ artifacts/
 *.tmp
 *.tmp_proj
 *.log
+*Logs.json
 *.vspscc
 *.vssscc
 .builds

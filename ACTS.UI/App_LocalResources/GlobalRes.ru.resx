@@ -180,7 +180,7 @@
   <data name="Date" xml:space="preserve">
     <value>Дата</value>
   </data>
-  <data name="datePickerPath" xml:space="preserve">
+  <data name="dateRangePath" xml:space="preserve">
     <value>~/bundles/daterange</value>
   </data>
   <data name="Department" xml:space="preserve">

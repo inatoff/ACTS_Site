@@ -556,11 +556,11 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на ~/bundles/datepicker-uk.
+        ///   Ищет локализованную строку, похожую на ~/bundles/daterange-uk.
         /// </summary>
-        public static string datePickerPath {
+        public static string dateRangePath {
             get {
-                return ResourceManager.GetString("datePickerPath", resourceCulture);
+                return ResourceManager.GetString("dateRangePath", resourceCulture);
             }
         }
         
