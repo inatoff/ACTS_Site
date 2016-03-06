@@ -160,6 +160,15 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Застосувати фільтр.
+        /// </summary>
+        public static string ApplyFilter {
+            get {
+                return ResourceManager.GetString("ApplyFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Ви впевнені, що хочете зробити це?.
         /// </summary>
         public static string AreYouSure {
@@ -529,7 +538,7 @@ namespace ACTS.UI.App_LocalResources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на ~/bundles/datatables-uk/init.
+        ///   Ищет локализованную строку, похожую на ~/bundles/datatables-uk.
         /// </summary>
         public static string dataTablePath {
             get {
@@ -543,6 +552,15 @@ namespace ACTS.UI.App_LocalResources {
         public static string Date {
             get {
                 return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ~/bundles/daterange-uk.
+        /// </summary>
+        public static string dateRangePath {
+            get {
+                return ResourceManager.GetString("dateRangePath", resourceCulture);
             }
         }
         
@@ -1524,6 +1542,15 @@ namespace ACTS.UI.App_LocalResources {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на до.
+        /// </summary>
+        public static string To {
+            get {
+                return ResourceManager.GetString("To", resourceCulture);
             }
         }
         

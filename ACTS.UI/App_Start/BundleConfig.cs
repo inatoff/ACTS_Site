@@ -38,12 +38,12 @@ namespace ACTS.UI
 
 			bundles.Add(new ScriptBundle("~/bundles/datatables")
 				.Include("~/Scripts/jquery.dataTables.js")
-				.Include("~/Scripts/dataTables.bootstrap.js"));
-
-			bundles.Add(new ScriptBundle("~/bundles/datatables/init")
+				.Include("~/Scripts/dataTables.bootstrap.js")
 				.Include("~/Scripts/Admin/initDataTable.js"));
 
-			bundles.Add(new ScriptBundle("~/bundles/datatables-uk/init")
+			bundles.Add(new ScriptBundle("~/bundles/datatables-uk")
+				.Include("~/Scripts/jquery.dataTables.js")
+				.Include("~/Scripts/dataTables.bootstrap.js")
 				.Include("~/Scripts/Admin/initDataTable_uk.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/fileinput")
@@ -62,6 +62,16 @@ namespace ACTS.UI
 			bundles.Add(new ScriptBundle("~/bundles/iCheck")
 				.Include("~/Scripts/jquery.icheck.js")
 				.Include("~/Scripts/Admin/init_iCheck.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/daterange")
+				.Include("~/Scripts/moment.js")
+				.Include("~/Scripts/daterangepicker.js")
+				.Include("~/Scripts/Admin/initDateRange.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/daterange-uk")
+				.Include("~/Scripts/moment-with-locales.js")
+				.Include("~/Scripts/daterangepicker.js")
+				.Include("~/Scripts/Admin/initDateRange_uk.js"));
 
 			#endregion
 
@@ -87,7 +97,10 @@ namespace ACTS.UI
 
 			bundles.Add(new StyleBundle("~/Content/css/iCheck/blue")
 				.Include("~/Content/iCheck/square/blue.css"));
-			
+
+			bundles.Add(new StyleBundle("~/Content/css/daterange")
+				.Include("~/Content/daterangepicker.css"));
+
 			#endregion
 		}
 	}

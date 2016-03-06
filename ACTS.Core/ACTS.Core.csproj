@@ -80,6 +80,7 @@
     <Compile Include="Concrete\EFTagRepository.cs" />
     <Compile Include="Concrete\EFTeacherRepository.cs" />
     <Compile Include="Abstract\IBlogRepository.cs" />
+    <Compile Include="Abstract\ILogRepository.cs" />
     <Compile Include="Entities\Blog.cs" />
     <Compile Include="Identity\ApplicationRole.cs" />
     <Compile Include="Identity\ApplicationUser.cs" />

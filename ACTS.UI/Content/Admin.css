@@ -169,3 +169,11 @@ div.hasContent {
     overflow: auto;
     max-height: 300px;
 }
+
+#datefilter{
+    background: #fff; 
+    cursor: pointer; 
+    padding: 5px 10px; 
+    border: 1px solid #ccc; 
+    width: 100%
+}

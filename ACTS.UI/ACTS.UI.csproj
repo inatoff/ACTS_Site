@@ -210,6 +210,7 @@
     <Content Include="Content\css\select2.min.css" />
     <Content Include="Content\dataTables.bootstrap.css" />
     <Content Include="Content\dataTables.bootstrap.min.css" />
+    <Content Include="Content\daterangepicker.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\iCheck\all.css" />
@@ -364,7 +365,7 @@
     <Content Include="Content\skins\_all-skins.min.css" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Site.css" />
-    <Content Include="Areas\Admin\Views\Log\Logging.cshtml" />
+    <Content Include="Areas\Admin\Views\Logging\Logging.cshtml" />
     <None Include="EmailTemplates\ConfirmRegistration.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -389,6 +390,8 @@
     <Content Include="Areas\Admin\Views\Employee\CreateEmployee.cshtml" />
     <Content Include="Areas\Admin\Views\Teacher\CreateTeacher.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartialUser.cshtml" />
+    <Content Include="Scripts\Admin\initDateRange.js" />
+    <Content Include="Scripts\Admin\initDateRange_uk.js" />
     <Content Include="Scripts\Admin\fileinputOptions_uk.js" />
     <Content Include="Scripts\Admin\fileinputOptions.js" />
     <Content Include="Scripts\Admin\initDataTable.js" />
@@ -404,6 +407,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\dataTables.bootstrap.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\daterangepicker.js" />
     <Content Include="Scripts\expressive.annotations.validate.js" />
     <Content Include="Scripts\expressive.annotations.validate.min.js" />
     <Content Include="Scripts\fileinput.js" />
@@ -491,6 +495,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\tinymce\changelog.txt" />
@@ -693,7 +701,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
-    <Compile Include="Areas\Admin\Controllers\LogController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoggingController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MyAccountController.cs" />
@@ -704,6 +712,7 @@
     <Compile Include="Areas\Admin\Models\ChangeEmailViewModel.cs" />
     <Compile Include="Areas\Admin\Models\DeleteCurrentViewModel.cs" />
     <Compile Include="Areas\Admin\Models\EditAccountViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\LogViewModel.cs" />
     <Compile Include="Areas\Admin\Models\MyAccountViewModel.cs" />
     <Compile Include="Areas\Admin\Models\RoleItem.cs" />
     <Compile Include="Areas\Peoples\Controllers\BlogController.cs" />

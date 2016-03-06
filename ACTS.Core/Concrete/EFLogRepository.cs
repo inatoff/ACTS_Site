@@ -38,9 +38,24 @@ namespace ACTS.Core.Concrete
 			}
 		}
 
-		public IQueryable<LogEntry> LastLogsForNomDays(double nomDays)
+		public IQueryable<LogEntry> LastLogsByNomDays(double nomDays)
 		{
-			return context.LogEntries.Where(log => (DateTime.UtcNow - log.UtcDate).TotalDays < nomDays);
+			return context.LogEntries.Where(log => DbFunctions.DiffDays(log.UtcDate, DateTime.UtcNow) < nomDays);
+		}
+
+		public IQueryable<LogEntry> LastLogsByNomDaysAndLevel(double nomDays, LogLevel level)
+		{
+			return context.LogEntries.Where(log => DbFunctions.DiffDays(log.UtcDate, DateTime.UtcNow) < nomDays && log.Level >= level);
+		}
+
+		public IQueryable<LogEntry> GetByDateAndLevel(DateTime start, DateTime end, LogLevel level)
+		{
+			return context.LogEntries.Where(log => log.UtcDate >= start && log.UtcDate <= end && log.Level >= level);
+		}
+
+		public IQueryable<LogEntry> LastLogsByDateAndLevel(DateTime fromData, LogLevel level)
+		{
+			return context.LogEntries.Where(log => log.UtcDate >= fromData && log.Level >= level);
 		}
 	} 
 }

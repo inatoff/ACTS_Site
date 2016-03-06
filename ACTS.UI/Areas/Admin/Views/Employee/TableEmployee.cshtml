@@ -11,7 +11,6 @@
 }
 
 @section Scripts {
-	@Scripts.Render("~/bundles/datatables")
 	@Scripts.Render(GlobalRes.dataTablePath)
 }
 
@@ -60,7 +59,7 @@
 									}
 								</td>
 								<td>
-									@using (Html.BeginForm("Delete", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+									@using (Html.BeginForm("Delete", "Employee", FormMethod.Post))
 									{
 										@Html.AntiForgeryToken()
 										@Html.Hidden("EmployeeId", item.EmployeeId)

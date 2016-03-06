@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ACTS.Core.Logging.LogEntry>
+﻿@model ACTS.UI.Areas.Admin.Models.LogViewModel
 
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
@@ -7,11 +7,13 @@
 
 @section Styles{
 	@Styles.Render("~/Content/css/datatables")
+	@Styles.Render("~/Content/css/daterange")
 }
 
 @section Scripts {
 	@Scripts.Render("~/bundles/datatables")
 	@Scripts.Render(GlobalRes.dataTablePath)
+	@Scripts.Render(GlobalRes.dateRangePath)
 }
 
 <div class="row">
@@ -20,8 +22,33 @@
 			<div class="box-header">
 				<h3 class="box-title">@GlobalRes.Logging</h3>
 				<div class="box-tools pull-right">
-					<a href="@Url.Action("Rss", "Log")" class="label label-primary"><i class="fa fa-fw fa-rss"></i>&nbsp;Rss</a>
+					<a href="@Url.Action("Rss", "Logging")" class="label label-primary"><i class="fa fa-fw fa-rss"></i>&nbsp;Rss</a>
 				</div>
+			</div>
+
+			<div class="box-body">
+				@using (Html.BeginForm("ByLevelAndDate", "Logging", FormMethod.Get, new { @class = "form-inline" }))
+				{
+					<div class="form-group">
+						@Html.LabelFor(m => m.LogLevel)
+						@Html.EnumDropDownListFor(m => m.LogLevel, new { @class = "form-control input-sm" })
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.StartDate)
+						@Html.HiddenFor(m => m.StartDate, new {  @class = "form-control input-sm" })
+						@Html.LabelFor(m => m.EndDate, new { @class = "sr-only"})
+						@Html.HiddenFor(m => m.EndDate, new {  @class = "form-control input-sm" })
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa fa-calendar"></i></span>
+							<button id="datefilter" type="button" class="form-control input-sm" > @Model.StartDate - @Model.EndDate</button>
+						</div>
+					</div>
+
+					<button type="submit" class="btn btn-sm btn-primary btn-flat">
+						<i class="fa fa-filter"></i>&nbsp;@GlobalRes.ApplyFilter
+					</button>
+				}
 			</div>
 
 			<div class="box-body">
@@ -40,17 +67,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						@foreach (var item in Model)
+						@foreach (var item in Model.Logs)
 						{
 							<tr>
 								<td>
 									@item.LogEntryId
 								</td>
-								<td>
+								<td data-order="@item.Level.GetHashCode()">
 									@item.Level
 								</td>
 								<td>
-									@item.UtcDate.ToLocalTime().ToString("yyyy/MM/dd hh:mm:ss.fff tt")
+									@item.UtcDate.ToLocalTime().ToString("yyyy/MM/dd HH:mm:ss.fff")
 								</td>
 								<td>
 									@item.Logger
@@ -87,7 +114,6 @@
 											</div>
 										</div>
 									}
-
 								</td>
 								<td>
 									@item.Username
