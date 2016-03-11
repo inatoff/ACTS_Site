@@ -7,6 +7,7 @@ using ACTS.UI.Helpers;
 using Microsoft.AspNet.Identity;
 using Ninject.Extensions.Logging;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -39,7 +40,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			IEnumerable<InfoAccountViewModel> model;
 			using (var userManager = UserManager)
 			{
-				var users = userManager.Users;
+				var users = userManager.Users.Include(user => user.Teacher);
 
 				var tasks = users.Select(async delegate (ApplicationUser user)
 				{
