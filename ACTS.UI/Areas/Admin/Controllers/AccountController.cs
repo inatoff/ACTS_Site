@@ -65,13 +65,13 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			return View("TableAccount", model);
 		}
 
-		private void InitTeachersItems(object selectedValue = null)
+		private void InitTeachersItems(int? selectedValue = null)
 		{
 			SelectList teachersItems;
-			if (selectedValue == null)
+			if (!selectedValue.HasValue)
 				teachersItems = new SelectList(_teacherRepository.NoPairTeachers, "TeacherId", "FullName");
 			else
-				teachersItems = new SelectList(_teacherRepository.GetNoPairTeachersWithSelected((int)selectedValue).AsEnumerable(),
+				teachersItems = new SelectList(_teacherRepository.GetNoPairTeachersWithSelected(selectedValue.Value).AsEnumerable(),
 											  "TeacherId", "FullName", selectedValue);
 
 			ViewBag.Teachers = teachersItems;
