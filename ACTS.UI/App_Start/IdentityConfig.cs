@@ -13,29 +13,10 @@ using System.Net.Mail;
 using System.Net;
 using System.Net.Configuration;
 using System.Configuration;
+using ACTS.UI.Services;
 
 namespace ACTS.UI
 {
-	public class EmailService : IIdentityMessageService
-	{
-		public async Task SendAsync(IdentityMessage message)
-		{
-			var smtpSection = (SmtpSection)ConfigurationManager.GetSection("system.net/mailSettings/smtp");
-			string fromAddress = smtpSection.From;
-
-			using (var smtp = new SmtpClient())
-			using (var mailMessage = new MailMessage(fromAddress, message.Destination)
-			{
-				Subject = message.Subject,
-				Body = message.Body,
-				IsBodyHtml = true
-			})
-			{
-				await new SmtpClient().SendMailAsync(mailMessage);
-			}
-		}
-	}
-
 	// Настройка диспетчера пользователей приложения. UserManager определяется в ASP.NET Identity и используется приложением.
 	public class ApplicationUserManager : UserManager<ApplicationUser, int>
 	{

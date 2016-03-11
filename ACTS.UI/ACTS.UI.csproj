@@ -752,6 +752,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ResetPasswordViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\Logging\ILogger.cs" />
     <Compile Include="Infrastructure\LogFilterAttribute.cs" />
     <Compile Include="Services\Logging\LogUtility.cs" />
