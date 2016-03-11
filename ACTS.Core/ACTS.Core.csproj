@@ -111,6 +111,10 @@
     <Compile Include="Migrations\201602221936271_Logging.Designer.cs">
       <DependentUpon>201602221936271_Logging.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603110009086_Post.cs" />
+    <Compile Include="Migrations\201603110009086_Post.Designer.cs">
+      <DependentUpon>201603110009086_Post.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -132,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602221936271_Logging.resx">
       <DependentUpon>201602221936271_Logging.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603110009086_Post.resx">
+      <DependentUpon>201603110009086_Post.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
