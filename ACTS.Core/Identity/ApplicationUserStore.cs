@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace ACTS.Core.Identity
 {
-	public class ApplicationRoleStore : RoleStore<ApplicationRole, int, ApplicationUserRole>
+	public class ApplicationUserStore : UserStore<ApplicationUser, ApplicationRole, int,
+	ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
 	{
-		public ApplicationRoleStore(EFDbContext context)
+		public ApplicationUserStore(EFDbContext context)
 			: base(context)
 		{
 		}
