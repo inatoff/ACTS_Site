@@ -132,10 +132,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					if (model.PairTeacherId.HasValue)
 						_teacherRepository.AddPairToUser(model.PairTeacherId.Value, user.Id);
 
-					if (!result.Succeeded)
-						TempData.AddMessages(MessageType.Warning, result.Errors);
-
-					result = await manager.AddToRolesAsync(user.Id, model.SelectedRoles.ToArray());
+					(await manager.AddToRolesAsync(user.Id, model.SelectedRoles.ToArray()))
+						.AddErrorsIfFailed(TempData);
 
 					TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.UserCreatedMsg, user.UserName));
 				}
@@ -218,15 +216,11 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 					var userRoles = await manager.GetRolesAsync(model.Id); // роли редактируемого юзера
 
-					result = await manager.RemoveFromRolesAsync(model.Id, userRoles.Intersect(model.UnselectedRoles).ToArray());
+					(await manager.RemoveFromRolesAsync(model.Id, userRoles.Intersect(model.UnselectedRoles).ToArray()))
+						.AddErrorsIfFailed(TempData);
 
-					if (!result.Succeeded)
-						TempData.AddMessages(MessageType.Warning, result.Errors);
-
-					result = await manager.AddToRolesAsync(model.Id, model.SelectedRoles.Except(userRoles).ToArray());
-
-					if (!result.Succeeded)
-						TempData.AddMessages(MessageType.Warning, result.Errors);
+					(await manager.AddToRolesAsync(model.Id, model.SelectedRoles.Except(userRoles).ToArray()))
+						.AddErrorsIfFailed(TempData);
 
 					if (user.HasTeacher)
 						_teacherRepository.RemovePairToUser(user.Teacher.TeacherId);

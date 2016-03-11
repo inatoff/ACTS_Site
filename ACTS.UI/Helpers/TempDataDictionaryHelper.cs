@@ -1,5 +1,6 @@
 ﻿using ACTS.UI.Areas.Admin.Models;
 using ACTS.UI.Infrastructure;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,6 +68,12 @@ namespace ACTS.UI.Helpers
 				messenger = new Messenger(messages);
 				tempData[Messenger.Name] = messenger;
 			}
+		}
+
+		public static void AddErrorsIfFailed(this IdentityResult result, TempDataDictionary tempData)
+		{
+			if (!result.Succeeded)
+				tempData.AddMessages(MessageType.Warning, result.Errors);
 		}
 	}
 }
