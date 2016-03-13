@@ -7,6 +7,7 @@ using ACTS.UI.Helpers;
 using Ninject.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -27,7 +28,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Table()
 		{
-			IEnumerable<Teacher> teachers = repository.Teachers.OrderBy(t => t.TeacherId);
+			IEnumerable<Teacher> teachers = repository.Teachers.Include(t => t.User).OrderBy(t => t.TeacherId);
 			return View("TableTeacher",teachers);
 		}
 
