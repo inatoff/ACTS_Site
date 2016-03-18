@@ -54,7 +54,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "Teacher")]
         public async Task<ActionResult> Create(Post model)
         {
             using (var userManager = UserManager)
@@ -99,7 +99,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
         [HttpPost]
         [Route("edit/{postId}")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "Teacher")]
         public async Task<ActionResult> Edit(int postId, Post model)
         {
             if (!ModelState.IsValid)
@@ -135,7 +135,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "admin, teacher")]
+        [Authorize(Roles = "Admin, Teacher")]
         public async Task<ActionResult> Delete(int postId)
         {
             var post = await _blogRepo.GetPostByIdAsync(postId);
@@ -149,7 +149,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "admin, teacher")]
+        [Authorize(Roles = "Admin, Teacher")]
         public async Task<ActionResult> Delete(int postId, string foo)
         {
             try
