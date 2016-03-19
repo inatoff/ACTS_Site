@@ -1,4 +1,5 @@
-﻿using ACTS.Core.Concrete;
+﻿using ACTS.Core.Abstract;
+using ACTS.Core.Concrete;
 using ACTS.Core.Entities;
 using ACTS.UI.Areas.Peoples.Models;
 using System;
@@ -12,42 +13,49 @@ namespace ACTS.UI.Areas.Peoples.Controllers
 {   
     public class PersonalPageController : Controller
     {
-        private EFTeacherRepository _teacherRepo;
-        private EFBlogRepository _blogRepo; 
+        private ITeacherRepository _teacherRepo;
+        private IBlogRepository _blogRepo;
         // GET: Peoples/PersonalPage 
-        public ActionResult Index(string nameSlug)
+
+        public PersonalPageController(ITeacherRepository teacherRepository, IBlogRepository blogRepository)
         {
-            var model = GetTeacher(nameSlug);
-            ViewBag.Name = model.Result.FullName;
-            ViewBag.Degree = model.Result.Degree;
-            return View(model);
+            _teacherRepo = teacherRepository;
+            _blogRepo = blogRepository;
         }
-         
-        public ActionResult Publications(string nameSlug)
+
+        public async Task<ActionResult> Index(string nameSlug)
         {
-            List<string> model = GetTeacher(nameSlug).Result.Publications;
-            return View(model);
-        }
-         
-        public ActionResult Projects(string nameSlug)
-        {
-            List<string> model = GetTeacher(nameSlug).Result.Projects;
+            var model = await GetPersonalPage(nameSlug);
+            ViewBag.Name = model.FullName;
+            ViewBag.Degree = model.Degree;
             return View(model);
         }
 
-        public ActionResult Disciplines(string nameSlug)
+        public async Task<ActionResult> Publications(string nameSlug)
         {
-            List<string> model = GetTeacher(nameSlug).Result.Disciplines;
+            var model = (await GetPersonalPage(nameSlug)).Publications;
             return View(model);
         }
 
-        public ActionResult ScienceInterests(string nameSlug)
+        public async Task<ActionResult> Projects(string nameSlug)
         {
-            List<string> model = GetTeacher(nameSlug).Result.ScienceInterests;
+            var model = (await GetPersonalPage(nameSlug)).Projects;
             return View(model);
         }
-        
-        private async Task<PersonalPageViewModel> GetTeacher(string nameSlug)
+
+        public async Task<ActionResult> Disciplines(string nameSlug)
+        {
+            var model = (await GetPersonalPage(nameSlug)).Disciplines;
+            return View(model);
+        }
+
+        public async Task<ActionResult> ScienceInterests(string nameSlug)
+        {
+            var model = (await GetPersonalPage(nameSlug)).ScienceInterests;
+            return View(model);
+        }
+
+        private async Task<PersonalPageViewModel> GetPersonalPage(string nameSlug)
         {
             return new PersonalPageViewModel(await _teacherRepo.GetTeacherByUrlSlugAsync(nameSlug));
         }

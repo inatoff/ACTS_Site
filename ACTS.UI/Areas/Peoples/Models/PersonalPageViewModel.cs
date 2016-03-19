@@ -18,13 +18,13 @@ namespace ACTS.UI.Areas.Peoples.Models
         public string Twitter { get; }
         public Blog Blog { get; }
 
-        public List<string> Disciplines { get; set; }
+        public IEnumerable<string> Disciplines { get; set; }
 
-        public List<string> ScienceInterests { get; set; }
+        public IEnumerable<string> ScienceInterests { get; set; }
 
-        public List<string> Projects { get; set; }
+        public IEnumerable<string> Projects { get; set; }
 
-        public List<string> Publications { get; set; }
+        public IEnumerable<string> Publications { get; set; }
 
         public PersonalPageViewModel(Teacher teacher)
         {
@@ -36,10 +36,10 @@ namespace ACTS.UI.Areas.Peoples.Models
             Facebook = teacher.Facebook;
             Twitter = teacher.Twitter;
             Blog = teacher.Blog;
-            Disciplines = teacher.Disciplines.ToList();
-            ScienceInterests = teacher.ScienceInterests.ToList();
-            Projects = teacher.Projects.ToList();
-            Publications.ToList();
+            Disciplines = teacher.Disciplines;
+            ScienceInterests = teacher.ScienceInterests;
+            Projects = teacher.Projects;
+            Publications = teacher.Publications;
         }
         private PersonalPageViewModel() { }
     }

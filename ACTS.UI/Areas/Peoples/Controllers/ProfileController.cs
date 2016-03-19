@@ -58,6 +58,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                     AccountEmail = currentUser.Email,
                     //Part of teacher info 
                     Email = currentTeacher.Email,
+                    Slug = currentTeacher.NameSlug,
                     Degree = currentTeacher.Degree,
                     Intellect = currentTeacher.Intellect,
                     Facebook = currentTeacher.Facebook,
@@ -67,7 +68,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                     Disciplines = currentTeacher.Disciplines,
                     Projects = currentTeacher.Projects,
                     Publications = currentTeacher.Publications,
-                    HasBlog = currentTeacher.Blog == null
+                    HasBlog = currentTeacher.Blog != null
                 };
             }
 
@@ -107,21 +108,17 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                             }
                         }
                         //TODO: Messenger
-                        teacherRepository.UpdateTeacherByProfile(currentTeacher.TeacherId, new Teacher
-                        {
-                            Degree = model.Degree,
-                            Email = model.Email,
-
-                            Intellect = model.Intellect,
-                            Vk = model.Vk,
-                            Facebook = model.Facebook,
-                            Twitter = model.Twitter,
-
-                            Disciplines = model.Disciplines,
-                            Projects = model.Projects,
-                            Publications = model.Publications,
-                            ScienceInterests = model.ScienceInterests
-                        });
+                        currentTeacher.Degree = model.Degree;
+                        currentTeacher.Email = model.Email;
+                        currentTeacher.Intellect = model.Intellect;
+                        currentTeacher.Vk = model.Vk;
+                        currentTeacher.Facebook = model.Facebook;
+                        currentTeacher.Twitter = model.Twitter;
+                        currentTeacher.Disciplines = model.Disciplines;
+                        currentTeacher.Projects = model.Projects;
+                        currentTeacher.Publications = model.Publications;
+                        currentTeacher.ScienceInterests = model.ScienceInterests;
+                        teacherRepository.UpdateTeacher(currentTeacher);
                     }
                 }
                 return View("Edit",model);
@@ -137,7 +134,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
             }
         }
 
-        private async Task<RedirectToRouteResult> InitPersonalPage()
+        public async Task<RedirectToRouteResult> InitPersonalPage()
         {
             using (var userManager = UserManager)
             {
@@ -146,21 +143,19 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                 if (currentUser.Teacher.Blog != null)
                 {
                     //TODO: Message you already have a blog
-                    return RedirectToRoute("ToDefaultPeoplesArea", new { nameSlug = currentUser.Teacher.NameSlug });
+                    return RedirectToAction("Index", "PersonalPage", new { nameSlug = currentUser.Teacher.NameSlug });
                 }
                 else
                 {
                     await teacherRepository.InitPersonalPage(currentUser.Teacher);
-                    return RedirectToRoute("ToDefaultPeoplesArea", new { nameSlug = currentUser.Teacher.NameSlug });
+                    return RedirectToAction("Index","PersonalPage", new { nameSlug = currentUser.Teacher.NameSlug });
                 }
             }
         }
 
-        
-        //[HttpPost]
-        //public async Task<ActionResult> Edit(TeacherAccountViewModel model)
-        //{
-
-        //}
+        public ActionResult Index(string nameSlug)
+        {
+            return View();
+        }
     }
 }

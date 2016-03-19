@@ -51,7 +51,7 @@ namespace ACTS.Core.Migrations
 				userManager.AddToRole(admin.Id, "Admin");
 
 				var teacher = new ApplicationUser {
-					Email = "teacher@bigmir.net",
+					Email = "teacher@bigmir.net",                    
 					UserName = "teacher",
 					LockoutEnabled = true
 				};
@@ -75,6 +75,7 @@ namespace ACTS.Core.Migrations
 					{
 						FullName = "Теленик Сергій Федорович",
 						Degree = "д.т.н., професор",
+                        NameSlug = "telenik",
 						Rank = Rank.Head,
 						Position = "ЗАВІДУВАЧ КАФЕДРИ голова НМК МОН України \"Автоматика та управління\" керівник циклу математичних дисциплін",
 						Photo = new byte[fs.Length],

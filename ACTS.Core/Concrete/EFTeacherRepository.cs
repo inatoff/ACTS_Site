@@ -95,6 +95,7 @@ namespace ACTS.Core.Concrete
 				dbEntry.Photo = teacher.Photo;
 				dbEntry.PhotoMimeType = teacher.PhotoMimeType;
 				dbEntry.Email = teacher.Email;
+                dbEntry.NameSlug = teacher.NameSlug;
 				// social Links
 				dbEntry.Intellect = teacher.Intellect;
 				dbEntry.Vk = teacher.Vk;
@@ -164,7 +165,7 @@ namespace ACTS.Core.Concrete
 
         public async Task InitPersonalPage(Teacher teacher)
         {
-            var dbEntry = await context.Teachers.FindAsync(teacher);
+            var dbEntry = GetTeacherById(teacher.TeacherId);
             dbEntry.Blog = new Blog();
             await context.SaveChangesAsync();
         }

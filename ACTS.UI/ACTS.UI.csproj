@@ -366,6 +366,8 @@
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Areas\Admin\Views\Logging\Logging.cshtml" />
+    <Content Include="Areas\Peoples\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\Peoples\Views\PersonalPage\Index.cshtml" />
     <None Include="EmailTemplates\ConfirmRegistration.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -811,7 +813,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Peoples\Views\Blog\" />
-    <Folder Include="Areas\Peoples\Views\PersonalPage\" />
     <Folder Include="Scripts\actsScripts\" />
     <Folder Include="Views\Blog\" />
     <Folder Include="Views\Employee\Enrollee\" />

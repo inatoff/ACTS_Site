@@ -21,6 +21,9 @@ namespace ACTS.UI.Areas.Peoples.Models
         [EmailAddress]
         public string AccountEmail { get; set; }
 
+        [HiddenInput]
+        public string Slug { get; set; }
+
         [Required]
         [Display(Name = "Your current password")]
         public string Password { get; set; }

@@ -96,7 +96,12 @@
                 </div>
             </div>
         </div>
-
+        <div class="form-group">
+            @Html.Label("Init Personal Page", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               @* @Html.Action("InitPersonalPage", new { nameSlug = Model.Slug })*@
+            </div>
+        </div>
         @*<div class="panel-body">
             @foreach(string s in Model.Disciplines)
             {
@@ -112,7 +117,7 @@
 }
 
 <div>
-    @*@Html.Action("InitPersonalPage")*@
+    @Html.ActionLink("Init PP", "InitPersonalPage")
 </div>
 
 <div>
