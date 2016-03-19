@@ -1,7 +1,7 @@
 ﻿using ACTS.Core.Abstract;
 using ACTS.Core.Concrete;
 using ACTS.Core.Entities;
-using ACTS.UI.App_LocalResources;
+using ACTS.Localization.Resources.GlobalResources; 
 using ACTS.UI.Models;
 using System;
 using System.Collections.Generic;

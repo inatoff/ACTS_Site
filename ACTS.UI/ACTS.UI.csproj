@@ -368,6 +368,7 @@
     <Content Include="Areas\Admin\Views\Logging\Logging.cshtml" />
     <Content Include="Areas\Peoples\Views\Profile\Index.cshtml" />
     <Content Include="Areas\Peoples\Views\PersonalPage\Index.cshtml" />
+    <Content Include="Areas\Peoples\Views\Shared\_PersonalPageNavigation.cshtml" />
     <None Include="EmailTemplates\ConfirmRegistration.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -679,21 +680,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_LocalResources\GlobalRes.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GlobalRes.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_LocalResources\GlobalRes.en.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GlobalRes.en.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_LocalResources\GlobalRes.ru.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GlobalRes.ru.resx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -812,6 +798,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="App_LocalResources\" />
     <Folder Include="Areas\Peoples\Views\Blog\" />
     <Folder Include="Scripts\actsScripts\" />
     <Folder Include="Views\Blog\" />
@@ -829,27 +816,6 @@
       <Project>{49790c4b-668e-42d5-8a67-412e0fb51b53}</Project>
       <Name>ACTS.Localization</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="App_LocalResources\GlobalRes.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>GlobalRes.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="App_LocalResources\GlobalRes.en.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>GlobalRes.en.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="App_LocalResources\GlobalRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>GlobalRes.ru.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

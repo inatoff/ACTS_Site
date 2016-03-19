@@ -80,6 +80,21 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\GlobalResources\GlobalRes.Designer.cs">
+      <DependentUpon>GlobalRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\GlobalResources\GlobalRes.en.Designer.cs">
+      <DependentUpon>GlobalRes.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\GlobalResources\GlobalRes.ru.Designer.cs">
+      <DependentUpon>GlobalRes.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources\MaxLengthAttribute\MaxLengthRes.Designer.cs">
       <DependentUpon>MaxLengthRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -172,6 +187,21 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DisplayRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\GlobalResources\GlobalRes.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalRes.en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\GlobalResources\GlobalRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalRes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\GlobalResources\GlobalRes.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalRes.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\MaxLengthAttribute\MaxLengthRes.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MaxLengthRes.en.Designer.cs</LastGenOutput>
@@ -236,6 +266,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

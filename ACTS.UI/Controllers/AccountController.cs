@@ -12,7 +12,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using ACTS.UI.Helpers;
 using ACTS.Core.Identity;
 using ACTS.UI.Infrastructure;
-using ACTS.UI.App_LocalResources;
+using ACTS.Localization.Resources.GlobalResources; 
 using Ninject.Extensions.Logging;
 
 namespace ACTS.UI.Controllers

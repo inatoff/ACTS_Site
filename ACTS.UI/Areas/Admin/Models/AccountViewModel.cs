@@ -8,9 +8,9 @@ using ACTS.Core.Identity;
 using System.Web.Mvc;
 using ExpressiveAnnotations.Attributes;
 using System.ComponentModel;
-using ACTS.UI.App_LocalResources;
 using ACTS.Localization.Resources;
 using ACTS.Localization;
+using ACTS.Localization.Resources.GlobalResources;
 
 namespace ACTS.UI.Areas.Admin.Models
 {

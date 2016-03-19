@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using ExpressiveAnnotations.Attributes;
 using ACTS.Localization.Resources;
 using ACTS.Localization;
-using ACTS.UI.App_LocalResources;
+using ACTS.Localization.Resources.GlobalResources; 
 
 namespace ACTS.UI.Areas.Admin.Models
 {

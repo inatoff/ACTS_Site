@@ -1,6 +1,6 @@
 ﻿using ACTS.Localization;
 using ACTS.Localization.Resources;
-using ACTS.UI.App_LocalResources;
+using ACTS.Localization.Resources.GlobalResources; 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

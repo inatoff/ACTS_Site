@@ -1,5 +1,5 @@
 ﻿using ACTS.Core.Identity;
-using ACTS.UI.App_LocalResources;
+using ACTS.Localization.Resources.GlobalResources;
 using ACTS.UI.Areas.Admin.Models;
 using ACTS.UI.Controllers;
 using ACTS.UI.Helpers;

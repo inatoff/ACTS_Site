@@ -10,8 +10,8 @@ using ACTS.Core.Entities;
 using ACTS.UI.Helpers;
 using ACTS.UI.Areas.Admin.Models;
 using ACTS.UI.Controllers;
-using ACTS.UI.App_LocalResources;
 using Ninject.Extensions.Logging;
+using ACTS.Localization.Resources.GlobalResources;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
