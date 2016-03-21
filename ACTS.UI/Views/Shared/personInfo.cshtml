@@ -7,8 +7,9 @@
 									}
         else
         {
-            <img class="TeacherPhoto" alt="Teacher Photo" width="100" height="150"  src="@Url.Action("GetImage", "Teacher", new { area = "", Model.TeacherId })" />}
-        
+            <img class="TeacherPhoto" alt="Teacher Photo" width="100" height="150" src="@Url.Action("GetImage", "Teacher", new { area = "", Model.TeacherId })" />
+        }
+
     </div>
     <div class="personName">
         @Model.FullName
@@ -20,29 +21,29 @@
         <p>Степень:@Model.Degree</p>
         <p><strong>Дисциплины:</strong></p>
         @*<ul>
-            @{
-                foreach (var item in Model.Disciplines)
-                {
-                    <li>
-                        item
-                    </li>
+                @{
+                    foreach (var item in Model.Disciplines)
+                    {
+                        <li>
+                            item
+                        </li>
+                    }
                 }
-            }
-        </ul>
-        <p><strong>Интересы:</strong></p>
-        <ul>
-            @{
-                foreach (var item in Model.ScienceInterests)
-                {
-                    <li>
-                        item
-                    </li>
+            </ul>
+            <p><strong>Интересы:</strong></p>
+            <ul>
+                @{
+                    foreach (var item in Model.ScienceInterests)
+                    {
+                        <li>
+                            item
+                        </li>
+                    }
                 }
-            }
-        </ul>*@
-        @if (Model.Blog != null)
+            </ul>*@
+        @*@if (Model != null && Model.Blog != null)
         {
-            @Html.Action("Персональная страница", "Index", new { area="Peoples", controller="PersonalPage", nameSlug=Model.NameSlug})
-        }
+            @Html.Action("Персональная страница", "Index", new { area = "Peoples", controller = "PersonalPage", nameSlug = Model.NameSlug })
+        }*@
     </div>
 </div>

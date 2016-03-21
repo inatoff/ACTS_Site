@@ -2,8 +2,10 @@
     ViewBag.Title = GlobalRes.HomeIndexTitle;
     ViewBag.CurrentPage = "main";
 }
-@Html.Partial("DepartmentNav")
-<div class="col-md-9">
+
+<div class="row">
+    @Html.Partial("DepartmentNav")
+<div class="col-md-9 mainColumns">
     <div>
         <h2>Про кафедру АУТС</h2>
         <p>
@@ -22,4 +24,5 @@
             Гаряча лінія відбіркової комісії ФІОТ: <span style="font-weight: 400; padding-left: 5px;">066-341-89-60</span>
         </div>
     </div>
+</div>
 </div>

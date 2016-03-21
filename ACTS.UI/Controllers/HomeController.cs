@@ -14,6 +14,11 @@ namespace ACTS.UI.Controllers
 			return View();
 		}
 
+        public ActionResult About()
+        {
+            return View();
+        }
+
 		public ActionResult SetCulture(string culture, string returnUrl)
 		{
 			// Validate input
