@@ -1,6 +1,5 @@
 ﻿using ACTS.Core.Logging;
 using ACTS.Localization.Resources;
-using ACTS.Localization.Resources.GlobalResources; 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

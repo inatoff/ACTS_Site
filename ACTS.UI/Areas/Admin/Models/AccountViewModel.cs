@@ -10,7 +10,6 @@ using ExpressiveAnnotations.Attributes;
 using System.ComponentModel;
 using ACTS.Localization.Resources;
 using ACTS.Localization;
-using ACTS.Localization.Resources.GlobalResources;
 
 namespace ACTS.UI.Areas.Admin.Models
 {

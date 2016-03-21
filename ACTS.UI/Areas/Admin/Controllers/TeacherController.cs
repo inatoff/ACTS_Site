@@ -1,6 +1,6 @@
 ﻿using ACTS.Core.Abstract;
 using ACTS.Core.Entities;
-using ACTS.Localization.Resources.GlobalResources;
+using ACTS.Localization.Resources;
 using ACTS.UI.Areas.Admin.Models;
 using ACTS.UI.Controllers;
 using ACTS.UI.Helpers;

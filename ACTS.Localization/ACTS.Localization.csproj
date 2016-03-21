@@ -191,16 +191,19 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalRes.en.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\GlobalResources\GlobalRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalRes.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\GlobalResources\GlobalRes.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalRes.ru.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <CustomToolNamespace>ACTS.Localization.Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\MaxLengthAttribute\MaxLengthRes.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

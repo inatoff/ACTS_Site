@@ -11,7 +11,7 @@ using ACTS.UI.Helpers;
 using ACTS.UI.Areas.Admin.Models;
 using ACTS.UI.Controllers;
 using Ninject.Extensions.Logging;
-using ACTS.Localization.Resources.GlobalResources;
+using ACTS.Localization.Resources;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {

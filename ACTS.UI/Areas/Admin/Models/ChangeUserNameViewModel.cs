@@ -1,6 +1,5 @@
 ﻿using ACTS.Localization;
 using ACTS.Localization.Resources;
-using ACTS.Localization.Resources.GlobalResources; 
 using ExpressiveAnnotations.Attributes;
 using System.ComponentModel.DataAnnotations;
 
