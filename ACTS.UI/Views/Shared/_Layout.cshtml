@@ -46,7 +46,7 @@
             </div>
         </div> 
     <div class="nav-container">
-        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+        <nav class="menu navbar navbar-default navbar-static-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -121,21 +121,26 @@
         }
     </div>
     <script src="~/Scripts/jquery-2.2.0.js"></script> 
-    <script src="~/Scripts/bootstrap.js"></script> 
-    <script src="~/Scripts/navbar2.js"></script>
-    <script src="~/Scripts/waypoints.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
     <script>
-        $(function () {
+        $(document).ready(function () {
 
-            // Do our DOM lookups beforehand
-            var nav_container = $(".nav-container");
-            var nav = $("nav");
+            var menu = $('.menu');
+            var origOffsetY = menu.offset().top;
 
-            nav_container.waypoint({
-                handler: function (event, direction) {
-                    nav.toggleClass('sticky', direction == 'down');
+            function scroll() {
+                if ($(window).scrollTop() >= origOffsetY) {
+                    $('.menu').addClass('navbar-fixed-top');
+                    $('.menu').removeClass('navbar-static-top'); 
+                } else {
+                    $('.menu').removeClass('navbar-fixed-top');
+                    $('.menu').addClass('navbar-static-top'); 
                 }
-            });
+
+
+            }
+
+            document.onscroll = scroll;
 
         });
     </script>
