@@ -36,17 +36,14 @@ namespace ACTS.UI.Areas.Peoples.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<ActionResult> Index(string nameSlug)
+        public ActionResult Index(string nameSlug)
         {
-            using (var userManager = UserManager)
-            {
-                var teacher = await _teacherRepo.GetTeacherByUrlSlugAsync(nameSlug);
-                var blog = teacher.Blog;
-                return View(blog);
-            }
+            var blog = _blogRepo.GetBlogByAuthorNameSlug(nameSlug);
+            return View(blog);
         }
 
         [HttpGet]
+        [Authorize(Roles ="Teacher")]
         public ActionResult CreatePost()
         {
             return View(new Post());

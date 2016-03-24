@@ -370,6 +370,7 @@
     <Content Include="Areas\Peoples\Views\Profile\Index.cshtml" />
     <Content Include="Areas\Peoples\Views\PersonalPage\Index.cshtml" />
     <Content Include="Areas\Peoples\Views\Shared\_PersonalPageNavigation.cshtml" />
+    <Content Include="Areas\Peoples\Views\Blog\Index.cshtml" />
     <None Include="EmailTemplates\ConfirmRegistration.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -503,6 +504,7 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\navbar2.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\tinymce\changelog.txt" />
@@ -676,6 +678,7 @@
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
     <Content Include="EmailTemplates\index.html" />
+    <Content Include="Scripts\waypoints.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -719,7 +722,7 @@
     <Compile Include="Controllers\ForStudentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
-    <Compile Include="Controllers\TeacherController.cs" />
+    <Compile Include="Controllers\TeachingStaffController.cs" />
     <Compile Include="Controllers\ScienceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -800,7 +803,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
-    <Folder Include="Areas\Peoples\Views\Blog\" />
     <Folder Include="Scripts\actsScripts\" />
     <Folder Include="Views\Blog\" />
     <Folder Include="Views\Employee\Enrollee\" />

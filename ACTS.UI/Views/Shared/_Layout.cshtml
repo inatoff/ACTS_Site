@@ -26,7 +26,8 @@
     <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/Content/css/MainPage.css" rel="stylesheet" />
 </head>
-<body style="height:100%"> 
+<body style="height:100%">         
+    
         <div id="carousel" class="carousel slide" data-ride="carousel">
 
             <div class="carousel-inner" role="listbox">
@@ -44,69 +45,71 @@
                 </div>
             </div>
         </div> 
-    <nav class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="@Url.Action("Index", "Home")">
-                    <img src="~/Content/Images/logo.png" style="max-height:100%" />
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @{
-                        if (ViewBag.CurrentPage != "main")
-                        {
-                            <li><a href="@Url.Action("Index", "Home")">@GlobalRes.Main</a></li>
-                        }
-                    }
-                    <!--Генерация панели навигации из PartialView PanelSections-->
-                    @Html.Partial("PanelSections")
-                </ul>
-                <!--Выбор локализации -->
-                <ul style="margin-right:5px" class="nav navbar-nav navbar-right">
-                    <li>
-                        @{Html.RenderAction("AuthenticationLink", new { controller = "Account" }); }
-                    </li>
-                    <li>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            using (Html.BeginForm("Logout", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+    <div class="nav-container">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                        <img src="~/Content/Images/logo.png" style="max-height:100%" />
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        @{
+                            if (ViewBag.CurrentPage != "main")
                             {
-                                @Html.AntiForgeryToken()
+                                <li><a href="@Url.Action("Index", "Home")">@GlobalRes.Main</a></li>
                             }
-                            <a href="javascript:document.getElementById('logoutForm').submit()">
-                                @GlobalRes.Logout
-                            </a>
-
                         }
-                    </li>
-                    @foreach (var lang in CultureHelper.Cultures)
-                    {
-                        <li class="@lang
+                        <!--Генерация панели навигации из PartialView PanelSections-->
+                        @Html.Partial("PanelSections")
+                    </ul>
+                    <!--Выбор локализации -->
+                    <ul style="margin-right:5px" class="nav navbar-nav navbar-right">
+                        <li>
+                            @{Html.RenderAction("AuthenticationLink", new { controller = "Account" }); }
+                        </li>
+                        <li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                using (Html.BeginForm("Logout", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                }
+                                <a href="javascript:document.getElementById('logoutForm').submit()">
+                                    @GlobalRes.Logout
+                                </a>
+
+                            }
+                        </li>
+                        @foreach (var lang in CultureHelper.Cultures)
+                        {
+                            <li class="@lang
                             @if (culture == lang) {
 								 @:selectedLanguage
 							}
                         ">
-                            <a href="@Url.Action("SetCulture", "Home", new {
+                                <a href="@Url.Action("SetCulture", "Home", new {
                                     culture = lang,
                                     returnUrl = Url.Action()
                                 })"></a>
-                        </li>
-                    }
-                </ul>
-                <!--Поиск-->
-                @*<form class="navbar-form navbar-right">
-                        <input type="text" class="form-control" placeholder="@GlobalRes.Search">
-                    </form>*@
+                            </li>
+                        }
+                    </ul>
+                    <!--Поиск-->
+                    @*<form class="navbar-form navbar-right">
+                            <input type="text" class="form-control" placeholder="@GlobalRes.Search">
+                        </form>*@
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
    
     <div class="container" style="height:100%">
@@ -118,7 +121,24 @@
         }
     </div>
     <script src="~/Scripts/jquery-2.2.0.js"></script> 
-    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script> 
+    <script src="~/Scripts/navbar2.js"></script>
+    <script src="~/Scripts/waypoints.min.js"></script>
+    <script>
+        $(function () {
+
+            // Do our DOM lookups beforehand
+            var nav_container = $(".nav-container");
+            var nav = $("nav");
+
+            nav_container.waypoint({
+                handler: function (event, direction) {
+                    nav.toggleClass('sticky', direction == 'down');
+                }
+            });
+
+        });
+    </script>
 </body>
 </html>
 

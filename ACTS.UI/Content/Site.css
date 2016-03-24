@@ -75,6 +75,15 @@ li {
     height:250px;
 }
 
+.sticky{
+    position:fixed; 
+    width: 100%;
+}
+
+
+.sticky.nav-column{
+    margin-top:50px;
+}
 
 .person__avatar{
     width: 100px;

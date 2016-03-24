@@ -1,0 +1,23 @@
+﻿@model ACTS.Core.Entities.Blog
+@{
+    Layout = "~/Areas/Peoples/Views/Shared/_PersonalPageLayout.cshtml";
+    
+}
+<div>
+    Personal blog of @Model.Teacher
+</div>
+<p>
+    @Html.ActionLink("Create post", "Create")
+</p>
+@foreach (var post in Model.Posts)
+{
+    <p>
+        @post.Content
+    </p>
+    <p>
+        @Html.ActionLink("Edit post", "Edit", new { post.PostId })
+    </p>
+    <p>
+        @Html.ActionLink("Delte","Delete", new { post.PostId })
+    </p>    
+}

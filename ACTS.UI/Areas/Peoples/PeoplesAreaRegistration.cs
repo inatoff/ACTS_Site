@@ -21,15 +21,15 @@ namespace ACTS.UI.Areas.Peoples
 
             context.MapRoute(
                 name: "TeachersBlog",
-                url: "PersonalPage/{nameSlug}/Blog/{postSlug}",
-                defaults: new { controller = "Blog", action = "Index" });
+                url: "teacher/{nameSlug}/{action}/{id}",
+                defaults: new { controller = "Blog", action = "Index", id=UrlParameter.Optional });
 
 
-            context.MapRoute(
-                "Peoples_default",
-                "Peoples/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+            //context.MapRoute(
+            //    "Peoples_default",
+            //    "Peoples/{controller}/{action}/{id}",
+            //    new { action = "Index", id = UrlParameter.Optional }
+            //);
         }
     }
 }

@@ -16,6 +16,11 @@ namespace ACTS.Core.Entities
         
         public Teacher Teacher { get; set; }
 
-        public List<Post> Posts { get; set; }
+        public ICollection<Post> Posts { get; set; }
+
+        public Blog()
+        {
+            Posts = new List<Post>();
+        }
     }
 }

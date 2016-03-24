@@ -13,13 +13,13 @@ using Microsoft.AspNet.Identity;
 
 namespace ACTS.UI.Controllers
 {
-    public class TeacherController : BaseController
+    public class TeachingStaffController : BaseController
     {
         private ITeacherRepository _repository;
         private ApplicationUserManager _manager;
 
 
-        public TeacherController(ITeacherRepository employeeRepository, ApplicationUserManager manager)
+        public TeachingStaffController(ITeacherRepository employeeRepository, ApplicationUserManager manager)
         {
             _repository = employeeRepository;
             _manager = manager;
