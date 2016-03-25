@@ -15,6 +15,7 @@ namespace ACTS.UI.Areas.Admin.Models
 		Success
 	}
 
+	[Serializable]
 	public class Messenger : SortedSet<Message>
 	{
 		public Messenger(IEnumerable<Message> messages)

@@ -1,23 +1,23 @@
 ﻿@model ACTS.Core.Entities.Blog
 @{
-    Layout = "~/Areas/Peoples/Views/Shared/_PersonalPageLayout.cshtml";
-    
+	Layout = "~/Areas/Peoples/Views/Shared/_PersonalPageLayout.cshtml";
+	var teacher = @Model.Teacher;
 }
 <div>
-    Personal blog of @Model.Teacher
+	Personal blog of @teacher
 </div>
 <p>
-    @Html.ActionLink("Create post", "Create")
+	@Html.ActionLink("Create post", "Create")
 </p>
 @foreach (var post in Model.Posts)
 {
-    <p>
-        @post.Content
-    </p>
-    <p>
-        @Html.ActionLink("Edit post", "Edit", new { post.PostId })
-    </p>
-    <p>
-        @Html.ActionLink("Delte","Delete", new { post.PostId })
-    </p>    
+	<p>
+		@post.Content
+	</p>
+	<p>
+		@Html.ActionLink("Edit post", "Edit", new { post.PostId })
+	</p>
+	<p>
+		@Html.ActionLink("Delte","Delete", new { post.PostId })
+	</p>    
 }

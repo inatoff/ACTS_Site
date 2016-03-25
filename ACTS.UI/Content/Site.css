@@ -1,4 +1,8 @@
-﻿ul li:hover{    
+﻿body {
+    background-image: url('Images/gplaypattern.png');
+}
+
+ul li:hover{    
     background: #e7e7e7;
     color: #fff;
 }

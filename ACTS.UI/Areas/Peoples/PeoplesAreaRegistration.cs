@@ -22,7 +22,7 @@ namespace ACTS.UI.Areas.Peoples
             context.MapRoute(
                 name: "TeachersBlog",
                 url: "Teacher/{nameSlug}/{action}/{id}",
-                defaults: new { controller = "Blog", action = "Index", id=UrlParameter.Optional });
+                defaults: new { controller = "Blog", action = "Index", id = UrlParameter.Optional });
 
 
             context.MapRoute(

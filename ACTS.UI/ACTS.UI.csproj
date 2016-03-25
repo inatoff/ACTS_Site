@@ -334,9 +334,13 @@
     <Content Include="Content\Images\en.png" />
     <Content Include="Content\Images\flag_great_britain.png" />
     <Content Include="Content\Images\flag_ukraine.png" />
+    <Content Include="Content\Images\gplaypattern.png" />
     <Content Include="Content\Images\icon-admin_user-blue.png" />
+    <Content Include="Content\Images\photo-48800844_383355910.jpg" />
     <Content Include="Content\Images\ru.png" />
     <Content Include="Content\Images\uk.png" />
+    <Content Include="Content\Images\фон3.jpg" />
+    <Content Include="Content\Images\фон4.jpg" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\skins\skin-black-light.css" />
     <Content Include="Content\skins\skin-black-light.min.css" />

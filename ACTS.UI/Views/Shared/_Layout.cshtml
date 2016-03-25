@@ -110,16 +110,13 @@
             </div>
         </nav>
     </div>
+        <div class="container fluid" style="height:100%;background-color:rgba(255, 255, 255, 0.4);">
+            @RenderBody()
 
-   
-    <div class="container" style="height:100%">
-        @RenderBody()
-
-        @if (ViewBag.CurrentPage != "main") { Html.RenderAction("FooterStringUncos", "News"); }
-        @if (ViewBag.CurrentPage == "main")
-        { @Html.Partial("Footer");
-        }
-    </div>
+            @if (ViewBag.CurrentPage != "main") { Html.RenderAction("FooterStringUncos", "News"); }
+            else { @Html.Partial("Footer"); }
+            
+        </div>
     <script src="~/Scripts/jquery-2.2.0.js"></script> 
     <script src="~/Scripts/bootstrap.js"></script>
     <script>
@@ -142,6 +139,11 @@
 
             document.onscroll = scroll;
 
+        });
+        $(function () {
+            $(window).on("load resize", function () {
+                $(".fill-screen").css("height", window.innerHeight);
+            });
         });
     </script>
 </body>
