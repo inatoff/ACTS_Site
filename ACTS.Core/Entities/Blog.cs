@@ -14,7 +14,7 @@ namespace ACTS.Core.Entities
         [Key]
         public int TeacherId { get; set; }
         
-        public Teacher Teacher { get; set; }
+        public virtual Teacher Teacher { get; set; }
 
         public ICollection<Post> Posts { get; set; }
 

@@ -39,14 +39,14 @@ namespace ACTS.UI.Areas.Peoples.Controllers
         public ActionResult Index(string nameSlug)
         {
             var blog = _blogRepo.GetBlogByAuthorNameSlug(nameSlug);
-            return View(blog);
+            return blog != null ? View(blog) : HttpNotFound() as ActionResult;
         }
 
         [HttpGet]
         [Authorize(Roles ="Teacher")]
         public ActionResult CreatePost()
         {
-            return View(new Post());
+            return View();
         }
 
         [HttpPost]

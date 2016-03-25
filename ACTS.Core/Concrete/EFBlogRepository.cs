@@ -82,8 +82,9 @@ namespace ACTS.Core.Concrete
 
         public Blog GetBlogByAuthorNameSlug(string slug)
         {
-            return Blogs.FirstOrDefault(b => b.Teacher.NameSlug == slug);
-        }
+			var blog = context.Blogs.FirstOrDefault(b => b.Teacher.NameSlug == slug);
+			return blog;
+		}
 
         public async Task InitPersonalPage(Teacher teacher)
         {
