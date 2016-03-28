@@ -10,7 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace ACTS.UI.Areas.Peoples.Controllers
-{   
+{
     public class PersonalPageController : Controller
     {
         private ITeacherRepository _teacherRepo;
@@ -33,26 +33,34 @@ namespace ACTS.UI.Areas.Peoples.Controllers
 
         public async Task<ActionResult> Publications(string nameSlug)
         {
-            var model = (await GetPersonalPage(nameSlug)).Publications;
-            return View(model);
+            var model = await GetPersonalPage(nameSlug);
+            ViewBag.Name = model.FullName;
+            ViewBag.Degree = model.Degree;
+            if (model != null) { return View(model.Publications); } else return new HttpNotFoundResult();
         }
 
         public async Task<ActionResult> Projects(string nameSlug)
         {
-            var model = (await GetPersonalPage(nameSlug)).Projects;
-            return View(model);
+            var model = await GetPersonalPage(nameSlug);
+            ViewBag.Name = model.FullName;
+            ViewBag.Degree = model.Degree;
+            if (model != null) { return View(model.Projects); } else return new HttpNotFoundResult();
         }
 
         public async Task<ActionResult> Disciplines(string nameSlug)
         {
-            var model = (await GetPersonalPage(nameSlug)).Disciplines;
-            return View(model);
+            var model = await GetPersonalPage(nameSlug);
+            ViewBag.Name = model.FullName;
+            ViewBag.Degree = model.Degree;
+            if (model != null) { return View(model.Disciplines); } else return new HttpNotFoundResult();
         }
 
         public async Task<ActionResult> ScienceInterests(string nameSlug)
         {
-            var model = (await GetPersonalPage(nameSlug)).ScienceInterests;
-            return View(model);
+            var model = await GetPersonalPage(nameSlug);
+            ViewBag.Name = model.FullName;
+            ViewBag.Degree = model.Degree;
+            if (model != null) { return View(model.ScienceInterests); } else return new HttpNotFoundResult();
         }
 
         private async Task<PersonalPageViewModel> GetPersonalPage(string nameSlug)

@@ -678,4 +678,10 @@
   <data name="BlogMaterials" xml:space="preserve">
     <value>Матеріали для студентів</value>
   </data>
+  <data name="PersonalPage" xml:space="preserve">
+    <value>Персональна сторінка</value>
+  </data>
+  <data name="Russian" xml:space="preserve">
+    <value>Російська</value>
+  </data>
 </root>

@@ -25,6 +25,7 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/Content/css/MainPage.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
 </head>
 <body style="height:100%">         
     
@@ -47,7 +48,7 @@
         </div> 
     <div class="nav-container">
         <nav class="menu navbar navbar-default navbar-static-top" role="navigation">
-            <div class="container">
+            <div class="container nav-row">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -64,7 +65,7 @@
                         @{
                             if (ViewBag.CurrentPage != "main")
                             {
-                                <li><a href="@Url.Action("Index", "Home")">@GlobalRes.Main</a></li>
+                                <li class="navLink"><a href="@Url.Action("Index", "Home")">@GlobalRes.Main</a></li>
                             }
                         }
                         <!--Генерация панели навигации из PartialView PanelSections-->
@@ -72,7 +73,7 @@
                     </ul>
                     <!--Выбор локализации -->
                     <ul style="margin-right:5px" class="nav navbar-nav navbar-right">
-                        <li>
+                        <li class="navLink">
                             @{Html.RenderAction("AuthenticationLink", new { controller = "Account" }); }
                         </li>
                         <li>
@@ -82,25 +83,37 @@
                                 {
                                     @Html.AntiForgeryToken()
                                 }
-                                <a href="javascript:document.getElementById('logoutForm').submit()">
+                                <a class="navLink" href="javascript:document.getElementById('logoutForm').submit()">
                                     @GlobalRes.Logout
                                 </a>
 
                             }
                         </li>
-                        @foreach (var lang in CultureHelper.Cultures)
-                        {
-                            <li class="@lang
-                            @if (culture == lang) {
-								 @:selectedLanguage
-							}
-                        ">
-                                <a href="@Url.Action("SetCulture", "Home", new {
-                                    culture = lang,
-                                    returnUrl = Url.Action()
-                                })"></a>
-                            </li>
-                        }
+                        <li class="dropdown lang-menu navLink">
+                            <a href="#" class="dropdown-toggle navLink" data-toggle="dropdown">
+                                <i class="fa fa-fw fa-language"></i>&nbsp;@GlobalRes.Language
+                            </a>
+                            <ul class="dropdown-menu animated-dropdown-menu">
+                                <li>
+                                    <a class="language" href="@Url.Action("SetCulture", "Home", new { culture = "uk", returnUrl = Url.Action(), area = "" })">
+                                        <img src="~/Content/Images/uk.png" alt="Ukrainian flag" />
+                                        <p>@GlobalRes.Ukrainian</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="language" href="@Url.Action("SetCulture", "Home", new { culture = "en", returnUrl = Url.Action(), area = "" })">
+                                        <img src="~/Content/Images/en.png" alt="English flag" />
+                                        <p>@GlobalRes.English</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="language" href="@Url.Action("SetCulture", "Home", new { culture = "ru", returnUrl = Url.Action(), area = "" })">
+                                        <img src="~/Content/Images/ru.png" alt="Russian flag" />
+                                        <p>@GlobalRes.Russian</p>
+</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                     <!--Поиск-->
                     @*<form class="navbar-form navbar-right">
@@ -110,7 +123,7 @@
             </div>
         </nav>
     </div>
-        <div class="container fluid" style="height:100%;background-color:rgba(255, 255, 255, 0.4);">
+        <div class="container fluid" style="height:100%;">
             @RenderBody()
 
             @if (ViewBag.CurrentPage != "main") { Html.RenderAction("FooterStringUncos", "News"); }

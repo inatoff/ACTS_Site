@@ -675,4 +675,10 @@
   <data name="BlogMaterials" xml:space="preserve">
     <value>Materials for students</value>
   </data>
+  <data name="PersonalPage" xml:space="preserve">
+    <value>Personal page</value>
+  </data>
+  <data name="Russian" xml:space="preserve">
+    <value>Russian</value>
+  </data>
 </root>

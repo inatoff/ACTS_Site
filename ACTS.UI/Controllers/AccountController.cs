@@ -12,282 +12,288 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using ACTS.UI.Helpers;
 using ACTS.Core.Identity;
 using ACTS.UI.Infrastructure;
-using ACTS.Localization.Resources; 
+using ACTS.Localization.Resources;
 using Ninject.Extensions.Logging;
 
 namespace ACTS.UI.Controllers
 {
-	[Authorize]
-	public class AccountController : BaseController
-	{
-		private ApplicationUserManager _userManager;
-		private ApplicationSignInManager _signInManager;
-		private readonly ILogger _logger;
+    [Authorize]
+    public class AccountController : BaseController
+    {
+        private ApplicationUserManager _userManager;
+        private ApplicationSignInManager _signInManager;
+        private readonly ILogger _logger;
 
-		public AccountController(ILoggerFactory loggerFactory)
-		{
-			_logger = loggerFactory.GetCurrentClassLogger();
-		}
+        public AccountController(ILoggerFactory loggerFactory)
+        {
+            _logger = loggerFactory.GetCurrentClassLogger();
+        }
 
-		public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ILoggerFactory loggerFactory)
-			:this(loggerFactory)
-		{
-			UserManager = userManager;
-			SignInManager = signInManager;
-		}
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ILoggerFactory loggerFactory)
+            : this(loggerFactory)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
 
-		public ApplicationUserManager UserManager
-		{
-			get
-			{
-				return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-			}
-			private set
-			{
-				_userManager = value;
-			}
-		}
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
-		public ApplicationSignInManager SignInManager
-		{
-			get
-			{
-				return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-			}
-			private set
-			{
-				_signInManager = value;
-			}
-		}
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
 
-		// если таки будет сделано отдельные Login для Admin то можно просто редиректить отсюда туда если 
-		// returnUrl.ToLower().StartsWith("/admin")
-		[AllowAnonymous]
-		public ActionResult Login(string returnUrl)
-		{
-			ViewBag.ReturnUrl = returnUrl;
-			// не уверен что нужно говорить пользователю что он не имеет достаточно прав,
-			// но вместе с етим мы можем иметь ситуацию когда кто то битый час пытаеться войти 
-			// не зная почему его не пускает
-			if (string.IsNullOrWhiteSpace(returnUrl) ? false : returnUrl.ToLower().StartsWith("/admin"))
-				if (!User.IsInRole("Admin") && User.Identity.IsAuthenticated)
-					ModelState.AddModelError("", GlobalRes.NotEnoughRightsMsg);
+        // если таки будет сделано отдельные Login для Admin то можно просто редиректить отсюда туда если 
+        // returnUrl.ToLower().StartsWith("/admin")
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            // не уверен что нужно говорить пользователю что он не имеет достаточно прав,
+            // но вместе с етим мы можем иметь ситуацию когда кто то битый час пытаеться войти 
+            // не зная почему его не пускает
+            if (string.IsNullOrWhiteSpace(returnUrl) ? false : returnUrl.ToLower().StartsWith("/admin"))
+                if (!User.IsInRole("Admin") && User.Identity.IsAuthenticated)
+                    ModelState.AddModelError("", GlobalRes.NotEnoughRightsMsg);
 
-			return View();
-		}
+            return View();
+        }
 
-		//
-		// POST: /Account/Login
-		[HttpPost]
-		[AllowAnonymous]
-		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
-		{
-			if (ModelState.IsValid)
-			{
-				string userName = model.EmailOrUserName;
+        //
+        // POST: /Account/Login
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                string userName = model.EmailOrUserName;
 
-				// не уверен что валидация емейла хоть как то увеличит производительность
-				// возможно даже на оборот
-				//if (MailHelper.IsValidEmail(model.EmailOrLogin))
-				//{
-				var user = await UserManager.FindByEmailAsync(model.EmailOrUserName);
+                // не уверен что валидация емейла хоть как то увеличит производительность
+                // возможно даже на оборот
+                //if (MailHelper.IsValidEmail(model.EmailOrLogin))
+                //{
+                var user = await UserManager.FindByEmailAsync(model.EmailOrUserName);
 
-				if (user != null)
-					userName = user.UserName;
-				//}
+                if (user != null)
+                    userName = user.UserName;
+                //}
 
 
-				var signInResult = await SignInManager.PasswordSignInAsync(userName, model.Password, model.RememberMe, shouldLockout: true);
+                var signInResult = await SignInManager.PasswordSignInAsync(userName, model.Password, model.RememberMe, shouldLockout: true);
 
-				switch (signInResult)
-				{
-					case SignInStatus.Success:
-						_logger.Trace("User {0} is logged in.", userName);
-						return RedirectToLocal(returnUrl);
+                switch (signInResult)
+                {
+                    case SignInStatus.Success:
+                        _logger.Trace("User {0} is logged in.", userName);
+                        return RedirectToLocal(returnUrl);
 
-					case SignInStatus.LockedOut:
-						ModelState.AddModelError("", GlobalRes.AccountLockedMsg);
-						_logger.Trace("Account with username \"{0}\" locked. The number of attempts has exceeded {1}.", userName, UserManager.MaxFailedAccessAttemptsBeforeLockout);
-						break;
+                    case SignInStatus.LockedOut:
+                        ModelState.AddModelError("", GlobalRes.AccountLockedMsg);
+                        _logger.Trace("Account with username \"{0}\" locked. The number of attempts has exceeded {1}.", userName, UserManager.MaxFailedAccessAttemptsBeforeLockout);
+                        break;
 
-					//case SignInStatus.RequiresVerification:
-					//return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    //case SignInStatus.RequiresVerification:
+                    //return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
 
-					case SignInStatus.Failure:
-						ModelState.AddModelError("", GlobalRes.IncorrectUserNameOrPasswordMsg);
-						_logger.Trace("Failed login attempt with EmailOrUserName = {0}.", model.EmailOrUserName);
-						break;
+                    case SignInStatus.Failure:
+                        ModelState.AddModelError("", GlobalRes.IncorrectUserNameOrPasswordMsg);
+                        _logger.Trace("Failed login attempt with EmailOrUserName = {0}.", model.EmailOrUserName);
+                        break;
 
-					// я думаю это не достижимый код, но пускай будет
-					default:
-						ModelState.AddModelError("", GlobalRes.FailedLoginAttemptsMsg);
-						_logger.Trace("Failed login attempt with EmailOrUserName = {0}.", model.EmailOrUserName);
-						break;
-				}
-			}
+                    // я думаю это не достижимый код, но пускай будет
+                    default:
+                        ModelState.AddModelError("", GlobalRes.FailedLoginAttemptsMsg);
+                        _logger.Trace("Failed login attempt with EmailOrUserName = {0}.", model.EmailOrUserName);
+                        break;
+                }
+            }
 
-			ViewBag.ReturnUrl = returnUrl;
+            ViewBag.ReturnUrl = returnUrl;
 
-			return View(model);
-		}
+            return View(model);
+        }
 
-		// POST: /Account/Logout
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Logout()
-		{
-			var userName = User.Identity.Name;  
-			AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-			_logger.Trace("User {0} is logged out.", userName);
+        // POST: /Account/Logout
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Logout()
+        {
+            var userName = User.Identity.Name;
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            _logger.Trace("User {0} is logged out.", userName);
 
-			return RedirectToAction("Index", "Home");
-		}
+            return RedirectToAction("Index", "Home");
+        }
 
-		[HttpPost]
-		public JsonResult doesUserNameExist(string userName)
-		{
-			ApplicationUser user;
-			user = UserManager.FindByName(userName);
-			return Json(user == null);
-		}
+        [HttpPost]
+        public JsonResult doesUserNameExist(string userName)
+        {
+            ApplicationUser user;
+            user = UserManager.FindByName(userName);
+            return Json(user == null);
+        }
 
-		[AllowAnonymous]
-		public PartialViewResult AuthenticationLink()
-		{
-			var item = new MenuLinkItem();
-			if (User.Identity.IsAuthenticated)
-			{
-				item.Text = GlobalRes.BlogEditProfile;
-				item.Action = "Edit";
-				item.RouteInfo = new { controller = "Profile", area = "Peoples" };
-			}
-			else
-			{
-				item.Text = GlobalRes.Login;
-				item.Action = "Login";
-				item.RouteInfo = new { controller = "Account", area = ""};
-			}
-			return PartialView("MenuLinkItem", item);
-		}
+        [AllowAnonymous]
+        public PartialViewResult AuthenticationLink()
+        {
+            var item = new MenuLinkItem();
+            if (User.Identity.IsAuthenticated && User.IsInRole("Teacher"))
+            {
+                item.Text = GlobalRes.BlogEditProfile;
+                item.Action = "Edit";
+                item.RouteInfo = new { controller = "Profile", area = "Peoples" };
+            }
+            else if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                item.Text = GlobalRes.Admin;
+                item.Action = "Dashboard";
+                item.RouteInfo = new { controller = "Admin", area = "Admin" };
+            }
+            else
+            {
+                item.Text = GlobalRes.Login;
+                item.Action = "Login";
+                item.RouteInfo = new { controller = "Account", area = "" };
+            }
+            return PartialView("MenuLinkItem", item);
+        }
 
-		//
-		// GET: /Account/ForgotPassword
-		[AllowAnonymous]
-		public ActionResult ForgotPassword(string returnUrl)
-		{
-			ViewBag.ReturnUrl = returnUrl;
-			return View();
-		}
+        //
+        // GET: /Account/ForgotPassword
+        [AllowAnonymous]
+        public ActionResult ForgotPassword(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
 
-		//
-		// POST: /Account/ForgotPassword
-		[HttpPost]
-		[AllowAnonymous]
-		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model, string returnUrl)
-		{
-			ViewBag.ReturnUrl = returnUrl;
+        //
+        // POST: /Account/ForgotPassword
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model, string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
 
-			if (ModelState.IsValid)
-			{
-				var user = await UserManager.FindByEmailAsync(model.Email);
-				if (user == null)
-					// Не показывать, что пользователь не существует или не подтвержден
-					return View("ForgotPasswordConfirmation");
-				_logger.Trace("User \"{0}\" send request to reset password.", user.UserName);
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByEmailAsync(model.Email);
+                if (user == null)
+                    // Не показывать, что пользователь не существует или не подтвержден
+                    return View("ForgotPasswordConfirmation");
+                _logger.Trace("User \"{0}\" send request to reset password.", user.UserName);
 
-				//Дополнительные сведения о том, как включить подтверждение учетной записи и сброс пароля, см.по адресу: http://go.microsoft.com/fwlink/?LinkID=320771
-				//Отправка сообщения электронной почты с этой ссылкой
-				string token = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-				var callbackUrl = Url.Action(nameof(ResetPassword), "Account", new { userId = user.Id, token }, protocol: Request.Url.Scheme);
+                //Дополнительные сведения о том, как включить подтверждение учетной записи и сброс пароля, см.по адресу: http://go.microsoft.com/fwlink/?LinkID=320771
+                //Отправка сообщения электронной почты с этой ссылкой
+                string token = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action(nameof(ResetPassword), "Account", new { userId = user.Id, token }, protocol: Request.Url.Scheme);
 
-				var emailModel = new
-				{
-					UserName = user.UserName,
-					CallbackUrl = callbackUrl
-				};
+                var emailModel = new
+                {
+                    UserName = user.UserName,
+                    CallbackUrl = callbackUrl
+                };
 
-				string body = EmailBodyFactory.GetEmailBody(emailModel, "ForgotPassword");
-				await UserManager.SendEmailAsync(user.Id, "Відновлення пароля", body);
-				_logger.Debug("Send verification email to {0} for reset password.", user.UserName);
+                string body = EmailBodyFactory.GetEmailBody(emailModel, "ForgotPassword");
+                await UserManager.SendEmailAsync(user.Id, "Відновлення пароля", body);
+                _logger.Debug("Send verification email to {0} for reset password.", user.UserName);
 
-				return View("ForgotPasswordConfirmation");
-			}
+                return View("ForgotPasswordConfirmation");
+            }
 
-			// Появление этого сообщения означает наличие ошибки; повторное отображение формы
-			return View(model);
-		}
+            // Появление этого сообщения означает наличие ошибки; повторное отображение формы
+            return View(model);
+        }
 
-		//
-		// GET: /Account/ResetPassword
-		[AllowAnonymous]
-		public ActionResult ResetPassword(int userId, string token)
-		{
-			var model = new ResetPasswordViewModel()
-			{
-				Token = token,
-				UserId = userId
-			};
+        //
+        // GET: /Account/ResetPassword
+        [AllowAnonymous]
+        public ActionResult ResetPassword(int userId, string token)
+        {
+            var model = new ResetPasswordViewModel()
+            {
+                Token = token,
+                UserId = userId
+            };
 
-			return token == null ? View("Error") : View(model);
-		}
+            return token == null ? View("Error") : View(model);
+        }
 
-		//
-		// POST: /Account/ResetPassword
-		[HttpPost]
-		[AllowAnonymous]
-		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
-		{
-			if (ModelState.IsValid)
-			{
-				var result = await UserManager.ResetPasswordAsync(model.UserId, model.Token, model.NewPassword);
-				if (result.Succeeded)
-				{
-					_logger.Info("User \"{0}\" reseted password.", User.Identity.Name);
-					return View("Login");
-				}
+        //
+        // POST: /Account/ResetPassword
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await UserManager.ResetPasswordAsync(model.UserId, model.Token, model.NewPassword);
+                if (result.Succeeded)
+                {
+                    _logger.Info("User \"{0}\" reseted password.", User.Identity.Name);
+                    return View("Login");
+                }
 
-				AddErrors(result);
-			}
+                AddErrors(result);
+            }
 
-			return View(model);
-		}
+            return View(model);
+        }
 
-		#region Helpers
-		private IAuthenticationManager AuthenticationManager
-		{
-			get
-			{
-				return HttpContext.GetOwinContext().Authentication;
-			}
-		}
+        #region Helpers
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
 
-		private async Task SignInAsync(ApplicationUser user, bool isPersistent)
-		{
-			AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-			var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
-			AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
-		}
+        private async Task SignInAsync(ApplicationUser user, bool isPersistent)
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+            var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+            AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
+        }
 
-		private ActionResult RedirectToLocal(string returnUrl)
-		{
-			if (Url.IsLocalUrl(returnUrl))
-			{
-				return Redirect(returnUrl);
-			}
-			else
-			{
-				return RedirectToAction("Index", "Home");
-			}
-		}
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
 
-		private void AddErrors(IdentityResult result)
-		{
-			foreach (var error in result.Errors)
-				ModelState.AddModelError("", error);
-		}
-		#endregion
-	}
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+                ModelState.AddModelError("", error);
+        }
+        #endregion
+    }
 }

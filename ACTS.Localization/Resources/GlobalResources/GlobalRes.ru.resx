@@ -342,4 +342,19 @@
   <data name="BlogMaterials" xml:space="preserve">
     <value>Материалы для студентов</value>
   </data>
+  <data name="PersonalPage" xml:space="preserve">
+    <value>Персональная страница</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Английский</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="Russian" xml:space="preserve">
+    <value>Русский</value>
+  </data>
+  <data name="Ukrainian" xml:space="preserve">
+    <value>Украинский</value>
+  </data>
 </root>
