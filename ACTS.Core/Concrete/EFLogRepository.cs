@@ -12,13 +12,13 @@ namespace ACTS.Core.Concrete
 {
 	public class EFLogRepository : ILogRepository
 	{
-		private EFDbContext context = new EFDbContext();
+		private EFDbContext _context = new EFDbContext();
 
 		public IQueryable<LogEntry> LastMonthLogs
 		{
 			get
 			{
-				return context.LogEntries.Where(log => DbFunctions.DiffDays(log.UtcDate, DateTime.UtcNow) < 30);
+				return _context.LogEntries.Where(log => DbFunctions.DiffDays(log.UtcDate, DateTime.UtcNow) < 30);
 			}
 		}
 
@@ -26,7 +26,7 @@ namespace ACTS.Core.Concrete
 		{
 			get
 			{
-				return context.LogEntries.Where(log => DbFunctions.DiffDays(log.UtcDate, DateTime.UtcNow) < 7);
+				return _context.LogEntries.Where(log => DbFunctions.DiffDays(log.UtcDate, DateTime.UtcNow) < 7);
 			}
 		}
 
@@ -34,28 +34,28 @@ namespace ACTS.Core.Concrete
 		{
 			get
 			{
-				return context.LogEntries;
+				return _context.LogEntries;
 			}
 		}
 
 		public IQueryable<LogEntry> LastLogsByNomDays(double nomDays)
 		{
-			return context.LogEntries.Where(log => DbFunctions.DiffDays(log.UtcDate, DateTime.UtcNow) < nomDays);
+			return _context.LogEntries.Where(log => DbFunctions.DiffDays(log.UtcDate, DateTime.UtcNow) < nomDays);
 		}
 
 		public IQueryable<LogEntry> LastLogsByNomDaysAndLevel(double nomDays, LogLevel level)
 		{
-			return context.LogEntries.Where(log => DbFunctions.DiffDays(log.UtcDate, DateTime.UtcNow) < nomDays && log.Level >= level);
+			return _context.LogEntries.Where(log => DbFunctions.DiffDays(log.UtcDate, DateTime.UtcNow) < nomDays && log.Level >= level);
 		}
 
 		public IQueryable<LogEntry> GetByDateAndLevel(DateTime start, DateTime end, LogLevel level)
 		{
-			return context.LogEntries.Where(log => log.UtcDate >= start && log.UtcDate <= end && log.Level >= level);
+			return _context.LogEntries.Where(log => log.UtcDate >= start && log.UtcDate <= end && log.Level >= level);
 		}
 
 		public IQueryable<LogEntry> LastLogsByDateAndLevel(DateTime fromData, LogLevel level)
 		{
-			return context.LogEntries.Where(log => log.UtcDate >= fromData && log.Level >= level);
+			return _context.LogEntries.Where(log => log.UtcDate >= fromData && log.Level >= level);
 		}
 	} 
 }

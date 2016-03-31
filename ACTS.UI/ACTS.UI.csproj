@@ -376,6 +376,7 @@
     <Content Include="Areas\Peoples\Views\PersonalPage\Index.cshtml" />
     <Content Include="Areas\Peoples\Views\Shared\_PersonalPageNavigation.cshtml" />
     <Content Include="Areas\Peoples\Views\Blog\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Event\TableEvent.cshtml" />
     <None Include="EmailTemplates\ConfirmRegistration.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -696,6 +697,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EventController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoggingController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeeController.cs" />
@@ -720,6 +722,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Models\ChangeUserNameViewModel.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\ForEnrolleeController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\ForStudentController.cs" />
@@ -809,6 +812,7 @@
     <Folder Include="Scripts\actsScripts\" />
     <Folder Include="Views\Blog\" />
     <Folder Include="Views\Employee\Enrollee\" />
+    <Folder Include="Views\Event\" />
     <Folder Include="Views\ForEnrollee\" />
     <Folder Include="Views\ForStudent\" />
     <Folder Include="Views\Science\" />

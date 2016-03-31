@@ -156,6 +156,9 @@
   <data name="AreYouSure" xml:space="preserve">
     <value>Are you sure you want to do this?</value>
   </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Blog</value>
+  </data>
   <data name="BlogAddPost" xml:space="preserve">
     <value>Add Post</value>
   </data>
@@ -170,6 +173,9 @@
   </data>
   <data name="BlogMain" xml:space="preserve">
     <value>Main</value>
+  </data>
+  <data name="BlogMaterials" xml:space="preserve">
+    <value>Materials for students</value>
   </data>
   <data name="BlogProjects" xml:space="preserve">
     <value>Projects</value>
@@ -254,6 +260,9 @@
   </data>
   <data name="CreateNewEmployee" xml:space="preserve">
     <value>Create new employee</value>
+  </data>
+  <data name="CreateNewEvent" xml:space="preserve">
+    <value>Create new event</value>
   </data>
   <data name="CreateNewNews" xml:space="preserve">
     <value>Create new news</value>
@@ -354,6 +363,18 @@
   <data name="English" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="EventCreatedMsg" xml:space="preserve">
+    <value>Event with name "{0}" successfully created.</value>
+  </data>
+  <data name="EventDeletedMsg" xml:space="preserve">
+    <value>Event with title "{0}" successfully deleted.</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="EventSavedMsg" xml:space="preserve">
+    <value>Event with title "{0}" successfully saved.</value>
+  </data>
   <data name="Exception" xml:space="preserve">
     <value>Exception</value>
   </data>
@@ -417,6 +438,9 @@
   <data name="IntellectUrl" xml:space="preserve">
     <value>Intellect URL</value>
   </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>Is active</value>
+  </data>
   <data name="KPI" xml:space="preserve">
     <value>KPI</value>
   </data>
@@ -477,6 +501,9 @@
   <data name="NewsSavedMsg" xml:space="preserve">
     <value>News with title "{0}" successfully saved.</value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="None" xml:space="preserve">
     <value>None</value>
   </data>
@@ -494,6 +521,9 @@
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="PersonalPage" xml:space="preserve">
+    <value>Personal page</value>
   </data>
   <data name="Placement" xml:space="preserve">
     <value>Placement</value>
@@ -521,6 +551,9 @@
   </data>
   <data name="Roles" xml:space="preserve">
     <value>Roles</value>
+  </data>
+  <data name="Russian" xml:space="preserve">
+    <value>Russian</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
@@ -579,10 +612,13 @@
   <data name="TableOfEmployees" xml:space="preserve">
     <value>Table of employees</value>
   </data>
+  <data name="TableOfEvent" xml:space="preserve">
+    <value>Table of events</value>
+  </data>
   <data name="TableOfNews" xml:space="preserve">
     <value>Table of news</value>
   </data>
-  <data name="TableOfTeacher" xml:space="preserve">
+  <data name="TableOfTeachers" xml:space="preserve">
     <value>Table of teacher</value>
   </data>
   <data name="Tables" xml:space="preserve">
@@ -608,6 +644,9 @@
   </data>
   <data name="TeachingStaff" xml:space="preserve">
     <value>Teaching staff</value>
+  </data>
+  <data name="TimeRange" xml:space="preserve">
+    <value>Time range</value>
   </data>
   <data name="tinymcePath" xml:space="preserve">
     <value>~/bundles/tinymce</value>
@@ -669,16 +708,7 @@
   <data name="VkontakteUrl" xml:space="preserve">
     <value>Vkontakte URL</value>
   </data>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
-  </data>
-  <data name="BlogMaterials" xml:space="preserve">
-    <value>Materials for students</value>
-  </data>
-  <data name="PersonalPage" xml:space="preserve">
-    <value>Personal page</value>
-  </data>
-  <data name="Russian" xml:space="preserve">
-    <value>Russian</value>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

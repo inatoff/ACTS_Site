@@ -10,21 +10,21 @@ namespace ACTS.Core.Concrete
 {
 	public class EFEmployeeRepository : IEmployeeRepository
 	{
-		private EFDbContext context = new EFDbContext();
+		private EFDbContext _context = new EFDbContext();
 
 		public IQueryable<Employee> Employees
 		{
-			get { return context.Employees; }
+			get { return _context.Employees; }
 		}
 
 		public void SaveEmployee(Employee employee)
 		{
 			if (employee.EmployeeId == 0)
 			{
-				context.Employees.Add(employee);
+				_context.Employees.Add(employee);
 			} else
 			{
-				Employee dbEntry = context.Employees.Find(employee.EmployeeId);
+				Employee dbEntry = _context.Employees.Find(employee.EmployeeId);
 				if (dbEntry != null)
 				{
 					dbEntry.FullName = employee.FullName;
@@ -34,28 +34,28 @@ namespace ACTS.Core.Concrete
 				}
 			}
 
-			context.SaveChanges();
+			_context.SaveChanges();
 		}
 
 		public Employee DeleteEmployee(int employeeId)
 		{
-			Employee dbEntry = context.Employees.Find(employeeId);
+			Employee dbEntry = _context.Employees.Find(employeeId);
 			if (dbEntry != null)
 			{
-				context.Employees.Remove(dbEntry);
-				context.SaveChanges();
+				_context.Employees.Remove(dbEntry);
+				_context.SaveChanges();
 			}
 			return dbEntry;
 		}
 
 		public Employee GetEmployeeById(int employeeId)
 		{
-			return Employees.FirstOrDefault(p => p.EmployeeId == employeeId);
+			return _context.Employees.Find(employeeId);
 		}
 
 		public void UpdateEmployee(Employee employee)
 		{
-			Employee dbEntry = context.Employees.Find(employee.EmployeeId);
+			Employee dbEntry = _context.Employees.Find(employee.EmployeeId);
 			if (dbEntry != null)
 			{
 				dbEntry.FullName = employee.FullName;
@@ -64,13 +64,13 @@ namespace ACTS.Core.Concrete
 				dbEntry.PhotoMimeType = employee.PhotoMimeType;
 			}
 
-			context.SaveChanges();
+			_context.SaveChanges();
 		}
 
 		public void CreateEmployee(Employee employee)
 		{
-			context.Employees.Add(employee);
-			context.SaveChanges();
+			_context.Employees.Add(employee);
+			_context.SaveChanges();
 		}
 	}
 }
