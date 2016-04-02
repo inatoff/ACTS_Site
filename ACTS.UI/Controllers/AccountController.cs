@@ -103,12 +103,12 @@ namespace ACTS.UI.Controllers
                 switch (signInResult)
                 {
                     case SignInStatus.Success:
-                        _logger.Trace("User {0} is logged in.", userName);
+                        _logger.Trace($"User {userName} is logged in.");
                         return RedirectToLocal(returnUrl);
 
                     case SignInStatus.LockedOut:
                         ModelState.AddModelError("", GlobalRes.AccountLockedMsg);
-                        _logger.Trace("Account with username \"{0}\" locked. The number of attempts has exceeded {1}.", userName, UserManager.MaxFailedAccessAttemptsBeforeLockout);
+                        _logger.Trace($"Account with username \"{userName}\" locked. The number of attempts has exceeded {UserManager.MaxFailedAccessAttemptsBeforeLockout}.");
                         break;
 
                     //case SignInStatus.RequiresVerification:
@@ -116,13 +116,14 @@ namespace ACTS.UI.Controllers
 
                     case SignInStatus.Failure:
                         ModelState.AddModelError("", GlobalRes.IncorrectUserNameOrPasswordMsg);
-                        _logger.Trace("Failed login attempt with EmailOrUserName = {0}.", model.EmailOrUserName);
+                        _logger.Trace($"Failed login attempt with EmailOrUserName = {model.EmailOrUserName}.");
                         break;
 
                     // я думаю это не достижимый код, но пускай будет
+                    // все правильно, лучше перебдеть, чем недобдеть. 
                     default:
                         ModelState.AddModelError("", GlobalRes.FailedLoginAttemptsMsg);
-                        _logger.Trace("Failed login attempt with EmailOrUserName = {0}.", model.EmailOrUserName);
+                        _logger.Trace($"Failed login attempt with EmailOrUserName = {model.EmailOrUserName}.");
                         break;
                 }
             }
@@ -139,7 +140,7 @@ namespace ACTS.UI.Controllers
         {
             var userName = User.Identity.Name;
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            _logger.Trace("User {0} is logged out.", userName);
+            _logger.Trace($"User {userName} is logged out.");
 
             return RedirectToAction("Index", "Home");
         }
@@ -201,7 +202,7 @@ namespace ACTS.UI.Controllers
                 if (user == null)
                     // Не показывать, что пользователь не существует или не подтвержден
                     return View("ForgotPasswordConfirmation");
-                _logger.Trace("User \"{0}\" send request to reset password.", user.UserName);
+                _logger.Trace($"User \"{user.UserName}\" send request to reset password.");
 
                 //Дополнительные сведения о том, как включить подтверждение учетной записи и сброс пароля, см.по адресу: http://go.microsoft.com/fwlink/?LinkID=320771
                 //Отправка сообщения электронной почты с этой ссылкой
@@ -216,7 +217,7 @@ namespace ACTS.UI.Controllers
 
                 string body = EmailBodyFactory.GetEmailBody(emailModel, "ForgotPassword");
                 await UserManager.SendEmailAsync(user.Id, "Відновлення пароля", body);
-                _logger.Debug("Send verification email to {0} for reset password.", user.UserName);
+                _logger.Debug($"Send verification email to {user.UserName} for reset password.");
 
                 return View("ForgotPasswordConfirmation");
             }
@@ -251,7 +252,7 @@ namespace ACTS.UI.Controllers
                 var result = await UserManager.ResetPasswordAsync(model.UserId, model.Token, model.NewPassword);
                 if (result.Succeeded)
                 {
-                    _logger.Info("User \"{0}\" reseted password.", User.Identity.Name);
+                    _logger.Info($"User \"{User.Identity.Name}\" reseted password.");
                     return View("Login");
                 }
 

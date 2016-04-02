@@ -357,4 +357,7 @@
   <data name="Ukrainian" xml:space="preserve">
     <value>Украинский</value>
   </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Администрирование</value>
+  </data>
 </root>

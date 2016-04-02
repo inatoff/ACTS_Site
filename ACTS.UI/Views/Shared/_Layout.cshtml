@@ -22,30 +22,26 @@
     <title>@ViewBag.Title</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="~/Content/css/MainPage.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css/")
+    @Styles.Render("~/Content/css/MainPage")
 </head>
 <body style="height:100%">         
-    
-        <div id="carousel" class="carousel slide" data-ride="carousel">
-
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img src="~/Content/Images/actsSlide1.jpg" alt="First slide">
-                </div>
-                <div class="item">
-                    <img src="~/Content/Images/actsSlide2.jpg" alt="Second slide">
-                </div>
-                <div class="item">
-                    <img src="~/Content/Images/actsSlide3.jpg" alt="Third slide">
-                </div>
-                <div class="item">
-                    <img src="~/Content/Images/actsSlide4.jpg" alt="Third slide">
-                </div>
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="~/Content/Images/actsSlide1.jpg" alt="First slide">
             </div>
-        </div> 
+            <div class="item">
+                <img src="~/Content/Images/actsSlide2.jpg" alt="Second slide">
+            </div>
+            <div class="item">
+                <img src="~/Content/Images/actsSlide3.jpg" alt="Third slide">
+            </div>
+            <div class="item">
+                <img src="~/Content/Images/actsSlide4.jpg" alt="Third slide">
+            </div>
+        </div>
+    </div> 
     <div class="nav-container">
         <nav class="menu navbar navbar-default navbar-static-top" role="navigation">
             <div class="container nav-row">

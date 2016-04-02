@@ -1,4 +1,5 @@
 ﻿using ACTS.Core.Entities;
+using ACTS.Localization.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,40 +18,44 @@ namespace ACTS.UI.Areas.Peoples.Models
         [EmailAddress]
         public string Email { get; set; }
 
-        [Display(Name = "Visible only for site administration")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessageResourceName = nameof(EmailAddressRes.EmailErrMsg), ErrorMessageResourceType = typeof(EmailAddressRes))]
+        [Display(Name = nameof(DisplayRes.EmailName), ResourceType = typeof(DisplayRes))]
         public string AccountEmail { get; set; }
 
         [HiddenInput]
         public string Slug { get; set; }
 
         [Required]
-        [Display(Name = "Your current password")]
+        [Display(Name = nameof(DisplayRes.PasswordName), ResourceType = typeof(DisplayRes))]
         public string Password { get; set; }
 
-        [Display(Name = "New Password")]
+        [Display(Name = nameof(DisplayRes.NewPasswordName), ResourceType = typeof(DisplayRes))]
         public string NewPassword { get; set; }
 
-        [Display(Name = "Confirm Password")]
+        [Display(Name = nameof(DisplayRes.ConfirmPasswordName), ResourceType = typeof(DisplayRes))]
         [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessage = "Passwords are not the same")]
         public string ConfirmPassword { get; set; }
          
+        [Display(Name = nameof(DisplayRes.Greetings), ResourceType = typeof(DisplayRes))]
+        public string Greetings { get; set; }
+
         [Url]
-        [Display(Name = "Intellect url")]
+        [Display(Name = nameof(DisplayRes.IntellectName), ResourceType = typeof(DisplayRes))]
         public string Intellect { get; set; }
 
         [Url]
-        [Display(Name = "Vkontakte url")]
+        [Display(Name = nameof(DisplayRes.VkontakteName), ResourceType = typeof(DisplayRes))]
         public string Vk { get; set; }
 
         [Url]
-        [Display(Name = "Facebook url")]
+        [Display(Name = nameof(DisplayRes.FacebookName), ResourceType = typeof(DisplayRes))]
         public string Facebook { get; set; }
 
         [Url]
-        [Display(Name = "Twitter url")]
-        public string Twitter { get; set; }  
-        
+        [Display(Name = nameof(DisplayRes.TwitterName), ResourceType = typeof(DisplayRes))]
+        public string Twitter { get; set; }
+
+
         public IList<string> Disciplines { get; set; }
 
         public IList<string> ScienceInterests { get; set; }

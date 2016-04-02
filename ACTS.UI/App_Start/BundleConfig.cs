@@ -18,6 +18,9 @@ namespace ACTS.UI
 				.Include("~/Scripts/jquery.validate.unobtrusive.js")
 				.Include("~/Scripts/Admin/validationOptions.js"));
 
+            bundles.Add(new ScriptBundle("~/bundels/jqery-unobtrusive-ajax")
+                .Include("~/Scripts/jquery.unobtrusive-ajax.js"));
+
 			bundles.Add(new ScriptBundle("~/bundles/expressive")
 				.Include("~/Scripts/expressive.annotations.validate.js"));
 
@@ -27,6 +30,9 @@ namespace ACTS.UI
 			bundles.Add(new ScriptBundle("~/bundles/admin")
 				//.Include("~/Scripts/jquery.slimscroll.js")
 				.Include("~/Scripts/app.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/personalPage")
+                .Include("~/Scripts/actsScripts/personalPageScripts.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/tinymce")
 				.Include("~/Scripts/tinymce/tinymce.js")
@@ -77,9 +83,12 @@ namespace ACTS.UI
 
 			#region Styles
 
-			bundles.Add(new StyleBundle("~/Content/css")
+			bundles.Add(new StyleBundle("~/Content/css/")
 				.Include("~/Content/bootstrap.css",
 						"~/Content/font-awesome.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/personal")
+                .Include("~/Content/css/PersonalPageStyle.css"));
 
 			bundles.Add(new StyleBundle("~/Content/css/admin")
 				.Include("~/Content/skins/_all-skins.css",
@@ -101,6 +110,9 @@ namespace ACTS.UI
 			bundles.Add(new StyleBundle("~/Content/css/daterange")
 				.Include("~/Content/daterangepicker.css"));
 
+            bundles.Add(new StyleBundle("~/Content/css/MainPage")
+                .Include("~/Content/css/Site.css")
+                .Include("~/Content/css/MainPage.css"));
 			#endregion
 		}
 	}

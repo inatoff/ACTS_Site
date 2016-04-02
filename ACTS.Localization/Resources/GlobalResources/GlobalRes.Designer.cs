@@ -133,7 +133,7 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Адмін.
+        ///   Looks up a localized string similar to Адміністрування.
         /// </summary>
         public static string Admin {
             get {

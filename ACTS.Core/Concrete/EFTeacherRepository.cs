@@ -41,6 +41,7 @@ namespace ACTS.Core.Concrete
 					dbEntry.Position = teacher.Position;
 					dbEntry.Degree = teacher.Degree;
                     dbEntry.Rank = teacher.Rank;
+                    dbEntry.Greetings = teacher.Greetings;
 					dbEntry.Photo = teacher.Photo;
 					dbEntry.PhotoMimeType = teacher.PhotoMimeType;
 					dbEntry.Email = teacher.Email;

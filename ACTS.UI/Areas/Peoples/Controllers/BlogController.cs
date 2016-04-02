@@ -1,8 +1,12 @@
 ﻿using ACTS.Core.Abstract;
 using ACTS.Core.Concrete;
 using ACTS.Core.Entities;
+using ACTS.Localization.Resources;
+using ACTS.UI.Areas.Peoples.Models;
 using ACTS.UI.Helpers;
+using ACTS.UI.Models;
 using Microsoft.AspNet.Identity;
+using Ninject.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +22,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
         // GET: Peoples/Blog
         private readonly IBlogRepository _blogRepo;
         private readonly ITeacherRepository _teacherRepo;
-
+        private readonly ILogger _logger;
         public ApplicationUserManager UserManager
         {
             get { return new ApplicationUserManager(); }
@@ -29,14 +33,24 @@ namespace ACTS.UI.Areas.Peoples.Controllers
             get { return User.Identity.GetUserId<int>(); }
         }
 
-        public BlogController(IBlogRepository blogRepo, ITeacherRepository teacherRepo)
+        public BlogController(IBlogRepository blogRepo, ITeacherRepository teacherRepo, ILoggerFactory loggerFactory)
         {
             _blogRepo = blogRepo;
             _teacherRepo = teacherRepo;
+            _logger = loggerFactory.GetCurrentClassLogger();
         }
 
         [AllowAnonymous]
-        public ActionResult Index(string nameSlug)
+        public async Task<ActionResult> PersonalPage(string nameSlug)
+        {           
+            var model = await GetPersonalPage(nameSlug);
+            ViewBag.Teacher = model;
+            if (model != null) return View(model);
+            else return new HttpNotFoundResult();
+        }
+
+        [AllowAnonymous]
+        public ActionResult Blog(string nameSlug)
         {
             var blog = _blogRepo.GetBlogByAuthorNameSlug(nameSlug);
             return blog != null ? View(blog) : HttpNotFound() as ActionResult;
@@ -160,6 +174,42 @@ namespace ACTS.UI.Areas.Peoples.Controllers
             {
                 return HttpNotFound();
             }
+        }
+        
+        [HttpPost]
+        public async Task<ActionResult> GetPersonalPageViewModelJsonAsync(string nameSlug)
+        {
+            var model = await GetPersonalPage(nameSlug);
+            if (model != null) return Json(model);
+            else return new HttpNotFoundResult();
+        }
+
+        private async Task<PersonalPageViewModel> GetPersonalPage(string nameSlug)
+        {
+            return new PersonalPageViewModel(await _teacherRepo.GetTeacherByUrlSlugAsync(nameSlug));
+        }
+
+        [AllowAnonymous]
+        public PartialViewResult Navigation(string name)
+        {
+            List<MenuLinkItem> Items = new List<MenuLinkItem>();
+            if (User.IsInRole("Teacher") && User.Identity.Name == name)
+            {
+                Items.Add(new MenuLinkItem()
+                {
+                    Text = GlobalRes.BlogEditProfile,
+                    Action = "Edit",
+                    RouteInfo = new { controller = "Profile", area = "Peoples" }
+                });
+                Items.Add(new MenuLinkItem()
+                {
+                    Text = GlobalRes.Logout,
+                    Action = "Logout",
+                    RouteInfo = new { controller = "Account", area = "" }
+                });
+            }
+            return PartialView("MenuLinkItem", Items);
+
         }
     }
 }

@@ -5,6 +5,7 @@ using ACTS.Core.Identity;
 using ACTS.UI.Areas.Peoples.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Ninject.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,11 @@ namespace ACTS.UI.Areas.Peoples.Controllers
 
         // GET: Peoples/Profile
         private ITeacherRepository teacherRepository;
-
-        public ProfileController(ITeacherRepository teacherRepo)
+        private readonly ILogger _logger;
+        public ProfileController(ITeacherRepository teacherRepo, ILoggerFactory loggerFactory)
         {
             teacherRepository = teacherRepo;
-            
+            _logger = loggerFactory.GetCurrentClassLogger();
         }
 
         public int CurrentUserId
@@ -60,6 +61,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                     Email = currentTeacher.Email,
                     Slug = currentTeacher.NameSlug,
                     Degree = currentTeacher.Degree,
+                    Greetings = currentTeacher.Greetings,
                     Intellect = currentTeacher.Intellect,
                     Facebook = currentTeacher.Facebook,
                     Vk = currentTeacher.Vk,
@@ -98,6 +100,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                             if (result.Succeeded)
                             {
                                 //TODO: Messenger
+                                _logger.Trace($"{currentUser.UserName} succesfully changed password");
                             }
                             else
                             {
@@ -105,11 +108,13 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                                 {
                                     ModelState.AddModelError("Password", item);
                                 }
+                                _logger.Trace($"{currentUser.UserName} failed password change");
                             }
                         }
                         //TODO: Messenger
                         currentTeacher.Degree = model.Degree;
                         currentTeacher.Email = model.Email;
+                        currentTeacher.Greetings = model.Greetings;
                         currentTeacher.Intellect = model.Intellect;
                         currentTeacher.Vk = model.Vk;
                         currentTeacher.Facebook = model.Facebook;
@@ -119,6 +124,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                         currentTeacher.Publications = model.Publications;
                         currentTeacher.ScienceInterests = model.ScienceInterests;
                         teacherRepository.UpdateTeacher(currentTeacher);
+                        _logger.Trace($"Teacher {currentTeacher.FullName} updated profile");
                     }
                 }
                 return View("Edit",model);
@@ -143,19 +149,15 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                 if (currentUser.Teacher.Blog != null)
                 {
                     //TODO: Message you already have a blog
-                    return RedirectToAction("Index", "PersonalPage", new { nameSlug = currentUser.Teacher.NameSlug });
+                    return RedirectToAction("PersonalPage", "Blog", new { nameSlug = currentUser.Teacher.NameSlug });
                 }
                 else
                 {
                     await teacherRepository.InitPersonalPage(currentUser.Teacher);
-                    return RedirectToAction("Index","PersonalPage", new { nameSlug = currentUser.Teacher.NameSlug });
+                    _logger.Trace($"{currentUser.Teacher.FullName} initialized personal page");
+                    return RedirectToAction("PersonalPage", "Blog", new { nameSlug = currentUser.Teacher.NameSlug });
                 }
             }
-        }
-
-        public ActionResult Index(string nameSlug)
-        {
-            return View();
         }
     }
 }

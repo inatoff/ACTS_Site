@@ -20,8 +20,11 @@
     <div class="personDescription">
         <p>Степень:@Model.Degree</p>
         <p><strong>Дисциплины:</strong></p>
-        @*<ul>
+        @if (Model.Disciplines != null && Model.Disciplines.Count > 0)
+        {
+            <ul>
                 @{
+
                     foreach (var item in Model.Disciplines)
                     {
                         <li>
@@ -40,10 +43,11 @@
                         </li>
                     }
                 }
-            </ul>*@
-        @*@if (Model != null && Model.Blog != null)
+            </ul>
+        }
+        @if (Model != null && Model.Blog != null)
         {
-            @Html.Action("Персональная страница", "Index", new { area = "Peoples", controller = "PersonalPage", nameSlug = Model.NameSlug })
-        }*@
+            @Html.Action("Персональная страница", "Index", new { area = "Peoples", controller = "Blog", nameSlug = Model.NameSlug })
+        }
     </div>
 </div>

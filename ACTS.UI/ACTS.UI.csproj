@@ -208,6 +208,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\MainPage.css" />
     <Content Include="Content\css\PersonalPageLayoutStyles.css" />
+    <Content Include="Content\css\PersonalPageStyle.css" />
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.min.css" />
     <Content Include="Content\dataTables.bootstrap.css" />
@@ -339,6 +340,7 @@
     <Content Include="Content\Images\icon-admin_user-blue.png" />
     <Content Include="Content\Images\photo-48800844_383355910.jpg" />
     <Content Include="Content\Images\ru.png" />
+    <Content Include="Content\Images\square_bg.png" />
     <Content Include="Content\Images\uk.png" />
     <Content Include="Content\Images\фон3.jpg" />
     <Content Include="Content\Images\фон4.jpg" />
@@ -370,12 +372,13 @@
     <Content Include="Content\skins\_all-skins.css" />
     <Content Include="Content\skins\_all-skins.min.css" />
     <Content Include="Content\Images\logo.png" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\css\Site.css" />
     <Content Include="Areas\Admin\Views\Logging\Logging.cshtml" />
     <Content Include="Areas\Peoples\Views\Profile\Index.cshtml" />
-    <Content Include="Areas\Peoples\Views\PersonalPage\Index.cshtml" />
     <Content Include="Areas\Peoples\Views\Shared\_PersonalPageNavigation.cshtml" />
     <Content Include="Areas\Peoples\Views\Blog\Index.cshtml" />
+    <Content Include="Areas\Peoples\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Peoples\Views\Blog\PersonalPage.cshtml" />
     <None Include="EmailTemplates\ConfirmRegistration.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -400,6 +403,7 @@
     <Content Include="Areas\Admin\Views\Employee\CreateEmployee.cshtml" />
     <Content Include="Areas\Admin\Views\Teacher\CreateTeacher.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartialUser.cshtml" />
+    <Content Include="Scripts\actsScripts\personalPageScripts.js" />
     <Content Include="Scripts\Admin\initDateRange.js" />
     <Content Include="Scripts\Admin\initDateRange_uk.js" />
     <Content Include="Scripts\Admin\fileinputOptions_uk.js" />
@@ -487,6 +491,9 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="EmailTemplates\ForgotPassword.cshtml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
@@ -500,11 +507,16 @@
     </None>
     <Content Include="Areas\Peoples\Views\Profile\Edit.cshtml" />
     <Content Include="Areas\Peoples\Views\Shared\_PersonalPageLayout.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Main\personInfoWrapper.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
@@ -711,7 +723,6 @@
     <Compile Include="Areas\Admin\Models\MyAccountViewModel.cs" />
     <Compile Include="Areas\Admin\Models\RoleItem.cs" />
     <Compile Include="Areas\Peoples\Controllers\BlogController.cs" />
-    <Compile Include="Areas\Peoples\Controllers\PersonalPageController.cs" />
     <Compile Include="Areas\Peoples\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Peoples\Models\PersonalPageViewModel.cs" />
     <Compile Include="Areas\Peoples\Models\TeacherAccountViewModel.cs" />
@@ -806,7 +817,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
-    <Folder Include="Scripts\actsScripts\" />
     <Folder Include="Views\Blog\" />
     <Folder Include="Views\Employee\Enrollee\" />
     <Folder Include="Views\ForEnrollee\" />
