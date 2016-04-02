@@ -255,6 +255,9 @@
   <data name="CreateEmployee" xml:space="preserve">
     <value>Створити робітника</value>
   </data>
+  <data name="CreateEvent" xml:space="preserve">
+    <value>Створити подію</value>
+  </data>
   <data name="CreateNewAccount" xml:space="preserve">
     <value>Створити новий обліковий запис</value>
   </data>
@@ -330,6 +333,9 @@
   <data name="EditEmployee" xml:space="preserve">
     <value>Редагувати робітника</value>
   </data>
+  <data name="EditEvent" xml:space="preserve">
+    <value>Редагувати подію</value>
+  </data>
   <data name="EditNews" xml:space="preserve">
     <value>Редагувати новину</value>
   </data>
@@ -362,6 +368,9 @@
   </data>
   <data name="English" xml:space="preserve">
     <value>Англійська</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>Подія</value>
   </data>
   <data name="EventCreatedMsg" xml:space="preserve">
     <value>Подія з заголовком "{0}" успішно створена.</value>
@@ -677,6 +686,9 @@
   </data>
   <data name="UpdateUserName" xml:space="preserve">
     <value>Обновити ім'я користувача</value>
+  </data>
+  <data name="UploadNewImage" xml:space="preserve">
+    <value>Завантажити нову картинку</value>
   </data>
   <data name="UploadNewPhoto" xml:space="preserve">
     <value>Завантажити нову фотографію</value>

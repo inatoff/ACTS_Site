@@ -475,6 +475,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Створити подію.
+        /// </summary>
+        public static string CreateEvent {
+            get {
+                return ResourceManager.GetString("CreateEvent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Створити новий обліковий запис.
         /// </summary>
         public static string CreateNewAccount {
@@ -700,6 +709,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Редагувати подію.
+        /// </summary>
+        public static string EditEvent {
+            get {
+                return ResourceManager.GetString("EditEvent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Редагувати новину.
         /// </summary>
         public static string EditNews {
@@ -795,6 +813,15 @@ namespace ACTS.Localization.Resources {
         public static string English {
             get {
                 return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Подія.
+        /// </summary>
+        public static string Event {
+            get {
+                return ResourceManager.GetString("Event", resourceCulture);
             }
         }
         
@@ -1740,6 +1767,15 @@ namespace ACTS.Localization.Resources {
         public static string UpdateUserName {
             get {
                 return ResourceManager.GetString("UpdateUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Завантажити нову картинку.
+        /// </summary>
+        public static string UploadNewImage {
+            get {
+                return ResourceManager.GetString("UploadNewImage", resourceCulture);
             }
         }
         

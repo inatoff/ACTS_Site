@@ -33,6 +33,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		public ActionResult Edit(int eventId)
 		{
 			Event @event = _repository.GetEventById(eventId);
+			@event.StartView = @event.StartView?.ToLocalTime();
+			@event.EndView = @event.EndView?.ToLocalTime();
 			return View("EditEvent", @event);
 		}
 
@@ -42,6 +44,14 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
+				if (image != null)
+				{
+					@event.ImageMimeType = image.ContentType;
+					@event.ImageData = new byte[image.ContentLength];
+					image.InputStream.Read(@event.ImageData, 0, image.ContentLength);
+				}
+				@event.StartView = @event.StartView?.ToUniversalTime();
+				@event.EndView = @event.EndView?.ToUniversalTime();
 				_repository.UpdateEvent(@event);
 				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.EventSavedMsg, @event.Title));
 				_logger.Info("Event \"{0}\" saved by {1}.", @event.Title, User.Identity.Name);
@@ -57,7 +67,12 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Create()
 		{
-			return View("CreateEvent");
+			var now = DateTime.Now;
+			var @event = new Event {
+				StartView = now,
+				EndView = now.AddDays(7d)
+			};
+			return View("CreateEvent", @event);
 		}
 
 		[HttpPost]
@@ -66,6 +81,14 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
+				if (image != null)
+				{
+					@event.ImageMimeType = image.ContentType;
+					@event.ImageData = new byte[image.ContentLength];
+					image.InputStream.Read(@event.ImageData, 0, image.ContentLength);
+				}
+				@event.StartView = @event.StartView?.ToUniversalTime();
+				@event.EndView = @event.EndView?.ToUniversalTime();
 				_repository.CreateEvent(@event);
 				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.EventCreatedMsg, @event.Title));
 				_logger.Info("Event \"{0}\" created by {1}.", @event.Title, User.Identity.Name);

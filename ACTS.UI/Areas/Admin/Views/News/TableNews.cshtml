@@ -77,7 +77,7 @@
 									@using (Html.BeginForm("Delete", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
 									{
 										@Html.AntiForgeryToken()
-										@Html.Hidden("NewsID", item.NewsId)
+										@Html.Hidden("NewsId", item.NewsId)
 										<ul class="list-unstyled">
 											<li><a href="@Url.Action("Edit", "News", new { item.NewsId })" class="btn btn-link"><i class="fa fa-edit">&nbsp;@GlobalRes.Edit</i></a></li>
 											<li><a href="@Url.Action("PageNews", "News", new { item.NewsId })" class="btn btn-link"><i class="fa fa-home">&nbsp;@GlobalRes.OnMain</i></a></li>

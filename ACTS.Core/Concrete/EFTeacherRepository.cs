@@ -57,13 +57,22 @@ namespace ACTS.Core.Concrete
 
 		public Teacher DeleteTeacher(int teacherId)
 		{
-			Teacher dbEntry = _context.Teachers.Find(teacherId);
-			if (dbEntry != null)
+			Teacher teacher = GetTeacherById(teacherId);
+			if (teacher != null)
 			{
-				_context.Teachers.Remove(dbEntry);
+				if (teacher.HasUser)
+					RemovePairToUser(teacherId);
+
+				if (teacher.HasBlog)
+				{
+					_context.Posts.RemoveRange(teacher.Blog.Posts);
+					_context.Blogs.Remove(teacher.Blog);
+				}
+
+				_context.Teachers.Remove(teacher);
 				_context.SaveChanges();
 			}
-			return dbEntry;
+			return teacher;
 		}
 
 

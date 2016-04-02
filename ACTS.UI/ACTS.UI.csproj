@@ -377,6 +377,8 @@
     <Content Include="Areas\Peoples\Views\Shared\_PersonalPageNavigation.cshtml" />
     <Content Include="Areas\Peoples\Views\Blog\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Event\TableEvent.cshtml" />
+    <Content Include="Areas\Admin\Views\Event\CreateEvent.cshtml" />
+    <Content Include="Areas\Admin\Views\Event\EditEvent.cshtml" />
     <None Include="EmailTemplates\ConfirmRegistration.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />

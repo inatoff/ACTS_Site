@@ -94,7 +94,7 @@
 									@using (Html.BeginForm("Delete", "Event", FormMethod.Post))
 									{
 										@Html.AntiForgeryToken()
-										@Html.HiddenFor(m => item.EventId)
+										@Html.Hidden("EventId", item.EventId)
 										<ul class="list-unstyled">
 											<li><a href="@Url.Action("Edit", "Event", new { item.EventId })" class="btn btn-link"><i class="fa fa-edit">&nbsp;@GlobalRes.Edit</i></a></li>
 											<li><a href="@Url.Action("PageNews", "Event", new { item.EventId })" class="btn btn-link"><i class="fa fa-home">&nbsp;@GlobalRes.OnMain</i></a></li>

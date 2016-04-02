@@ -255,6 +255,9 @@
   <data name="CreateEmployee" xml:space="preserve">
     <value>Create employee</value>
   </data>
+  <data name="CreateEvent" xml:space="preserve">
+    <value>Create event</value>
+  </data>
   <data name="CreateNewAccount" xml:space="preserve">
     <value>Create new account</value>
   </data>
@@ -330,6 +333,9 @@
   <data name="EditEmployee" xml:space="preserve">
     <value>Edit employee</value>
   </data>
+  <data name="EditEvent" xml:space="preserve">
+    <value>Edit event</value>
+  </data>
   <data name="EditNews" xml:space="preserve">
     <value>Edit news</value>
   </data>
@@ -362,6 +368,9 @@
   </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>Event</value>
   </data>
   <data name="EventCreatedMsg" xml:space="preserve">
     <value>Event with name "{0}" successfully created.</value>
@@ -674,6 +683,9 @@
   </data>
   <data name="UpdateUserName" xml:space="preserve">
     <value>Update user name</value>
+  </data>
+  <data name="UploadNewImage" xml:space="preserve">
+    <value>Upload new image:</value>
   </data>
   <data name="UploadNewPhoto" xml:space="preserve">
     <value>Upload new photo:</value>

@@ -1,15 +1,15 @@
 ﻿$(function () {
-	var startInput = $('#StartDate');
+	var startInput = $('.start');
 	var startMoment = moment(startInput.val(), ['MM/DD/YYYY hh:mm:ss A', 'YYYY-MM-DDTHH:mm:ssZ']);
 	startInput.val(startMoment.format());
 
-	var endInput = $('#EndDate');
+	var endInput = $('.end');
 	var endMoment = moment(endInput.val(), ['MM/DD/YYYY hh:mm:ss A', 'YYYY-MM-DDTHH:mm:ssZ']);
 	endInput.val(endMoment.format());
 
-	var dateFilter = $('#datefilter');
+	var dateRange = $('#daterange');
 
-	dateFilter.daterangepicker({
+	dateRange.daterangepicker({
 		showDropdowns: true,
 		timePicker: true,
 		startDate: startMoment,
@@ -21,6 +21,6 @@
 	function cb(start, end) {
 		startInput.val(start.format());
 		endInput.val(end.format());
-		dateFilter.html(start.format('MM/DD/YYYY hh:mm:ss A') + ' - ' + end.format('MM/DD/YYYY hh:mm:ss A'));
+		dateRange.html(start.format('MM/DD/YYYY hh:mm:ss A') + ' - ' + end.format('MM/DD/YYYY hh:mm:ss A'));
 	});
 });

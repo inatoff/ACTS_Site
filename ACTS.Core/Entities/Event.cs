@@ -22,12 +22,12 @@ namespace ACTS.Core.Entities
 		public DateTime? Modified { get; set; }
 
 		/// <summary>
-		/// Время с которого начинается показоваться событие (на сайте).
+		/// Время с которого начинается показоваться событие в UTC формате на сайте.
 		/// </summary>
 		public DateTime? StartView { get; set; }
 
 		/// <summary>
-		/// Время когда событие перестает показоваться (на сайте).
+		/// Время когда событие перестает показоваться в UTC формате на сайте.
 		/// </summary>
 		public DateTime? EndView { get; set; }
 
