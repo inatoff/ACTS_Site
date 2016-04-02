@@ -149,8 +149,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Migrations\ImagesForSeed\magisters.jpg" />
     <Content Include="Migrations\ImagesForSeed\maxresdefault.jpg" />
+    <Content Include="Migrations\ImagesForSeed\ohorodnik.jpg" />
+    <Content Include="Migrations\ImagesForSeed\periscope.jpg" />
+    <Content Include="Migrations\ImagesForSeed\sherban.jpg" />
     <Content Include="Migrations\ImagesForSeed\testImage.jpg" />
+    <Content Include="Migrations\ImagesForSeed\vlasova.jpg" />
     <Content Include="Migrations\ImagesForSeed\Новацкий.jpg" />
     <Content Include="Migrations\ImagesForSeed\Теленик.jpg" />
   </ItemGroup>
