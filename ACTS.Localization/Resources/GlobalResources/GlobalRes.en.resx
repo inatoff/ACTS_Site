@@ -444,6 +444,9 @@
   <data name="IncorrectUserNameOrPasswordMsg" xml:space="preserve">
     <value>Username (Email) or password is incorrect.</value>
   </data>
+  <data name="InDevelopment" xml:space="preserve">
+    <value>This page is under construction.</value>
+  </data>
   <data name="IntellectUrl" xml:space="preserve">
     <value>Intellect URL</value>
   </data>

@@ -165,7 +165,7 @@ namespace ACTS.Core.Migrations
 
 			var employeeRepository = new EFEmployeeRepository();
 
-			if (employeeRepository.Employees.Any())
+			if (!employeeRepository.Employees.Any())
 			{
 #if RustamPC
 				using (FileStream sherbanFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\sherban.jpg", FileMode.Open))
@@ -223,7 +223,7 @@ namespace ACTS.Core.Migrations
 
 			var newsRepository = new EFNewsRepository();
 
-			if (newsRepository.Uncos.Any())
+			if (!newsRepository.Uncos.Any())
 			{
 #if RustamPC
 				using (FileStream magistersFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\magisters.jpg", FileMode.Open))
@@ -255,7 +255,7 @@ namespace ACTS.Core.Migrations
 					newsRepository.CreateNews(new News
 					{
 						Title = "Трансляція в Periscope",
-						Content = "<h3>Онлайн трансляція урочистого відкриття конференції у Periscope за нашим twitter акаунтом @icacit15</h3>< p > &nbsp;</ p >   < p > За допомогою браузера комп &#8217;ютера <a href=\"https://www.periscope.tv/icacit15\" target=\"_blank\">https://www.periscope.tv/icacit15</a></p>< p > &nbsp;</ p >   < p > Завантажити додаток для Android < a href = \"https://play.google.com/store/apps/details?id=tv.periscope.android\" target = \"_blank\" > https://play.google.com/store/apps/details?id=tv.periscope.android</a></p>< p > Завантажити додаток для iOS < a href = \"https://itunes.apple.com/us/app/id972909677?mt=8\" target = \"_blank\" > https://itunes.apple.com/us/app/id972909677?mt=8</a></p>",
+						Content = "<h3>Онлайн трансляція урочистого відкриття конференції у Periscope за нашим twitter акаунтом @icacit15</h3><p> &nbsp;</p>   <p> За допомогою браузера комп &#8217;ютера <a href=\"https://www.periscope.tv/icacit15\" target=\"_blank\">https://www.periscope.tv/icacit15</a></p><p> &nbsp;</p>   <p> Завантажити додаток для Android <a href=\"https://play.google.com/store/apps/details?id=tv.periscope.android\" target = \"_blank\" > https://play.google.com/store/apps/details?id=tv.periscope.android</a></p><p> Завантажити додаток для iOS <a href=\"https://itunes.apple.com/us/app/id972909677?mt=8\" target=\"_blank\"> https://itunes.apple.com/us/app/id972909677?mt=8</a></p>",
 						ImageData = periscopeImage,
 						ImageMimeType = mimeType
 					});

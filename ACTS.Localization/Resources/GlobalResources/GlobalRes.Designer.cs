@@ -1042,6 +1042,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ця сторінка в розробці..
+        /// </summary>
+        public static string InDevelopment {
+            get {
+                return ResourceManager.GetString("InDevelopment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Intellect URL-адреса.
         /// </summary>
         public static string IntellectUrl {

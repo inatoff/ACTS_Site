@@ -444,6 +444,9 @@
   <data name="IncorrectUserNameOrPasswordMsg" xml:space="preserve">
     <value>Невірний ім'я (емейл) користувача або пароль.</value>
   </data>
+  <data name="InDevelopment" xml:space="preserve">
+    <value>Ця сторінка в розробці.</value>
+  </data>
   <data name="IntellectUrl" xml:space="preserve">
     <value>Intellect URL-адреса</value>
   </data>
