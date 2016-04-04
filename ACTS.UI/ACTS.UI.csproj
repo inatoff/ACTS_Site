@@ -333,6 +333,7 @@
     <Content Include="Content\Images\actsSlide1.jpg" />
     <Content Include="Content\Images\actsSlide2.jpg" />
     <Content Include="Content\Images\actsSlide4.jpg" />
+    <Content Include="Content\Images\backToTop.png" />
     <Content Include="Content\Images\en.png" />
     <Content Include="Content\Images\flag_great_britain.png" />
     <Content Include="Content\Images\flag_ukraine.png" />
@@ -780,7 +781,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Department\About.cshtml" />
     <Content Include="Views\Department\History.cshtml" />
-    <Content Include="Views\Department\TeachingStaff.cshtml" />
     <Content Include="Views\Department\ServicePersonell.cshtml" />
     <Content Include="Views\News\PageNews.cshtml" />
     <Content Include="Views\News\ArchiveUncos.cshtml" />
@@ -793,7 +793,7 @@
     <Content Include="Areas\Admin\Views\Employee\TableEmployee.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
-    <Content Include="Views\Teacher\TeachingStaff.cshtml" />
+    <Content Include="Views\TeachingStaff\TeachingStaff.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Account\TableAccount.cshtml" />
     <Content Include="Areas\Admin\Views\Account\CreateAccount.cshtml" />

@@ -61,3 +61,16 @@
     }
 }
 
+.personPosition {
+    font-family: "Roboto Slab-Light"
+}
+
+#vk_groups {
+    padding-top:80px;
+    padding-left:17px;
+}
+
+.back-to-top{
+    width:32px;
+    height:32px;
+}

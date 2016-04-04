@@ -7,17 +7,23 @@
 									}
         else
         {
-            <img class="TeacherPhoto" alt="Teacher Photo" width="100" height="150" src="@Url.Action("GetImage", "Teacher", new { area = "", Model.TeacherId })" />
+            <img class="TeacherPhoto" alt="Teacher Photo" width="100" height="150" src="@Url.Action("GetImage", "TeachingStaff", new { area = "", Model.TeacherId })" />
         }
 
     </div>
-    <div class="personName">
-        @Model.FullName
+    <div class="personInfo">
+        <div class="personName">
+            @Model.FullName
+        </div>
+        <div class="personPosition">
+            @Model.Position
+        </div>
+        @if (Model != null && Model.Blog != null)
+        {
+            @Html.ActionLink("Персональная страница", "PersonalPage", new { area = "Peoples", controller = "Blog", nameSlug = Model.NameSlug })
+        }
     </div>
-    <div class="personPosition">
-        @Model.Position
-    </div>
-    <div class="personDescription">
+    <div class="personDescription" style="display:none">
         <p>Степень:@Model.Degree</p>
         <p><strong>Дисциплины:</strong></p>
         @if (Model.Disciplines != null && Model.Disciplines.Count > 0)
@@ -44,10 +50,6 @@
                     }
                 }
             </ul>
-        }
-        @if (Model != null && Model.Blog != null)
-        {
-            @Html.Action("Персональная страница", "Index", new { area = "Peoples", controller = "Blog", nameSlug = Model.NameSlug })
         }
     </div>
 </div>
