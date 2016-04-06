@@ -87,7 +87,7 @@ namespace ACTS.UI
 
 			#region Styles
 
-			bundles.Add(new StyleBundle("~/Content/css/")
+			bundles.Add(new StyleBundle("~/Content/css")
 				.Include("~/Content/bootstrap.css",
 						"~/Content/font-awesome.css"));
 
