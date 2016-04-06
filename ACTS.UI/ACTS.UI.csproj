@@ -404,7 +404,9 @@
     <Content Include="Areas\Admin\Views\Employee\CreateEmployee.cshtml" />
     <Content Include="Areas\Admin\Views\Teacher\CreateTeacher.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartialUser.cshtml" />
+    <Content Include="Scripts\actsScripts\fixedMenu.js" />
     <Content Include="Scripts\actsScripts\personalPageScripts.js" />
+    <Content Include="Scripts\actsScripts\Slider.js" />
     <Content Include="Scripts\Admin\initDateRange.js" />
     <Content Include="Scripts\Admin\initDateRange_uk.js" />
     <Content Include="Scripts\Admin\fileinputOptions_uk.js" />

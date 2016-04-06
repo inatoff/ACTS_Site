@@ -26,22 +26,45 @@
     @Styles.Render("~/Content/css/MainPage")
 </head>
 <body style="height:100%">         
-    <div id="carousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="~/Content/Images/actsSlide1.jpg" alt="First slide">
-            </div>
-            <div class="item">
-                <img src="~/Content/Images/actsSlide2.jpg" alt="Second slide">
-            </div>
-            <div class="item">
-                <img src="~/Content/Images/actsSlide3.jpg" alt="Third slide">
-            </div>
-            <div class="item">
-                <img src="~/Content/Images/actsSlide4.jpg" alt="Third slide">
+    <div class="slider" id="slider">
+        <div class="navigation">
+            <div class="container">
+                <ul>
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                </ul>
             </div>
         </div>
-    </div> 
+        <ul>
+            <li class="slide sl1 active">
+                <div class="container">
+                    <div class="title">
+                        <span>Сучасна</span>
+                        <br />матеріальна
+                        <br />база
+                    </div>
+                </div>
+            </li>
+            <li class="slide sl2">
+                <div class="container">
+                    <div class="title">
+                        Ґрунтовна <span>освіта</span> -
+                        <br />гарна робота
+                    </div>
+                </div>
+            </li>
+            <li class="slide sl3">
+                <div class="container">
+                    <div class="title">
+                        Одна з <span>найкращих</span>
+                        <br />кафедр
+                        <br />КПІ
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
     <div class="nav-container">
         <nav class="menu navbar navbar-default navbar-static-top" role="navigation">
             <div class="container nav-row">
@@ -126,29 +149,11 @@
             else { @Html.Partial("Footer"); }
             
         </div>
-    <script src="~/Scripts/jquery-2.2.0.js"></script> 
-    <script src="~/Scripts/bootstrap.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/main-layout")
+    @RenderSection("scripts", required: false)
     <script>
-        $(document).ready(function () {
-
-            var menu = $('.menu');
-            var origOffsetY = menu.offset().top;
-
-            function scroll() {
-                if ($(window).scrollTop() >= origOffsetY) {
-                    $('.menu').addClass('navbar-fixed-top');
-                    $('.menu').removeClass('navbar-static-top'); 
-                } else {
-                    $('.menu').removeClass('navbar-fixed-top');
-                    $('.menu').addClass('navbar-static-top'); 
-                }
-
-
-            }
-
-            document.onscroll = scroll;
-
-        });
         $(function () {
             $(window).on("load resize", function () {
                 $(".fill-screen").css("height", window.innerHeight);

@@ -38,6 +38,12 @@ namespace ACTS.UI.Controllers
             }
         }
 
+        public async Task<FileContentResult> GetPersonPhoto(string teacherSlug)
+        {
+            Teacher person = await _repository.GetTeacherByUrlSlugAsync(teacherSlug);
+            return File(person.Photo, person.PhotoMimeType);
+        }
+
         public async Task<ViewResult> TeachingStaff()
         {
             IEnumerable<Teacher> teachers = await _repository.GetAllTeachersAsync();

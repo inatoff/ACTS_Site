@@ -24,6 +24,7 @@ namespace ACTS.UI.Areas.Peoples.Models
         public Rank Rank { get; }
         public Blog Blog { get; }
 
+        public string Slug { get; }
         public IEnumerable<string> Disciplines { get; set; }
 
         public IEnumerable<string> ScienceInterests { get; set; }
@@ -44,6 +45,7 @@ namespace ACTS.UI.Areas.Peoples.Models
             Degree = teacher.Degree;
             Greetings = teacher.Greetings;
             Email = teacher.Email;
+            Slug = teacher.NameSlug;
             Intellect = teacher.Intellect;
             Vk = teacher.Vk;
             Facebook = teacher.Facebook;

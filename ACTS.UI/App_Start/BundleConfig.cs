@@ -31,6 +31,10 @@ namespace ACTS.UI
 				//.Include("~/Scripts/jquery.slimscroll.js")
 				.Include("~/Scripts/app.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/main-layout")
+                .Include("~/Scripts/actsScripts/fixedMenu.js")
+                .Include("~/Scripts/actsScripts/Slider.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/personalPage")
                 .Include("~/Scripts/actsScripts/personalPageScripts.js"));
 
@@ -88,7 +92,7 @@ namespace ACTS.UI
 						"~/Content/font-awesome.css"));
 
             bundles.Add(new StyleBundle("~/Content/css/personal")
-                .Include("~/Content/css/PersonalPageStyle.css"));
+                .Include("~/Content/css/PersonalPageLayoutStyles.css"));
 
 			bundles.Add(new StyleBundle("~/Content/css/admin")
 				.Include("~/Content/skins/_all-skins.css",
@@ -111,8 +115,8 @@ namespace ACTS.UI
 				.Include("~/Content/daterangepicker.css"));
 
             bundles.Add(new StyleBundle("~/Content/css/MainPage")
-                .Include("~/Content/css/Site.css")
-                .Include("~/Content/css/MainPage.css"));
+                .Include("~/Content/css/Site.css",
+                         "~/Content/css/MainPage.css"));
 			#endregion
 		}
 	}

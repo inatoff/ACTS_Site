@@ -1,6 +1,4 @@
-﻿/* bootstrap 3 helpers */
-
-.navbar-form input, .form-inline input {
+﻿.navbar-form input, .form-inline input {
 	width:auto;
 }
 
@@ -33,8 +31,9 @@ header {
 
 body {
   color:#828282;
-  background-color:#eee;
+  background-color:#ffffff;
 }
+
 
 a,a:hover {
 	color:#ff3333;
@@ -47,6 +46,7 @@ a,a:hover {
     width:100%;
 }
 
+
 .highlight {
 	color:#ff3333;
 }
@@ -58,29 +58,24 @@ h3.highlight  {
 }
 
 .navbar {
-	background-color:#ff3333;
+	background-color:#edf4fb;
   	color:#ffffff;
-    border:0;
   	border-radius:0;
 }
 .navbar-nav > li > a {
-  	color:#fff;
+  	color:black;
   	padding-left:20px;
   	padding-right:20px;
-  	border-left:1px solid #ee3333;
 }
 .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
     color:#666666; 
-}
-.navbar-nav > li:last-child > a {
-  	border-right:1px solid #ee3333;
 }
 .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
     color: #ffffff;
 	background-color:transparent;
 }
 .navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
-	color: #f0f0f0;
+	color:#579ade;
 	background-color:transparent;
   	opacity:.9;
     border-color:#ff3333;
@@ -120,5 +115,3 @@ h3.highlight  {
 	padding-left:27px;
     padding-right:27px;
 }
-
-/* end theme */
