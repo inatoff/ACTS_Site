@@ -4,14 +4,12 @@
 }
 @helper LanguageLinkBuilder(string culture, string currentCulture)
 {
-    {
-		@:<a
-		if (culture == currentCulture)
-		{
-		   @:class="selectedLanguage"
-		}
-		@:href="@Url.Action("SetCulture", "Home", new { culture = culture, returnUrl = Url.Action() })">@culture</a>
+	<a
+	@if (culture == currentCulture)
+	{
+		@:class="selectedLanguage"
 	}
+	href="@Url.Action("SetCulture", "Home", new { culture = culture, returnUrl = Url.Action() })">@culture</a>
 }
 
 <!DOCTYPE html>
@@ -129,7 +127,7 @@
                                     <a class="language" href="@Url.Action("SetCulture", "Home", new { culture = "ru", returnUrl = Url.Action(), area = "" })">
                                         <img src="~/Content/Images/ru.png" alt="Russian flag" />
                                         <p>@GlobalRes.Russian</p>
-</a>
+									</a>
                                 </li>
                             </ul>
                         </li>

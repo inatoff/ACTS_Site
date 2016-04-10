@@ -1,4 +1,3 @@
-#define RustamPC
 namespace ACTS.Core.Migrations
 {
 	using Concrete;
@@ -45,13 +44,13 @@ namespace ACTS.Core.Migrations
 					Email = "rukpet@bigmir.net",
 					UserName = "admin",
 					LockoutEnabled = true
-				}; 
-				userManager.Create(admin, "SuperP@ss"); 
+				};
+				userManager.Create(admin, "SuperP@ss");
 
 				userManager.AddToRole(admin.Id, "Admin");
 
 				var teacher = new ApplicationUser {
-					Email = "teacher@bigmir.net",                    
+					Email = "teacher@bigmir.net",
 					UserName = "teacher",
 					LockoutEnabled = true
 				};
@@ -61,7 +60,7 @@ namespace ACTS.Core.Migrations
 			}
 
 			var teacherRepository = new EFTeacherRepository();
-
+			const string mimeType = "jpg";
 
 			if (!teacherRepository.Teachers.Any())
 			{
@@ -75,15 +74,14 @@ namespace ACTS.Core.Migrations
 					{
 						FullName = "Теленик Сергій Федорович",
 						Degree = "д.т.н., професор",
-                        NameSlug = "telenik",
+						NameSlug = "telenik",
 						Rank = Rank.Head,
 						Position = "ЗАВІДУВАЧ КАФЕДРИ голова НМК МОН України \"Автоматика та управління\" керівник циклу математичних дисциплін",
 						Photo = new byte[fs.Length],
-						PhotoMimeType = "jpg",
-                        Blog = new Blog()
-                    };
+						PhotoMimeType = mimeType,
+						Blog = new Blog()
+					};
 					fs.Read(teacher.Photo, 0, (int)fs.Length);
-					teacher.PhotoMimeType = "jpg";
 
 					teacherRepository.CreateTeacher(teacher);
 				}
@@ -93,26 +91,177 @@ namespace ACTS.Core.Migrations
 				using (var fs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\Новацкий.jpg", FileMode.Open))
 #endif
 				{
-                    var teacher = new Teacher()
-                    {
-                        FullName = "Новацький Анатолій Олександрович",
-                        Degree = "к.т.н., доцент",
-                        NameSlug = "novackiy",
-                        Rank = Rank.FirstVice,
-                        Position = "ПЕРШИЙ ЗАСТУПНИК заступник з навчально-виховної роботи відповідальний за заочну форму навчання керівник циклу \"Комп'ютерна електроніка та мікропроцесорна техніка\"",
-                        Photo = new byte[fs.Length],
-                        PhotoMimeType = "jpg",
-                        Blog = new Blog()
+					var teacher = new Teacher()
+					{
+						FullName = "Новацький Анатолій Олександрович",
+						Degree = "к.т.н., доцент",
+						NameSlug = "novackiy",
+						Rank = Rank.FirstVice,
+						Position = "ПЕРШИЙ ЗАСТУПНИК заступник з навчально-виховної роботи відповідальний за заочну форму навчання керівник циклу \"Комп'ютерна електроніка та мікропроцесорна техніка\"",
+						Photo = new byte[fs.Length],
+						PhotoMimeType = mimeType,
+						Blog = new Blog()
 					};
 					fs.Read(teacher.Photo, 0, (int)fs.Length);
-					teacher.PhotoMimeType = "jpg";
 
 					teacherRepository.CreateTeacher(teacher);
-                    
-
-                }
+				}
 			}
-            
+
+			var eventRepository = new EFEventRepository();
+
+			if (!eventRepository.Events.Any())
+			{
+#if RustamPC
+				using (FileStream testImageFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\testImage.jpg", FileMode.Open),
+					   maxresdefaultFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\maxresdefault.jpg", FileMode.Open))
+#else
+				using (FileStream testImageFs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\testImage.jpg", FileMode.Open),
+					   maxresdefaultFs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\maxresdefault.jpg", FileMode.Open))
+#endif
+				{
+					var image = new byte[testImageFs.Length];
+					testImageFs.Read(image, 0, (int)testImageFs.Length);
+
+					var maxresdefault = new byte[maxresdefaultFs.Length];
+					maxresdefaultFs.Read(maxresdefault, 0, (int)maxresdefaultFs.Length);
+
+					eventRepository.CreateEvent(new Entities.Event
+					{
+						StartView = DateTime.UtcNow.AddDays(-10d),
+						EndView = DateTime.UtcNow.AddDays(10d),
+						Content = "<h1>Проект Умов прийому до ВНЗ</h1>"
+								+ "<p>Міністерством освіти і науки розроблено Умови прийому до вищих навчальних закладів України в 2016 році. Текст проекту документа у своєму Facebook оприлюднив міністр освіти і науки Сергій Квіт.</p>",
+						Title = "Вступнику 2016-го",
+						UrlSlug = "vstupniku-2016-go",
+						ImageData = maxresdefault,
+						ImageMimeType = mimeType
+					});
+
+					eventRepository.CreateEvent(new Entities.Event
+					{
+						StartView = DateTime.UtcNow.AddDays(-10d),
+						EndView = DateTime.UtcNow,
+						Content = "<h2>Test event2</h2>",
+						Title = "Test title2",
+						UrlSlug = "test-title2",
+						ImageData = image,
+						ImageMimeType = mimeType
+					});
+
+
+					eventRepository.CreateEvent(new Entities.Event
+					{
+						StartView = DateTime.UtcNow.AddDays(-1d),
+						EndView = DateTime.UtcNow.AddDays(1d),
+						Content = "<h3>Test event3</h3>",
+						Title = "Test title3",
+						UrlSlug = "test-title3",
+						ImageData = image,
+						ImageMimeType = mimeType
+					});
+				}
+			}
+
+			var employeeRepository = new EFEmployeeRepository();
+
+			if (!employeeRepository.Employees.Any())
+			{
+#if RustamPC
+				using (FileStream sherbanFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\sherban.jpg", FileMode.Open))
+#else
+				using (FileStream sherbanFs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\sherban.jpg", FileMode.Open))
+#endif
+				{
+					var sherbanPhoto = new byte[sherbanFs.Length];
+					sherbanFs.Read(sherbanPhoto, 0, (int)sherbanFs.Length);
+
+					employeeRepository.CreateEmployee(new Employee {
+						FullName = "Щербань Олександр Васильович",
+						Position = "Завідувач лабораторіями",
+						Photo = sherbanPhoto,
+						PhotoMimeType = mimeType
+					});
+				}
+
+#if RustamPC
+				using (FileStream vlasovaFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\vlasova.jpg", FileMode.Open))
+#else
+				using (FileStream vlasovaFs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\vlasova.jpg", FileMode.Open))
+#endif
+				{
+					var vlasovaPhoto = new byte[vlasovaFs.Length];
+					vlasovaFs.Read(vlasovaPhoto, 0, (int)vlasovaFs.Length);
+
+					employeeRepository.CreateEmployee(new Employee
+					{
+						FullName = "Щербань Олександр Васильович",
+						Position = "Завідувач лабораторіями",
+						Photo = vlasovaPhoto,
+						PhotoMimeType = mimeType
+					});
+				}
+
+#if RustamPC
+				using (FileStream ohorodnikFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\ohorodnik.jpg", FileMode.Open))
+#else
+				using (FileStream ohorodnikFs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\ohorodnik.jpg", FileMode.Open))
+#endif
+				{
+					var ohorodnikPhoto = new byte[ohorodnikFs.Length];
+					ohorodnikFs.Read(ohorodnikPhoto, 0, (int)ohorodnikFs.Length);
+
+					employeeRepository.CreateEmployee(new Employee
+					{
+						FullName = "Огородник Ірина Віталіївна",
+						Position = "Провідний інженер",
+						Photo = ohorodnikPhoto,
+						PhotoMimeType = mimeType
+					});
+				}
+			}
+
+			var newsRepository = new EFNewsRepository();
+
+			if (!newsRepository.Uncos.Any())
+			{
+#if RustamPC
+				using (FileStream magistersFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\magisters.jpg", FileMode.Open))
+#else
+				using (FileStream magistersFs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\magisters.jpg", FileMode.Open))
+#endif
+				{
+					var magistersImage = new byte[magistersFs.Length];
+					magistersFs.Read(magistersImage, 0, (int)magistersFs.Length);
+
+					newsRepository.CreateNews(new News
+					{
+						Title = "Увага студенти магістри 6 курсу!",
+						Content = "<p>Студентам магістрам 6 курсу необхідно<span style=\"color: #ff0000;\"> до 15 травня 2014 р.</span> на своїх кафедрах перевірити випускні оцінки, розписатися у випускних документах та здати в деканат копію ідентифікаційного кода.</p>",
+						ImageData = magistersImage,
+						ImageMimeType = mimeType
+					});
+				}
+
+#if RustamPC
+				using (FileStream magistersFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\periscope.jpg", FileMode.Open))
+#else
+				using (FileStream periscopeFs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\periscope.jpg", FileMode.Open))
+#endif
+				{
+					var periscopeImage = new byte[periscopeFs.Length];
+					periscopeFs.Read(periscopeImage, 0, (int)periscopeFs.Length);
+
+					newsRepository.CreateNews(new News
+					{
+						Title = "Трансляція в Periscope",
+						Content = "<h3>Онлайн трансляція урочистого відкриття конференції у Periscope за нашим twitter акаунтом @icacit15</h3><p> &nbsp;</p>   <p> За допомогою браузера комп &#8217;ютера <a href=\"https://www.periscope.tv/icacit15\" target=\"_blank\">https://www.periscope.tv/icacit15</a></p><p> &nbsp;</p>   <p> Завантажити додаток для Android <a href=\"https://play.google.com/store/apps/details?id=tv.periscope.android\" target = \"_blank\" > https://play.google.com/store/apps/details?id=tv.periscope.android</a></p><p> Завантажити додаток для iOS <a href=\"https://itunes.apple.com/us/app/id972909677?mt=8\" target=\"_blank\"> https://itunes.apple.com/us/app/id972909677?mt=8</a></p>",
+						ImageData = periscopeImage,
+						ImageMimeType = mimeType
+					});
+				}
+			}
+
 			base.Seed(context);
 		}
 	}

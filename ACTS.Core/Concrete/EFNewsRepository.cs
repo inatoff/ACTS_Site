@@ -10,11 +10,11 @@ namespace ACTS.Core.Concrete
 {
 	public class EFNewsRepository : INewsRepository
 	{
-		private EFDbContext context = new EFDbContext();
+		private EFDbContext _context = new EFDbContext();
 
 		public IQueryable<News> Uncos
 		{
-			get { return context.Uncos; }
+			get { return _context.Uncos; }
 		}
 
 		public void SaveNews(News news)
@@ -22,10 +22,10 @@ namespace ACTS.Core.Concrete
 			if (news.NewsId == 0)
 			{
 				news.Created = DateTime.UtcNow;
-				context.Uncos.Add(news);
+				_context.Uncos.Add(news);
 			} else
 			{
-				News dbEntry = context.Uncos.Find(news.NewsId);
+				News dbEntry = _context.Uncos.Find(news.NewsId);
 				if (dbEntry != null)
 				{
 					dbEntry.Title = news.Title;
@@ -36,28 +36,28 @@ namespace ACTS.Core.Concrete
 				}
 			}
 
-			context.SaveChanges();
+			_context.SaveChanges();
 		}
 
 		public News DeleteNews(int newsId)
 		{
-			News dbEntry = context.Uncos.Find(newsId);
+			News dbEntry = _context.Uncos.Find(newsId);
 			if (dbEntry != null)
 			{
-				context.Uncos.Remove(dbEntry);
-				context.SaveChanges();
+				_context.Uncos.Remove(dbEntry);
+				_context.SaveChanges();
 			}
 			return dbEntry;
 		}
 
 		public News GetNewsById(int newsId)
 		{
-			return Uncos.FirstOrDefault(p => p.NewsId == newsId);
+			return _context.Uncos.Find(newsId);
 		}
 
 		public void UpdateNews(News news)
 		{
-			News dbEntry = context.Uncos.Find(news.NewsId);
+			News dbEntry = _context.Uncos.Find(news.NewsId);
 			if (dbEntry != null)
 			{
 				dbEntry.Title = news.Title;
@@ -65,18 +65,17 @@ namespace ACTS.Core.Concrete
 				dbEntry.Content = news.Content;
 				dbEntry.ImageData = news.ImageData;
 				dbEntry.ImageMimeType = news.ImageMimeType;
+
+				_context.SaveChanges();
 			}
-
-			context.SaveChanges();
-
 		}
 
 		public void CreateNews(News news)
 		{
 			news.Created = DateTime.UtcNow;
-			context.Uncos.Add(news);
+			_context.Uncos.Add(news);
 
-			context.SaveChanges();
+			_context.SaveChanges();
 		}
 	}
 }

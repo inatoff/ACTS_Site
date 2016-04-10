@@ -266,6 +266,9 @@ namespace ACTS.UI.Areas.Admin.Controllers
 							return RedirectToAction(nameof(Table));
 						}
 
+				if (user.HasTeacher)
+					_teacherRepository.RemovePairToUser(user.Teacher.TeacherId);
+
 				var result = await userManager.DeleteAsync(user);
 
 				if (result.Succeeded)

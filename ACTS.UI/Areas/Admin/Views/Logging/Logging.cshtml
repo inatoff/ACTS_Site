@@ -35,12 +35,12 @@
 
 					<div class="form-group">
 						@Html.LabelFor(m => m.StartDate)
-						@Html.HiddenFor(m => m.StartDate, new {  @class = "form-control input-sm" })
+						@Html.HiddenFor(m => m.StartDate, new {  @class = "form-control input-sm start" })
 						@Html.LabelFor(m => m.EndDate, new { @class = "sr-only"})
-						@Html.HiddenFor(m => m.EndDate, new {  @class = "form-control input-sm" })
+						@Html.HiddenFor(m => m.EndDate, new {  @class = "form-control input-sm end" })
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa fa-calendar"></i></span>
-							<button id="datefilter" type="button" class="form-control input-sm" > @Model.StartDate - @Model.EndDate</button>
+							<button id="daterange" type="button" class="form-control input-sm" > @Model.StartDate - @Model.EndDate</button>
 						</div>
 					</div>
 

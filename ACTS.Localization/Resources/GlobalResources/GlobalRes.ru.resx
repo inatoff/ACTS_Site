@@ -132,6 +132,9 @@
   <data name="Advertisment" xml:space="preserve">
     <value>Объявления</value>
   </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Блог</value>
+  </data>
   <data name="BlogAddPost" xml:space="preserve">
     <value>Добавить пост</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="BlogMain" xml:space="preserve">
     <value>Главная</value>
+  </data>
+  <data name="BlogMaterials" xml:space="preserve">
+    <value>Материалы для студентов</value>
   </data>
   <data name="BlogProjects" xml:space="preserve">
     <value>Проекты</value>
@@ -198,6 +204,9 @@
   <data name="EmailOrUserName" xml:space="preserve">
     <value>Имя пользователя или адрес электронной почты</value>
   </data>
+  <data name="English" xml:space="preserve">
+    <value>Английский</value>
+  </data>
   <data name="FailedLoginAttemptsMsg" xml:space="preserve">
     <value>Неудачная попытка входа.</value>
   </data>
@@ -237,6 +246,9 @@
   <data name="Laboratories" xml:space="preserve">
     <value>Лаборатории</value>
   </data>
+  <data name="Language" xml:space="preserve">
+    <value>Язык</value>
+  </data>
   <data name="Level" xml:space="preserve">
     <value>Уровень</value>
   </data>
@@ -267,6 +279,9 @@
   <data name="OurGraduates" xml:space="preserve">
     <value>Наши выпускники</value>
   </data>
+  <data name="PersonalPage" xml:space="preserve">
+    <value>Персональная страница</value>
+  </data>
   <data name="Placement" xml:space="preserve">
     <value>Трудоустройство</value>
   </data>
@@ -284,6 +299,9 @@
   </data>
   <data name="ResetPasswordMsg" xml:space="preserve">
     <value>Введите свой пароль</value>
+  </data>
+  <data name="Russian" xml:space="preserve">
+    <value>Русский</value>
   </data>
   <data name="Schedule" xml:space="preserve">
     <value>Расписание</value>
@@ -321,6 +339,9 @@
   <data name="TeachingStaff" xml:space="preserve">
     <value>Научно-педагогический состав</value>
   </data>
+  <data name="Ukrainian" xml:space="preserve">
+    <value>Украинский</value>
+  </data>
   <data name="UpdateEmail" xml:space="preserve">
     <value>Обновить электронную почту</value>
   </data>
@@ -335,27 +356,6 @@
   </data>
   <data name="UserNoFound" xml:space="preserve">
     <value>Пользователь с индефикатором = {0} не найден.</value>
-  </data>
-  <data name="Blog" xml:space="preserve">
-    <value>Блог</value>
-  </data>
-  <data name="BlogMaterials" xml:space="preserve">
-    <value>Материалы для студентов</value>
-  </data>
-  <data name="PersonalPage" xml:space="preserve">
-    <value>Персональная страница</value>
-  </data>
-  <data name="English" xml:space="preserve">
-    <value>Английский</value>
-  </data>
-  <data name="Language" xml:space="preserve">
-    <value>Язык</value>
-  </data>
-  <data name="Russian" xml:space="preserve">
-    <value>Русский</value>
-  </data>
-  <data name="Ukrainian" xml:space="preserve">
-    <value>Украинский</value>
   </data>
   <data name="Admin" xml:space="preserve">
     <value>Администрирование</value>

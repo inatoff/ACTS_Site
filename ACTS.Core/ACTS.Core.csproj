@@ -118,6 +118,9 @@
     <Compile Include="Migrations\201604020002288_NewFieldsinTeacher.cs" />
     <Compile Include="Migrations\201604020002288_NewFieldsinTeacher.Designer.cs">
       <DependentUpon>201604020002288_NewFieldsinTeacher.cs</DependentUpon>
+    <Compile Include="Migrations\201603302046455_Event.cs" />
+    <Compile Include="Migrations\201603302046455_Event.Designer.cs">
+      <DependentUpon>201603302046455_Event.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201604092130034_errorfixing.cs" />
     <Compile Include="Migrations\201604092130034_errorfixing.Designer.cs">
@@ -153,9 +156,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604092130034_errorfixing.resx">
       <DependentUpon>201604092130034_errorfixing.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603302046455_Event.resx">
+      <DependentUpon>201603302046455_Event.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Migrations\ImagesForSeed\magisters.jpg" />
+    <Content Include="Migrations\ImagesForSeed\maxresdefault.jpg" />
+    <Content Include="Migrations\ImagesForSeed\ohorodnik.jpg" />
+    <Content Include="Migrations\ImagesForSeed\periscope.jpg" />
+    <Content Include="Migrations\ImagesForSeed\sherban.jpg" />
+    <Content Include="Migrations\ImagesForSeed\testImage.jpg" />
+    <Content Include="Migrations\ImagesForSeed\vlasova.jpg" />
     <Content Include="Migrations\ImagesForSeed\Новацкий.jpg" />
     <Content Include="Migrations\ImagesForSeed\Теленик.jpg" />
   </ItemGroup>

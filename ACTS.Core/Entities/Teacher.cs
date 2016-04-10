@@ -79,6 +79,8 @@ namespace ACTS.Core.Entities
 		public virtual IList<string> Publications { get; set; }
 		
 		public virtual Blog Blog { get; set; }
+
+		public bool HasBlog { get { return Blog != null; } }
 	}
 
 	public class TeacherMap : EntityTypeConfiguration<Teacher>

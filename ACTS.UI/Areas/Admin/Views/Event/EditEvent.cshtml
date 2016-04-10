@@ -1,17 +1,20 @@
-﻿@model ACTS.Core.Entities.News
+﻿@model ACTS.Core.Entities.Event
 
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
-	ViewBag.Title = GlobalRes.EditNews;
+	ViewBag.Title = GlobalRes.EditEvent;
 }
 
 @section Styles{
 	@Styles.Render("~/Content/css/bootstrap-fileinput")
+	@Styles.Render("~/Content/css/daterange")
 }
 
-@section Scripts {
+@section Scripts{
 	@Scripts.Render("~/bundles/jqueryval-admin")
 	@Scripts.Render("~/bundles/expressive")
+	@Scripts.Render(GlobalRes.fileinputPath)
+	@Scripts.Render(GlobalRes.dateRangePath)
 	@Scripts.Render(GlobalRes.tinymcePath)
 	@Scripts.Render(GlobalRes.fileinputPath)
 }
@@ -24,13 +27,13 @@
 			</div>
 			<!-- /.box-header -->
 			<!-- form start -->
-			@using (Html.BeginForm("Edit", "News", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+			@using (Html.BeginForm("Edit", "Event", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
 			{
 				<div class="box-body">
 					@Html.AntiForgeryToken()
 
 					@Html.ValidationSummary(true, "", new { @class = "text-red" })
-					@Html.HiddenFor(model => model.NewsId)
+					@Html.HiddenFor(model => model.EventId)
 					@Html.HiddenFor(model => model.ImageMimeType)
 					@Html.HiddenFor(model => model.ImageData)
 
@@ -43,6 +46,25 @@
 					</div>
 
 					<div class="form-group">
+						@Html.LabelFor(model => model.StartView, new { @class = "col-md-3 col-lg-2 control-label" })
+						@Html.HiddenFor(model => model.StartView, new { @class = "form-control input-sm start" })
+						@Html.HiddenFor(model => model.EndView, new { @class = "form-control input-sm end" })
+						<div class="col-md-8 col-lg-9">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa fa-calendar"></i></span>
+								<button id="daterange" type="button" class="form-control input-sm"> @Model.StartView - @Model.EndView</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.UrlSlug, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.EditorFor(model => model.UrlSlug, new { htmlAttributes = new { @class = "form-control", placeholder = GlobalRes.SlugHelpText } })
+						</div>
+					</div>
+
+					<div class="form-group">
 						@Html.LabelFor(model => model.ImageData, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
 							@if (Model.ImageData == null)
@@ -50,15 +72,16 @@
 								<p class="form-control-static">
 									@GlobalRes.None
 								</p>
-							} else
+							}
+							else
 							{
-								<img alt="News image" class="img-thumbnail" style="max-width:100%;max-height:400px" src="@Url.Action("GetImage", "News", new { area = "", Model.NewsId })" />
+								<img alt="News image" class="img-thumbnail" style="max-width:100%;max-height:400px" src="@Url.Action("GetImage", "Event", new { area = "", Model.EventId })" />
 							}
 						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.ImageData, @GlobalRes.UploadNewImage, new { @class = "col-md-3 col-lg-2 control-label" })
+						@Html.LabelFor(model => model.ImageData, GlobalRes.UploadNewImage, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
 							<input id="input-image" class="file-loading form-control" accept="image/*" type="file" name="Image" />
 						</div>
@@ -67,19 +90,18 @@
 					<div class="form-group">
 						@Html.LabelFor(model => model.Content, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
-							@Html.TextAreaFor(model => model.Content, new { @class = "tinymceEditor form-control", placeholder = GlobalRes.Content })
-							@Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-red" }, "p")
+							@Html.TextAreaFor(model => model.Content, new { @class = "tinymceEditor" })
+							@Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-red", placeholder = GlobalRes.Content }, "p")
 						</div>
 					</div>
-
 				</div>
-					<!-- /.box-body -->
+				<!-- /.box-body -->
 
 				<div class="box-footer">
 					<button type="submit" class="btn btn-primary">
-						<i class="fa fa-edit"></i>&nbsp;@GlobalRes.Save
+						<i class="fa fa-save"></i>&nbsp;@GlobalRes.Save
 					</button>
-					<a type="button" class="btn btn-default pull-right" href="@Url.Action("Table", "News")">
+					<a type="button" class="btn btn-default pull-right" href="@Url.Action("Table", "Event")">
 						<i class="fa fa-undo"></i>&nbsp;@GlobalRes.CancelAndReturnToTable
 					</a>
 				</div>
@@ -88,3 +110,4 @@
 		</div>
 	</div>
 </div>
+

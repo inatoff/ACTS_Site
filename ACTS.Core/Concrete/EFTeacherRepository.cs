@@ -13,28 +13,28 @@ namespace ACTS.Core.Concrete
 {
 	public class EFTeacherRepository : ITeacherRepository
 	{
-		private EFDbContext context = new EFDbContext();
+		private EFDbContext _context = new EFDbContext();
 		public IQueryable<Teacher> Teachers
 		{
-			get { return context.Teachers; }
+			get { return _context.Teachers; }
 		}
-        public async Task<IEnumerable<Teacher>> GetAllTeachersAsync()
-        {
-            return await context.Teachers.ToListAsync();
-        }
-        public IQueryable<Teacher> NoPairTeachers
+		public async Task<IEnumerable<Teacher>> GetAllTeachersAsync()
 		{
-			get { return context.Teachers.Where(t => t.User == null); }
+			return await _context.Teachers.ToListAsync();
+		}
+		public IQueryable<Teacher> NoPairTeachers
+		{
+			get { return _context.Teachers.Where(t => t.User == null); }
 		}
 
 		public void SaveTeacher(Teacher teacher)
 		{
 			if (teacher.TeacherId == 0)
 			{
-				context.Teachers.Add(teacher);
+				_context.Teachers.Add(teacher);
 			} else
 			{
-				Teacher dbEntry = context.Teachers.Find(teacher.TeacherId);
+				Teacher dbEntry = _context.Teachers.Find(teacher.TeacherId);
 				if (dbEntry != null)
 				{
 					dbEntry.FullName = teacher.FullName;
@@ -53,86 +53,95 @@ namespace ACTS.Core.Concrete
 				}
 			}
 
-			context.SaveChanges();
+			_context.SaveChanges();
 		}
 
 		public Teacher DeleteTeacher(int teacherId)
 		{
-			Teacher dbEntry = context.Teachers.Find(teacherId);
-			if (dbEntry != null)
+			Teacher teacher = GetTeacherById(teacherId);
+			if (teacher != null)
 			{
-				context.Teachers.Remove(dbEntry);
-				context.SaveChanges();
+				if (teacher.HasUser)
+					RemovePairToUser(teacherId);
+
+				if (teacher.HasBlog)
+				{
+					_context.Posts.RemoveRange(teacher.Blog.Posts);
+					_context.Blogs.Remove(teacher.Blog);
+				}
+
+				_context.Teachers.Remove(teacher);
+				_context.SaveChanges();
 			}
-			return dbEntry;
+			return teacher;
 		}
 
 
-        public async Task<Teacher> GetTeacherByUrlSlugAsync(string nameSlug)
-        {
-            return await Teachers.FirstOrDefaultAsync(p => p.NameSlug == nameSlug);
-        }
-
-        public Teacher GetTeacherById(int teacherId)
+		public async Task<Teacher> GetTeacherByUrlSlugAsync(string nameSlug)
 		{
-			return Teachers.FirstOrDefault(p => p.TeacherId == teacherId);
+			return await Teachers.FirstOrDefaultAsync(p => p.NameSlug == nameSlug);
+		}
+
+		public Teacher GetTeacherById(int teacherId)
+		{
+			return _context.Teachers.Find(teacherId);
 		}
 
 		public void CreateTeacher(Teacher teacher)
 		{
-			context.Teachers.Add(teacher);
-			context.SaveChanges();
+			_context.Teachers.Add(teacher);
+			_context.SaveChanges();
 		}
 
 		public void UpdateTeacher(Teacher teacher)
 		{
-			Teacher dbEntry = context.Teachers.Find(teacher.TeacherId);
+			Teacher dbEntry = _context.Teachers.Find(teacher.TeacherId);
 			if (dbEntry != null)
 			{
 				dbEntry.FullName = teacher.FullName;
 				dbEntry.Position = teacher.Position;
 				dbEntry.Degree = teacher.Degree;
-                dbEntry.Rank = teacher.Rank;
+				dbEntry.Rank = teacher.Rank;
 				dbEntry.Photo = teacher.Photo;
 				dbEntry.PhotoMimeType = teacher.PhotoMimeType;
 				dbEntry.Email = teacher.Email;
-                dbEntry.NameSlug = teacher.NameSlug;
+				dbEntry.NameSlug = teacher.NameSlug;
 				// social Links
 				dbEntry.Intellect = teacher.Intellect;
 				dbEntry.Vk = teacher.Vk;
 				dbEntry.Facebook = teacher.Facebook;
 				dbEntry.Twitter = teacher.Twitter;
-			}
 
-			context.SaveChanges();
+				_context.SaveChanges();
+			}
 		}
 
-        public void UpdateTeacherByProfile(int id, Teacher teacher)
-        {
-            Teacher dbEntry = context.Teachers.Find(id);
-            if (dbEntry != null)
-            {                  
-                dbEntry.Degree = teacher.Degree;
-                dbEntry.Email = teacher.Email;
-                // social Links
-                dbEntry.Intellect = teacher.Intellect;
-                dbEntry.Vk = teacher.Vk;
-                dbEntry.Facebook = teacher.Facebook;
-                dbEntry.Twitter = teacher.Twitter;
-
-                dbEntry.Disciplines = teacher.Disciplines;
-                dbEntry.Projects = teacher.Projects;
-                dbEntry.Publications = teacher.Publications;
-                dbEntry.ScienceInterests = teacher.ScienceInterests;
-            }
-
-            context.SaveChanges();
-        }
-
-
-        public void AddPairToUser(int teacherId, int userId)
+		public void UpdateTeacherByProfile(int id, Teacher teacher)
 		{
-			var user = context.Users.Find(userId);
+			Teacher dbEntry = _context.Teachers.Find(id);
+			if (dbEntry != null)
+			{                  
+				dbEntry.Degree = teacher.Degree;
+				dbEntry.Email = teacher.Email;
+				// social Links
+				dbEntry.Intellect = teacher.Intellect;
+				dbEntry.Vk = teacher.Vk;
+				dbEntry.Facebook = teacher.Facebook;
+				dbEntry.Twitter = teacher.Twitter;
+
+				dbEntry.Disciplines = teacher.Disciplines;
+				dbEntry.Projects = teacher.Projects;
+				dbEntry.Publications = teacher.Publications;
+				dbEntry.ScienceInterests = teacher.ScienceInterests;
+			}
+
+			_context.SaveChanges();
+		}
+
+
+		public void AddPairToUser(int teacherId, int userId)
+		{
+			var user = _context.Users.Find(userId);
 			var teacher = GetTeacherById(teacherId);
 
 			if (user == null || teacher == null) return;
@@ -143,7 +152,7 @@ namespace ACTS.Core.Concrete
 			user.Teacher = teacher;
 			teacher.User = user;
 
-			context.SaveChanges();
+			_context.SaveChanges();
 		}
 
 		public void RemovePairToUser(int teacherId)
@@ -155,27 +164,27 @@ namespace ACTS.Core.Concrete
 			teacher.User.Teacher = default(Teacher);
 			teacher.User = default(ApplicationUser);
 
-			context.SaveChanges();
+			_context.SaveChanges();
 		}
 
 		public IQueryable<Teacher> GetNoPairTeachersWithSelected(int teacherId)
 		{
-			return context.Teachers.Where(t => t.User == null || t.TeacherId == teacherId);
+			return _context.Teachers.Where(t => t.User == null || t.TeacherId == teacherId);
 		}
 
 
-        public async Task InitPersonalPage(Teacher teacher)
-        {
-            var dbEntry = GetTeacherById(teacher.TeacherId);
-            dbEntry.Blog = new Blog();
-            await context.SaveChangesAsync();
-        }
+		public async Task InitPersonalPage(Teacher teacher)
+		{
+			var dbEntry = GetTeacherById(teacher.TeacherId);
+			dbEntry.Blog = new Blog();
+			await _context.SaveChangesAsync();
+		}
 
-        public async Task<int> GetCurrentUserTeacherIdAsync(int userId)
-        {
-            var currentUser = await context.Users.FirstOrDefaultAsync(u => u.Id == userId);
-            var teacher = await context.Teachers.FirstOrDefaultAsync(t => t.TeacherId == currentUser.Teacher.TeacherId);
-            return teacher.TeacherId;
-        }
-    }
+		public async Task<int> GetCurrentUserTeacherIdAsync(int userId)
+		{
+			var currentUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+			var teacher = await _context.Teachers.FirstOrDefaultAsync(t => t.TeacherId == currentUser.Teacher.TeacherId);
+			return teacher.TeacherId;
+		}
+	}
 }

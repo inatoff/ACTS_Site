@@ -156,8 +156,8 @@
   <data name="AreYouSure" xml:space="preserve">
     <value>Ви впевнені, що хочете зробити це?</value>
   </data>
-  <data name="ScienceInterests" xml:space="preserve">
-    <value>Наукові інтереси</value>
+  <data name="Blog" xml:space="preserve">
+    <value>Блог</value>
   </data>
   <data name="BlogAddPost" xml:space="preserve">
     <value>Додати пост</value>
@@ -168,8 +168,14 @@
   <data name="BlogEditProfile" xml:space="preserve">
     <value>Профіль</value>
   </data>
+  <data name="BlogInterests" xml:space="preserve">
+    <value>Основні Інтереси</value>
+  </data>
   <data name="BlogMain" xml:space="preserve">
     <value>Головна</value>
+  </data>
+  <data name="BlogMaterials" xml:space="preserve">
+    <value>Матеріали для студентів</value>
   </data>
   <data name="BlogProjects" xml:space="preserve">
     <value>Проекти</value>
@@ -249,11 +255,17 @@
   <data name="CreateEmployee" xml:space="preserve">
     <value>Створити робітника</value>
   </data>
+  <data name="CreateEvent" xml:space="preserve">
+    <value>Створити подію</value>
+  </data>
   <data name="CreateNewAccount" xml:space="preserve">
     <value>Створити новий обліковий запис</value>
   </data>
   <data name="CreateNewEmployee" xml:space="preserve">
     <value>Створити нового робітника</value>
+  </data>
+  <data name="CreateNewEvent" xml:space="preserve">
+    <value>Створити нову подію</value>
   </data>
   <data name="CreateNewNews" xml:space="preserve">
     <value>Створити нову новину</value>
@@ -321,6 +333,9 @@
   <data name="EditEmployee" xml:space="preserve">
     <value>Редагувати робітника</value>
   </data>
+  <data name="EditEvent" xml:space="preserve">
+    <value>Редагувати подію</value>
+  </data>
   <data name="EditNews" xml:space="preserve">
     <value>Редагувати новину</value>
   </data>
@@ -353,6 +368,21 @@
   </data>
   <data name="English" xml:space="preserve">
     <value>Англійська</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>Подія</value>
+  </data>
+  <data name="EventCreatedMsg" xml:space="preserve">
+    <value>Подія з заголовком "{0}" успішно створена.</value>
+  </data>
+  <data name="EventDeletedMsg" xml:space="preserve">
+    <value>Подія з заголовком "{0}" успішно видалена.</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>Події</value>
+  </data>
+  <data name="EventSavedMsg" xml:space="preserve">
+    <value>Подія з заголовком "{0}" успішно збережена.</value>
   </data>
   <data name="Exception" xml:space="preserve">
     <value>Помилка</value>
@@ -414,8 +444,14 @@
   <data name="IncorrectUserNameOrPasswordMsg" xml:space="preserve">
     <value>Невірний ім'я (емейл) користувача або пароль.</value>
   </data>
+  <data name="InDevelopment" xml:space="preserve">
+    <value>Ця сторінка в розробці.</value>
+  </data>
   <data name="IntellectUrl" xml:space="preserve">
     <value>Intellect URL-адреса</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>Є активною</value>
   </data>
   <data name="KPI" xml:space="preserve">
     <value>КПІ</value>
@@ -477,6 +513,9 @@
   <data name="NewsSavedMsg" xml:space="preserve">
     <value>Новина з заголовком "{0}" успішно збережена.</value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value>Ні</value>
+  </data>
   <data name="None" xml:space="preserve">
     <value>Немає</value>
   </data>
@@ -494,6 +533,9 @@
   </data>
   <data name="Password" xml:space="preserve">
     <value>Пароль</value>
+  </data>
+  <data name="PersonalPage" xml:space="preserve">
+    <value>Персональна сторінка</value>
   </data>
   <data name="Placement" xml:space="preserve">
     <value>Працевлаштування</value>
@@ -522,6 +564,9 @@
   <data name="Roles" xml:space="preserve">
     <value>Ролі</value>
   </data>
+  <data name="Russian" xml:space="preserve">
+    <value>Російська</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Зберегти</value>
   </data>
@@ -536,6 +581,9 @@
   </data>
   <data name="ScienceFields" xml:space="preserve">
     <value>Наукові напрями</value>
+  </data>
+  <data name="ScienceInterests" xml:space="preserve">
+    <value>Наукові інтереси</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Пошук...</value>
@@ -579,10 +627,13 @@
   <data name="TableOfEmployees" xml:space="preserve">
     <value>Таблиця робітників</value>
   </data>
+  <data name="TableOfEvent" xml:space="preserve">
+    <value>Таблиця подій</value>
+  </data>
   <data name="TableOfNews" xml:space="preserve">
     <value>Таблиця новин</value>
   </data>
-  <data name="TableOfTeacher" xml:space="preserve">
+  <data name="TableOfTeachers" xml:space="preserve">
     <value>Таблиця викладачів</value>
   </data>
   <data name="Tables" xml:space="preserve">
@@ -608,6 +659,9 @@
   </data>
   <data name="TeachingStaff" xml:space="preserve">
     <value>Педагогічний склад</value>
+  </data>
+  <data name="TimeRange" xml:space="preserve">
+    <value>Часовий діапазон</value>
   </data>
   <data name="tinymcePath" xml:space="preserve">
     <value>~/bundles/tinymce-uk</value>
@@ -635,6 +689,9 @@
   </data>
   <data name="UpdateUserName" xml:space="preserve">
     <value>Обновити ім'я користувача</value>
+  </data>
+  <data name="UploadNewImage" xml:space="preserve">
+    <value>Завантажити нову картинку</value>
   </data>
   <data name="UploadNewPhoto" xml:space="preserve">
     <value>Завантажити нову фотографію</value>
@@ -669,19 +726,7 @@
   <data name="VkontakteUrl" xml:space="preserve">
     <value>Вконтакті URL-адреса</value>
   </data>
-  <data name="BlogInterests" xml:space="preserve">
-    <value>Основні Інтереси</value>
-  </data>
-  <data name="Blog" xml:space="preserve">
-    <value>Блог</value>
-  </data>
-  <data name="BlogMaterials" xml:space="preserve">
-    <value>Матеріали для студентів</value>
-  </data>
-  <data name="PersonalPage" xml:space="preserve">
-    <value>Персональна сторінка</value>
-  </data>
-  <data name="Russian" xml:space="preserve">
-    <value>Російська</value>
+  <data name="Yes" xml:space="preserve">
+    <value>Так</value>
   </data>
 </root>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ACTS.Localization;
+using ACTS.Localization.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,13 +13,13 @@ namespace ACTS.Core.Entities
 		[HiddenInput(DisplayValue = false)]
 		public int PostId { get; set; }
 
-		[Required(ErrorMessage = "Please enter a title")]
-		[StringLength(500, ErrorMessage = "Title: Length should not exceed 500 characters")]
-		[Display(Name = "Title*")]
+		[CustomRequired]
+		[CustomMaxLength(500)]
+		[Display(Name = nameof(DisplayRes.TitleName), ResourceType = typeof(DisplayRes))]
 		public string Title { get; set; }
 
-        [Display(Name = "Slug")]
-        public string Slug { get; set; }
+		[Display(Name = nameof(DisplayRes.SlugName), ResourceType = typeof(DisplayRes))]
+		public string Slug { get; set; }
 
 		[HiddenInput(DisplayValue = false)]
 		public DateTime? Created { get; set; }

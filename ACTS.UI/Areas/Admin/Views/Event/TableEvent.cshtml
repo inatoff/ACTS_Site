@@ -1,9 +1,10 @@
-﻿@model IEnumerable<ACTS.Core.Entities.News>
+﻿@model IEnumerable<ACTS.Core.Entities.Event>
 
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
-	ViewBag.Title = GlobalRes.TableOfNews;
+	ViewBag.Title = GlobalRes.TableOfEvent;
 	ViewBag.CurrentTreeView = GlobalRes.Tables;
+	var utcNow = DateTime.UtcNow;
 }
 
 @section Styles{
@@ -18,9 +19,9 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<div class="box-header">
-				<h3 class="box-title">@GlobalRes.Uncos</h3>
+				<h3 class="box-title">@GlobalRes.Events</h3>
 				<div class="box-tools pull-right">
-					<a href="@Url.Action("Create", "News")" class="label label-primary"><i class="fa fa-fw fa-pencil"></i>&nbsp;@GlobalRes.CreateNewNews</a>
+					<a href="@Url.Action("Create", "Event")" class="label label-primary"><i class="fa fa-fw fa-pencil"></i>&nbsp;@GlobalRes.CreateNewEvent</a>
 				</div>
 			</div>
 			<!-- /.box-header -->
@@ -32,6 +33,7 @@
 							<th>@GlobalRes.Title</th>
 							<th>@GlobalRes.Created</th>
 							<th>@GlobalRes.Modified</th>
+							<th>@GlobalRes.TimeRange</th>
 							<th>@GlobalRes.Image</th>
 							<th class="no-center-body hasContent">@GlobalRes.Content</th>
 							<th class="no-orderable">@GlobalRes.Actions</th>
@@ -42,7 +44,7 @@
 						{
 							<tr>
 								<td>
-									@item.NewsId
+									@item.EventId
 								</td>
 								<td>
 									@item.Title
@@ -61,26 +63,41 @@
 									}
 								</td>
 								<td>
+									@if (item.StartView.HasValue && item.EndView.HasValue)
+									{
+										var start = item.StartView.Value.ToLocalTime().ToShortDateString();
+										var end = item.EndView.Value.ToLocalTime().ToShortDateString();
+										var range = $"{start} -- {end}";
+
+										@range <br />
+										@(item.IsActive ? GlobalRes.IsActive : "")
+									}
+									else
+									{
+										@GlobalRes.None
+									}
+								</td>
+								<td>
 									@if (item.ImageData == null)
 									{
 										@GlobalRes.None
 									}
 									else
 									{
-										<img alt="News image" width="100" height="100" src="@Url.Action("GetImage", "News", new { area = "", item.NewsId })" />
+										<img alt="Event image" width="100" height="100" src="@Url.Action("GetImage", "Event", new { area = "", item.EventId })" />
 									}
 								</td>
 								<td class="hasContent">
 									<div class="hasContent">@Html.Raw(item.Content)</div>
 								</td>
 								<td>
-									@using (Html.BeginForm("Delete", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+									@using (Html.BeginForm("Delete", "Event", FormMethod.Post))
 									{
 										@Html.AntiForgeryToken()
-										@Html.Hidden("NewsId", item.NewsId)
+										@Html.Hidden("EventId", item.EventId)
 										<ul class="list-unstyled">
-											<li><a href="@Url.Action("Edit", "News", new { item.NewsId })" class="btn btn-link"><i class="fa fa-edit">&nbsp;@GlobalRes.Edit</i></a></li>
-											<li><a href="@Url.Action("PageNews", "News", new { item.NewsId })" class="btn btn-link"><i class="fa fa-home">&nbsp;@GlobalRes.OnMain</i></a></li>
+											<li><a href="@Url.Action("Edit", "Event", new { item.EventId })" class="btn btn-link"><i class="fa fa-edit">&nbsp;@GlobalRes.Edit</i></a></li>
+											<li><a href="@Url.Action("PageNews", "Event", new { item.EventId })" class="btn btn-link"><i class="fa fa-home">&nbsp;@GlobalRes.OnMain</i></a></li>
 											<li><button class="btn btn-link" type="submit"><i class="fa fa-remove text-red">&nbsp;@GlobalRes.Delete</i></button></li>
 										</ul>
 									}
@@ -94,6 +111,7 @@
 							<th>@GlobalRes.Title</th>
 							<th>@GlobalRes.Created</th>
 							<th>@GlobalRes.Modified</th>
+							<th>@GlobalRes.TimeRange</th>
 							<th>@GlobalRes.Image</th>
 							<th>@GlobalRes.Content</th>
 							<th>@GlobalRes.Actions</th>
