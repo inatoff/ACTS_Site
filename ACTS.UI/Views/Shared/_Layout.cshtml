@@ -22,7 +22,7 @@
     <title>@ViewBag.Title</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    @Styles.Render("~/Content/css/")
+    @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/css/MainPage")
 </head>
 <body style="height:100%">         
@@ -93,7 +93,7 @@
                     <!--Выбор локализации -->
                     <ul style="margin-right:5px" class="nav navbar-nav navbar-right">
                         <li class="navLink">
-                            @{Html.RenderAction("AuthenticationLink", new { controller = "Account" }); }
+                            @{Html.RenderAction("AuthenticationLink", new { controller = "Account", area = "" }); }
                         </li>
                         <li>
                             @if (User.Identity.IsAuthenticated)
@@ -142,13 +142,14 @@
             </div>
         </nav>
     </div>
-        <div class="container fluid" style="height:100%;">
-            @RenderBody()
-
-            @if (ViewBag.CurrentPage != "main") { Html.RenderAction("FooterStringUncos", "News"); }
-            else { @Html.Partial("Footer"); }
-            
-        </div>
+    <div class="container fluid">
+        @RenderBody()
+    </div>
+        <a class="back-to-top" href="#top"><img src="~/Content/Images/backToTop.png" style=""/></a>
+    <div class="row" style="padding-top:30px">
+        @Html.Partial("Footer")
+    </div>
+        
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/main-layout")

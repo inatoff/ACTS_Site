@@ -1,6 +1,11 @@
 ﻿.mainColumns{
-    padding-left:0px;
-    padding-right:0px;
+    padding-left:0;
+    padding-right:0;
+}
+
+.navColumns{
+    padding-right:30px;
+    height:900px
 }
 .open:not(.dropup) > .animated-dropdown-menu {
     backface-visibility: visible !important;
@@ -34,6 +39,7 @@
         transform: perspective(400px);
     }
 }
+
 
 @-webkit-keyframes flipInX {
     0% {
@@ -71,8 +77,8 @@
 }
 
 .back-to-top{
-    width:32px;
-    height:32px;
+    width:22px;
+    height:22px;
 }
 
 .slider ul{margin:0;padding:0;list-style:none}

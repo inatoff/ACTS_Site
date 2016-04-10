@@ -119,6 +119,10 @@
     <Compile Include="Migrations\201604020002288_NewFieldsinTeacher.Designer.cs">
       <DependentUpon>201604020002288_NewFieldsinTeacher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604092130034_errorfixing.cs" />
+    <Compile Include="Migrations\201604092130034_errorfixing.Designer.cs">
+      <DependentUpon>201604092130034_errorfixing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -146,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604020002288_NewFieldsinTeacher.resx">
       <DependentUpon>201604020002288_NewFieldsinTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604092130034_errorfixing.resx">
+      <DependentUpon>201604092130034_errorfixing.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
