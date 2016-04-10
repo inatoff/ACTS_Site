@@ -11,6 +11,12 @@ header {
   	margin-bottom:5px;
 }
 
+.personName{
+    color:black;
+    font-family:'Times New Roman', Verdana;
+    font-size:14px;
+}
+
 @media (min-width: 979px) {
   #sidebar.affix-top {
       position: static;
@@ -36,12 +42,12 @@ body {
 
 
 a,a:hover {
-	color:#ff3333;
+	color:#f8f8f8;
   	text-decoration:none;
 }
 
 .highlight-bk {
-	background-color:#ff3333;
+	background-color:#f8f8f8;
     padding:1px;
     width:100%;
 }

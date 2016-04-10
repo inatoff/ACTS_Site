@@ -14,6 +14,22 @@
     animation: flipInX 0.7s both;
 }
 
+ul.nav.navbar>li:not(.sidebar-brand){
+    width:230px;
+    margin:2px;
+    margin-top:3px;
+    background-color:#fcfcfc
+}
+
+li.sidebar-brand{
+    width:230px;
+    font-size: 14px;
+    padding: 8px 12px;
+    background-color: #f8f8f8;
+    margin-bottom: 3px;
+    font-weight: 700;
+}
+
 @keyframes flipInX {
     0% {
         transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
