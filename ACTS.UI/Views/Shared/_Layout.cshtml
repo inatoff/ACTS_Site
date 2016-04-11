@@ -82,14 +82,14 @@
                         @{
                             if (ViewBag.CurrentPage != "main")
                             {
-                                <li class="navLink"><a href="@Url.Action("Index", "Home")">@GlobalRes.Main</a></li>
+                                <li class="navLink"><a href="@Url.Action("About", "Department")">@GlobalRes.Main</a></li>
                             }
                         }
                         <!--Генерация панели навигации из PartialView PanelSections-->
                         @Html.Partial("PanelSections")
                     </ul>
                     <!--Выбор локализации -->
-                    <ul style="margin-right:5px" class="nav navbar-nav navbar-right">
+                    <ul style="margin-right:10px" class="nav navbar-nav navbar-right">
                         <li class="navLink">
                             @{Html.RenderAction("AuthenticationLink", new { controller = "Account", area = "" }); }
                         </li>
@@ -112,13 +112,13 @@
                             </a>
                             <ul class="dropdown-menu animated-dropdown-menu">
                                 <li>
-                                    <a class="language" href="@Url.Action("SetCulture", "Home", new { culture = "uk", returnUrl = Url.Action(), area = "" })">
+                                    <a class="language languageLink" href="@Url.Action("SetCulture", "Home", new { culture = "uk", returnUrl = Url.Action(), area = "" })">
                                         <img src="~/Content/Images/uk.png" alt="Ukrainian flag" />
                                         <p>@GlobalRes.Ukrainian</p>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="language" href="@Url.Action("SetCulture", "Home", new { culture = "en", returnUrl = Url.Action(), area = "" })">
+                                    <a class="language " href="@Url.Action("SetCulture", "Home", new { culture = "en", returnUrl = Url.Action(), area = "" })">
                                         <img src="~/Content/Images/en.png" alt="English flag" />
                                         <p>@GlobalRes.English</p>
                                     </a>
@@ -143,8 +143,7 @@
     <div class="container fluid">
         @RenderBody()
     </div>
-        <a class="back-to-top" href="#top"><img src="~/Content/Images/backToTop.png" style=""/></a>
-    <div class="row" style="padding-top:30px">
+    <div class="row footer" style="padding-top:30px">
         @Html.Partial("Footer")
     </div>
         

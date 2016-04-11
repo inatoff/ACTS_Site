@@ -334,8 +334,6 @@
     <Content Include="Content\Images\actsSlide4.jpg" />
     <Content Include="Content\Images\backToTop.png" />
     <Content Include="Content\Images\en.png" />
-    <Content Include="Content\Images\flag_great_britain.png" />
-    <Content Include="Content\Images\flag_ukraine.png" />
     <Content Include="Content\Images\gplaypattern.png" />
     <Content Include="Content\Images\icon-admin_user-blue.png" />
     <Content Include="Content\Images\photo-48800844_383355910.jpg" />
@@ -496,6 +494,8 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="EmailTemplates\ForgotPassword.cshtml" />
+    <None Include="Properties\PublishProfiles\inatoff - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\inatoff - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -784,7 +784,6 @@
     </Content>
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Department\About.cshtml" />
     <Content Include="Views\Department\History.cshtml" />
     <Content Include="Views\Department\ServicePersonell.cshtml" />
@@ -818,6 +817,7 @@
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>

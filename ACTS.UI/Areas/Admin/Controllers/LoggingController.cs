@@ -24,9 +24,9 @@ namespace ACTS.UI.Areas.Admin.Controllers
 #if DEBUG
 		const LogLevel _defaultLevel = LogLevel.Trace;
 #else
-		const LogLevel _level = LogLevel.Info;
+		const LogLevel _defaultLevel = LogLevel.Info;
 #endif
-		private ILogRepository _repository;
+        private ILogRepository _repository;
 		public LoggingController(ILogRepository repository)
 		{
 			_repository = repository;

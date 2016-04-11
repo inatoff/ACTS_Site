@@ -3,6 +3,30 @@
     padding-right:0;
 }
 
+.footer{
+    background-color:#3c4a5e;
+    color:#5e788e;
+    padding-bottom:15px;
+    text-align:right;
+    position:relative;
+}
+
+a.language{
+    width:100%;
+}
+
+.row{
+    margin-right:0;
+}
+
+.contactFooter{
+    padding-right:0;
+}
+
+.footerPartners{
+    padding-right:160px;
+}
+
 .navColumns{
     padding-right:30px;
     height:900px
@@ -22,7 +46,7 @@ ul.nav.navbar>li:not(.sidebar-brand){
 }
 
 li.sidebar-brand{
-    width:230px;
+    width:234px;
     font-size: 14px;
     padding: 8px 12px;
     background-color: #f8f8f8;
