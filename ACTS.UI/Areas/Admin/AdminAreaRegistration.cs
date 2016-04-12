@@ -15,27 +15,21 @@ namespace ACTS.UI.Areas.Admin
 		public override void RegisterArea(AreaRegistrationContext context) 
 		{
 			context.MapRoute(
+				name: "ToDefaultAdminAreaAction",
+				url: "Admin",
+				defaults: new { controller = "Admin", action = "Dashboard" }
+			);
+
+			context.MapRoute(
 				name: "ToDefaultAdminAction",
 				url: "Admin/Dashboard",
 				defaults: new { controller = "Admin", action = "Dashboard" }
 			);
 
-			//context.MapRoute(
-			//	name: "ToDefaultLoggingAction",
-			//	url: "Admin/Logging/{action}",
-			//	defaults: new { controller = "Logging", action = "Index" }
-			//);
-
 			context.MapRoute(
 				name: "ToLogsRssFeed",
 				url: "Admin/Logging/Rss",
 				defaults: new { controller = "Logging", action = "Rss" }
-			);
-
-			context.MapRoute(
-				name: "ToDefaultAdminAreaAction",
-				url: "Admin",
-				defaults: new { controller = "Admin", action = "Dashboard" }
 			);
 
 			context.MapRoute(

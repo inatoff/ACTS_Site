@@ -22,7 +22,9 @@ namespace ACTS.Core.Concrete
 		public DbSet<Teacher> Teachers { get; set; }
 		public DbSet<Blog> Blogs { get; set; }
 		public DbSet<Post> Posts { get; set; }
+#if LogInDb
 		public DbSet<LogEntry> LogEntries { get; set; }
+#endif
 
 		public EFDbContext() : base("ACTSdbConnection")
 		{

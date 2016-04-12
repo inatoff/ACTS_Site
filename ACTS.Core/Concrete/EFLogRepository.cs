@@ -1,4 +1,5 @@
-﻿using ACTS.Core.Abstract;
+﻿#if LogsInDb
+using ACTS.Core.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,3 +60,4 @@ namespace ACTS.Core.Concrete
 		}
 	} 
 }
+#endif

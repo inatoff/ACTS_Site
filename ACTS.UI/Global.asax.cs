@@ -12,6 +12,8 @@ using NLog.LayoutRenderers;
 using Ninject;
 using Ninject.Extensions.Logging;
 using NLog.Config;
+using ACTS.UI.Services;
+using System.Configuration;
 
 namespace ACTS.UI
 {
@@ -21,13 +23,17 @@ namespace ACTS.UI
 		static MvcApplication()
 		{
 			IKernel kernel = new StandardKernel();
-				_logger = kernel.Get<ILoggerFactory>().GetCurrentClassLogger();
-			_logger.Debug("MVC Application initialized."); 
+			_logger = kernel.Get<ILoggerFactory>().GetCurrentClassLogger();
+		}
+
+		public MvcApplication()
+			:base()
+		{
+			_logger.Debug("MVC Application initialized.");
 		}
 
 		protected void Application_Start()
 		{
-			//ILogger logger = _loggerFactory.GetCurrentClassLogger();
 			_logger.Trace("MVC Application start configuring.");
 
 			AreaRegistration.RegisterAllAreas();
@@ -37,7 +43,9 @@ namespace ACTS.UI
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
 			ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
-			EmailBodyFactory.DefaultPathToTemplates = Server.MapPath("~/EmailTemplates/");
+
+			EmailBodyServiceFactory.DefaultPathToTemplates = Server.MapPath(ConfigurationManager.AppSettings["EmailTemplatesFolder"]);
+			LogService.DefaultPathToLogs = Server.MapPath(ConfigurationManager.AppSettings["LogsFolder"]);
 
 			_logger.Trace("MVC Application end configuring.");
 		}
@@ -45,7 +53,6 @@ namespace ACTS.UI
 		protected void Application_Error()
 		{
 			Exception lastException = Server.GetLastError();
-			//ILogger logger = _loggerFactory.GetCurrentClassLogger();
 			_logger.ErrorException(lastException.Message, lastException);
 		}
 	}

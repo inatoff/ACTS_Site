@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if LogsInDb
+using System;
 using System.Linq;
 using ACTS.Core.Logging;
 
@@ -16,3 +17,4 @@ namespace ACTS.Core.Abstract
 		IQueryable<LogEntry> LastLogsByDateAndLevel(DateTime fromData, LogLevel level);
 	}
 }
+#endif
