@@ -357,4 +357,7 @@
   <data name="UserNoFound" xml:space="preserve">
     <value>Пользователь с индефикатором = {0} не найден.</value>
   </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Администрирование</value>
+  </data>
 </root>

@@ -7,13 +7,13 @@ namespace ACTS.Core.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Event : IMigrationMetadata
+    public sealed partial class RevertLogInDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Event));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RevertLogInDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201603302046455_Event"; }
+            get { return "201604120055045_RevertLogInDb"; }
         }
         
         string IMigrationMetadata.Source

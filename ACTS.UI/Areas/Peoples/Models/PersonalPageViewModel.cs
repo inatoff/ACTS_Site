@@ -1,6 +1,8 @@
 ﻿using ACTS.Core.Entities;
+using ACTS.Localization.Resources;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,13 +13,18 @@ namespace ACTS.UI.Areas.Peoples.Models
     {
         public string FullName { get; }
         public string Degree { get; }
+        public string Position { get; }
         public string Email { get; }
         public string Intellect { get; }
         public string Vk { get; }
         public string Facebook { get; }
         public string Twitter { get; }
+
+        public string Greetings { get; }
+        public Rank Rank { get; }
         public Blog Blog { get; }
 
+        public string Slug { get; }
         public IEnumerable<string> Disciplines { get; set; }
 
         public IEnumerable<string> ScienceInterests { get; set; }
@@ -26,11 +33,19 @@ namespace ACTS.UI.Areas.Peoples.Models
 
         public IEnumerable<string> Publications { get; set; }
 
+        [Display(Name = nameof(DisplayRes.PhotoName), ResourceType = typeof(DisplayRes))]
+        public byte[] Photo { get; set; }
+
+        public string PhotoMimeType { get; set; }
+
+
         public PersonalPageViewModel(Teacher teacher)
         {
             FullName = teacher.FullName;
             Degree = teacher.Degree;
+            Greetings = teacher.Greetings;
             Email = teacher.Email;
+            Slug = teacher.NameSlug;
             Intellect = teacher.Intellect;
             Vk = teacher.Vk;
             Facebook = teacher.Facebook;
@@ -40,6 +55,10 @@ namespace ACTS.UI.Areas.Peoples.Models
             ScienceInterests = teacher.ScienceInterests;
             Projects = teacher.Projects;
             Publications = teacher.Publications;
+            Photo = teacher.Photo;
+            PhotoMimeType = teacher.PhotoMimeType;
+            Position = teacher.Position;
+            Rank = teacher.Rank;
         }
         private PersonalPageViewModel() { }
     }

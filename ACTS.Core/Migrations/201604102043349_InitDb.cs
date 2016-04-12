@@ -23,9 +23,11 @@ namespace ACTS.Core.Migrations
                     {
                         PostId = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false, maxLength: 500),
-                        Create = c.DateTime(),
+                        Slug = c.String(),
+                        Created = c.DateTime(),
                         Modified = c.DateTime(),
                         Content = c.String(),
+                        CombinedTags = c.String(),
                         Blog_TeacherId = c.Int(),
                     })
                 .PrimaryKey(t => t.PostId)
@@ -38,8 +40,10 @@ namespace ACTS.Core.Migrations
                     {
                         TeacherId = c.Int(nullable: false, identity: true),
                         Degree = c.String(),
+                        Rank = c.Int(nullable: false),
                         Email = c.String(),
                         NameSlug = c.String(),
+                        Greetings = c.String(),
                         Intellect = c.String(),
                         Vk = c.String(),
                         Facebook = c.String(),
@@ -132,8 +136,35 @@ namespace ACTS.Core.Migrations
                 c => new
                     {
                         EventId = c.Int(nullable: false, identity: true),
+                        Created = c.DateTime(),
+                        Modified = c.DateTime(),
+                        StartView = c.DateTime(),
+                        EndView = c.DateTime(),
+                        UrlSlug = c.String(),
+                        Title = c.String(nullable: false, maxLength: 500),
+                        ImageData = c.Binary(),
+                        ImageMimeType = c.String(),
+                        Content = c.String(),
                     })
                 .PrimaryKey(t => t.EventId);
+            
+            CreateTable(
+                "dbo.LogEntries",
+                c => new
+                    {
+                        LogEntryId = c.Int(nullable: false, identity: true),
+                        CallSite = c.String(nullable: false),
+                        UtcDate = c.DateTime(nullable: false),
+                        Exception = c.String(),
+                        Level = c.Byte(nullable: false),
+                        Logger = c.String(nullable: false, maxLength: 80),
+                        MachineName = c.String(nullable: false),
+                        Message = c.String(maxLength: 256),
+                        StackTrace = c.String(nullable: false),
+                        Thread = c.String(nullable: false, maxLength: 10),
+                        Username = c.String(nullable: false, maxLength: 256),
+                    })
+                .PrimaryKey(t => t.LogEntryId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -151,7 +182,7 @@ namespace ACTS.Core.Migrations
                     {
                         NewsId = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false, maxLength: 500),
-                        Create = c.DateTime(),
+                        Created = c.DateTime(),
                         Modified = c.DateTime(),
                         ImageData = c.Binary(),
                         ImageMimeType = c.String(),
@@ -183,6 +214,7 @@ namespace ACTS.Core.Migrations
             DropIndex("dbo.Blogs", new[] { "TeacherId" });
             DropTable("dbo.News");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.LogEntries");
             DropTable("dbo.Events");
             DropTable("dbo.Employees");
             DropTable("dbo.AspNetUserRoles");

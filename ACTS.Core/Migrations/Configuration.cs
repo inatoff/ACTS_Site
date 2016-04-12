@@ -1,3 +1,4 @@
+#define RustamPC
 namespace ACTS.Core.Migrations
 {
 	using Concrete;
@@ -244,7 +245,7 @@ namespace ACTS.Core.Migrations
 				}
 
 #if RustamPC
-				using (FileStream magistersFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\periscope.jpg", FileMode.Open))
+				using (FileStream periscopeFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\periscope.jpg", FileMode.Open))
 #else
 				using (FileStream periscopeFs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\periscope.jpg", FileMode.Open))
 #endif

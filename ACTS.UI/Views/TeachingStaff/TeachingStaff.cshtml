@@ -3,9 +3,9 @@
     var Head = ACTS.Core.Entities.Rank.Head;
     var FirstVice = ACTS.Core.Entities.Rank.FirstVice;
 }
-<divc class="row">
+<div class="row">
     @Html.Partial("DepartmentNav")
-    <div class="col-md-9 mainColumns">
+    <div class="col-md-9 mainColumns" role="main">
         @{
             foreach (var teacher in Model)
             {
@@ -15,9 +15,7 @@
                         @Html.Partial("personInfo", teacher)
                     </div>
                 }
-                @Html.Partial("personInfo", teacher);
             }
         }
     </div>
-    <p>This would be awesome page</p>
-</divc>
+</div>

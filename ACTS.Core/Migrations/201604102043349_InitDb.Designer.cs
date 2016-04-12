@@ -13,7 +13,7 @@ namespace ACTS.Core.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201601271215143_InitDb"; }
+            get { return "201604102043349_InitDb"; }
         }
         
         string IMigrationMetadata.Source

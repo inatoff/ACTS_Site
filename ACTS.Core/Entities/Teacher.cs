@@ -42,6 +42,9 @@ namespace ACTS.Core.Entities
 		[Display(Name = nameof(DisplayRes.SlugName), ResourceType = typeof(DisplayRes))]
 		public string NameSlug { get; set; }
 
+        [Display(Name = nameof(DisplayRes.Greetings), ResourceType = typeof(DisplayRes))]
+        public string Greetings { get; set; }
+
 		[Url]
 		[Display(Name = nameof(DisplayRes.IntellectName), ResourceType = typeof(DisplayRes))]
 		public string Intellect { get; set; }

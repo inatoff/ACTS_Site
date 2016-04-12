@@ -332,13 +332,13 @@
     <Content Include="Content\Images\actsSlide1.jpg" />
     <Content Include="Content\Images\actsSlide2.jpg" />
     <Content Include="Content\Images\actsSlide4.jpg" />
+    <Content Include="Content\Images\backToTop.png" />
     <Content Include="Content\Images\en.png" />
-    <Content Include="Content\Images\flag_great_britain.png" />
-    <Content Include="Content\Images\flag_ukraine.png" />
     <Content Include="Content\Images\gplaypattern.png" />
     <Content Include="Content\Images\icon-admin_user-blue.png" />
     <Content Include="Content\Images\photo-48800844_383355910.jpg" />
     <Content Include="Content\Images\ru.png" />
+    <Content Include="Content\Images\square_bg.png" />
     <Content Include="Content\Images\uk.png" />
     <Content Include="Content\Images\фон3.jpg" />
     <Content Include="Content\Images\фон4.jpg" />
@@ -370,12 +370,13 @@
     <Content Include="Content\skins\_all-skins.css" />
     <Content Include="Content\skins\_all-skins.min.css" />
     <Content Include="Content\Images\logo.png" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\css\Site.css" />
     <Content Include="Areas\Admin\Views\Logging\Logging.cshtml" />
     <Content Include="Areas\Peoples\Views\Profile\Index.cshtml" />
-    <Content Include="Areas\Peoples\Views\PersonalPage\Index.cshtml" />
     <Content Include="Areas\Peoples\Views\Shared\_PersonalPageNavigation.cshtml" />
     <Content Include="Areas\Peoples\Views\Blog\Index.cshtml" />
+    <Content Include="Areas\Peoples\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Peoples\Views\Blog\PersonalPage.cshtml" />
     <Content Include="Areas\Admin\Views\Event\TableEvent.cshtml" />
     <Content Include="Areas\Admin\Views\Event\CreateEvent.cshtml" />
     <Content Include="Areas\Admin\Views\Event\EditEvent.cshtml" />
@@ -403,6 +404,9 @@
     <Content Include="Areas\Admin\Views\Employee\CreateEmployee.cshtml" />
     <Content Include="Areas\Admin\Views\Teacher\CreateTeacher.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartialUser.cshtml" />
+    <Content Include="Scripts\actsScripts\fixedMenu.js" />
+    <Content Include="Scripts\actsScripts\personalPageScripts.js" />
+    <Content Include="Scripts\actsScripts\Slider.js" />
     <Content Include="Scripts\Admin\initDateRange.js" />
     <Content Include="Scripts\Admin\initDateRange_uk.js" />
     <Content Include="Scripts\Admin\fileinputOptions_uk.js" />
@@ -490,6 +494,11 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="EmailTemplates\ForgotPassword.cshtml" />
+    <None Include="Properties\PublishProfiles\inatoff - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\inatoff - Web Deploy.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
@@ -503,11 +512,16 @@
     </None>
     <Content Include="Areas\Peoples\Views\Profile\Edit.cshtml" />
     <Content Include="Areas\Peoples\Views\Shared\_PersonalPageLayout.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Main\personInfoWrapper.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
@@ -715,7 +729,6 @@
     <Compile Include="Areas\Admin\Models\MyAccountViewModel.cs" />
     <Compile Include="Areas\Admin\Models\RoleItem.cs" />
     <Compile Include="Areas\Peoples\Controllers\BlogController.cs" />
-    <Compile Include="Areas\Peoples\Controllers\PersonalPageController.cs" />
     <Compile Include="Areas\Peoples\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Peoples\Models\PersonalPageViewModel.cs" />
     <Compile Include="Areas\Peoples\Models\TeacherAccountViewModel.cs" />
@@ -772,10 +785,8 @@
     </Content>
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Department\About.cshtml" />
     <Content Include="Views\Department\History.cshtml" />
-    <Content Include="Views\Department\TeachingStaff.cshtml" />
     <Content Include="Views\Department\ServicePersonell.cshtml" />
     <Content Include="Views\News\PageNews.cshtml" />
     <Content Include="Views\News\ArchiveUncos.cshtml" />
@@ -788,7 +799,7 @@
     <Content Include="Areas\Admin\Views\Employee\TableEmployee.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
-    <Content Include="Views\Teacher\TeachingStaff.cshtml" />
+    <Content Include="Views\TeachingStaff\TeachingStaff.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Account\TableAccount.cshtml" />
     <Content Include="Areas\Admin\Views\Account\CreateAccount.cshtml" />
@@ -807,12 +818,12 @@
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
-    <Folder Include="Scripts\actsScripts\" />
     <Folder Include="Views\Blog\" />
     <Folder Include="Views\Employee\Enrollee\" />
     <Folder Include="Views\Event\" />
