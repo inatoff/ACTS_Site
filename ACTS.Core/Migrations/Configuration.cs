@@ -1,4 +1,4 @@
-#define RustamPC
+//#define RustamPC
 namespace ACTS.Core.Migrations
 {
 	using Concrete;
@@ -21,6 +21,12 @@ namespace ACTS.Core.Migrations
 
 		protected override void Seed(ACTS.Core.Concrete.EFDbContext context)
 		{
+#if RustamPC
+			var pathToImagesFolder = @"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\";
+#else
+			var pathToImagesFolder = @"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\";
+#endif
+
 			var roleStore = new ApplicationRoleStore(context);
 			var roleManager = new RoleManager<ApplicationRole, int>(roleStore);
 
@@ -65,11 +71,7 @@ namespace ACTS.Core.Migrations
 
 			if (!teacherRepository.Teachers.Any())
 			{
-#if RustamPC
-				using (var fs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\Теленик.jpg", FileMode.Open))
-#else
-				using (var fs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\Теленик.jpg", FileMode.Open))
-#endif
+				using (var fs = new FileStream(Path.Combine(pathToImagesFolder, "Теленик.jpg"), FileMode.Open))
 				{
 					var teacher = new Teacher()
 					{
@@ -86,11 +88,8 @@ namespace ACTS.Core.Migrations
 
 					teacherRepository.CreateTeacher(teacher);
 				}
-#if RustamPC
-				using (var fs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\Новацкий.jpg", FileMode.Open))
-#else
-				using (var fs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\Новацкий.jpg", FileMode.Open))
-#endif
+
+				using (var fs = new FileStream(Path.Combine(pathToImagesFolder, "Новацкий.jpg"), FileMode.Open))
 				{
 					var teacher = new Teacher()
 					{
@@ -113,13 +112,8 @@ namespace ACTS.Core.Migrations
 
 			if (!eventRepository.Events.Any())
 			{
-#if RustamPC
-				using (FileStream testImageFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\testImage.jpg", FileMode.Open),
-					   maxresdefaultFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\maxresdefault.jpg", FileMode.Open))
-#else
-				using (FileStream testImageFs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\testImage.jpg", FileMode.Open),
-					   maxresdefaultFs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\maxresdefault.jpg", FileMode.Open))
-#endif
+				using (FileStream testImageFs = new FileStream(Path.Combine(pathToImagesFolder, "testImage.jpg"), FileMode.Open),
+					   maxresdefaultFs = new FileStream(Path.Combine(pathToImagesFolder, "maxresdefault.jpg"), FileMode.Open))
 				{
 					var image = new byte[testImageFs.Length];
 					testImageFs.Read(image, 0, (int)testImageFs.Length);
@@ -168,11 +162,7 @@ namespace ACTS.Core.Migrations
 
 			if (!employeeRepository.Employees.Any())
 			{
-#if RustamPC
-				using (FileStream sherbanFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\sherban.jpg", FileMode.Open))
-#else
-				using (FileStream sherbanFs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\sherban.jpg", FileMode.Open))
-#endif
+				using (FileStream sherbanFs = new FileStream(Path.Combine(pathToImagesFolder, "sherban.jpg"), FileMode.Open))
 				{
 					var sherbanPhoto = new byte[sherbanFs.Length];
 					sherbanFs.Read(sherbanPhoto, 0, (int)sherbanFs.Length);
@@ -185,11 +175,7 @@ namespace ACTS.Core.Migrations
 					});
 				}
 
-#if RustamPC
-				using (FileStream vlasovaFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\vlasova.jpg", FileMode.Open))
-#else
-				using (FileStream vlasovaFs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\vlasova.jpg", FileMode.Open))
-#endif
+				using (FileStream vlasovaFs = new FileStream(Path.Combine(pathToImagesFolder, "vlasova.jpg"), FileMode.Open))
 				{
 					var vlasovaPhoto = new byte[vlasovaFs.Length];
 					vlasovaFs.Read(vlasovaPhoto, 0, (int)vlasovaFs.Length);
@@ -203,11 +189,7 @@ namespace ACTS.Core.Migrations
 					});
 				}
 
-#if RustamPC
-				using (FileStream ohorodnikFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\ohorodnik.jpg", FileMode.Open))
-#else
-				using (FileStream ohorodnikFs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\ohorodnik.jpg", FileMode.Open))
-#endif
+				using (FileStream ohorodnikFs = new FileStream(Path.Combine(pathToImagesFolder, "ohorodnik.jpg"), FileMode.Open))
 				{
 					var ohorodnikPhoto = new byte[ohorodnikFs.Length];
 					ohorodnikFs.Read(ohorodnikPhoto, 0, (int)ohorodnikFs.Length);
@@ -226,11 +208,7 @@ namespace ACTS.Core.Migrations
 
 			if (!newsRepository.Uncos.Any())
 			{
-#if RustamPC
-				using (FileStream magistersFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\magisters.jpg", FileMode.Open))
-#else
-				using (FileStream magistersFs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\magisters.jpg", FileMode.Open))
-#endif
+				using (FileStream magistersFs = new FileStream(Path.Combine(pathToImagesFolder, "magisters.jpg"), FileMode.Open))
 				{
 					var magistersImage = new byte[magistersFs.Length];
 					magistersFs.Read(magistersImage, 0, (int)magistersFs.Length);
@@ -244,11 +222,7 @@ namespace ACTS.Core.Migrations
 					});
 				}
 
-#if RustamPC
-				using (FileStream periscopeFs = new FileStream(@"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\periscope.jpg", FileMode.Open))
-#else
-				using (FileStream periscopeFs = new FileStream(@"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\periscope.jpg", FileMode.Open))
-#endif
+				using (FileStream periscopeFs = new FileStream(Path.Combine(pathToImagesFolder, "periscope.jpg"), FileMode.Open))
 				{
 					var periscopeImage = new byte[periscopeFs.Length];
 					periscopeFs.Read(periscopeImage, 0, (int)periscopeFs.Length);
