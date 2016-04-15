@@ -60,6 +60,6 @@ namespace ACTS.UI.Areas.Peoples.Models
             Position = teacher.Position;
             Rank = teacher.Rank;
         }
-        private PersonalPageViewModel() { }
+        public PersonalPageViewModel() { }
     }
 }

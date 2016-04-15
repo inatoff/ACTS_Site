@@ -186,7 +186,9 @@ namespace ACTS.UI.Areas.Peoples.Controllers
 
         private async Task<PersonalPageViewModel> GetPersonalPage(string nameSlug)
         {
-            return new PersonalPageViewModel(await _teacherRepo.GetTeacherByUrlSlugAsync(nameSlug));
+            var model = await _teacherRepo.GetTeacherByUrlSlugAsync(nameSlug);
+            if (model != null) { return new PersonalPageViewModel(model); }
+            else return null;
         }
 
         [AllowAnonymous]

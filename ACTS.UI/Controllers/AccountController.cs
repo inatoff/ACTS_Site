@@ -141,8 +141,8 @@ namespace ACTS.UI.Controllers
             var userName = User.Identity.Name;
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             _logger.Trace($"User {userName} is logged out.");
-
-            return RedirectToAction("Index", "Home");
+            
+            return RedirectToAction("About", "Department");
         }
 
         [HttpPost]
@@ -286,7 +286,7 @@ namespace ACTS.UI.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("About", "Department");
             }
         }
 

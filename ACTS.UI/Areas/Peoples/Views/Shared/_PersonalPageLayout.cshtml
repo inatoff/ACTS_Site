@@ -22,6 +22,7 @@
     <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700,100&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -29,17 +30,17 @@
 </head>
 <body>
     <nav class="navbar navbar-static personalNav">
+    <p class="personName">@ViewBag.Teacher.FullName</p>
         <div class="container">
             <a class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="glyphicon glyphicon-chevron-down"></span>
             </a>
-            <div class="nav-collapse collase">
+            <div class="nav-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li class="personName">
-                        @ViewBag.Teacher.FullName
+                    <li>
+                        <a class="navbar-brand" href="@Url.Action("About",new { controller = "Department", area = "" })">
+                            <img src="~/Content/Images/logo.png" style="max-height:100%" />
+                        </a>
                     </li>
                 </ul>
                 <ul class="nav navbar-right navbar-nav">
@@ -104,45 +105,21 @@
     <!-- Begin Body -->
     <div class="container">
         <div class="row">
-            <div class="col col-sm-3">
+            <div class="col-md-3 col-sm-3">
                 <div id="sidebar">
-                    <ul class="nav nav-stacked">
-                        <li><h3 class="highlight">@GlobalRes.BlogMain <i class="glyphicon glyphicon-dashboard pull-right"></i></h3></li>
-                        <li><h3 class="highlight">@GlobalRes.BlogInterests<i class="glyphicon glyphicon-dashboard pull-right"></i></h3></li>
-                        <li><h3 class="highlight">@GlobalRes.BlogPublications<i class="glyphicon glyphicon-dashboard pull-right"></i></h3></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
+                    <ul class="nav nav-stacked personalSideBar nav-tabs">
+                        <li id="sideTitle"><a href="#a" data-toggle="tab">@GlobalRes.BlogMain</a></li>
+                        <li><a href="#b" data-toggle="tab">@GlobalRes.Blog</a></li>
+                        <li><a href="#c" data-toggle="tab">@GlobalRes.BlogInterests</a></li>
+                        <li><a href="#d" data-toggle="tab">@GlobalRes.BlogPublications</a></li>
+                        <li><a href="#e" data-toggle="tab">@GlobalRes.BlogProjects</a></li>
+                        <li><a href="#f" data-toggle="tab">@GlobalRes.BlogMaterials</a></li>
+                        <li><a href="#b" data-toggle="tab">Back To Top ICON</a></li>
                     </ul>
-                    <div class="accordion" id="accordion2">
-                        <div class="accordion-group">
-                            <div class="accordion-heading">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                                    Accordion
-                                </a>
-                            </div>
-                            <div id="collapseOne" class="accordion-body collapse in">
-                                <div class="accordion-inner">
-                                    <p>There is a lot to be said about RWD.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-group">
-                            <div class="accordion-heading">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                                    Accordion
-                                </a>
-                            </div>
-                            <div id="collapseTwo" class="accordion-body collapse">
-                                <div class="accordion-inner">
-                                    <p>Use media queries or utility classes to customize responsiveness.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-            <div class="col col-sm-9">
-                <div class="panel" style="min-height: 800px;">
+            <div class="col-md-9 col-sm-9">
+                <div class="panel" style="min-height: 1800px;">
                     @RenderBody()
                 </div>
             </div>

@@ -41,7 +41,7 @@ namespace ACTS.UI.Areas.Admin
 			context.MapRoute(
 				name: "Admin_default",
 				url:  "Admin/{controller}/{action}/{id}",
-				defaults: new { controller = "Admin", action = "Index", id = UrlParameter.Optional }
+				defaults: new { controller = "Admin", action = "Dashboard", id = UrlParameter.Optional }
 			);
 		}
 	}
