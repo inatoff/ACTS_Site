@@ -6,16 +6,21 @@
 <div class="row">
     @Html.Partial("DepartmentNav")
     <div class="col-md-9 mainColumns" role="main">
-        @{
-            foreach (var teacher in Model)
-            {
-                if (teacher.Rank == Head || teacher.Rank == FirstVice)
+        <div>
+            <div class="TStitle">
+                @GlobalRes.TeachingStaff
+            </div>
+            @{
+                foreach (var teacher in Model)
                 {
-                    <div class="col-md-12">
-                        @Html.Partial("personInfo", teacher)
-                    </div>
+                    if (teacher.Rank == Head || teacher.Rank == FirstVice)
+                    {
+                        <div class="col-md-12 teacherInfo">
+                            @Html.Partial("personInfo", teacher)
+                        </div>
+                    }
                 }
             }
-        }
+        </div>
     </div>
 </div>

@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity;
 
 namespace ACTS.UI.Controllers
 {
+    [RoutePrefix("")]
     public class TeachingStaffController : BaseController
     {
         private ITeacherRepository _repository;
@@ -43,7 +44,7 @@ namespace ACTS.UI.Controllers
             Teacher person = await _repository.GetTeacherByUrlSlugAsync(teacherSlug);
             return File(person.Photo, person.PhotoMimeType);
         }
-
+        [Route("Teachers")]
         public async Task<ViewResult> TeachingStaff()
         {
             IEnumerable<Teacher> teachers = await _repository.GetAllTeachersAsync();

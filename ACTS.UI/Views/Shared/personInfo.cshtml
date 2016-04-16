@@ -20,15 +20,15 @@
         </div>
         @if (Model != null && Model.Blog != null)
         {
-            @Html.ActionLink("Персональная страница", "PersonalPage", new { area = "Peoples", controller = "Blog", nameSlug = Model.NameSlug })
+            @Html.ActionLink(GlobalRes.PersonalPage, "PersonalPage", new { area = "Peoples", controller = "Blog", nameSlug = Model.NameSlug })
         }
     </div>
     <div class="personDescription" style="display:none">
-        <p>Степень:@Model.Degree</p>
-        <p><strong>Дисциплины:</strong></p>
+        <p>@GlobalRes.Degree:@Model.Degree</p>
         @if (Model.Disciplines != null && Model.Disciplines.Count > 0)
         {
-            <ul>
+            <p>@GlobalRes.Disciplines</p>
+            <ul class="TSDisciplines">
                 @{
 
                     foreach (var item in Model.Disciplines)

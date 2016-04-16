@@ -26,15 +26,16 @@ header {
     background-color:blue;
 }
 .personName{
+
     width:100%;
     text-align:center;
     position:absolute;
     color:black;
-    font:300 28px/30px "Roboto Slab",Georgia,Times,serif;
-    font-size:30x;
+    font:400 28px/30px "Roboto Slab",Georgia,Times,serif;
+    font-size:30px;
     font-weight:400;
     font-variant:small-caps;
-    color: black;
+    color: #414141;
     padding:8px 5px 8px 5px; 
 }
 .personPosition{

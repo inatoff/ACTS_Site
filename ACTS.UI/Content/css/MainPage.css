@@ -108,7 +108,19 @@ li.sidebar-brand{
 }
 
 .personPosition {
-    font-family: "Roboto Slab-Light"
+    font: 400 14px/20px "Open Sans",Verdana,Arial,sans-serif;
+    margin-top: 5px;
+    color: #9e9e9e;
+    text-align: center;
+}
+
+.personName{
+    width:100%;
+    text-align:center;
+    font:300 28px/30px "Roboto Slab",Georgia,Times,serif;
+    font-size:20px;
+    color: #414141;
+    padding:8px 5px 0 5px; 
 }
 
 #vk_groups {
@@ -134,3 +146,41 @@ li.sidebar-brand{
 .sl1 {background-repeat:repeat-x;background-image :url("../../Content/images/actsSlide1.jpg")}
 .sl2 {background-repeat:repeat-x;background-image:url("../../Content/images/actsSlide2.jpg")}
 .sl3 {background-repeat:repeat-x;background-image:url("../../Content/images/actsSlide3.jpg")}
+
+.TStitle{
+    font: 300 30px/40px "Roboto Slab",Georgia,Times,serif;
+    display: table;
+    white-space: nowrap;
+    font-family: Roboto Slab,Georgia,Times,serif!important;
+    margin: 15px 0;
+}
+
+.TStitle:before{
+    right: 1.5%;
+}
+
+.TStitle:after{
+    left: 1.5%;
+}
+
+.TStitle:before, .TStitle:after{
+
+    border-top: 1px solid #e8e8e8;
+    content: "";
+    display: table-cell;
+    position: relative;
+    top: .75em;
+    width: 45%;
+}
+
+.teacherInfo{
+    padding-top:10px;
+    text-align: center;
+}
+
+.dropdown-menu{
+    padding:0 0;
+}
+.dropdown-menu > li > a {
+    padding: 10px 20px;
+}

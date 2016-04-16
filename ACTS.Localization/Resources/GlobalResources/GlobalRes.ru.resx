@@ -360,4 +360,7 @@
   <data name="Admin" xml:space="preserve">
     <value>Администрирование</value>
   </data>
+  <data name="Disciplines" xml:space="preserve">
+    <value>Дисциплины</value>
+  </data>
 </root>

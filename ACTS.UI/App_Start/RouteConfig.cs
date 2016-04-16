@@ -29,13 +29,22 @@ namespace ACTS.UI
 
 			routes.MapMvcAttributeRoutes();
 
-			routes.MapRoute(
+
+            routes.MapRoute(
+                name: "TeachingStaff",
+                url: "teachers",
+                defaults: new { controller = "TeachingStaff", action = "TeachingStaff", id = UrlParameter.Optional },
+                namespaces: new[] { "ACTS.UI.Controllers" }
+            );
+
+            routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",
 				defaults: new { controller = "Department", action = "About", id = UrlParameter.Optional},
 				namespaces: new[] { "ACTS.UI.Controllers" }
 			);
 
-		}
+
+        }
 	}
 }
