@@ -70,13 +70,13 @@
 						{
 							<tr>
 								<td>
-									@item.LogEntryId
+									@item.Id
 								</td>
 								<td data-order="@item.Level.GetHashCode()">
 									@item.Level
 								</td>
 								<td>
-									@item.UtcDate.ToLocalTime().ToString("yyyy/MM/dd HH:mm:ss.fff")
+									@item.UtcDate.ToLocalTime().ToString("yyyy/MM/dd HH:mm:ss.ffff")
 								</td>
 								<td>
 									@item.Logger

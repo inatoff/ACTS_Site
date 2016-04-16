@@ -99,6 +99,10 @@
     <Compile Include="Migrations\201604102043349_InitDb.Designer.cs">
       <DependentUpon>201604102043349_InitDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604120055045_RevertLogInDb.cs" />
+    <Compile Include="Migrations\201604120055045_RevertLogInDb.Designer.cs">
+      <DependentUpon>201604120055045_RevertLogInDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -128,6 +132,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201604102043349_InitDb.resx">
       <DependentUpon>201604102043349_InitDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604120055045_RevertLogInDb.resx">
+      <DependentUpon>201604120055045_RevertLogInDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

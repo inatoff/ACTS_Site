@@ -29,7 +29,7 @@ namespace ACTS.UI.Infrastructure
 		/// </summary>
 		/// <param name="title">The title for the feed.</param>
 		/// <param name="feedItems">The items of the feed.</param>
-		public RssResult(string title, string description, List<SyndicationItem> feedItems)
+		public RssResult(string title, string description, IEnumerable<SyndicationItem> feedItems)
 		 : base("application/rss+xml")
 		{
 			_feed = new SyndicationFeed(title, description, HttpContext.Current.Request.Url) { Items = feedItems };

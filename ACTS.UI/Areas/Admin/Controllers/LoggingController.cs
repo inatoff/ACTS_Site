@@ -14,6 +14,8 @@ using ACTS.UI.Controllers;
 using ACTS.UI.Helpers;
 using System.ServiceModel.Syndication;
 using ACTS.Core.Logging;
+using ACTS.UI.Services;
+using System.Threading.Tasks;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {
@@ -26,45 +28,42 @@ namespace ACTS.UI.Areas.Admin.Controllers
 #else
 		const LogLevel _defaultLevel = LogLevel.Info;
 #endif
-        private ILogRepository _repository;
-		public LoggingController(ILogRepository repository)
-		{
-			_repository = repository;
-		}
 
-		[ActionName("ByLevelAndDate")]
-		public ActionResult LogsByNDaysAndLevel(DateTime startDate, DateTime endDate, LogLevel logLevel = _defaultLevel)
+		public async Task<ActionResult> ByLevelAndDate(DateTime startDate, DateTime endDate, LogLevel logLevel = _defaultLevel)
 		{
-			var logs = _repository.GetByDateAndLevel(startDate.ToUniversalTime(), endDate.ToUniversalTime(), logLevel).OrderByDescending(l => l.UtcDate).AsEnumerable();
+			var logs = (await LogService.GetByDateAndLevelAsync(startDate.ToUniversalTime(), endDate.ToUniversalTime(), logLevel))
+						.OrderByDescending(l => l.UtcDate)
+						.AsEnumerable();
+
 			var model = new LogViewModel(logLevel, startDate, endDate, logs);
 
 			return View("Logging", model);
 		}
 
-		[ActionName("Index")]
-		public ActionResult LogsForLastMonth()
+		public async Task<ActionResult> Index()
 		{
-			var logs = _repository.LastMonthLogs.OrderByDescending(l => l.UtcDate).AsEnumerable();
+			var logs = (await LogService.GetLastMonthLogsAsync()).OrderByDescending(l => l.UtcDate).AsEnumerable();
 			var model = new LogViewModel(_defaultLevel, DateTime.Now.AddMonths(-1), logs);
 
 			return View("Logging", model);
 		}
 
-		public ActionResult Rss()
+		public async Task<ActionResult> Rss()
 		{
-			var rssItems = _repository.LastWeekLogs
+			var rssItems = (await LogService.GetLastWeekLogsAsync())
 								  .OrderByDescending(l => l.UtcDate)
 								  .AsEnumerable()
-								  .Select(log => new SyndicationItem() {
-									  Id = log.LogEntryId.ToString(),
+								  .Select(log => new SyndicationItem()
+								  {
+									  Id = log.Id.ToString(),
 									  Content = SyndicationContent.CreatePlaintextContent(log.Message),
 									  PublishDate = log.UtcDate.ToLocalTime(),
 									  Title = SyndicationContent.CreatePlaintextContent(log.Level.ToString())
-								  }).ToList();
+								  }).AsEnumerable();
 
 			var date = DateTime.Now;
 
-			return new RssResult("Log Reporting",$"Log Provider: Nlog, Log Level: Info, From {date.AddDays(-7d).ToShortDateString()} to {date.ToShortDateString()} (Last Week)", rssItems);
+			return new RssResult("Log Reporting", $"Log Provider: Nlog, Log Level: Info, From {date.AddDays(-7d).ToShortDateString()} to {date.ToShortDateString()} (Last Week)", rssItems);
 		}
 	}
 }

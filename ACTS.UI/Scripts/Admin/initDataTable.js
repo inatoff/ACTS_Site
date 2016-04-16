@@ -8,8 +8,8 @@
             { orderable: false, targets: 'no-orderable' },
             { className: "dt-head-center", targets: 'no-center-body' },
             { className: "dt-center", targets: '_all' },
-            { orderSequence: ["desc", "asc", "desc"], targets: 'desc' },
-            { orderData: [0, 2], targets: 'time' }
+            { orderSequence: ["desc", "asc"], targets: 'desc' },
+            { orderData: [2,0], targets: 'time' }
         ],
         lengthMenu: [
         [5, 10, 25, 50, -1],

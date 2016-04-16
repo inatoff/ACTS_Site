@@ -104,8 +104,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
@@ -755,7 +755,7 @@
     <Compile Include="Helpers\SignInStatusHelper.cs" />
     <Compile Include="Helpers\TempDataDictionaryHelper.cs" />
     <Compile Include="Areas\Admin\Models\Messanger.cs" />
-    <Compile Include="Infrastructure\EmailBodyFactory.cs" />
+    <Compile Include="Services\EmailBodyServiceFactory.cs" />
     <Compile Include="Infrastructure\FeedResult.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Areas\Admin\Models\InfoAccountViewModel.cs" />
@@ -772,6 +772,7 @@
     <Compile Include="Services\Logging\Nlog\NLogLogger.cs" />
     <Compile Include="Services\Logging\Nlog\UtcDateRenderer.cs" />
     <Compile Include="Services\Logging\Nlog\LogLevelRenderer.cs" />
+    <Compile Include="Services\Logging\LogService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\MenuLinkItem.cs" />
   </ItemGroup>

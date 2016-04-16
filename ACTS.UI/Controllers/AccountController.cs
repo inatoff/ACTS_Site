@@ -14,6 +14,7 @@ using ACTS.Core.Identity;
 using ACTS.UI.Infrastructure;
 using ACTS.Localization.Resources;
 using Ninject.Extensions.Logging;
+using ACTS.UI.Services;
 
 namespace ACTS.UI.Controllers
 {
@@ -215,7 +216,7 @@ namespace ACTS.UI.Controllers
                     CallbackUrl = callbackUrl
                 };
 
-                string body = EmailBodyFactory.GetEmailBody(emailModel, "ForgotPassword");
+                string body = await EmailBodyServiceFactory.GetEmailBody(emailModel, "ForgotPassword");
                 await UserManager.SendEmailAsync(user.Id, "Відновлення пароля", body);
                 _logger.Debug($"Send verification email to {user.UserName} for reset password.");
 

@@ -5,6 +5,7 @@ using ACTS.UI.Controllers;
 using ACTS.UI.Helpers;
 using ACTS.UI.Infrastructure;
 using ACTS.UI.Models;
+using ACTS.UI.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Ninject.Extensions.Logging;
@@ -135,7 +136,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				CallbackUrl = Url.Action("ChangeEmail", "MyAccount", new { userId, email = model.Email, token }, Request.Url.Scheme)
 			};
 
-			string body = EmailBodyFactory.GetEmailBody(emailModel, "ConfirmChangeEmail");
+			string body = await EmailBodyServiceFactory.GetEmailBody(emailModel, "ConfirmChangeEmail");
 
 			await UserManager.SendEmailAsync(CurrentUserId, "Змінити емейл", body);
 
