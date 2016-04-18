@@ -407,6 +407,7 @@
     <Content Include="Scripts\actsScripts\fixedMenu.js" />
     <Content Include="Scripts\actsScripts\personalPageScripts.js" />
     <Content Include="Scripts\actsScripts\Slider.js" />
+    <Content Include="Scripts\actsScripts\teachingStaffWrapper.js" />
     <Content Include="Scripts\Admin\initDateRange.js" />
     <Content Include="Scripts\Admin\initDateRange_uk.js" />
     <Content Include="Scripts\Admin\fileinputOptions_uk.js" />
@@ -743,6 +744,7 @@
     <Compile Include="Controllers\ForStudentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\ScienceFieldsController.cs" />
     <Compile Include="Controllers\TeachingStaffController.cs" />
     <Compile Include="Controllers\ScienceController.cs" />
     <Compile Include="Global.asax.cs">
@@ -813,6 +815,37 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Shared\personInfo.cshtml" />
     <Content Include="Views\Shared\MenuLinkItem.cshtml" />
+    <Content Include="Views\Department\OurGraduates.cshtml" />
+    <Content Include="Views\ForStudent\Placement.cshtml" />
+    <Content Include="Views\ForStudent\Organizations.cshtml" />
+    <Content Include="Views\Shared\ForStudentNav.cshtml" />
+    <Content Include="Views\Science\ScienceFields.cshtml" />
+    <Content Include="Views\Shared\ScienceNav.cshtml" />
+    <Content Include="Views\ScienceFields\ManagementOfItInfrastructure.cshtml" />
+    <Content Include="Views\ScienceFields\ComputerizedControlSystems.cshtml" />
+    <Content Include="Views\ScienceFields\DevelopmentOfDistributedInformationAndControlSystems.cshtml" />
+    <Content Include="Views\ScienceFields\ModernTheoryOfAutomaticControl.cshtml" />
+    <Content Include="Views\ScienceFields\SystemsAndDataNetwork.cshtml" />
+    <Content Include="Views\ScienceFields\MeasurementAndProcessControl.cshtml" />
+    <Content Include="Views\ScienceFields\DesignOfMicroprocessorSystems.cshtml" />
+    <Content Include="Views\ScienceFields\ParallelComputing.cshtml" />
+    <Content Include="Views\ScienceFields\DistanceEducationTechnology.cshtml" />
+    <Content Include="Views\ScienceFields\ComputationalIntelligenceAndComputationalLinguistics.cshtml" />
+    <Content Include="Views\Science\Researches.cshtml" />
+    <Content Include="Views\Science\Achievments.cshtml" />
+    <Content Include="Views\Science\ScienceConnections.cshtml" />
+    <Content Include="Views\Science\PrizesAndAwards.cshtml" />
+    <Content Include="Views\Science\Laboratories.cshtml" />
+    <Content Include="Views\Science\StudentResearches.cshtml" />
+    <Content Include="Views\ForStudent\Specialities.cshtml" />
+    <Content Include="Views\ForStudent\StudentRating.cshtml" />
+    <Content Include="Views\ForStudent\UsefulLinks.cshtml" />
+    <Content Include="Views\ForEnrollee\ConditionsOfAdmissions.cshtml" />
+    <Content Include="Views\Shared\ForEnrolleeNav.cshtml" />
+    <Content Include="Views\ForEnrollee\OpenDoors.cshtml" />
+    <Content Include="Views\ForEnrollee\FAQ.cshtml" />
+    <Content Include="Views\ForEnrollee\FDP.cshtml" />
+    <Content Include="Views\ForEnrollee\Magistracy.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -827,9 +860,6 @@
     <Folder Include="Views\Blog\" />
     <Folder Include="Views\Employee\Enrollee\" />
     <Folder Include="Views\Event\" />
-    <Folder Include="Views\ForEnrollee\" />
-    <Folder Include="Views\ForStudent\" />
-    <Folder Include="Views\Science\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ACTS.Core\ACTS.Core.csproj">

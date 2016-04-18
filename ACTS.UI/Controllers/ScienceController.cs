@@ -9,11 +9,6 @@ namespace ACTS.UI.Controllers
     public class ScienceController : BaseController
     {
         // GET: Science
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult ScienceFields()
         {
             return View();
@@ -25,6 +20,11 @@ namespace ACTS.UI.Controllers
         }
 
         public ActionResult Achievments()
+        {
+            return View();
+        }
+
+        public ActionResult StudentResearches()
         {
             return View();
         }

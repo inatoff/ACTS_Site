@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = GlobalRes.Placement;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    @Html.Partial("ForStudentNav")
+    <div class="col-md-9 mainColumns content-col" style="background-color:rgba(255, 255, 255, 0.4);" role="main">
+        <div class="c__block-title">@GlobalRes.History</div>
+        @Html.Partial("ForStudentNav")
+        <div class="col-md-9 mainColumns" role="main">
+            <div class="c__block-title">
+                @GlobalRes.Placement
+            </div>
+            <div class="c__block-content">
+                @GlobalRes.Undone
+            </div>
+            <div>
+                @Html.Action("FooterStringUncos", "News")
+            </div>
+        </div>
+    </div>
+</div>

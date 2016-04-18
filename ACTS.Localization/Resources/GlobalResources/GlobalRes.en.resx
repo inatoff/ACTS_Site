@@ -729,4 +729,19 @@
   <data name="Disciplines" xml:space="preserve">
     <value>Disciplines</value>
   </data>
+  <data name="Undone" xml:space="preserve">
+    <value>Page is under construction</value>
+  </data>
+  <data name="StudentOrganizations" xml:space="preserve">
+    <value>Students organizations and media resources</value>
+  </data>
+  <data name="StudentCity" xml:space="preserve">
+    <value>The campus NTUU "KPI"</value>
+  </data>
+  <data name="StudentResearches" xml:space="preserve">
+    <value>Student's science</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
 </root>

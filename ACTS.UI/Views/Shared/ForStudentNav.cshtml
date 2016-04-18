@@ -1,0 +1,23 @@
+﻿<div class="col-md-3 mainColumns navColumns">
+    <nav class="nav-column" style="padding-top:20px">
+        <ul class="nav navbar">
+            <li class="sidebar-brand">@GlobalRes.ForStudent</li>
+            <li><a class="active" href="@Url.Action("Specialties","ForStudent")">@GlobalRes.Specialties</a></li>
+            <li><a href="@Url.Action("Organizations", "ForStudent")">@GlobalRes.StudentOrganizations</a></li>
+            <li><a href="@Url.Action("StudentCity", "ForStudent")">@GlobalRes.StudentCity</a></li>
+            <li><a href="@Url.Action("CoursesAndProbations","ForStudent")">@GlobalRes.CoursesAndProbations</a></li>
+            <li><a href="@Url.Action("UsefulLinks","ForStudent")">@GlobalRes.UsefulLinks</a></li>
+            <li><a href="@Url.Action("StudentRating", "ForStudent")">@GlobalRes.StudentRating</a></li>
+            <li><a href="@Url.Action("Placement","ForStudent")">@GlobalRes.Placement</a></li>
+        </ul>
+        <div>
+            <div id="vk_groups"></div>
+        </div>
+    </nav>
+</div>
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>
+
+<!-- VK Widget -->
+<script type="text/javascript">
+VK.Widgets.Group("vk_groups", {mode: 0, width: "200", height: "400", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 36771411);
+</script>

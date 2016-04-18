@@ -1,6 +1,18 @@
-﻿.mainColumns{
+﻿body{
+    font:300 'Roboto Slab';
+}
+
+div.c__block-content>ol>li{
+    margin:14px 0 14px 0;
+}
+
+.mainColumns{
     padding-left:0;
     padding-right:0;
+}
+
+.pageContent{
+    text-align:justify;
 }
 
 .footer{
@@ -141,13 +153,13 @@ li.sidebar-brand{
 .slider .darken{height:290px;background-color:#000}
 .slider .navigation{position:relative;top:220px;z-index:90}
 .slider .navigation ul{margin:0;padding:0;list-style:none;margin-top:-30px}
-.slider .navigation ul li{margin:0;padding:0;border:1px solid #fff;border-radius:10px;width:12px;height:12px;float:left;margin-left:8px;cursor:pointer}
+.slider .navigation ul li{margin:0;padding:0;border:1px solid #fff;border   -radius:10px;width:12px;height:12px;float:left;margin-left:8px;cursor:pointer}
 .slider .navigation ul li.active{background-color:#fff}
 .sl1 {background-repeat:repeat-x;background-image :url("../../Content/images/actsSlide1.jpg")}
 .sl2 {background-repeat:repeat-x;background-image:url("../../Content/images/actsSlide2.jpg")}
 .sl3 {background-repeat:repeat-x;background-image:url("../../Content/images/actsSlide3.jpg")}
 
-.TStitle{
+.pageTitle{
     font: 300 30px/40px "Roboto Slab",Georgia,Times,serif;
     display: table;
     white-space: nowrap;
@@ -155,15 +167,15 @@ li.sidebar-brand{
     margin: 15px 0;
 }
 
-.TStitle:before{
+.pageTitle:before{
     right: 1.5%;
 }
 
-.TStitle:after{
+.pageTitle:after{
     left: 1.5%;
 }
 
-.TStitle:before, .TStitle:after{
+.pageTitle:before, .pageTitle:after{
 
     border-top: 1px solid #e8e8e8;
     content: "";
@@ -183,4 +195,8 @@ li.sidebar-brand{
 }
 .dropdown-menu > li > a {
     padding: 10px 20px;
+}
+
+div.c__block-content>ul>li{    
+    padding:5px 5px;
 }

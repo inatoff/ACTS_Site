@@ -19,6 +19,10 @@ namespace ACTS.UI.Controllers
             return View();
         }
 
+        public ActionResult FAQ()
+        {
+            return View();
+        }
         public ActionResult FDP()
         {
             return View();

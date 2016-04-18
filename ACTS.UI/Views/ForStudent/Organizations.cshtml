@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Organizations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    @Html.Partial("ForStudentNav")
+    <div class="col-md-9 mainColumns content-col" style="background-color:rgba(255, 255, 255, 0.4);" role="main">
+        <div class="c__block-title">
+            @GlobalRes.StudentOrganizations
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <a href="http://kpi.ua/interclub">
+                    <img class="alignnone  wp-image-1965" src="http://acts.kpi.ua/app/uploads/2015/11/interclub.gif" alt="interclub" width="119" height="80" />
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a href="http://kpi.ua/ru/students/ntsa">
+                    <img class="wp-image-1955  alignnone" src="http://acts.kpi.ua/app/uploads/2015/11/ssa_logo.png" alt="ssa_logo" width="200" height="100" />
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a href="http://r.kpi.ua/">
+                    <img class="wp-image-1956  alignnone" src="http://acts.kpi.ua/app/uploads/2015/11/b1f0964ce68ac00f.jpeg" alt="b1f0964ce68ac00f" width="189" height="130" />
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a href="http://tv.kpi.ua/">
+                    <img class="wp-image-1957  alignnone" src="http://acts.kpi.ua/app/uploads/2015/11/first11-300x77.jpg" alt="first11" width="180" height="46" />
+                </a>
+            </div>
+            <br />
+        </div>
+        <div class="c__block-content">
+            <p>
+                В НТУУ &#8220;КПІ&#8221; працює широка мережа організацій, які представляють інтереси студентів, організують їх дозвілля, науковий пошук, захист громадських інтересів.
+            </p>
+            <ul>
+                <li><a href="http://kpi.ua/interclub">Інтерклуб НТУУ ”КПІ”</a></li>
+                <li><a href="http://ssa.org.ua/">Наукове товариство студентiв та аспiрантiв НТУУ &#8220;КПI&#8221;</a></li>
+                <li><a href="http://studprofkom.kpi.ua/">Профспілкова організація студентів НТУУ &#8220;КПІ&#8221;</a></li>
+                <li><a href="http://www.best-kyiv.org/">Студентська організація BEST Kyiv</a></li>
+                <li><a href="http://studrada.kpi.ua/">Студентська рада НТУУ &#8220;КПI&#8221;</a></li>
+                <li><a href="http://srs.kpi.ua/">Студентська рада студмістечка НТУУ &#8220;КПІ&#8221;</a></li>
+                <li><a href="http://ieeesb.kpi.ua/">Студентське відділення ІЕЕЕ у НТУУ &#8220;КПІ&#8221;</a></li>
+                <li><a href="http://rabota.kpi.ua/">Центр розвитку кар’єри</a></li>
+                <li><a href="http://kpi.ua/aid">Центр юридичної допомоги</a></li>
+                <li><a href="http://r.kpi.ua/">Радіо КПІ: студентська радіостанція</a></li>
+                <li><a href="http://tv.kpi.ua/">Телебачення КПІ: відеорепортажі та відеозаписи подій та заходів НТУУ &#8220;КПІ&#8221;</a></li>
+                <li><a href="http://gazeta.kpi.ua/">Газети КПІ: колекція студентської та офіційної преси НТУУ &#8220;КПІ&#8221;</a></li>
+                <li><a href="http://relax.kpi.ua/">KPI Relax: оздоровлення, відпочинкок, харчування та спорт в НТУУ &#8220;КПІ&#8221;</a></li>
+                <li><a href="http://nodrugs.kpi.ua/">Сайт &#8220;Стоп наркотики&#8221;</a></li>
+                <li><a href="http://partnerstvo.kpi.ua/">Форум партнерства: спеціальний захід, на якому НТУУ &#8220;КПІ&#8221; представляє випускників університету</a></li>
+            </ul>
+            <div>
+                @Html.Action("FooterStringUncos", "News")
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,12 +9,13 @@ namespace ACTS.UI.Controllers
     public class ForStudentController : BaseController
     {
         // GET: ForStudent
-        public ActionResult Index()
+
+        public ActionResult Specialities()
         {
             return View();
         }
 
-        public ActionResult Specialities()
+        public ActionResult StudentCity()
         {
             return View();
         }
@@ -29,7 +30,7 @@ namespace ACTS.UI.Controllers
             return View();
         }
 
-        public ActionResult Schedule()
+        public ActionResult Organizations()
         {
             return View();
         }
@@ -40,6 +41,11 @@ namespace ACTS.UI.Controllers
         }
 
         public ActionResult CoursesAndProbations()
+        {
+            return View();
+        }
+
+        public ActionResult Placement()
         {
             return View();
         }

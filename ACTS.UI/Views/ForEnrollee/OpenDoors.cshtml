@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = GlobalRes.OpenDoors;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    @Html.Partial("ForEnrolleeNav")
+    <div class="col-md-9 mainColumns content-col" style="background-color:rgba(255, 255, 255, 0.4);" role="main">
+        <div class="c__block-title">
+            @GlobalRes.OpenDoors
+        </div>
+        <div class="c__block-holder">
+            <div class="c__block-description">
+                Березень 4, 2016
+            </div>
+        </div>
+        <div class="c__block-content">
+            <p><a href="http://acts.kpi.ua/app/uploads/2016/03/Untitled1.jpg"><img class="alignnone size-full wp-image-2188" src="http://acts.kpi.ua/app/uploads/2016/03/Untitled1.jpg" alt="Untitled" width="922" height="1305" /></a></p>
+        </div>
+        <div>
+            @Html.Action("FooterStringUncos", "News")
+        </div>
+    </div>
+</div>

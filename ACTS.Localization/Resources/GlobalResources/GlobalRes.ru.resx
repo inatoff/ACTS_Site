@@ -363,4 +363,19 @@
   <data name="Disciplines" xml:space="preserve">
     <value>Дисциплины</value>
   </data>
+  <data name="Undone" xml:space="preserve">
+    <value>Страница находится в стадии разработки</value>
+  </data>
+  <data name="StudentOrganizations" xml:space="preserve">
+    <value>Студенческие организации и медиа ресурсы</value>
+  </data>
+  <data name="StudentCity" xml:space="preserve">
+    <value>Студенческий городок НТУУ "КПИ"</value>
+  </data>
+  <data name="StudentResearches" xml:space="preserve">
+    <value>Студенческая наука</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>Часто задаваемые вопросы</value>
+  </data>
 </root>

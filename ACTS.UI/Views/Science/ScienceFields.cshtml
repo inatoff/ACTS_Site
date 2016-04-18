@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "ScienceFields";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    @Html.Partial("ScienceNav")
+    <div class="col-md-9 mainColumns content-col" style="background-color:rgba(255, 255, 255, 0.4);" role="main">
+        <div class="c__block-title">
+            @GlobalRes.ScienceFields
+        </div>
+        <div class="c__block-content">
+            <ol>
+                <li><a title="Управління ІТ – інфраструктурою" href="@Url.Action("ManagementOfItInfrastructure","ScienceFields")">Управління ІТ – інфраструктурою (Керівник &#8211; доц., к.т.н. Ролік О.І.)</a></li>
+                <li><a title="Комп’ютеризовані системи управління" href="@Url.Action("ComputerizedControlSystems", "ScienceFields")">Комп’ютеризовані системи управління (Керівник &#8211; доц., к.т.н. Кравець П.І.)</a></li>
+                <li><a title="Розроблення розподілених систем" href="@Url.Action("DevelopmentOfDistributedInformationAndControlSystems","ScienceFields")">Розроблення розподілених інформаційно-управляючих систем (Керівник &#8211; доц., к.т.н. Амонс А.А.)</a></li>
+                <li><a title="Сучасна теорія автоматичного управління, цифрові та оптимальні системи" href="@Url.Action("ModernTheoryOfAutomaticControl","ScienceFields")">Сучасна теорія автоматичного управління, цифрові та оптимальні системи (Керівник &#8211; доц., к.т.н. Репнікова Н.Б.)</a></li>
+                <li><a title="Системи і мережі передавання даних" href="@Url.Action("SystemsAndDataNetwork","ScienceFields")">Проектування СПД і телекомунікаційних мереж (Керівник &#8211; доц., к.т.н. Полторак В.П.)</a></li>
+                <li><a title="Вимірювання і управління технологічними процесами" href="@Url.Action("MeasurementAndProcessControl","ScienceFields")">Вимірювання і управління технологічними процесами (Керівник &#8211; к.т.н. Гришко В.Ф.)</a></li>
+                <li><a title="Проектування мікропроцесорних систем" href="@Url.Action("DesignOfMicroprocessorSystems","ScienceFields")">Проектування мікропроцесорних систем (Керівник &#8211; доц., к.т.н. Чемерис О.А.)</a></li>
+                <li><a title="Розроблення технологій паралельних обчислень" href="@Url.Action("ParallelComputing","ScienceFields")">Розроблення технологій паралельних обчислень (Керівник &#8211; проф., д.ф.м.н. Дорошенко А.Ю.)</a></li>
+                <li><a title="Розроблення технологій дистанційної освіти" href="@Url.Action("DistanceEducationTechnology","ScienceFields")">Розробка технологій дистанційної освіти (Керівник &#8211; доц. к.т.н. Юрчук Л.Ю.)</a></li>
+                <li><a title="ІТ обчислювального інтелекту і комп’ютерної лінгвістики" href="@Url.Action("ComputationalIntelligenceAndComputationalLinguistics","ScienceFields")">ІТ обчислювального інтелекту і комп&#8217;ютерної лінгвістики (Керівник &#8211; проф., д.т.н. Теленик С.Ф.)</a></li>
+            </ol>
+        </div>
+        <div>
+            @Html.Action("FooterStringUncos", "News")
+        </div>
+    </div>
+</div>

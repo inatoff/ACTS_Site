@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = GlobalRes.Magistracy;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    @Html.Partial("ForEnrolleeNav")
+    <div class="col-md-9 mainColumns content-col" style="background-color:rgba(255, 255, 255, 0.4);" role="main">
+        <div class="c__block-title">
+            @GlobalRes.Magistracy
+        </div>
+        <div class="c__block-holder">&nbsp;</div>
+        <div class="c__block-content">
+            <div class="c__block-title">Вступні випробування</div>
+            <p>ПЕРЕЛІК НОРМАТИВНИХ ФАХОВИХ НАВЧАЛЬНИХ ДИСЦИПЛІН ДЛЯ ПРОВЕДЕННЯ ВСТУПНИХ ВИПРОБУВАНЬ</p>
+            <p>1. Програмування;<br />2. Теорія інформації та кодування, системи передачі даних;<br />3. Мікропроцесорні пристрої та комп&rsquo;ютерна електроніка;<br />4. Теорія автоматичного управління.</p>
+            <div class="c__block-title">Розклад вступних випробувань</div>
+            <p>Вибачте, наразі даний розділ знаходиться в розробці.</p>
+            <div class="c__block-title">Екзаменаційні питання</div>
+            <p>ТЕМАТИКА ПИТАНЬ, ЯКІ ВИНОСЯТЬСЯ НА ВСТУПНИЙ ІСПИТ (для спеціалістів).</p>
+            <ol>
+                <li>Програмування</li>
+                <li>ТІК</li>
+                <li>СМПД</li>
+                <li>МПП</li>
+                <li>КЕ</li>
+                <li>ТАУ</li>
+            </ol>
+        </div>
+        <div>
+            @Html.Action("FooterStringUncos", "News")
+        </div>
+    </div>
+</div>

@@ -907,6 +907,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Розповсюдженні запитання.
+        /// </summary>
+        public static string FAQ {
+            get {
+                return ResourceManager.GetString("FAQ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Довузівська підготовка.
         /// </summary>
         public static string FDP {
@@ -1573,11 +1582,38 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Студмісто НТУУ &quot;КПІ&quot;.
+        /// </summary>
+        public static string StudentCity {
+            get {
+                return ResourceManager.GetString("StudentCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Студентські організації та медіа ресурси.
+        /// </summary>
+        public static string StudentOrganizations {
+            get {
+                return ResourceManager.GetString("StudentOrganizations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Рейтинг студентів.
         /// </summary>
         public static string StudentRating {
             get {
                 return ResourceManager.GetString("StudentRating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Студентська наука.
+        /// </summary>
+        public static string StudentResearches {
+            get {
+                return ResourceManager.GetString("StudentResearches", resourceCulture);
             }
         }
         
@@ -1758,6 +1794,15 @@ namespace ACTS.Localization.Resources {
         public static string Uncos {
             get {
                 return ResourceManager.GetString("Uncos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сторінка знаходиться в розробці.
+        /// </summary>
+        public static string Undone {
+            get {
+                return ResourceManager.GetString("Undone", resourceCulture);
             }
         }
         

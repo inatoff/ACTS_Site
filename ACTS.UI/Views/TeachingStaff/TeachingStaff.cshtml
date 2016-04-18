@@ -7,7 +7,7 @@
     @Html.Partial("DepartmentNav")
     <div class="col-md-9 mainColumns" role="main">
         <div>
-            <div class="TStitle">
+            <div class="pageTitle">
                 @GlobalRes.TeachingStaff
             </div>
             @{
@@ -22,5 +22,22 @@
                 }
             }
         </div>
+        <div id="description" class="row d" style="display: none;">
+            <div class="medium-3 columns">
+                <div class="person__wrapper">
+                    <div class="person__avatar">
+                        <img id="h_avatar" src="#" />
+                    </div>
+                    <div class="person__position" id="h_position"></div>
+                </div>
+            </div>
+            <div class="medium-9 columns">
+                <div class="person__name" id="h_name"></div>
+                <div class="person__links" id="h_links"></div>
+                <div id="h_description"></div>
+            </div>
+        </div>
     </div>
+    @Scripts.Render("~/bundles/teachingStaffWrapper")
+
 </div>

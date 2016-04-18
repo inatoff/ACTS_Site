@@ -83,6 +83,9 @@ namespace ACTS.UI
 				.Include("~/Scripts/daterangepicker.js")
 				.Include("~/Scripts/Admin/initDateRange_uk.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/teachingStaffWrapper")
+                .Include("~/Scripts/actsScripts/teachingStaffWrapper.js"));
+
 			#endregion
 
 			#region Styles

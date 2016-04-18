@@ -22,5 +22,11 @@ namespace ACTS.UI.Controllers
 		{
 			return View();
 		}
+
+        public ActionResult OurGraduates()
+        {
+            return View();
+        }
+
 	}
 }

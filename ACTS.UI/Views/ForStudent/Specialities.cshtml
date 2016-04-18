@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Specialities";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    @Html.Partial("ForStudentNav")
+    <div class="col-md-9 mainColumns" role="main">
+        <div class="pageTitle">
+            @GlobalRes.Specialties
+        </div>
+        <div class="pageContent">
+            @GlobalRes.Undone
+        </div>
+        <div>
+            @Html.Action("FooterStringUncos", "News")
+        </div>
+    </div>
+</div>
