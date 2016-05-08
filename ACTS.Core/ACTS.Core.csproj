@@ -23,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -81,6 +82,7 @@
     <Compile Include="Concrete\EFTeacherRepository.cs" />
     <Compile Include="Abstract\IBlogRepository.cs" />
     <Compile Include="Entities\Blog.cs" />
+    <Compile Include="Entities\OrderedItem.cs" />
     <Compile Include="Identity\ApplicationRole.cs" />
     <Compile Include="Identity\ApplicationUser.cs" />
     <Compile Include="Entities\Employee.cs" />
@@ -102,6 +104,10 @@
     <Compile Include="Migrations\201604120055045_RevertLogInDb.cs" />
     <Compile Include="Migrations\201604120055045_RevertLogInDb.Designer.cs">
       <DependentUpon>201604120055045_RevertLogInDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605081921324_OrderedItem.cs" />
+    <Compile Include="Migrations\201605081921324_OrderedItem.Designer.cs">
+      <DependentUpon>201605081921324_OrderedItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604120055045_RevertLogInDb.resx">
       <DependentUpon>201604120055045_RevertLogInDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605081921324_OrderedItem.resx">
+      <DependentUpon>201605081921324_OrderedItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
