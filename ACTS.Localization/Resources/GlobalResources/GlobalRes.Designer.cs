@@ -133,11 +133,20 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Адміністрування.
+        ///   Looks up a localized string similar to Адмін.
         /// </summary>
         public static string Admin {
             get {
                 return ResourceManager.GetString("Admin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Адміністрування.
+        /// </summary>
+        public static string Administration {
+            get {
+                return ResourceManager.GetString("Administration", resourceCulture);
             }
         }
         

@@ -166,7 +166,7 @@ namespace ACTS.UI.Controllers
             }
             else if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {
-                item.Text = GlobalRes.Admin;
+                item.Text = GlobalRes.Administration;
                 item.Action = "Dashboard";
                 item.RouteInfo = new { controller = "Admin", area = "Admin" };
             }

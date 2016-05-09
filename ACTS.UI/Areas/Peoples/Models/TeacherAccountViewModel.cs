@@ -56,13 +56,13 @@ namespace ACTS.UI.Areas.Peoples.Models
         public string Twitter { get; set; }
 
 
-        public IList<string> Disciplines { get; set; }
+        public IList<Discipline> Disciplines { get; set; }
 
-        public IList<string> ScienceInterests { get; set; }
+        public IList<ScienceInterest> ScienceInterests { get; set; }
 
-        public virtual IList<string> Projects { get; set; }
+        public virtual IList<Project> Projects { get; set; }
 
-        public virtual IList<string> Publications { get; set; }
+        public virtual IList<Publication> Publications { get; set; }
 
         public bool HasBlog { get; set; }
     }

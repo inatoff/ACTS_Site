@@ -1,0 +1,23 @@
+﻿@model IList<ACTS.Core.Entities.Discipline>
+@{
+	var id = @ViewData.ModelMetadata.PropertyName;
+	var count = 0;
+}
+
+<ul id="@id.ToLower()" class="list-group">
+	@if (Model != null)
+	{
+		count = Model.Count;
+		for (int i = 0; i < count; i++)
+		{
+			<li class="list-group-item">
+				@Html.HiddenFor(m => m[i].Order)
+				@Html.EditorFor(m => m[i].Value)
+			</li>
+		}
+	}
+</ul>
+
+<div>
+	<button id="add@(id)" data-count="@count" class="btn btn-flat btn-success" type="button">Add item</button>
+</div>

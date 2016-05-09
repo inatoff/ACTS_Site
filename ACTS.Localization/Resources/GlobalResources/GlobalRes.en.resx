@@ -142,6 +142,9 @@
     <value>ACTS</value>
   </data>
   <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
     <value>Administration</value>
   </data>
   <data name="Administrator" xml:space="preserve">
@@ -323,6 +326,9 @@
   </data>
   <data name="Details" xml:space="preserve">
     <value>Details</value>
+  </data>
+  <data name="Disciplines" xml:space="preserve">
+    <value>Disciplines</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
