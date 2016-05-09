@@ -8,6 +8,8 @@ namespace ACTS.UI
 		// Дополнительные сведения о Bundling см. по адресу http://go.microsoft.com/fwlink/?LinkId=254725
 		public static void RegisterBundles(BundleCollection bundles)
 		{
+			bundles.UseCdn = true;
+
 			#region Scripts
 
 			bundles.Add(new ScriptBundle("~/bundles/jquery")
@@ -18,8 +20,8 @@ namespace ACTS.UI
 				.Include("~/Scripts/jquery.validate.unobtrusive.js")
 				.Include("~/Scripts/Admin/validationOptions.js"));
 
-            bundles.Add(new ScriptBundle("~/bundels/jqery-unobtrusive-ajax")
-                .Include("~/Scripts/jquery.unobtrusive-ajax.js"));
+			bundles.Add(new ScriptBundle("~/bundels/jqery-unobtrusive-ajax")
+				.Include("~/Scripts/jquery.unobtrusive-ajax.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/expressive")
 				.Include("~/Scripts/expressive.annotations.validate.js"));
@@ -31,12 +33,12 @@ namespace ACTS.UI
 				//.Include("~/Scripts/jquery.slimscroll.js")
 				.Include("~/Scripts/app.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/main-layout")
-                .Include("~/Scripts/actsScripts/fixedMenu.js")
-                .Include("~/Scripts/actsScripts/Slider.js"));
+			bundles.Add(new ScriptBundle("~/bundles/main-layout")
+				.Include("~/Scripts/actsScripts/fixedMenu.js")
+				.Include("~/Scripts/actsScripts/Slider.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/personalPage")
-                .Include("~/Scripts/actsScripts/personalPageScripts.js"));
+			bundles.Add(new ScriptBundle("~/bundles/personalPage")
+				.Include("~/Scripts/actsScripts/personalPageScripts.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/tinymce")
 				.Include("~/Scripts/tinymce/tinymce.js")
@@ -82,6 +84,10 @@ namespace ACTS.UI
 				.Include("~/Scripts/moment-with-locales.js")
 				.Include("~/Scripts/daterangepicker.js")
 				.Include("~/Scripts/Admin/initDateRange_uk.js"));
+			
+			bundles.Add(new ScriptBundle("~/bundles/sortable", 
+				"https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.4.2/Sortable.js")
+				.Include("~/Scripts/Sortable.js"));
 
 			#endregion
 
@@ -91,8 +97,8 @@ namespace ACTS.UI
 				.Include("~/Content/bootstrap.css",
 						"~/Content/font-awesome.css"));
 
-            bundles.Add(new StyleBundle("~/Content/css/personal")
-                .Include("~/Content/css/PersonalPageLayoutStyles.css"));
+			bundles.Add(new StyleBundle("~/Content/css/personal")
+				.Include("~/Content/css/PersonalPageLayoutStyles.css"));
 
 			bundles.Add(new StyleBundle("~/Content/css/admin")
 				.Include("~/Content/skins/_all-skins.css",
@@ -114,9 +120,9 @@ namespace ACTS.UI
 			bundles.Add(new StyleBundle("~/Content/css/daterange")
 				.Include("~/Content/daterangepicker.css"));
 
-            bundles.Add(new StyleBundle("~/Content/css/MainPage")
-                .Include("~/Content/css/Site.css",
-                         "~/Content/css/MainPage.css"));
+			bundles.Add(new StyleBundle("~/Content/css/MainPage")
+				.Include("~/Content/css/Site.css",
+						 "~/Content/css/MainPage.css"));
 			#endregion
 		}
 	}
