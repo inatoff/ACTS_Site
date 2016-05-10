@@ -380,6 +380,7 @@
     <Content Include="Areas\Admin\Views\Event\TableEvent.cshtml" />
     <Content Include="Areas\Admin\Views\Event\CreateEvent.cshtml" />
     <Content Include="Areas\Admin\Views\Event\EditEvent.cshtml" />
+    <Content Include="Areas\Peoples\Views\Blog\Blog.cshtml" />
     <None Include="EmailTemplates\ConfirmRegistration.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />

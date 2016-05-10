@@ -109,7 +109,7 @@
                 <div id="sidebar">
                     <ul class="nav nav-stacked personalSideBar nav-tabs">
                         <li id="sideTitle"><a href="#a" data-toggle="tab">@GlobalRes.BlogMain</a></li>
-                        <li><a href="#b" data-toggle="tab">@GlobalRes.Blog</a></li>
+                        <li><a href="@Url.Action("Blog", new { controller = "Blog", area = "Peoples", nameSlug = ViewBag.Teacher.Slug })">@GlobalRes.Blog</a></li>
                         <li><a href="#c" data-toggle="tab">@GlobalRes.BlogInterests</a></li>
                         <li><a href="#d" data-toggle="tab">@GlobalRes.BlogPublications</a></li>
                         <li><a href="#e" data-toggle="tab">@GlobalRes.BlogProjects</a></li>

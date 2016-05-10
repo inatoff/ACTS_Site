@@ -744,4 +744,13 @@
   <data name="FAQ" xml:space="preserve">
     <value>FAQ</value>
   </data>
+  <data name="PostCreate" xml:space="preserve">
+    <value>Create a new post</value>
+  </data>
+  <data name="PostDelete" xml:space="preserve">
+    <value>Delete post</value>
+  </data>
+  <data name="PostEdit" xml:space="preserve">
+    <value>Edit post</value>
+  </data>
 </root>

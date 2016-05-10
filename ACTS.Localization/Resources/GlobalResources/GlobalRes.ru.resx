@@ -378,4 +378,13 @@
   <data name="FAQ" xml:space="preserve">
     <value>Часто задаваемые вопросы</value>
   </data>
+  <data name="PostCreate" xml:space="preserve">
+    <value>Создать публикацию</value>
+  </data>
+  <data name="PostDelete" xml:space="preserve">
+    <value>Удалить публикацию</value>
+  </data>
+  <data name="PostEdit" xml:space="preserve">
+    <value>Редактировать публикацию</value>
+  </data>
 </root>

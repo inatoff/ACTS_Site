@@ -82,11 +82,16 @@ namespace ACTS.Core.Migrations
 						Position = "ЗАВІДУВАЧ КАФЕДРИ голова НМК МОН України \"Автоматика та управління\" керівник циклу математичних дисциплін",
 						Photo = new byte[fs.Length],
 						PhotoMimeType = mimeType,
-						Blog = new Blog()
 					};
-					fs.Read(teacher.Photo, 0, (int)fs.Length);
 
+					//fs.Read(teacher.Photo, 0, (int)fs.Length);
+
+     //               var blog = new Blog(teacher);
+     //               blog.Posts.Add(new Post())
+
+     //               teacher.Blog =
 					teacherRepository.CreateTeacher(teacher);
+
 				}
 
 				using (var fs = new FileStream(Path.Combine(pathToImagesFolder, "Новацкий.jpg"), FileMode.Open))
@@ -99,12 +104,12 @@ namespace ACTS.Core.Migrations
 						Rank = Rank.FirstVice,
 						Position = "ПЕРШИЙ ЗАСТУПНИК заступник з навчально-виховної роботи відповідальний за заочну форму навчання керівник циклу \"Комп'ютерна електроніка та мікропроцесорна техніка\"",
 						Photo = new byte[fs.Length],
-						PhotoMimeType = mimeType,
-						Blog = new Blog()
+						PhotoMimeType = mimeType
 					};
 					fs.Read(teacher.Photo, 0, (int)fs.Length);
 
 					teacherRepository.CreateTeacher(teacher);
+
 				}
 			}
 

@@ -1357,6 +1357,33 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Нова публікація.
+        /// </summary>
+        public static string PostCreate {
+            get {
+                return ResourceManager.GetString("PostCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Видалити публікацію.
+        /// </summary>
+        public static string PostDelete {
+            get {
+                return ResourceManager.GetString("PostDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редагувати публікацію.
+        /// </summary>
+        public static string PostEdit {
+            get {
+                return ResourceManager.GetString("PostEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Аспірантура.
         /// </summary>
         public static string Postgraduate {

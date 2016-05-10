@@ -747,4 +747,13 @@
   <data name="FAQ" xml:space="preserve">
     <value>Розповсюдженні запитання</value>
   </data>
+  <data name="PostCreate" xml:space="preserve">
+    <value>Нова публікація</value>
+  </data>
+  <data name="PostDelete" xml:space="preserve">
+    <value>Видалити публікацію</value>
+  </data>
+  <data name="PostEdit" xml:space="preserve">
+    <value>Редагувати публікацію</value>
+  </data>
 </root>

@@ -22,5 +22,12 @@ namespace ACTS.Core.Entities
         {
             Posts = new List<Post>();
         }
+
+        public Blog(Teacher teacher)
+            : this()
+        {
+            Teacher = teacher;
+        }
+
     }
 }

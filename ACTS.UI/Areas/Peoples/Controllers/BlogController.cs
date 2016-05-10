@@ -53,12 +53,12 @@ namespace ACTS.UI.Areas.Peoples.Controllers
         public ActionResult Blog(string nameSlug)
         {
             var blog = _blogRepo.GetBlogByAuthorNameSlug(nameSlug);
-            return blog != null ? View(blog) : HttpNotFound() as ActionResult;
+            return blog != null ? View(blog) : (ActionResult)HttpNotFound();
         }
 
         [HttpGet]
         [Authorize(Roles ="Teacher")]
-        public ActionResult CreatePost()
+        public ActionResult Create()
         {
             return View();
         }
