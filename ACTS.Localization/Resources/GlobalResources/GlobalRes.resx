@@ -153,6 +153,9 @@
   <data name="Advertisment" xml:space="preserve">
     <value>Об'яви</value>
   </data>
+  <data name="Alert" xml:space="preserve">
+    <value>Увага!</value>
+  </data>
   <data name="ApplyFilter" xml:space="preserve">
     <value>Застосувати фільтр</value>
   </data>
@@ -330,6 +333,9 @@
   <data name="Disciplines" xml:space="preserve">
     <value>Дисципліни</value>
   </data>
+  <data name="Disciplines " xml:space="preserve">
+    <value>Дисципліни</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Редагувати</value>
   </data>
@@ -401,6 +407,9 @@
   </data>
   <data name="FailedLoginAttemptsMsg" xml:space="preserve">
     <value>Невдала спроба входу.</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>Розповсюдженні запитання</value>
   </data>
   <data name="FDP" xml:space="preserve">
     <value>Довузівська підготовка</value>
@@ -624,8 +633,17 @@
   <data name="StackTrace" xml:space="preserve">
     <value>Трасування стека</value>
   </data>
+  <data name="StudentCity" xml:space="preserve">
+    <value>Студмісто НТУУ "КПІ"</value>
+  </data>
+  <data name="StudentOrganizations" xml:space="preserve">
+    <value>Студентські організації та медіа ресурси</value>
+  </data>
   <data name="StudentRating" xml:space="preserve">
     <value>Рейтинг студентів</value>
+  </data>
+  <data name="StudentResearches" xml:space="preserve">
+    <value>Студентська наука</value>
   </data>
   <data name="TableOfAccounts" xml:space="preserve">
     <value>Таблиця облікових записів</value>
@@ -687,6 +705,9 @@
   <data name="Uncos" xml:space="preserve">
     <value>Новини</value>
   </data>
+  <data name="Undone" xml:space="preserve">
+    <value>Сторінка знаходиться в розробці</value>
+  </data>
   <data name="UpdateEmail" xml:space="preserve">
     <value>Обновити електронну пошту</value>
   </data>
@@ -734,23 +755,5 @@
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Так</value>
-  </data>
-  <data name="Disciplines" xml:space="preserve">
-    <value>Дисципліни</value>
-  </data>
-  <data name="Undone" xml:space="preserve">
-    <value>Сторінка знаходиться в розробці</value>
-  </data>
-  <data name="StudentOrganizations" xml:space="preserve">
-    <value>Студентські організації та медіа ресурси</value>
-  </data>
-  <data name="StudentCity" xml:space="preserve">
-    <value>Студмісто НТУУ "КПІ"</value>
-  </data>
-  <data name="StudentResearches" xml:space="preserve">
-    <value>Студентська наука</value>
-  </data>
-  <data name="FAQ" xml:space="preserve">
-    <value>Розповсюдженні запитання</value>
   </data>
 </root>

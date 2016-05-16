@@ -153,6 +153,9 @@
   <data name="Advertisment" xml:space="preserve">
     <value>Advertisment</value>
   </data>
+  <data name="Alert" xml:space="preserve">
+    <value>Alert!</value>
+  </data>
   <data name="ApplyFilter" xml:space="preserve">
     <value>Apply filter</value>
   </data>
@@ -330,6 +333,9 @@
   <data name="Disciplines" xml:space="preserve">
     <value>Disciplines</value>
   </data>
+  <data name="Disciplines " xml:space="preserve">
+    <value>Disciplines</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
@@ -401,6 +407,9 @@
   </data>
   <data name="FailedLoginAttemptsMsg" xml:space="preserve">
     <value>Failed login attempts.</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>FAQ</value>
   </data>
   <data name="FDP" xml:space="preserve">
     <value>Pregraduate preparing</value>
@@ -621,8 +630,17 @@
   <data name="StackTrace" xml:space="preserve">
     <value>Stack trace</value>
   </data>
+  <data name="StudentCity" xml:space="preserve">
+    <value>The campus NTUU "KPI"</value>
+  </data>
+  <data name="StudentOrganizations" xml:space="preserve">
+    <value>Students organizations and media resources</value>
+  </data>
   <data name="StudentRating" xml:space="preserve">
     <value>Student Rating</value>
+  </data>
+  <data name="StudentResearches" xml:space="preserve">
+    <value>Student's science</value>
   </data>
   <data name="TableOfAccounts" xml:space="preserve">
     <value>Table of accounts</value>
@@ -684,6 +702,9 @@
   <data name="Uncos" xml:space="preserve">
     <value>Uncos</value>
   </data>
+  <data name="Undone" xml:space="preserve">
+    <value>Page is under construction</value>
+  </data>
   <data name="UpdateEmail" xml:space="preserve">
     <value>Update e-mail</value>
   </data>
@@ -731,23 +752,5 @@
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
-  </data>
-  <data name="Disciplines" xml:space="preserve">
-    <value>Disciplines</value>
-  </data>
-  <data name="Undone" xml:space="preserve">
-    <value>Page is under construction</value>
-  </data>
-  <data name="StudentOrganizations" xml:space="preserve">
-    <value>Students organizations and media resources</value>
-  </data>
-  <data name="StudentCity" xml:space="preserve">
-    <value>The campus NTUU "KPI"</value>
-  </data>
-  <data name="StudentResearches" xml:space="preserve">
-    <value>Student's science</value>
-  </data>
-  <data name="FAQ" xml:space="preserve">
-    <value>FAQ</value>
   </data>
 </root>

@@ -169,6 +169,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Увага!.
+        /// </summary>
+        public static string Alert {
+            get {
+                return ResourceManager.GetString("Alert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Застосувати фільтр.
         /// </summary>
         public static string ApplyFilter {
@@ -696,6 +705,15 @@ namespace ACTS.Localization.Resources {
         public static string Disciplines {
             get {
                 return ResourceManager.GetString("Disciplines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дисципліни.
+        /// </summary>
+        public static string Disciplines_ {
+            get {
+                return ResourceManager.GetString("Disciplines ", resourceCulture);
             }
         }
         

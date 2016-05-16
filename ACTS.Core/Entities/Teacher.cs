@@ -70,13 +70,20 @@ namespace ACTS.Core.Entities
 
 		// PersonalPage
 
-		[UIHint("OrderedList")]
+		[Display(Name = nameof(DisplayRes.DisciplinesName), ResourceType = typeof(DisplayRes))]
+		[UIHint("OrderedByIntList")]
 		public IList<Discipline> Disciplines { get; set; }
 
+		[Display(Name = nameof(DisplayRes.ScienceInterestsName), ResourceType = typeof(DisplayRes))]
+		[UIHint("OrderedByIntList")]
 		public IList<ScienceInterest> ScienceInterests { get; set; }
 
+		[Display(Name = nameof(DisplayRes.ProjectsName), ResourceType = typeof(DisplayRes))]
+		[UIHint("OrderedByIntList")]
 		public virtual IList<Project> Projects { get; set; }
 
+		[Display(Name = nameof(DisplayRes.PublicationsName), ResourceType = typeof(DisplayRes))]
+		[UIHint("OrderedByDateTimeList")]
 		public virtual IList<Publication> Publications { get; set; }
 		
 		public virtual Blog Blog { get; set; }

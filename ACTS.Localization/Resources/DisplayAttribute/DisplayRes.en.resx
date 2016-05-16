@@ -129,6 +129,12 @@
   <data name="DegreeName" xml:space="preserve">
     <value>Science degree</value>
   </data>
+  <data name="DisciplineName" xml:space="preserve">
+    <value>Discipline</value>
+  </data>
+  <data name="DisciplinesName" xml:space="preserve">
+    <value>Disciplines</value>
+  </data>
   <data name="EmailAddressName" xml:space="preserve">
     <value>Email address*</value>
   </data>
@@ -174,6 +180,18 @@
   <data name="PositionName" xml:space="preserve">
     <value>Position*</value>
   </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="ProjectsName" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="PublicationName" xml:space="preserve">
+    <value>Publication</value>
+  </data>
+  <data name="PublicationsName" xml:space="preserve">
+    <value>Publications</value>
+  </data>
   <data name="RankName" xml:space="preserve">
     <value>Rank</value>
   </data>
@@ -182,6 +200,12 @@
   </data>
   <data name="RolesName" xml:space="preserve">
     <value>Account roles</value>
+  </data>
+  <data name="ScienceInterestName" xml:space="preserve">
+    <value>Science interest</value>
+  </data>
+  <data name="ScienceInterestsName" xml:space="preserve">
+    <value>Science interests</value>
   </data>
   <data name="SendVerificationName" xml:space="preserve">
     <value>Send verification</value>

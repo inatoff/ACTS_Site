@@ -129,6 +129,12 @@
   <data name="DegreeName" xml:space="preserve">
     <value>Наукова ступінь</value>
   </data>
+  <data name="DisciplineName" xml:space="preserve">
+    <value>Дисципліна</value>
+  </data>
+  <data name="DisciplinesName" xml:space="preserve">
+    <value>Дисципліни</value>
+  </data>
   <data name="EmailAddressName" xml:space="preserve">
     <value>Адрес електронної пошти*</value>
   </data>
@@ -174,6 +180,18 @@
   <data name="PositionName" xml:space="preserve">
     <value>Посада*</value>
   </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>Проект</value>
+  </data>
+  <data name="ProjectsName" xml:space="preserve">
+    <value>Проекти</value>
+  </data>
+  <data name="PublicationName" xml:space="preserve">
+    <value>Публікація</value>
+  </data>
+  <data name="PublicationsName" xml:space="preserve">
+    <value>Публікації</value>
+  </data>
   <data name="RankName" xml:space="preserve">
     <value>Ранг</value>
   </data>
@@ -182,6 +200,12 @@
   </data>
   <data name="RolesName" xml:space="preserve">
     <value>Ролі облікового запису</value>
+  </data>
+  <data name="ScienceInterestName" xml:space="preserve">
+    <value>Науковий інтерес</value>
+  </data>
+  <data name="ScienceInterestsName" xml:space="preserve">
+    <value>Наукові інтереси</value>
   </data>
   <data name="SendVerificationName" xml:space="preserve">
     <value>Надіслати підтвердження</value>

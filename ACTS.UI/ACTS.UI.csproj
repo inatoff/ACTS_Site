@@ -380,7 +380,8 @@
     <Content Include="Areas\Admin\Views\Event\TableEvent.cshtml" />
     <Content Include="Areas\Admin\Views\Event\CreateEvent.cshtml" />
     <Content Include="Areas\Admin\Views\Event\EditEvent.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\OrderedList.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\OrderedByIntList.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\OrderedByDateTimeList.cshtml" />
     <None Include="EmailTemplates\ConfirmRegistration.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -416,6 +417,7 @@
     <Content Include="Scripts\Admin\initDataTable.js" />
     <Content Include="Scripts\Admin\initDataTable_uk.js" />
     <Content Include="Scripts\Admin\initSelect2.js" />
+    <Content Include="Scripts\Admin\initSortable.js" />
     <Content Include="Scripts\Admin\initTinyEditor_uk.js" />
     <Content Include="Scripts\Admin\initTinyEditor.js" />
     <Content Include="Scripts\Admin\init_iCheck.js" />
@@ -743,6 +745,7 @@
     <Compile Include="Controllers\ForStudentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Controllers\ScienceFieldsController.cs" />
     <Compile Include="Controllers\TeachingStaffController.cs" />
     <Compile Include="Controllers\ScienceController.cs" />
@@ -844,6 +847,8 @@
     <Content Include="Views\ForEnrollee\FAQ.cshtml" />
     <Content Include="Views\ForEnrollee\FDP.cshtml" />
     <Content Include="Views\ForEnrollee\Magistracy.cshtml" />
+    <Content Include="Views\Resources\Required.cshtml" />
+    <Content Include="Views\Resources\Display.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

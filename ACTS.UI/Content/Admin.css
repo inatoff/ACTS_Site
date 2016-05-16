@@ -177,3 +177,7 @@ div.hasContent {
     border: 1px solid #ccc; 
     width: 100%
 }
+
+.orderable-item{
+    margin-bottom: 15px;
+}

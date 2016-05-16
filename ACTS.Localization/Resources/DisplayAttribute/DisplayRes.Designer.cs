@@ -97,6 +97,24 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Дисципліна.
+        /// </summary>
+        public static string DisciplineName {
+            get {
+                return ResourceManager.GetString("DisciplineName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дисципліни.
+        /// </summary>
+        public static string DisciplinesName {
+            get {
+                return ResourceManager.GetString("DisciplinesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Адрес електронної пошти*.
         /// </summary>
         public static string EmailAddressName {
@@ -232,6 +250,42 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Проект.
+        /// </summary>
+        public static string ProjectName {
+            get {
+                return ResourceManager.GetString("ProjectName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Проекти.
+        /// </summary>
+        public static string ProjectsName {
+            get {
+                return ResourceManager.GetString("ProjectsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Публікація.
+        /// </summary>
+        public static string PublicationName {
+            get {
+                return ResourceManager.GetString("PublicationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Публікації.
+        /// </summary>
+        public static string PublicationsName {
+            get {
+                return ResourceManager.GetString("PublicationsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ранг.
         /// </summary>
         public static string RankName {
@@ -255,6 +309,24 @@ namespace ACTS.Localization.Resources {
         public static string RolesName {
             get {
                 return ResourceManager.GetString("RolesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Науковий інтерес.
+        /// </summary>
+        public static string ScienceInterestName {
+            get {
+                return ResourceManager.GetString("ScienceInterestName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Наукові інтереси.
+        /// </summary>
+        public static string ScienceInterestsName {
+            get {
+                return ResourceManager.GetString("ScienceInterestsName", resourceCulture);
             }
         }
         
