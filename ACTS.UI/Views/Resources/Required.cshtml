@@ -1,0 +1,14 @@
+﻿@using System.Collections
+@model IEnumerable<DictionaryEntry>
+@{
+	Layout = null;
+}
+
+// Define the empty object in javascript
+var requiredRes = {
+@foreach (DictionaryEntry res in Model)
+{
+	// Create a property on the javascript object for each text resource
+	@:@res.Key : "@Html.Raw(HttpUtility.JavaScriptStringEncode(res.Value.ToString()))",
+}
+};
