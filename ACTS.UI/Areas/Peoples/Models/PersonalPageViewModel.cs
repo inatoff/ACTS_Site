@@ -25,13 +25,13 @@ namespace ACTS.UI.Areas.Peoples.Models
         public Blog Blog { get; }
 
         public string Slug { get; }
-        public IEnumerable<string> Disciplines { get; set; }
+        public IEnumerable<Discipline> Disciplines { get; set; }
 
-        public IEnumerable<string> ScienceInterests { get; set; }
+        public IEnumerable<ScienceInterest> ScienceInterests { get; set; }
 
-        public IEnumerable<string> Projects { get; set; }
+        public IEnumerable<Project> Projects { get; set; }
 
-        public IEnumerable<string> Publications { get; set; }
+        public IEnumerable<Publication> Publications { get; set; }
 
         [Display(Name = nameof(DisplayRes.PhotoName), ResourceType = typeof(DisplayRes))]
         public byte[] Photo { get; set; }

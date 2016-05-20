@@ -16,7 +16,7 @@ namespace ACTS.Core.Entities
 {
 	public enum Rank
 	{
-		// TODO: rustam переведи, а то я без понятия как ето перевести
+		// TODO: rustam переведи, а то я без понятия как это перевести
 		Head,
 		FirstVice,
 		Vice,
@@ -42,8 +42,8 @@ namespace ACTS.Core.Entities
 		[Display(Name = nameof(DisplayRes.SlugName), ResourceType = typeof(DisplayRes))]
 		public string NameSlug { get; set; }
 
-        [Display(Name = nameof(DisplayRes.Greetings), ResourceType = typeof(DisplayRes))]
-        public string Greetings { get; set; }
+		[Display(Name = nameof(DisplayRes.Greetings), ResourceType = typeof(DisplayRes))]
+		public string Greetings { get; set; }
 
 		[Url]
 		[Display(Name = nameof(DisplayRes.IntellectName), ResourceType = typeof(DisplayRes))]
@@ -70,17 +70,33 @@ namespace ACTS.Core.Entities
 
 		// PersonalPage
 
-		public IList<string> Disciplines { get; set; }
+		[Display(Name = nameof(DisplayRes.DisciplinesName), ResourceType = typeof(DisplayRes))]
+		[UIHint("OrderedByIntList")]
+		public IList<Discipline> Disciplines { get; set; }
 
-		public IList<string> ScienceInterests { get; set; }
+		[Display(Name = nameof(DisplayRes.ScienceInterestsName), ResourceType = typeof(DisplayRes))]
+		[UIHint("OrderedByIntList")]
+		public IList<ScienceInterest> ScienceInterests { get; set; }
 
-		public virtual IList<string> Projects { get; set; }
+		[Display(Name = nameof(DisplayRes.ProjectsName), ResourceType = typeof(DisplayRes))]
+		[UIHint("OrderedByIntList")]
+		public virtual IList<Project> Projects { get; set; }
 
-		public virtual IList<string> Publications { get; set; }
+		[Display(Name = nameof(DisplayRes.PublicationsName), ResourceType = typeof(DisplayRes))]
+		[UIHint("OrderedByDateTimeList")]
+		public virtual IList<Publication> Publications { get; set; }
 		
 		public virtual Blog Blog { get; set; }
 
 		public bool HasBlog { get { return Blog != null; } }
+
+		public Teacher()
+		{
+			Disciplines = new List<Discipline>();
+			ScienceInterests = new List<ScienceInterest>();
+			Projects = new List<Project>();
+			Publications = new List<Publication>();
+		}
 	}
 
 	public class TeacherMap : EntityTypeConfiguration<Teacher>

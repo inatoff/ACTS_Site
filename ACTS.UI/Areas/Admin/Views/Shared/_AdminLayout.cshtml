@@ -20,9 +20,9 @@
 	<link rel="icon" href="/favicon.ico" type="image/x-icon" />
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 	<title>@ViewBag.Title</title>
-	    @Styles.Render("~/Content/css")
-        @Styles.Render("~/Content/css/admin")
+	@Styles.Render("~/Content/css")
 	@RenderSection("styles", required: false)
+	@Styles.Render("~/Content/css/admin")
 </head>
 <body class="hold-transition skin-green sidebar-mini">
 	<section class="wrapper">

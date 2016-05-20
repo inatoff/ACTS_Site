@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACTS.Core", "ACTS.Core\ACTS.Core.csproj", "{DBC44466-FA2A-4E36-9357-8B7629A4727B}"
 EndProject
@@ -32,8 +32,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_NeutralResourcesLanguage = uk-UA
-		RESX_SortFileContentOnSave = True
 		RESX_PrefixTranslations = False
+		RESX_SortFileContentOnSave = True
+		RESX_NeutralResourcesLanguage = uk-UA
 	EndGlobalSection
 EndGlobal

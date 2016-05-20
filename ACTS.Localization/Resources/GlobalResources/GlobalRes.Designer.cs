@@ -133,11 +133,20 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Адміністрування.
+        ///   Looks up a localized string similar to Адмін.
         /// </summary>
         public static string Admin {
             get {
                 return ResourceManager.GetString("Admin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Адміністрування.
+        /// </summary>
+        public static string Administration {
+            get {
+                return ResourceManager.GetString("Administration", resourceCulture);
             }
         }
         
@@ -156,6 +165,15 @@ namespace ACTS.Localization.Resources {
         public static string Advertisment {
             get {
                 return ResourceManager.GetString("Advertisment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Увага!.
+        /// </summary>
+        public static string Alert {
+            get {
+                return ResourceManager.GetString("Alert", resourceCulture);
             }
         }
         
@@ -687,6 +705,15 @@ namespace ACTS.Localization.Resources {
         public static string Disciplines {
             get {
                 return ResourceManager.GetString("Disciplines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дисципліни.
+        /// </summary>
+        public static string Disciplines_ {
+            get {
+                return ResourceManager.GetString("Disciplines ", resourceCulture);
             }
         }
         

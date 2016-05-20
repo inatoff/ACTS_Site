@@ -133,7 +133,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
 
                     return RedirectToAction("index", new { nameSlug = model.Blog.Teacher.NameSlug, postSlug = model.Slug });
                 }
-                catch (KeyNotFoundException e)
+                catch (KeyNotFoundException)
                 {
                     return HttpNotFound();
                 }
@@ -170,7 +170,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                 _blogRepo.DeletePost(postId);
                 return RedirectToAction("index", new { nameSlug = teacherNameSlug });
             }
-            catch (KeyNotFoundException e)
+            catch (KeyNotFoundException)
             {
                 return HttpNotFound();
             }

@@ -129,7 +129,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
+      <HintPath>..\packages\NLog.4.3.0\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
@@ -381,6 +381,8 @@
     <Content Include="Areas\Admin\Views\Event\CreateEvent.cshtml" />
     <Content Include="Areas\Admin\Views\Event\EditEvent.cshtml" />
     <Content Include="Areas\Peoples\Views\Blog\Blog.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\OrderedByIntList.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\OrderedByDateTimeList.cshtml" />
     <None Include="EmailTemplates\ConfirmRegistration.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -416,6 +418,7 @@
     <Content Include="Scripts\Admin\initDataTable.js" />
     <Content Include="Scripts\Admin\initDataTable_uk.js" />
     <Content Include="Scripts\Admin\initSelect2.js" />
+    <Content Include="Scripts\Admin\initSortable.js" />
     <Content Include="Scripts\Admin\initTinyEditor_uk.js" />
     <Content Include="Scripts\Admin\initTinyEditor.js" />
     <Content Include="Scripts\Admin\init_iCheck.js" />
@@ -496,25 +499,22 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="EmailTemplates\ForgotPassword.cshtml" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\PublishProfiles\inatoff - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\inatoff - Web Deploy.pubxml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery-2.2.0.js" />
-    <Content Include="Scripts\jquery-2.2.0.min.js" />
-    <Content Include="Scripts\jquery-2.2.0.min.map" />
+    <None Include="Scripts\jquery-2.2.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.2.3.js" />
+    <Content Include="Scripts\jquery-2.2.3.min.js" />
     <Content Include="Scripts\jquery.dataTables.js" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.icheck.js" />
     <Content Include="Scripts\jquery.icheck.min.js" />
     <Content Include="Scripts\jquery.icheck.min.js.map" />
-    <None Include="NLog.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Areas\Peoples\Views\Profile\Edit.cshtml" />
     <Content Include="Areas\Peoples\Views\Shared\_PersonalPageLayout.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\jquery-2.2.3.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -530,6 +530,7 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\Sortable.js" />
     <Content Include="Scripts\tinymce\changelog.txt" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Scripts\tinymce\langs\ru.js" />
@@ -745,6 +746,7 @@
     <Compile Include="Controllers\ForStudentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Controllers\ScienceFieldsController.cs" />
     <Compile Include="Controllers\TeachingStaffController.cs" />
     <Compile Include="Controllers\ScienceController.cs" />
@@ -809,7 +811,6 @@
     <Content Include="Areas\Admin\Views\Account\EditorTemplates\RoleItem.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartialMessager.cshtml" />
     <Content Include="Areas\Admin\Views\Account\EditAccount.cshtml" />
-    <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="EmailTemplates\_EmailLayout.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
@@ -847,6 +848,8 @@
     <Content Include="Views\ForEnrollee\FAQ.cshtml" />
     <Content Include="Views\ForEnrollee\FDP.cshtml" />
     <Content Include="Views\ForEnrollee\Magistracy.cshtml" />
+    <Content Include="Views\Resources\Required.cshtml" />
+    <Content Include="Views\Resources\Display.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

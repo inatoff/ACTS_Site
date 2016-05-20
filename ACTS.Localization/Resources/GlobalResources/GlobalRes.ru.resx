@@ -129,6 +129,12 @@
   <data name="Achievments" xml:space="preserve">
     <value>Достижения</value>
   </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Админ</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Администрирование</value>
+  </data>
   <data name="Advertisment" xml:space="preserve">
     <value>Объявления</value>
   </data>
@@ -195,6 +201,12 @@
   <data name="Details" xml:space="preserve">
     <value>Детали</value>
   </data>
+  <data name="Disciplines" xml:space="preserve">
+    <value>Дисциплины</value>
+  </data>
+  <data name="Disciplines " xml:space="preserve">
+    <value>Дисциплины</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Электронная почта</value>
   </data>
@@ -209,6 +221,9 @@
   </data>
   <data name="FailedLoginAttemptsMsg" xml:space="preserve">
     <value>Неудачная попытка входа.</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>Часто задаваемые вопросы</value>
   </data>
   <data name="FDP" xml:space="preserve">
     <value>Довузовская подготовка</value>
@@ -333,14 +348,26 @@
   <data name="Specialties" xml:space="preserve">
     <value>Специальности</value>
   </data>
+  <data name="StudentCity" xml:space="preserve">
+    <value>Студенческий городок НТУУ "КПИ"</value>
+  </data>
+  <data name="StudentOrganizations" xml:space="preserve">
+    <value>Студенческие организации и медиа ресурсы</value>
+  </data>
   <data name="StudentRating" xml:space="preserve">
     <value>Рейтинг студентов</value>
+  </data>
+  <data name="StudentResearches" xml:space="preserve">
+    <value>Студенческая наука</value>
   </data>
   <data name="TeachingStaff" xml:space="preserve">
     <value>Научно-педагогический состав</value>
   </data>
   <data name="Ukrainian" xml:space="preserve">
     <value>Украинский</value>
+  </data>
+  <data name="Undone" xml:space="preserve">
+    <value>Страница находится в стадии разработки</value>
   </data>
   <data name="UpdateEmail" xml:space="preserve">
     <value>Обновить электронную почту</value>
@@ -356,27 +383,6 @@
   </data>
   <data name="UserNoFound" xml:space="preserve">
     <value>Пользователь с индефикатором = {0} не найден.</value>
-  </data>
-  <data name="Admin" xml:space="preserve">
-    <value>Администрирование</value>
-  </data>
-  <data name="Disciplines" xml:space="preserve">
-    <value>Дисциплины</value>
-  </data>
-  <data name="Undone" xml:space="preserve">
-    <value>Страница находится в стадии разработки</value>
-  </data>
-  <data name="StudentOrganizations" xml:space="preserve">
-    <value>Студенческие организации и медиа ресурсы</value>
-  </data>
-  <data name="StudentCity" xml:space="preserve">
-    <value>Студенческий городок НТУУ "КПИ"</value>
-  </data>
-  <data name="StudentResearches" xml:space="preserve">
-    <value>Студенческая наука</value>
-  </data>
-  <data name="FAQ" xml:space="preserve">
-    <value>Часто задаваемые вопросы</value>
   </data>
   <data name="PostCreate" xml:space="preserve">
     <value>Создать публикацию</value>

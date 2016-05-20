@@ -11,9 +11,13 @@
 }
 
 @section Scripts{
-	@Scripts.Render("~/bundles/jqueryval-admin")
-	@Scripts.Render("~/bundles/expressive")
-	@Scripts.Render(GlobalRes.fileinputPath)
+	@Scripts.Render("~/bundles/jqueryval-admin",
+					"~/bundles/expressive",
+					GlobalRes.fileinputPath,
+					"~/bundles/sortable",
+					"~/Resources/Required",
+					"~/Resources/Display")
+	<script src="/Scripts/Admin/initSortable.js"></script>
 }
 
 <div class="row">
@@ -122,6 +126,40 @@
 						@Html.LabelFor(model => model.Photo, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
 							<input id="input-image" class="file-loading form-control" accept="image/*" type="file" name="Image" />
+							@Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-red" }, "p")
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.Disciplines, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.EditorFor(model => model.Disciplines)
+							@Html.ValidationMessageFor(model => model.Disciplines, "", new { @class = "text-red" }, "p")
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.ScienceInterests, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.EditorFor(model => model.ScienceInterests)
+							@Html.ValidationMessageFor(model => model.ScienceInterests, "", new { @class = "text-red" }, "p")
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(model => model.Projects, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.EditorFor(model => model.Projects)
+							@Html.ValidationMessageFor(model => model.Projects, "", new { @class = "text-red" }, "p")
+						</div>
+					</div>
+
+					
+					<div class="form-group">
+						@Html.LabelFor(model => model.Publications, new { @class = "col-md-3 col-lg-2 control-label" })
+						<div class="col-md-8 col-lg-9">
+							@Html.EditorFor(model => model.Publications)
+							@Html.ValidationMessageFor(model => model.Publications, "", new { @class = "text-red" }, "p")
 						</div>
 					</div>
 

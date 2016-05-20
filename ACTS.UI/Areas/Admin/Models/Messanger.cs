@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ACTS.Localization.Resources;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace ACTS.UI.Areas.Admin.Models
 		public Message(MessageType type, string body)
 		{
 			Type = type;
-			Title = "Alert!";
+			Title = GlobalRes.Alert;
 			Body = body;
 		}
 
