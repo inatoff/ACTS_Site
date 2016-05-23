@@ -380,8 +380,8 @@
     <Content Include="Areas\Admin\Views\Event\TableEvent.cshtml" />
     <Content Include="Areas\Admin\Views\Event\CreateEvent.cshtml" />
     <Content Include="Areas\Admin\Views\Event\EditEvent.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\OrderedByIntList.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\OrderedByDateTimeList.cshtml" />
+    <Content Include="Areas\Admin\Views\Teacher\EditorTemplates\OrderableCollection.cshtml" />
+    <Content Include="Areas\Admin\Views\Teacher\EditorTemplates\OrderedItem`2.cshtml" />
     <None Include="EmailTemplates\ConfirmRegistration.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />

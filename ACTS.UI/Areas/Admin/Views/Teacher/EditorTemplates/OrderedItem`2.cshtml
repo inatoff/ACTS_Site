@@ -1,0 +1,10 @@
+﻿@model ACTS.Core.Entities.OrderedItem<string, int>
+
+<div class="orderable-item">
+	@Html.HiddenFor(m => m.Order)
+	<div class="input-group">
+		@Html.EditorFor(m => m.Value, new { htmlAttributes = new { @class = "form-control" } })
+		<span class="input-group-addon js-remove"><i class="fa fa-remove"></i></span>
+	</div>
+	@Html.ValidationMessageFor(m => m.Value, "", new { @class = "text-red" }, "p")
+</div>

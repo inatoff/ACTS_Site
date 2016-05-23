@@ -105,9 +105,9 @@
     <Compile Include="Migrations\201604120055045_RevertLogInDb.Designer.cs">
       <DependentUpon>201604120055045_RevertLogInDb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605081921324_OrderedItem.cs" />
-    <Compile Include="Migrations\201605081921324_OrderedItem.Designer.cs">
-      <DependentUpon>201605081921324_OrderedItem.cs</DependentUpon>
+    <Compile Include="Migrations\201605180232468_OrderedItem.cs" />
+    <Compile Include="Migrations\201605180232468_OrderedItem.Designer.cs">
+      <DependentUpon>201605180232468_OrderedItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -142,8 +142,8 @@
     <EmbeddedResource Include="Migrations\201604120055045_RevertLogInDb.resx">
       <DependentUpon>201604120055045_RevertLogInDb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605081921324_OrderedItem.resx">
-      <DependentUpon>201605081921324_OrderedItem.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605180232468_OrderedItem.resx">
+      <DependentUpon>201605180232468_OrderedItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

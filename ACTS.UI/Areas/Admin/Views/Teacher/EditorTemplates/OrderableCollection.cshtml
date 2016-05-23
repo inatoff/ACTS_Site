@@ -1,0 +1,19 @@
+﻿@model IEnumerable<ACTS.Core.Entities.OrderedItem<string, int>>
+@{
+	var orderableListName = ViewData.ModelMetadata.PropertyName;
+	var model = Model?.ToArray();
+}
+
+<div class="form-group">
+	@Html.LabelFor(m => m, new { @class = "col-md-3 col-lg-2 control-label" })
+	<div class="col-md-8 col-lg-9">
+		<div id="@orderableListName.ToLower()">
+			@Html.EditorFor(m => model)
+		</div>
+
+		<button id="addBtn@(orderableListName)" class="btn btn-flat btn-success" type="button">
+			<i class="fa fa-plus"></i>&nbsp;Add item
+		</button>
+		@Html.ValidationMessageFor(m => m, "", new { @class = "text-red" }, "p")
+	</div>
+</div>

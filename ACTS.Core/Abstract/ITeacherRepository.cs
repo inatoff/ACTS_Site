@@ -15,14 +15,14 @@ namespace ACTS.Core.Abstract
 		IQueryable<Teacher> GetNoPairTeachersWithSelected(int teacherId);
 		void CreateTeacher(Teacher teacher);
 		void UpdateTeacher(Teacher teacher);
-        void UpdateTeacherByProfile(int id, Teacher teacher);
-        void AddPairToUser(int teacherId, int userId);
+		void UpdateTeacherByProfile(int id, Teacher teacher);
+		void AddPairToUser(int teacherId, int userId);
 		void RemovePairToUser(int teacherId);
-        Teacher GetTeacherById(int teacherId);
-        Teacher DeleteTeacher(int teacherID);
-        Task<Teacher> GetTeacherByUrlSlugAsync(string urlSlug);
-        Task<int> GetCurrentUserTeacherIdAsync(int userId);
-        Task<IEnumerable<Teacher>> GetAllTeachersAsync();
-        Task InitPersonalPage(Teacher teacher);
-    }
+		Teacher GetTeacherById(int teacherId);
+		Teacher DeleteTeacher(int teacherID);
+		Task<Teacher> GetTeacherByUrlSlugAsync(string urlSlug);
+		Task<int> GetCurrentUserTeacherIdAsync(int userId);
+		Task<IEnumerable<Teacher>> GetAllTeachersAsync();
+		Task InitPersonalPage(Teacher teacher);
+	}
 }

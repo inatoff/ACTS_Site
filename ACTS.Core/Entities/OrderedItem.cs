@@ -6,7 +6,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ACTS.Core.Entities
 {
-	public class OrderedItem<TValue, TOrder> where TOrder : IComparable
+	public class OrderedItem<TValue, TOrder> : IComparable<OrderedItem<TValue, TOrder>> 
+		where TOrder : IComparable<TOrder>
 	{
 		[Key]
 		public int OrderedItemId { get; set; }
@@ -20,6 +21,11 @@ namespace ACTS.Core.Entities
 
 		[ForeignKey(nameof(TeacherId))]
 		public Teacher Teacher { get; set; }
+
+		public int CompareTo(OrderedItem<TValue, TOrder> other)
+		{
+			return Order.CompareTo(other.Order);
+		}
 	}
   
 	[MetadataType(typeof(DisciplineMetadata))]
@@ -50,13 +56,10 @@ namespace ACTS.Core.Entities
 	}
 
 	[MetadataType(typeof(PublicationMetadata))]
-	public class Publication : OrderedItem<string, DateTime> { }
+	public class Publication : OrderedItem<string, int> { }
 
 	public class PublicationMetadata
 	{
-		[DataType(DataType.Date)]
-		public DateTime Order { get; set; }
-
 		[Display(Name = nameof(DisplayRes.PublicationName), ResourceType = typeof(DisplayRes))]
 		public string Value { get; set; }
 	}

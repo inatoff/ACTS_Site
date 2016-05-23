@@ -8,6 +8,7 @@ using ACTS.Core.Entities;
 using ACTS.Core.Identity;
 using System.Collections;
 using System.Data.Entity;
+using ACTS.Core.Concrete;
 
 namespace ACTS.Core.Concrete
 {
@@ -40,8 +41,8 @@ namespace ACTS.Core.Concrete
 					dbEntry.FullName = teacher.FullName;
 					dbEntry.Position = teacher.Position;
 					dbEntry.Degree = teacher.Degree;
-                    dbEntry.Rank = teacher.Rank;
-                    dbEntry.Greetings = teacher.Greetings;
+					dbEntry.Rank = teacher.Rank;
+					dbEntry.Greetings = teacher.Greetings;
 					dbEntry.Photo = teacher.Photo;
 					dbEntry.PhotoMimeType = teacher.PhotoMimeType;
 					dbEntry.Email = teacher.Email;
@@ -112,13 +113,45 @@ namespace ACTS.Core.Concrete
 				dbEntry.Facebook = teacher.Facebook;
 				dbEntry.Twitter = teacher.Twitter;
 
+				UpdateSet(dbEntry.Disciplines, teacher.Disciplines);
+				UpdateSet(dbEntry.ScienceInterests, teacher.ScienceInterests);
+				UpdateSet(dbEntry.Projects, teacher.Projects);
+				UpdateSet(dbEntry.Publications, teacher.Publications);
+
 				_context.SaveChanges();
+			}
+		}
+
+		private void UpdateSet<TOrdItem>(ISet<TOrdItem> target, ISet<TOrdItem> source) 
+			where TOrdItem: OrderedItem<string, int>
+		{
+			var targetInMemory = target.ToArray();
+
+			// delete items
+			foreach (var ordItem in targetInMemory)
+			{
+				if (!source.Any(oi => oi.Order == ordItem.Order && oi.Value == ordItem.Value))
+				{
+					target.Remove(ordItem);
+					_context.Set<TOrdItem>().Remove(ordItem);
+				}
+			}
+
+			// add and update items
+			foreach (var ordItem in source)
+			{
+				var attachedItem = targetInMemory.FirstOrDefault(oi => oi.Order == ordItem.Order && oi.Value == ordItem.Value);
+				if (attachedItem != null)
+					_context.Entry(attachedItem).CurrentValues.SetValues(attachedItem);
+				else
+					target.Add(ordItem);
 			}
 		}
 
 		public void UpdateTeacherByProfile(int id, Teacher teacher)
 		{
 			Teacher dbEntry = _context.Teachers.Find(id);
+
 			if (dbEntry != null)
 			{                  
 				dbEntry.Degree = teacher.Degree;
@@ -185,6 +218,26 @@ namespace ACTS.Core.Concrete
 			var currentUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
 			var teacher = await _context.Teachers.FirstOrDefaultAsync(t => t.TeacherId == currentUser.Teacher.TeacherId);
 			return teacher.TeacherId;
+		}
+	}
+
+	internal class OrderedItemComparer<TOrdItem>: IEqualityComparer<TOrdItem> 
+		where TOrdItem : OrderedItem<string,int> 
+	{
+		public bool Equals(TOrdItem x, TOrdItem y)
+		{
+			return x.Order == y.Order && x.Value == y.Value;
+		}
+
+		public int GetHashCode(TOrdItem obj)
+		{
+			unchecked // Overflow is fine, just wrap
+			{
+				var hash = 936392;
+				hash = (hash * 846239) ^ obj.Order.GetHashCode();
+				hash = (hash * 846239) ^ obj.Value.GetHashCode();
+				return hash;
+			}
 		}
 	}
 }
