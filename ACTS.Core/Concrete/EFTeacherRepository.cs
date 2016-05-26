@@ -88,6 +88,15 @@ namespace ACTS.Core.Concrete
 			return _context.Teachers.Find(teacherId);
 		}
 
+		public Teacher GetTeacherByIdWithOrdListLoaded(int teacherId)
+		{
+			return _context.Teachers.Include(t => t.Disciplines)
+									.Include(t => t.Projects)
+									.Include(t => t.Publications)
+									.Include(t => t.ScienceInterests)
+									.FirstOrDefault(t => t.TeacherId == teacherId);
+		}
+
 		public void CreateTeacher(Teacher teacher)
 		{
 			_context.Teachers.Add(teacher);
@@ -96,55 +105,50 @@ namespace ACTS.Core.Concrete
 
 		public void UpdateTeacher(Teacher teacher)
 		{
-			Teacher dbEntry = _context.Teachers.Find(teacher.TeacherId);
-			if (dbEntry != null)
-			{
-				dbEntry.FullName = teacher.FullName;
-				dbEntry.Position = teacher.Position;
-				dbEntry.Degree = teacher.Degree;
-				dbEntry.Rank = teacher.Rank;
-				dbEntry.Photo = teacher.Photo;
-				dbEntry.PhotoMimeType = teacher.PhotoMimeType;
-				dbEntry.Email = teacher.Email;
-				dbEntry.NameSlug = teacher.NameSlug;
-				// social Links
-				dbEntry.Intellect = teacher.Intellect;
-				dbEntry.Vk = teacher.Vk;
-				dbEntry.Facebook = teacher.Facebook;
-				dbEntry.Twitter = teacher.Twitter;
 
-				UpdateSet(dbEntry.Disciplines, teacher.Disciplines);
-				UpdateSet(dbEntry.ScienceInterests, teacher.ScienceInterests);
-				UpdateSet(dbEntry.Projects, teacher.Projects);
-				UpdateSet(dbEntry.Publications, teacher.Publications);
+			UpdateSet(teacher.Disciplines, teacher);
+			UpdateSet(teacher.ScienceInterests, teacher);
+			UpdateSet(teacher.Projects, teacher);
+			UpdateSet(teacher.Publications, teacher);
 
-				_context.SaveChanges();
-			}
+			_context.Entry(teacher).State = EntityState.Modified;
+
+			_context.SaveChanges();
 		}
 
-		private void UpdateSet<TOrdItem>(ISet<TOrdItem> target, ISet<TOrdItem> source) 
+		private void UpdateSet<TOrdItem>(ISet<TOrdItem> target, Teacher teacher) 
 			where TOrdItem: OrderedItem<string, int>
 		{
-			var targetInMemory = target.ToArray();
-
-			// delete items
-			foreach (var ordItem in targetInMemory)
+			var teacherOrdSet = _context.Set<TOrdItem>()
+										.AsNoTracking()
+										.Where(oi => oi.TeacherId == teacher.TeacherId)
+										.ToList();
+			//add and update items
+			foreach (var ordItem in target)
 			{
-				if (!source.Any(oi => oi.Order == ordItem.Order && oi.Value == ordItem.Value))
+				var updatedItem = teacherOrdSet.FirstOrDefault(oi => oi.Order == ordItem.Order);
+				ordItem.TeacherId = teacher.TeacherId;
+				if (updatedItem == null)
 				{
-					target.Remove(ordItem);
-					_context.Set<TOrdItem>().Remove(ordItem);
+					_context.Entry(ordItem).State = EntityState.Added;
+				}
+				else
+				{
+					ordItem.OrderedItemId = updatedItem.OrderedItemId;
+					//updatedItem.Value = ordItem.Value;
+					//_context.Entry(updatedItem).State = EntityState.Modified;
+					_context.Entry(ordItem).State = EntityState.Modified;
 				}
 			}
 
-			// add and update items
-			foreach (var ordItem in source)
+
+			// delete items
+			foreach (var ordItem in teacherOrdSet)
 			{
-				var attachedItem = targetInMemory.FirstOrDefault(oi => oi.Order == ordItem.Order && oi.Value == ordItem.Value);
-				if (attachedItem != null)
-					_context.Entry(attachedItem).CurrentValues.SetValues(attachedItem);
-				else
-					target.Add(ordItem);
+				if (!target.Any(oi => oi.Order == ordItem.Order))
+				{
+					_context.Entry(ordItem).State = EntityState.Deleted;
+				}
 			}
 		}
 

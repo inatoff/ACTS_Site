@@ -19,6 +19,7 @@ namespace ACTS.Core.Abstract
 		void AddPairToUser(int teacherId, int userId);
 		void RemovePairToUser(int teacherId);
 		Teacher GetTeacherById(int teacherId);
+		Teacher GetTeacherByIdWithOrdListLoaded(int teacherId);
 		Teacher DeleteTeacher(int teacherID);
 		Task<Teacher> GetTeacherByUrlSlugAsync(string urlSlug);
 		Task<int> GetCurrentUserTeacherIdAsync(int userId);

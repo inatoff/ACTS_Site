@@ -34,7 +34,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Edit(int teacherId)
 		{
-			Teacher teacher = repository.GetTeacherById(teacherId);
+			Teacher teacher = repository.GetTeacherByIdWithOrdListLoaded(teacherId);
 			return View("EditTeacher", teacher);
 		}
 

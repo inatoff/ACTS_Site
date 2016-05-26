@@ -16,11 +16,6 @@ namespace ACTS.Core.Entities
         
         public virtual Teacher Teacher { get; set; }
 
-        public ICollection<Post> Posts { get; set; }
-
-        public Blog()
-        {
-            Posts = new List<Post>();
-        }
+        public ICollection<Post> Posts { get; set; } = new List<Post>();
     }
 }
