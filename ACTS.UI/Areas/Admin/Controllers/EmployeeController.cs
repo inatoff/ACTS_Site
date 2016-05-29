@@ -28,7 +28,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Table()
 		{
-			IEnumerable<Employee> employees = _repository.Employees.OrderBy(em => em.EmployeeId);
+			IEnumerable<Employee> employees = _repository.Employees.OrderBy(em => em.EmployeeId).ToList();
 			return View("TableEmployee", employees);
 		}
 
@@ -102,6 +102,26 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				_logger.Info("Employee \"{0}\" deleted by {1}.", deletedEmployee.FullName, User.Identity.Name);
 			}
 			return RedirectToAction(nameof(Table));
+		}
+
+		private bool disposedValue = false; // To detect redundant calls
+
+		protected override void Dispose(bool disposing)
+		{
+			if (!disposedValue)
+			{
+				if (disposing)
+				{
+					// TODO: dispose managed state (managed objects).
+					_repository.Dispose();
+					base.Dispose(disposing);
+				}
+
+				// TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+				// TODO: set large fields to null.
+
+				disposedValue = true;
+			}
 		}
 	}
 }

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ACTS.Core.Abstract
 {
-    public interface IEmployeeRepository
-    {
+    public interface IEmployeeRepository: IDisposable
+	{
         IQueryable<Employee> Employees { get; }
 		void UpdateEmployee(Employee employee);
 		void CreateEmployee(Employee employee);

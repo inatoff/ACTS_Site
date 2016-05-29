@@ -33,30 +33,46 @@ namespace ACTS.UI.Services
 			if (start > end)
 				return Enumerable.Empty<LogEntry>().AsQueryable();
 
-			DateTime localStart = start.ToLocalTime(), localEnd = end.ToLocalTime();
+			DateTime startLocal = start.ToLocalTime(), endLocal = end.ToLocalTime();
 
 			StringBuilder logsSB = new StringBuilder();
 
-			for (var date = localStart - new TimeSpan(localStart.Day - 1, 0, 0, 0); date <= localEnd; date = date.AddMonths(1))
+			for (var date = startLocal.Date.AddDays(1 - startLocal.Day); date <= endLocal; date = date.AddMonths(1))
 			{
 				var logFilePath = Path.Combine(DefaultPathToLogs, string.Format(_logFileFormat, date));
 
 				if (File.Exists(logFilePath))
-					try
+					// написавший это знает что довольно опасно использует цикл и что возможно зацикливание,
+					// но так как он еще тот говнокодер, то просто не знает как получить доступ до файла если
+					// его использует другой процесс
+					// ЗЫ: есть идеи как сделать лучше напишите сами или отпишите мне
+					do
 					{
-						logsSB.Append(File.ReadAllText(logFilePath));
-					}
-					catch (IOException ex)
-					{
-						_logger.ErrorException(ex.Message, ex);
-					}
+						try
+						{
+							var task = Task.Factory.StartNew(() => File.ReadAllText(logFilePath));
+#if DEBUG
+#pragma warning disable CS4014 
+							task.ContinueWith(s => _logger.Trace($"Read text from {logFilePath} successful."));
+#pragma warning restore CS4014
+#endif
+							logsSB.Append(await task);
+							break;
+						}
+						catch (IOException ex)
+						{
+							_logger.ErrorException(ex.Message, ex);
+						}
+					} while (true);
 			}
 
 			logsSB.Insert(0, '[');
 			logsSB.Replace('\n', ',', 0, logsSB.Length - 1);
 			logsSB.Append(']');
 			var logs = (await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<IEnumerable<LogEntry>>(logsSB.ToString()))).AsQueryable();
-			return logs.Where(log => log.UtcDate >= start && log.UtcDate <= end);
+			DateTime startUtc = start.ToUniversalTime(), endUtc = end.ToUniversalTime();
+
+			return logs.Where(log => log.UtcDate >= startUtc && log.UtcDate <= endUtc);
 		}
 
 		public static IQueryable<LogEntry> GetLogs(DateTime start, DateTime end)

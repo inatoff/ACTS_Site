@@ -2,6 +2,7 @@
 using ACTS.Core.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,11 +11,11 @@ namespace ACTS.UI.Controllers
 {
 	public class NewsController : BaseController
 	{
-		private INewsRepository repository;
+		private INewsRepository _repository;
 
 		public NewsController(INewsRepository newsRepository)
 		{
-			repository = newsRepository;
+			_repository = newsRepository;
 		}
 
 		/// <summary>
@@ -23,7 +24,7 @@ namespace ACTS.UI.Controllers
 		/// <returns></returns>
 		public ViewResult ArchiveUncos()
 		{
-			IEnumerable<News> uncos = repository.Uncos;
+			IEnumerable<News> uncos = _repository.Uncos;
 			return View(uncos);
 		}
 
@@ -33,55 +34,39 @@ namespace ACTS.UI.Controllers
 		/// <returns></returns>
 		public ViewResult PageNews(int newsID)
 		{
-			News news = repository.Uncos.FirstOrDefault(n => n.NewsId == newsID);
+			News news = _repository.GetNewsById(newsID);
 			return View(news);
 		}
 
 		public PartialViewResult FooterStringUncos()
 		{
-			var uncos = repository.Uncos.Where(delegate (News n) {
-				if (n.Modified.HasValue)
-					return (DateTime.UtcNow - n.Modified.Value).TotalDays < 365;
-				return (DateTime.UtcNow - n.Created.Value).TotalDays < 365;
-			});
-			Random rand = new Random();
-			var randomNumbers = uncos.Select(r => rand.Next()).ToArray();
-			IEnumerable<News> last3uncos = uncos.Zip(randomNumbers, (n, o) => new { News = n, Order = o })
-									 .OrderBy(o => o.Order)
-									 .Select(o => o.News)
-									 .Take(3);
+			IEnumerable<News> rand3Uncos = _repository.GetRandomNewsForLastYear(3).AsNoTracking().ToList();
 
-			return PartialView(last3uncos);
+			return PartialView(rand3Uncos);
 		}
 
 		public PartialViewResult NavLastUncos()
 		{
-			IEnumerable<News> last3uncos = repository.Uncos.OrderBy(n => n.Created).Take(3);
-			return PartialView(last3uncos);
+			IEnumerable<News> last3Uncos = _repository.Uncos.OrderBy(n => n.Created).Take(3);
+			return PartialView(last3Uncos);
 		}
 
 		public FileContentResult GetImage(int newsId)
 		{
-			News news = repository.GetNewsById(newsId);
+			News news = _repository.GetNewsById(newsId);
 			if (news != null)
-			{
 				return File(news.ImageData, news.ImageMimeType);
-			} else
-			{
+			else
 				return null;
-			}
 		}
 
 		public PartialViewResult GetContent(int newsId)
 		{
-			News news = repository.Uncos.FirstOrDefault(p => p.NewsId == newsId);
+			News news = _repository.GetNewsById(newsId);
 			if (news != null)
-			{
 				return PartialView("_NewsContent", news);
-			} else
-			{
+			else
 				return null;
-			}
 		}
 	}
 }

@@ -39,8 +39,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_NeutralResourcesLanguage = uk-UA
-		RESX_SortFileContentOnSave = True
 		RESX_PrefixTranslations = False
+		RESX_SortFileContentOnSave = True
+		RESX_NeutralResourcesLanguage = uk-UA
 	EndGlobalSection
 EndGlobal

@@ -29,12 +29,15 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		public ActionResult Table()
 		{
 			IEnumerable<Teacher> teachers = repository.Teachers.Include(t => t.User).OrderBy(t => t.TeacherId);
-			return View("TableTeacher",teachers);
+			return View("TableTeacher", teachers);
 		}
 
 		public ActionResult Edit(int teacherId)
 		{
-			Teacher teacher = repository.GetTeacherByIdWithOrdListLoaded(teacherId);
+			Teacher teacher = repository.GetTeacherByIdWithLoadedProp(teacherId, t => t.Disciplines,
+																				 t => t.Projects,
+																				 t => t.Publications,
+																				 t => t.ScienceInterests);
 			return View("EditTeacher", teacher);
 		}
 

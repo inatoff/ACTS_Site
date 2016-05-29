@@ -26,7 +26,7 @@ namespace ACTS.UI
 			// Настройка логики проверки имен пользователей
 			this.UserValidator = new UserValidator<ApplicationUser, int>(this) {
 				AllowOnlyAlphanumericUserNames = false,
-				RequireUniqueEmail = true,
+				RequireUniqueEmail = false
 			};
 
 			// Настройка логики проверки паролей

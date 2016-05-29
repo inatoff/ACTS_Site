@@ -24,7 +24,7 @@ namespace ACTS.Core.Migrations
 #if RustamPC
 			var pathToImagesFolder = @"D:\ACTS\ACTS_Site\ACTS.Core\Migrations\ImagesForSeed\";
 #else
-			var pathToImagesFolder = @"E:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed\";
+			var pathToImagesFolder = @"D:\study\ACTS\ACTS.Core\Migrations\ImagesForSeed";
 #endif
 
 			var roleStore = new ApplicationRoleStore(context);
@@ -47,7 +47,8 @@ namespace ACTS.Core.Migrations
 
 			if (!userManager.Users.Any())
 			{
-				var admin = new ApplicationUser {
+				var admin = new ApplicationUser
+				{
 					Email = "rukpet@bigmir.net",
 					UserName = "admin",
 					LockoutEnabled = true
@@ -56,7 +57,8 @@ namespace ACTS.Core.Migrations
 
 				userManager.AddToRole(admin.Id, "Admin");
 
-				var teacher = new ApplicationUser {
+				var teacher = new ApplicationUser
+				{
 					Email = "teacher@bigmir.net",
 					UserName = "teacher",
 					LockoutEnabled = true
@@ -167,7 +169,8 @@ namespace ACTS.Core.Migrations
 					var sherbanPhoto = new byte[sherbanFs.Length];
 					sherbanFs.Read(sherbanPhoto, 0, (int)sherbanFs.Length);
 
-					employeeRepository.CreateEmployee(new Employee {
+					employeeRepository.CreateEmployee(new Employee
+					{
 						FullName = "Щербань Олександр Васильович",
 						Position = "Завідувач лабораторіями",
 						Photo = sherbanPhoto,
@@ -235,6 +238,18 @@ namespace ACTS.Core.Migrations
 						ImageMimeType = mimeType
 					});
 				}
+
+				newsRepository.CreateNews(new News
+				{
+					Title = "Department ACTS a premier partner Cisco Networking Academy",
+					Content = "<p><a href=\"http://acts.kpi.ua/app/uploads/2016/05/20160524142324.jpg\"><img src=\"http://acts.kpi.ua/app/uploads/2016/05/20160524142324.jpg\" alt=\"20160524142324\" width=\"3264\" height=\"2448\" class=\"alignnone size-full wp-image-2299\"></a></p>"
+				});
+
+				newsRepository.CreateNews(new News
+				{
+					Title = "Графік днів відкритих дверей",
+					Content = "<p><a href=\"http://acts.kpi.ua/app/uploads/2016/03/Untitled1.jpg\"><img class=\"alignnone size-full wp-image-2188\" src=\"http://acts.kpi.ua/app/uploads/2016/03/Untitled1.jpg\" alt=\"Untitled\" width=\"922\" height=\"1305\"></a></p>",
+				});
 			}
 
 			base.Seed(context);

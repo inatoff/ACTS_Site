@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ACTS.Core.Abstract
 {
-	public interface IEventRepository
+	public interface IEventRepository: IDisposable
 	{
 		IQueryable<Event> Events { get; }
 

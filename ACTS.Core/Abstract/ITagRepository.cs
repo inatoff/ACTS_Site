@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ACTS.Core.Abstract
 {
-    public interface ITagRepository
-    {
+    public interface ITagRepository: IDisposable
+	{
         IEnumerable<string> GetAll();
         string Get(string tag);
         void Edit(string existingTag, string newTag);

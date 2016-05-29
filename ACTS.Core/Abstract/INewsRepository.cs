@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ACTS.Core.Abstract
 {
-	public interface INewsRepository
+	public interface INewsRepository: IDisposable
 	{
 		// Uncos -- новости в множине
 		IQueryable<News> Uncos { get; }     
@@ -15,5 +15,6 @@ namespace ACTS.Core.Abstract
 		void CreateNews(News news);
 		News GetNewsById(int newsId);
 		News DeleteNews(int newsId);
+		IQueryable<News> GetRandomNewsForLastYear(int count);
 	}
 }

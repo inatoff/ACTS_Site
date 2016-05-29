@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using System.Linq.Expressions;
 
 namespace ACTS.Core.Abstract
 {
-	public interface ITeacherRepository
+	public interface ITeacherRepository: IDisposable
 	{
 		IQueryable<Teacher> Teachers { get; }
 		IQueryable<Teacher> NoPairTeachers { get; }
@@ -19,7 +20,7 @@ namespace ACTS.Core.Abstract
 		void AddPairToUser(int teacherId, int userId);
 		void RemovePairToUser(int teacherId);
 		Teacher GetTeacherById(int teacherId);
-		Teacher GetTeacherByIdWithOrdListLoaded(int teacherId);
+		Teacher GetTeacherByIdWithLoadedProp(int teacherId, params Expression<Func<Teacher, object>> [] includes);
 		Teacher DeleteTeacher(int teacherID);
 		Task<Teacher> GetTeacherByUrlSlugAsync(string urlSlug);
 		Task<int> GetCurrentUserTeacherIdAsync(int userId);

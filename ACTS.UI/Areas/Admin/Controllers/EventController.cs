@@ -114,5 +114,25 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			}
 			return RedirectToAction(nameof(Table));
 		}
+
+		private bool disposedValue = false; // To detect redundant calls
+
+		protected override void Dispose(bool disposing)
+		{
+			if (!disposedValue)
+			{
+				if (disposing)
+				{
+					// TODO: dispose managed state (managed objects).
+					_repository.Dispose();
+					base.Dispose(disposing);
+				}
+
+				// TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+				// TODO: set large fields to null.
+
+				disposedValue = true;
+			}
+		}
 	}
 }

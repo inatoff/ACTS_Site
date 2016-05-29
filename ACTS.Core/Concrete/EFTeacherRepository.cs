@@ -9,6 +9,7 @@ using ACTS.Core.Identity;
 using System.Collections;
 using System.Data.Entity;
 using ACTS.Core.Concrete;
+using System.Linq.Expressions;
 
 namespace ACTS.Core.Concrete
 {
@@ -28,6 +29,7 @@ namespace ACTS.Core.Concrete
 			get { return _context.Teachers.Where(t => t.User == null); }
 		}
 
+		[Obsolete]
 		public void SaveTeacher(Teacher teacher)
 		{
 			if (teacher.TeacherId == 0)
@@ -71,6 +73,11 @@ namespace ACTS.Core.Concrete
 					_context.Blogs.Remove(teacher.Blog);
 				}
 
+				_context.Disciplines.RemoveRange(teacher.Disciplines);
+				_context.ScienceInterests.RemoveRange(teacher.ScienceInterests);
+				_context.Projects.RemoveRange(teacher.Projects);
+				_context.Publications.RemoveRange(teacher.Publications);
+
 				_context.Teachers.Remove(teacher);
 				_context.SaveChanges();
 			}
@@ -88,13 +95,13 @@ namespace ACTS.Core.Concrete
 			return _context.Teachers.Find(teacherId);
 		}
 
-		public Teacher GetTeacherByIdWithOrdListLoaded(int teacherId)
+		public Teacher GetTeacherByIdWithLoadedProp(int teacherId, params Expression<Func<Teacher, object>> [] includes)
 		{
-			return _context.Teachers.Include(t => t.Disciplines)
-									.Include(t => t.Projects)
-									.Include(t => t.Publications)
-									.Include(t => t.ScienceInterests)
-									.FirstOrDefault(t => t.TeacherId == teacherId);
+			var teachers = Teachers;
+			foreach (var include in includes)
+				teachers = teachers.Include(include);
+
+			return teachers.FirstOrDefault(t => t.TeacherId == teacherId);
 		}
 
 		public void CreateTeacher(Teacher teacher)
@@ -129,14 +136,12 @@ namespace ACTS.Core.Concrete
 				var updatedItem = teacherOrdSet.FirstOrDefault(oi => oi.Order == ordItem.Order);
 				ordItem.TeacherId = teacher.TeacherId;
 				if (updatedItem == null)
-				{
+					//add item
 					_context.Entry(ordItem).State = EntityState.Added;
-				}
 				else
 				{
+					//update item
 					ordItem.OrderedItemId = updatedItem.OrderedItemId;
-					//updatedItem.Value = ordItem.Value;
-					//_context.Entry(updatedItem).State = EntityState.Modified;
 					_context.Entry(ordItem).State = EntityState.Modified;
 				}
 			}
@@ -144,12 +149,8 @@ namespace ACTS.Core.Concrete
 
 			// delete items
 			foreach (var ordItem in teacherOrdSet)
-			{
 				if (!target.Any(oi => oi.Order == ordItem.Order))
-				{
 					_context.Entry(ordItem).State = EntityState.Deleted;
-				}
-			}
 		}
 
 		public void UpdateTeacherByProfile(int id, Teacher teacher)
@@ -223,6 +224,42 @@ namespace ACTS.Core.Concrete
 			var teacher = await _context.Teachers.FirstOrDefaultAsync(t => t.TeacherId == currentUser.Teacher.TeacherId);
 			return teacher.TeacherId;
 		}
+
+		#region IDisposable Support
+		private bool disposedValue = false; // To detect redundant calls
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (!disposedValue)
+			{
+				if (disposing)
+				{
+					// TODO: dispose managed state (managed objects).
+					_context.Dispose();
+				}
+
+				// TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+				// TODO: set large fields to null.
+
+				disposedValue = true;
+			}
+		}
+
+		// TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+		// ~EFTeacherRepository() {
+		//   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+		//   Dispose(false);
+		// }
+
+		// This code added to correctly implement the disposable pattern.
+		public void Dispose()
+		{
+			// Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+			Dispose(true);
+			// TODO: uncomment the following line if the finalizer is overridden above.
+			// GC.SuppressFinalize(this);
+		}
+		#endregion
 	}
 
 	internal class OrderedItemComparer<TOrdItem>: IEqualityComparer<TOrdItem> 
