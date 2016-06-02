@@ -1,4 +1,5 @@
 ﻿using ACTS.Core.Abstract;
+using ACTS.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,67 +12,28 @@ namespace ACTS.Core.Concrete
 	{
 		private EFDbContext _context = new EFDbContext();
 
-		public IEnumerable<string> GetAll()
+		public IQueryable<Tag> Tags
 		{
-			var tagsCollection = _context.Posts.Select(p => p.CombinedTags).ToList();
-			return string.Join(",", tagsCollection).Split(',').Distinct();
+			get { return _context.Tags; }
 		}
 
-		public string Get(string tag)
+		public Tag Get(string tag)
 		{
-			var posts = _context.Posts.Where(post => post.CombinedTags.Contains(tag)).ToList();
-			posts = posts.Where(post =>
-				   post.Tags.Contains(tag, StringComparer.CurrentCultureIgnoreCase))
-				   .ToList();
+			var dbEntry = _context.Tags.FirstOrDefault(t => t.KeyWord == tag);
 
-			if (!posts.Any())
-			{
-				throw new KeyNotFoundException($"The tag \"{tag}\" does not exist.");
-			}
-
-			return tag.ToLower();
+			return dbEntry;
 		}
 
-		public void Edit(string existingTag, string newTag)
+		public void Edit(Tag tag)
 		{
-			var posts = _context.Posts.Where(post => post.CombinedTags.Contains(existingTag)).ToList();
-
-			posts = posts.Where(post =>
-					post.Tags.Contains(existingTag, StringComparer.CurrentCultureIgnoreCase))
-					.ToList();
-
-			if (!posts.Any())
-			{
-				throw new KeyNotFoundException($"The tag \"{existingTag}\" does not exist.");
-			}
-
-			foreach (var post in posts)
-			{
-				post.Tags.Remove(existingTag);
-				post.Tags.Add(newTag);
-			}
+			_context.Entry(tag).State = System.Data.Entity.EntityState.Modified;
 
 			_context.SaveChanges();
 		}
 
-		public void Delete(string tag)
+		public void Delete(Tag tag)
 		{
-			var posts = _context.Posts.Where(post => post.CombinedTags.Contains(tag))
-					.ToList();
-
-			posts = posts.Where(post =>
-				post.Tags.Contains(tag, StringComparer.CurrentCultureIgnoreCase))
-				.ToList();
-
-			if (!posts.Any())
-			{
-				throw new KeyNotFoundException($"The tag \"{tag}\" does not exist.");
-			}
-
-			foreach (var post in posts)
-			{
-				post.Tags.Remove(tag);
-			}
+			_context.Tags.Remove(tag);
 
 			_context.SaveChanges();
 		}

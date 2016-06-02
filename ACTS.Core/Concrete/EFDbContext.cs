@@ -22,6 +22,7 @@ namespace ACTS.Core.Concrete
 		public DbSet<Teacher> Teachers { get; set; }
 		public DbSet<Blog> Blogs { get; set; }
 		public DbSet<Post> Posts { get; set; }
+		public DbSet<Tag> Tags { get; set; }
 		public DbSet<Discipline> Disciplines { get; set; }
 		public DbSet<ScienceInterest> ScienceInterests { get; set; }
 		public DbSet<Project> Projects { get; set; }
