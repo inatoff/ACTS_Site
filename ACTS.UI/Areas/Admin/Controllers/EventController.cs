@@ -44,12 +44,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				if (image != null)
-				{
-					@event.ImageMimeType = image.ContentType;
-					@event.ImageData = new byte[image.ContentLength];
-					image.InputStream.Read(@event.ImageData, 0, image.ContentLength);
-				}
+				@event.UpdateFileForContainer(image);
+
 				@event.StartView = @event.StartView?.ToUniversalTime();
 				@event.EndView = @event.EndView?.ToUniversalTime();
 				_repository.UpdateEvent(@event);
@@ -81,12 +77,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				if (image != null)
-				{
-					@event.ImageMimeType = image.ContentType;
-					@event.ImageData = new byte[image.ContentLength];
-					image.InputStream.Read(@event.ImageData, 0, image.ContentLength);
-				}
+				@event.CreateFileForContainer(image);
+
 				@event.StartView = @event.StartView?.ToUniversalTime();
 				@event.EndView = @event.EndView?.ToUniversalTime();
 				_repository.CreateEvent(@event);

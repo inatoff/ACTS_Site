@@ -80,12 +80,12 @@
 									</div>
 								</td>
 								<td>
-									@if (item.Photo == null)
+									@if (item.PhotoId.HasValue)
 									{
-										@GlobalRes.None
+										<img alt="Teacher image" width="80" height="115" src="@Url.Action("Index", "File", new { area = "", id = item.PhotoId.Value })" />
 									} else
 									{
-										<img alt="Teacher image" width="80" height="115" src="@Url.Action("GetImage", "TeachingStaff", new { area = "", item.TeacherId })" />
+										@GlobalRes.None
 									}
 								</td>
 								<td>

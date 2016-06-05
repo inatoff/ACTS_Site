@@ -29,36 +29,6 @@ namespace ACTS.Core.Concrete
 			get { return _context.Teachers.Where(t => t.User == null); }
 		}
 
-		[Obsolete]
-		public void SaveTeacher(Teacher teacher)
-		{
-			if (teacher.TeacherId == 0)
-			{
-				_context.Teachers.Add(teacher);
-			} else
-			{
-				Teacher dbEntry = _context.Teachers.Find(teacher.TeacherId);
-				if (dbEntry != null)
-				{
-					dbEntry.FullName = teacher.FullName;
-					dbEntry.Position = teacher.Position;
-					dbEntry.Degree = teacher.Degree;
-					dbEntry.Rank = teacher.Rank;
-					dbEntry.Greetings = teacher.Greetings;
-					dbEntry.Photo = teacher.Photo;
-					dbEntry.PhotoMimeType = teacher.PhotoMimeType;
-					dbEntry.Email = teacher.Email;
-					// social Links
-					dbEntry.Intellect = teacher.Intellect;
-					dbEntry.Vk = teacher.Vk;
-					dbEntry.Facebook = teacher.Facebook;
-					dbEntry.Twitter = teacher.Twitter;
-				}
-			}
-
-			_context.SaveChanges();
-		}
-
 		public Teacher DeleteTeacher(int teacherId)
 		{
 			Teacher teacher = GetTeacherById(teacherId);

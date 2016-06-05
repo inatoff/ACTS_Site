@@ -11,10 +11,10 @@
 }
 
 @section Scripts {
-	@Scripts.Render("~/bundles/jqueryval-admin")
-	@Scripts.Render("~/bundles/expressive")
-	@Scripts.Render(GlobalRes.tinymcePath)
-	@Scripts.Render(GlobalRes.fileinputPath)
+	@Scripts.Render("~/bundles/jqueryval-admin",
+					"~/bundles/expressive",
+					GlobalRes.tinymcePath,
+					GlobalRes.fileinputPath)
 }
 
 <div class="row">
@@ -41,7 +41,7 @@
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.ImageData, new { @class = "col-md-3 col-lg-2 control-label" })
+						@Html.LabelFor(model => model.ImageId, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
 							<input id="input-image" class="file-loading form-control" accept="image/*" type="file" name="Image" />
 						</div>

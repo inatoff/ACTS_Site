@@ -3,9 +3,6 @@
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
 	ViewBag.Title = GlobalRes.EditTeacher;
-}
-
-@functions{
 	const string partialForOrdCollection = "OrderableCollection";
 }
 
@@ -39,8 +36,7 @@
 
 					@Html.ValidationSummary(true, "", new { @class = "text-red" })
 					@Html.HiddenFor(model => model.TeacherId)
-					@Html.HiddenFor(model => model.Photo)
-					@Html.HiddenFor(model => model.PhotoMimeType)
+					@Html.HiddenFor(model => model.PhotoId)
 
 					<div class="form-group">
 						@Html.LabelFor(model => model.FullName, new { @class = "col-md-3 col-lg-2 control-label" })
@@ -130,23 +126,23 @@
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.Photo, new { @class = "col-md-3 col-lg-2 control-label" })
+						@Html.LabelFor(model => model.PhotoId, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
-							@if (Model.Photo == null)
+							@if (Model.PhotoId.HasValue)
+							{
+								<img alt="Teacher image" class="img-thumbnail" style="max-width:100%;max-height:400px" src="@Url.Action("Index", "File", new { area = "", id = Model.PhotoId.Value })" />
+							}
+							else
 							{
 								<p class="form-control-static">
 									@GlobalRes.None
 								</p>
 							}
-							else
-							{
-								<img alt="Teacher image" class="img-thumbnail" style="max-width:100%;max-height:400px" src="@Url.Action("GetImage", "TeachingStaff", new { area = "", Model.TeacherId })" />
-							}
 						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.Photo, GlobalRes.UploadNewPhoto, new { @class = "col-md-3 col-lg-2 control-label" })
+						@Html.LabelFor(model => model.PhotoId, GlobalRes.UploadNewPhoto, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
 							<input id="input-image" class="file-loading form-control" accept="image/*" type="file" name="Image" />
 						</div>

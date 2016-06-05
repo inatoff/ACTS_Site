@@ -1,0 +1,8 @@
+﻿@model Guid?
+<div class="form-group">
+	@Html.LabelForModel(new {@class = "col-md-3 col-lg-2 control-label" })
+	<div class="col-md-8 col-lg-9">
+		<input id="input-image" class="file-loading form-control" accept="image/*" type="file" name="Image" />
+		@Html.ValidationMessageFor(model => model, "", new { @class = "text-red" }, "p")
+	</div>
+</div>

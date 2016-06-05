@@ -44,12 +44,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				if (image != null)
-				{
-					employee.PhotoMimeType = image.ContentType;
-					employee.Photo = new byte[image.ContentLength];
-					image.InputStream.Read(employee.Photo, 0, image.ContentLength);
-				}
+				employee.UpdateFileForContainer(image);
+
 				_repository.UpdateEmployee(employee);
 				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.EmployeeSavedMsg, employee.FullName));
 				_logger.Info("Employee \"{0}\" saved by {1}.", employee.FullName, User.Identity.Name);
@@ -73,12 +69,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				if (image != null)
-				{
-					employee.PhotoMimeType = image.ContentType;
-					employee.Photo = new byte[image.ContentLength];
-					image.InputStream.Read(employee.Photo, 0, image.ContentLength);
-				}
+				employee.CreateFileForContainer(image);
+
 				_repository.CreateEmployee(employee);
 				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.EmployeeSavedMsg, employee.FullName));
 				_logger.Info("Employee \"{0}\" created by {1}.", employee.FullName, User.Identity.Name);

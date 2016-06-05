@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using ACTS.Core.Abstract;
 
 namespace ACTS.Core.Entities
 {
-	public class Event
+	public class Event: IHaveFileId
 	{
 		[HiddenInput(DisplayValue = false)]
 		public int EventId { get; set; }
@@ -40,10 +41,7 @@ namespace ACTS.Core.Entities
 		public string Title { get; set; }
 
 		[Display(Name = nameof(DisplayRes.ImageName), ResourceType = typeof(DisplayRes))]
-		public byte[] ImageData { get; set; }
-
-		[HiddenInput]
-		public string ImageMimeType { get; set; }
+		public Guid? ImageId { get; set; }
 
 		[DataType(DataType.MultilineText)]
 		[AllowHtml]
@@ -58,5 +56,8 @@ namespace ACTS.Core.Entities
 			}
 		}
 
+		Guid? IHaveFileId.FileId { get { return ImageId; } set { ImageId = value; } }
+
+		public Guid? FileId { get { return ((IHaveFileId)this).FileId; } set { ((IHaveFileId)this).FileId = value; } }
 	}
 }

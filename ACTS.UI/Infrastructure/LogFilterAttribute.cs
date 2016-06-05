@@ -12,6 +12,7 @@ namespace ACTS.UI.Infrastructure
 	class LogFilterAttribute : ActionFilterAttribute
 	{
 		private ILogger _logger;
+
 		public LogFilterAttribute(ILoggerFactory loggerFactory)
 		{
 			_logger = loggerFactory.GetCurrentClassLogger();

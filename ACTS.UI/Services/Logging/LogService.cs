@@ -3,6 +3,10 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Ninject;
 using Ninject.Extensions.Logging;
+using NLog.Config;
+using NLog.Internal;
+using NLog.Layouts;
+using NLog.Targets;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -12,20 +16,39 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Mvc;
 
-namespace ACTS.UI.Services
+namespace ACTS.UI.Services.Logging
 {
 	public static class LogService
 	{
-		public static string DefaultPathToLogs { get; set; }
-
 		private const string _logFileFormat = "ex{0:yyMM}.log";
 
 		private static ILogger _logger;
-		static LogService()
+		private static string _pathToLogs;
+
+		private static ILogger Logger
 		{
-			IKernel kernel = new StandardKernel();
-			_logger = kernel.Get<ILoggerFactory>().GetCurrentClassLogger();
+			get
+			{
+				return _logger ?? (_logger = DependencyResolver.Current.GetService<ILoggerFactory>().GetCurrentClassLogger());
+			}
+		}
+
+		public static string PathToLogs {
+			get
+			{
+				if (_pathToLogs == null)
+				{
+					var jsonLayout = new LoggingConfiguration().AllTargets.OfType<FileTarget>().FirstOrDefault(ft => ft.Layout is JsonLayout);
+					_pathToLogs = Path.GetDirectoryName(jsonLayout?.FileName.Render(NLog.LogEventInfo.CreateNullEvent()));
+				}
+				return _pathToLogs;
+			}
+			set
+			{
+				_pathToLogs = value;
+			}
 		}
 
 		public static async Task<IQueryable<LogEntry>> GetLogsAsync(DateTime start, DateTime end)
@@ -39,7 +62,7 @@ namespace ACTS.UI.Services
 
 			for (var date = startLocal.Date.AddDays(1 - startLocal.Day); date <= endLocal; date = date.AddMonths(1))
 			{
-				var logFilePath = Path.Combine(DefaultPathToLogs, string.Format(_logFileFormat, date));
+				var logFilePath = Path.Combine(PathToLogs, string.Format(_logFileFormat, date));
 
 				if (File.Exists(logFilePath))
 					// написавший это знает что довольно опасно использует цикл и что возможно зацикливание,
@@ -53,7 +76,7 @@ namespace ACTS.UI.Services
 							var task = Task.Factory.StartNew(() => File.ReadAllText(logFilePath));
 #if DEBUG
 #pragma warning disable CS4014 
-							task.ContinueWith(s => _logger.Trace($"Read text from {logFilePath} successful."));
+							task.ContinueWith(s => Logger.Trace($"Read text from {logFilePath} successful."));
 #pragma warning restore CS4014
 #endif
 							logsSB.Append(await task);
@@ -61,7 +84,7 @@ namespace ACTS.UI.Services
 						}
 						catch (IOException ex)
 						{
-							_logger.ErrorException(ex.Message, ex);
+							Logger.ErrorException(ex.Message, ex);
 						}
 					} while (true);
 			}
@@ -84,7 +107,7 @@ namespace ACTS.UI.Services
 
 			for (var date = start; date <= end; date = date.AddMonths(1))
 			{
-				var logFileInfo = new FileInfo(Path.Combine(DefaultPathToLogs, string.Format(_logFileFormat, date)));
+				var logFileInfo = new FileInfo(Path.Combine(PathToLogs, string.Format(_logFileFormat, date)));
 				if (logFileInfo.Exists)
 					using (var logFileReader = logFileInfo.OpenText())
 						logSB.Append(logFileReader.ReadToEnd());

@@ -19,29 +19,6 @@ namespace ACTS.Core.Concrete
 			get { return _context.Uncos; }
 		}
 
-		[Obsolete]
-		public void SaveNews(News news)
-		{
-			if (news.NewsId == 0)
-			{
-				news.Created = DateTime.UtcNow;
-				_context.Uncos.Add(news);
-			} else
-			{
-				News dbEntry = _context.Uncos.Find(news.NewsId);
-				if (dbEntry != null)
-				{
-					dbEntry.Title = news.Title;
-					dbEntry.Modified = DateTime.UtcNow;
-					dbEntry.Content = news.Content;
-					dbEntry.ImageData = news.ImageData;
-					dbEntry.ImageMimeType = news.ImageMimeType;
-				}
-			}
-
-			_context.SaveChanges();
-		}
-
 		public News DeleteNews(int newsId)
 		{
 			News dbEntry = _context.Uncos.Find(newsId);
@@ -91,7 +68,7 @@ namespace ACTS.Core.Concrete
 				if (disposing)
 				{
 					// TODO: dispose managed state (managed objects).
-
+					_context.Dispose();
 				}
 
 				// TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.

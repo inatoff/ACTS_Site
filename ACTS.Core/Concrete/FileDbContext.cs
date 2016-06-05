@@ -1,48 +1,33 @@
-﻿using ACTS.Core.Abstract;
-using ACTS.Core.Entities;
+﻿using Numeria.IO;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ACTS.Core.Concrete
 {
-	public class EFEmployeeRepository : IEmployeeRepository
+	public class FileDbContext: IDisposable
 	{
-		private EFDbContext _context = new EFDbContext();
+		private static object _lockObj = new object();
+		private static int _writeCounter;
 
-		public IQueryable<Employee> Employees
-		{
-			get { return _context.Employees; }
-		}
+		readonly public FileDB Files;
+		readonly public FileAccess FileAccess;
 
-		public Employee DeleteEmployee(int employeeId)
-		{
-			Employee dbEntry = _context.Employees.Find(employeeId);
-			if (dbEntry != null)
-			{
-				_context.Employees.Remove(dbEntry);
-				_context.SaveChanges();
-			}
-			return dbEntry;
-		}
+		public FileDbContext() : this(FileAccess.ReadWrite) { }
 
-		public Employee GetEmployeeById(int employeeId)
+		public FileDbContext(FileAccess access, string connectionString = "ACTSfilesConnection")
 		{
-			return _context.Employees.Find(employeeId);
-		}
+			var fileDbConnectionString = ConfigurationManager.ConnectionStrings[connectionString].ConnectionString;
+			var fileDbPath = Path.Combine((string)AppDomain.CurrentDomain.GetData("DataDirectory"), fileDbConnectionString);
+			Files = new FileDB(fileDbPath, access);
 
-		public void UpdateEmployee(Employee employee)
-		{
-			_context.Entry(employee).State = System.Data.Entity.EntityState.Modified;
-			_context.SaveChanges();
-		}
-
-		public void CreateEmployee(Employee employee)
-		{
-			_context.Employees.Add(employee);
-			_context.SaveChanges();
+			if (access.HasFlag(FileAccess.Write))
+				lock (_lockObj)
+					_writeCounter++;
 		}
 
 		#region IDisposable Support
@@ -55,7 +40,13 @@ namespace ACTS.Core.Concrete
 				if (disposing)
 				{
 					// TODO: dispose managed state (managed objects).
-					_context.Dispose();
+					if (FileAccess.HasFlag(FileAccess.Write) && _writeCounter > 100)
+					{
+						lock (_lockObj)
+							_writeCounter = 0;
+						Files.Shrink();
+					}
+					Files.Dispose();
 				}
 
 				// TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
@@ -66,7 +57,7 @@ namespace ACTS.Core.Concrete
 		}
 
 		// TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-		// ~EFEmployeeRepository() {
+		// ~FileDbContext() {
 		//   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
 		//   Dispose(false);
 		// }

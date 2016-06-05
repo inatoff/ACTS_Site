@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ACTS.Core.Abstract
 {
-	public abstract class Worker
+	public abstract class Worker : IHaveFileId
 	{
 		//obligatory Fields
 
@@ -31,8 +31,10 @@ namespace ACTS.Core.Abstract
 		public string Position { get; set; } // Должность
 
 		[Display(Name = nameof(DisplayRes.PhotoName), ResourceType = typeof(DisplayRes))]
-		public byte[] Photo { get; set; }
+		public Guid? PhotoId { get; set; }
 
-		public string PhotoMimeType { get; set; }
+		Guid? IHaveFileId.FileId { get { return PhotoId; } set { PhotoId = value; } }
+
+		public Guid? FileId { get { return ((IHaveFileId)this).FileId; } set { ((IHaveFileId)this).FileId = value; } }
 	}
 }

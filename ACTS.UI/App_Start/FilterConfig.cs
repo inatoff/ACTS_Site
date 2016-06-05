@@ -9,8 +9,7 @@ namespace ACTS.UI
 	{
 		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{
-			var kernel = new StandardKernel();
-			ILoggerFactory loggerFactory = kernel.Get<ILoggerFactory>();
+			var loggerFactory = DependencyResolver.Current.GetService<ILoggerFactory>();
 			filters.Add(new LogFilterAttribute(loggerFactory));
 		}
 	}

@@ -191,6 +191,9 @@ UpgradeLog*.htm
 *.mdf
 *.ldf
 
+# NOSQL files
+*.fdb
+
 # Business Intelligence projects
 *.rdl.data
 *.bim.layout

@@ -43,22 +43,17 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				if (image != null)
-				{
-					news.ImageMimeType = image.ContentType;
-					news.ImageData = new byte[image.ContentLength];
-					image.InputStream.Read(news.ImageData, 0, image.ContentLength);
-				}
+				news.UpdateFileForContainer(image);
+
 				_repository.UpdateNews(news);
 				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.NewsSavedMsg, news.Title));
 				_logger.Info("News \"{0}\" saved by {1}.", news.Title, User.Identity.Name);
 
 				return RedirectToAction(nameof(Table));
-			} else
-			{
+			}
+			else
 				// there is something wrong with the data values         
 				return View("EditNews", news);
-			}
 		}
 
 		public ActionResult Create()
@@ -72,12 +67,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				if (image != null)
-				{
-					news.ImageMimeType = image.ContentType;
-					news.ImageData = new byte[image.ContentLength];
-					image.InputStream.Read(news.ImageData, 0, image.ContentLength);
-				}
+				news.CreateFileForContainer(image);
+
 				_repository.CreateNews(news);
 				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.NewsCreatedMsg, news.Title));
 				_logger.Info("News \"{0}\" created by {1}.", news.Title, User.Identity.Name);
@@ -102,6 +93,26 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				_logger.Info("News \"{0}\" deleted by {1}.", deletedNews.Title, User.Identity.Name);
 			}
 			return RedirectToAction(nameof(Table));
+		}
+
+		private bool disposedValue = false; // To detect redundant calls
+
+		protected override void Dispose(bool disposing)
+		{
+			if (!disposedValue)
+			{
+				if (disposing)
+				{
+					// TODO: dispose managed state (managed objects).
+					_repository.Dispose();
+					base.Dispose(disposing);
+				}
+
+				// TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+				// TODO: set large fields to null.
+
+				disposedValue = true;
+			}
 		}
 	}
 }

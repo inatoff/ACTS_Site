@@ -89,8 +89,8 @@ namespace ACTS.UI
 				"https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.4.2/Sortable.js")
 				.Include("~/Scripts/Sortable.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/teachingStaffWrapper")
-                .Include("~/Scripts/actsScripts/teachingStaffWrapper.js"));
+			bundles.Add(new ScriptBundle("~/bundles/teachingStaffWrapper")
+				.Include("~/Scripts/actsScripts/teachingStaffWrapper.js"));
 
 			#endregion
 

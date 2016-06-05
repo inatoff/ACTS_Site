@@ -51,15 +51,6 @@ namespace ACTS.UI.Controllers
 			return PartialView(last3Uncos);
 		}
 
-		public FileContentResult GetImage(int newsId)
-		{
-			News news = _repository.GetNewsById(newsId);
-			if (news != null)
-				return File(news.ImageData, news.ImageMimeType);
-			else
-				return null;
-		}
-
 		public PartialViewResult GetContent(int newsId)
 		{
 			News news = _repository.GetNewsById(newsId);
