@@ -17,9 +17,9 @@ namespace ACTS.Core.Concrete
 			get { return _context.Employees; }
 		}
 
-		public Employee DeleteEmployee(int employeeId)
+		public Employee DeleteEmployee(int id)
 		{
-			Employee dbEntry = _context.Employees.Find(employeeId);
+			Employee dbEntry = _context.Employees.Find(id);
 			if (dbEntry != null)
 			{
 				_context.Employees.Remove(dbEntry);
@@ -28,9 +28,9 @@ namespace ACTS.Core.Concrete
 			return dbEntry;
 		}
 
-		public Employee GetEmployeeById(int employeeId)
+		public Employee GetEmployee(int id)
 		{
-			return _context.Employees.Find(employeeId);
+			return _context.Employees.Find(id);
 		}
 
 		public void UpdateEmployee(Employee employee)

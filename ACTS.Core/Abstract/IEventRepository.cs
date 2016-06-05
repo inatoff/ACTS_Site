@@ -11,9 +11,9 @@ namespace ACTS.Core.Abstract
 	{
 		IQueryable<Event> Events { get; }
 
-		Event GetEventById(int eventId);
+		Event GetEvent(int id);
 		void UpdateEvent(Event @event);
-		Event DeleteEvent(int eventId);
+		Event DeleteEvent(int id);
 		void CreateEvent(Event @event);
 	}
 }

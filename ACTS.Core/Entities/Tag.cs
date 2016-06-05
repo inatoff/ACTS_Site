@@ -8,7 +8,7 @@ namespace ACTS.Core.Entities
 		public int TagId { get; set; }
 
 		[CustomRequired]
-		public string KeyWord { get; set; }
+		public string Keyword { get; set; }
 
 		public virtual IList<Post> Posts { get; set; } = new List<Post>();
 	}

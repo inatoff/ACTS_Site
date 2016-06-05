@@ -27,9 +27,9 @@ namespace ACTS.Core.Concrete
 			_context.SaveChanges();
 		}
 
-		public Event DeleteEvent(int eventId)
+		public Event DeleteEvent(int id)
 		{
-			Event @event = _context.Events.Find(eventId);
+			Event @event = _context.Events.Find(id);
 			if (@event != null)
 			{
 				_context.Events.Remove(@event);
@@ -38,9 +38,9 @@ namespace ACTS.Core.Concrete
 			return @event;
 		}
 
-		public Event GetEventById(int eventId)
+		public Event GetEvent(int id)
 		{
-			return _context.Events.Find(eventId);
+			return _context.Events.Find(id);
 		}
 
 		public void UpdateEvent(Event @event)

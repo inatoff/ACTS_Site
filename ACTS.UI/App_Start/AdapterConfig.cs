@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace ACTS.UI.App_Start
 {
-	class AdapterConfig
+	public static class AdapterConfig
 	{
 		public static void RegisterAdapters()
 		{

@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace ACTS.Core.Entities
 {
-	public class StoredFile : MemoryStream
+	public class StoredFileStream : MemoryStream
 	{
 		public string Name { get; internal set; }
 		public string MimeType { get; internal set; }

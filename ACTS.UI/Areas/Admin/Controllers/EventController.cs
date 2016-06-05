@@ -32,7 +32,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Edit(int eventId)
 		{
-			Event @event = _repository.GetEventById(eventId);
+			Event @event = _repository.GetEvent(eventId);
 			@event.StartView = @event.StartView?.ToLocalTime();
 			@event.EndView = @event.EndView?.ToLocalTime();
 			return View("EditEvent", @event);

@@ -34,7 +34,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Edit(int employeeId)
 		{
-			Employee employee = _repository.GetEmployeeById(employeeId);
+			Employee employee = _repository.GetEmployee(employeeId);
 			return View("EditEmployee", employee);
 		}
 

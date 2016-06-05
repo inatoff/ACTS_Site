@@ -29,13 +29,13 @@ namespace ACTS.Core.Concrete
 			get { return _context.Teachers.Where(t => t.User == null); }
 		}
 
-		public Teacher DeleteTeacher(int teacherId)
+		public Teacher DeleteTeacher(int id)
 		{
-			Teacher teacher = GetTeacherById(teacherId);
+			Teacher teacher = GetTeacher(id);
 			if (teacher != null)
 			{
 				if (teacher.HasUser)
-					RemovePairToUser(teacherId);
+					RemovePairToUser(id);
 
 				if (teacher.HasBlog)
 				{
@@ -60,18 +60,18 @@ namespace ACTS.Core.Concrete
 			return await Teachers.FirstOrDefaultAsync(p => p.NameSlug == nameSlug);
 		}
 
-		public Teacher GetTeacherById(int teacherId)
+		public Teacher GetTeacher(int id)
 		{
-			return _context.Teachers.Find(teacherId);
+			return _context.Teachers.Find(id);
 		}
 
-		public Teacher GetTeacherByIdWithLoadedProp(int teacherId, params Expression<Func<Teacher, object>> [] includes)
+		public Teacher GetTeacherByIdWithLoadedProp(int id, params Expression<Func<Teacher, object>> [] includes)
 		{
 			var teachers = Teachers;
 			foreach (var include in includes)
 				teachers = teachers.Include(include);
 
-			return teachers.FirstOrDefault(t => t.TeacherId == teacherId);
+			return teachers.FirstOrDefault(t => t.TeacherId == id);
 		}
 
 		public void CreateTeacher(Teacher teacher)
@@ -150,7 +150,7 @@ namespace ACTS.Core.Concrete
 		public void AddPairToUser(int teacherId, int userId)
 		{
 			var user = _context.Users.Find(userId);
-			var teacher = GetTeacherById(teacherId);
+			var teacher = GetTeacher(teacherId);
 
 			if (user == null || teacher == null) return;
 
@@ -165,7 +165,7 @@ namespace ACTS.Core.Concrete
 
 		public void RemovePairToUser(int teacherId)
 		{
-			var teacher = GetTeacherById(teacherId);
+			var teacher = GetTeacher(teacherId);
 
 			if (teacher == null) return;
 
@@ -175,15 +175,15 @@ namespace ACTS.Core.Concrete
 			_context.SaveChanges();
 		}
 
-		public IQueryable<Teacher> GetNoPairTeachersWithSelected(int teacherId)
+		public IQueryable<Teacher> GetNoPairTeachersWithSelected(int id)
 		{
-			return _context.Teachers.Where(t => t.User == null || t.TeacherId == teacherId);
+			return _context.Teachers.Where(t => t.User == null || t.TeacherId == id);
 		}
 
 
 		public async Task InitPersonalPage(Teacher teacher)
 		{
-			var dbEntry = GetTeacherById(teacher.TeacherId);
+			var dbEntry = GetTeacher(teacher.TeacherId);
 			dbEntry.Blog = new Blog();
 			await _context.SaveChangesAsync();
 		}

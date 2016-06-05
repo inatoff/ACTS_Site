@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace ACTS.Localization
 {
+	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
 	public class CustomRequiredAttribute : RequiredAttribute
 	{
 		public CustomRequiredAttribute()

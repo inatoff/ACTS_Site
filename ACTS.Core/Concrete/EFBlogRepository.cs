@@ -23,9 +23,9 @@ namespace ACTS.Core.Concrete
 			get { return _context.Blogs; }
 		}
 
-		public Post DeletePost(int postId)
+		public Post DeletePost(int id)
 		{
-			Post dbEntry = _context.Posts.Find(postId);
+			Post dbEntry = _context.Posts.Find(id);
 			if (dbEntry != null)
 			{
 				_context.Posts.Remove(dbEntry);
@@ -33,14 +33,14 @@ namespace ACTS.Core.Concrete
 			}
 			else
 			{
-				throw new KeyNotFoundException($"The post with the id of {postId} does not exist!");
+				throw new KeyNotFoundException($"The post with the id of {id} does not exist!");
 			}
 			return dbEntry;
 		}
 
-		public async Task<Post> GetPostByIdAsync(int postId)
+		public async Task<Post> GetPostAsync(int id)
 		{
-			return await Posts.FirstOrDefaultAsync(p => p.PostId == postId);
+			return await Posts.FirstOrDefaultAsync(p => p.PostId == id);
 		}
 
 		public void CreatePost(Post post)
@@ -64,13 +64,13 @@ namespace ACTS.Core.Concrete
 			_context.SaveChanges();
 		}
 
-		public async Task EditPost(int postId, Post updatedPost)
+		public async Task EditPost(int id, Post updatedPost)
 		{
-			var post = await _context.Posts.SingleOrDefaultAsync(p => p.PostId == postId);
+			var post = await _context.Posts.SingleOrDefaultAsync(p => p.PostId == id);
 
 			if (post == null)
 			{
-				throw new KeyNotFoundException($"A post with the id of {postId} does not exist in the data store.");
+				throw new KeyNotFoundException($"A post with the id of {id} does not exist in the data store.");
 			}
 			post.PostId = updatedPost.PostId;
 			post.Title = updatedPost.Title;

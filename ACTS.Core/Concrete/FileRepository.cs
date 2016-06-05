@@ -14,7 +14,7 @@ namespace ACTS.Core.Concrete
 	{
 		private FileDbContext _context;
 
-		private FileDbContext GerContext(FileAccess access)
+		private FileDbContext GetContext(FileAccess access)
 		{
 			if (_context == null)
 				return _context = new FileDbContext(access);
@@ -26,20 +26,20 @@ namespace ACTS.Core.Concrete
 			return _context = new FileDbContext(access);
 		}
 
-		public Guid CreateFile(string fileName, Stream input) => GerContext(FileAccess.Write).Files.Store(fileName, input).ID;
+		public Guid CreateFile(string fileName, Stream input) => GetContext(FileAccess.Write).Files.Store(fileName, input).ID;
 
-		public Guid CreateFile(string fileName) => GerContext(FileAccess.Write).Files.Store(fileName).ID;
+		public Guid CreateFile(string fileName) => GetContext(FileAccess.Write).Files.Store(fileName).ID;
 
-		public bool DeleteFile(string fileId) => DeleteFile(Guid.Parse(fileId));
+		public bool DeleteFile(string id) => DeleteFile(Guid.Parse(id));
 
-		public bool DeleteFile(Guid fileId) => GerContext(FileAccess.Write).Files.Delete(fileId);
+		public bool DeleteFile(Guid id) => GetContext(FileAccess.Write).Files.Delete(id);
 
-		public StoredFile GetFile(string fileId) => GetFile(Guid.Parse(fileId));
+		public StoredFileStream GetFile(string id) => GetFile(Guid.Parse(id));
 
-		public StoredFile GetFile(Guid fileId)
+		public StoredFileStream GetFile(Guid id)
 		{
-			var storedFile = new StoredFile();
-			var fileInfo = GerContext(FileAccess.Read).Files.Read(fileId, storedFile);
+			var storedFile = new StoredFileStream();
+			var fileInfo = GetContext(FileAccess.Read).Files.Read(id, storedFile);
 			storedFile.Name = fileInfo.FileName;
 			storedFile.MimeType = fileInfo.MimeType;
 			storedFile.FileLength = fileInfo.FileLength;
@@ -47,13 +47,13 @@ namespace ACTS.Core.Concrete
 			return storedFile;
 		}
 
-		public Guid UpdateFile(string fileId, string fileName, Stream input) => 
-			UpdateFile(Guid.Parse(fileId), fileName, input);
+		public Guid UpdateFile(string id, string fileName, Stream input) => 
+			UpdateFile(Guid.Parse(id), fileName, input);
 
-		public Guid UpdateFile(Guid fileId, string fileName, Stream input)
+		public Guid UpdateFile(Guid id, string fileName, Stream input)
 		{
-			var context = GerContext(FileAccess.ReadWrite);
-			context.Files.Delete(fileId);
+			var context = GetContext(FileAccess.ReadWrite);
+			context.Files.Delete(id);
 			return context.Files.Store(fileName, input).ID;
 		}
 

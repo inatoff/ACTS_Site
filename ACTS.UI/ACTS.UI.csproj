@@ -761,8 +761,8 @@
     <Compile Include="Helpers\SignInStatusHelper.cs" />
     <Compile Include="Helpers\TempDataDictionaryHelper.cs" />
     <Compile Include="Areas\Admin\Models\Messanger.cs" />
+    <Compile Include="Infrastructure\RssResult.cs" />
     <Compile Include="Services\EmailBodyServiceFactory.cs" />
-    <Compile Include="Infrastructure\FeedResult.cs" />
     <Compile Include="Areas\Admin\Models\InfoAccountViewModel.cs" />
     <Compile Include="Infrastructure\LogHandleErrorAttribute.cs" />
     <Compile Include="Models\ForgotPasswordViewModel.cs" />

@@ -33,7 +33,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Edit(int newsId)
 		{
-			News news = _repository.GetNewsById(newsId);
+			News news = _repository.GetNews(newsId);
 			return View("EditNews", news);
 		}
 

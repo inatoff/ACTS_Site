@@ -75,7 +75,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                     return View(model);
                 }
                 var user = await userManager.FindByIdAsync(CurrentUserId);
-                var teacher = _teacherRepo.GetTeacherById(user.Teacher.TeacherId);
+                var teacher = _teacherRepo.GetTeacher(user.Teacher.TeacherId);
                 model.Slug = model.Title.MakeUrlFriendly();
                 model.Created = DateTime.Now;
                 model.Blog = teacher.Blog;
@@ -97,7 +97,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
         [Route("edit/{postId}")]
         public async Task<ActionResult> Edit(int postId)
         {
-            var post = await _blogRepo.GetPostByIdAsync(postId);
+            var post = await _blogRepo.GetPostAsync(postId);
 
             if (post == null)
             {
@@ -149,7 +149,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
         [Authorize(Roles = "Admin, Teacher")]
         public async Task<ActionResult> Delete(int postId)
         {
-            var post = await _blogRepo.GetPostByIdAsync(postId);
+            var post = await _blogRepo.GetPostAsync(postId);
 
             if (post == null)
             {
@@ -165,7 +165,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
         {
             try
             {
-                var post = await _blogRepo.GetPostByIdAsync(postId);
+                var post = await _blogRepo.GetPostAsync(postId);
                 var teacherNameSlug = post.Blog.Teacher.NameSlug;
                 _blogRepo.DeletePost(postId);
                 return RedirectToAction("index", new { nameSlug = teacherNameSlug });

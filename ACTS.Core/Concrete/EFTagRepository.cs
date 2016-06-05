@@ -19,7 +19,7 @@ namespace ACTS.Core.Concrete
 
 		public Tag Get(string tag)
 		{
-			var dbEntry = _context.Tags.FirstOrDefault(t => t.KeyWord == tag);
+			var dbEntry = _context.Tags.FirstOrDefault(t => t.Keyword == tag);
 
 			return dbEntry;
 		}

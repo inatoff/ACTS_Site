@@ -19,9 +19,9 @@ namespace ACTS.Core.Concrete
 			get { return _context.Uncos; }
 		}
 
-		public News DeleteNews(int newsId)
+		public News DeleteNews(int id)
 		{
-			News dbEntry = _context.Uncos.Find(newsId);
+			News dbEntry = _context.Uncos.Find(id);
 			if (dbEntry != null)
 			{
 				_context.Uncos.Remove(dbEntry);
@@ -30,9 +30,9 @@ namespace ACTS.Core.Concrete
 			return dbEntry;
 		}
 
-		public News GetNewsById(int newsId)
+		public News GetNews(int id)
 		{
-			return _context.Uncos.Find(newsId);
+			return _context.Uncos.Find(id);
 		}
 
 		public void UpdateNews(News news)

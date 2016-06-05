@@ -34,7 +34,7 @@ namespace ACTS.UI.Controllers
 		/// <returns></returns>
 		public ViewResult PageNews(int newsID)
 		{
-			News news = _repository.GetNewsById(newsID);
+			News news = _repository.GetNews(newsID);
 			return View(news);
 		}
 
@@ -53,7 +53,7 @@ namespace ACTS.UI.Controllers
 
 		public PartialViewResult GetContent(int newsId)
 		{
-			News news = _repository.GetNewsById(newsId);
+			News news = _repository.GetNews(newsId);
 			if (news != null)
 				return PartialView("_NewsContent", news);
 			else
