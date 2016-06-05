@@ -8,7 +8,7 @@ namespace ACTS.UI.Controllers
 {
 	public class HomeController : BaseController
 	{
-		// GET: Home
+		// GET: /
 		public ActionResult Index()
 		{
 			return View();

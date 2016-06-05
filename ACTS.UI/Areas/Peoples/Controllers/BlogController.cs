@@ -77,6 +77,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                 var user = await userManager.FindByIdAsync(CurrentUserId);
                 var teacher = _teacherRepo.GetTeacher(user.Teacher.TeacherId);
                 model.Slug = model.Title.MakeUrlFriendly();
+				// TODO: МЫ ХРАНИМ ВРЕМЯ В UTC 
                 model.Created = DateTime.Now;
                 model.Blog = teacher.Blog;
                 try

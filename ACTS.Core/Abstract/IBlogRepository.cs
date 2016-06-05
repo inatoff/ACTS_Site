@@ -14,7 +14,7 @@ namespace ACTS.Core.Abstract
 		Blog GetBlogByAuthorNameSlug(string slug);
 		Task<Post> GetPostAsync(int id);
 		Post DeletePost(int id);
-		Task InitPersonalPage(Teacher teacher);
+		Task<Blog> InitPersonalPage(Teacher teacher);
 		Task<IQueryable<Post>> GetPostsByTag(string[] tags);
 	}
 }

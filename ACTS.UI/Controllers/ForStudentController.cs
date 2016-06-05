@@ -8,8 +8,6 @@ namespace ACTS.UI.Controllers
 {
     public class ForStudentController : BaseController
     {
-        // GET: ForStudent
-
         public ActionResult Specialities()
         {
             return View();

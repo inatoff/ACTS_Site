@@ -31,36 +31,21 @@ namespace ACTS.Core.Concrete
 				_context.Posts.Remove(dbEntry);
 				_context.SaveChanges();
 			}
-			else
-			{
-				throw new KeyNotFoundException($"The post with the id of {id} does not exist!");
-			}
+			_context.SaveChanges();
+
 			return dbEntry;
 		}
 
 		public async Task<Post> GetPostAsync(int id)
 		{
-			return await Posts.FirstOrDefaultAsync(p => p.PostId == id);
+			return await _context.Posts.FindAsync(id);
 		}
 
 		public void CreatePost(Post post)
 		{
-			if (post.PostId == 0)
-			{
-				post.Created = DateTime.UtcNow;
-				_context.Posts.Add(post);
-			}
-			else
-			{
-				Post dbEntry = _context.Posts.Find(post.PostId);
-				if (dbEntry != null)
-				{
-					dbEntry.Title = post.Title;
-					dbEntry.Modified = DateTime.UtcNow;
-					dbEntry.Content = post.Content;
-				}
-			}
+			post.Created = DateTime.UtcNow;
 
+			_context.Posts.Add(post);
 			_context.SaveChanges();
 		}
 
@@ -72,9 +57,11 @@ namespace ACTS.Core.Concrete
 			{
 				throw new KeyNotFoundException($"A post with the id of {id} does not exist in the data store.");
 			}
+
+			post.Modified = DateTime.UtcNow;
+
 			post.PostId = updatedPost.PostId;
 			post.Title = updatedPost.Title;
-			post.Modified = updatedPost.Modified;
 			post.Tags = updatedPost.Tags;
 
 			await _context.SaveChangesAsync();
@@ -86,11 +73,14 @@ namespace ACTS.Core.Concrete
 			return blog;
 		}
 
-		public async Task InitPersonalPage(Teacher teacher)
+		public async Task<Blog> InitPersonalPage(Teacher teacher)
 		{
 			var dbEntry = await _context.Teachers.FindAsync(teacher);
-			dbEntry.Blog = new Blog();
+			var blog = new Blog();
+			dbEntry.Blog = blog;
 			await _context.SaveChangesAsync();
+
+			return blog;
 		}
 
 		//TODO

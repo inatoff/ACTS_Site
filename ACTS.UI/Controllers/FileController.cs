@@ -31,10 +31,6 @@ namespace ACTS.UI.Controllers
 			file.WriteTo(Response.OutputStream);
 
 			return new EmptyResult();
-
-			//return file != null ? File(file, file.MimeType, file.Name) : (ActionResult)HttpNotFound();
-			// я не знаю почему это не работает
-			//return file != null ? File(file, file.MimeType, file.Name) : (ActionResult)HttpNotFound();
 		}
 	}
 }

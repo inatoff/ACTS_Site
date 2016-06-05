@@ -2,6 +2,7 @@
 using ACTS.Core.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,7 +36,7 @@ namespace ACTS.Core.Concrete
 
 		public void UpdateEmployee(Employee employee)
 		{
-			_context.Entry(employee).State = System.Data.Entity.EntityState.Modified;
+			_context.Entry(employee).State = EntityState.Modified;
 			_context.SaveChanges();
 		}
 
