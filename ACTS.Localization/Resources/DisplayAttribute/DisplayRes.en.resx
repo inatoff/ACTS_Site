@@ -138,11 +138,17 @@
   <data name="EmailAddressName" xml:space="preserve">
     <value>Email address*</value>
   </data>
+  <data name="EmailContacts" xml:space="preserve">
+    <value>Email (visible for all)</value>
+  </data>
   <data name="EmailName" xml:space="preserve">
     <value>E-mail</value>
   </data>
   <data name="EmailOrUserNameName" xml:space="preserve">
     <value>Your user name or email</value>
+  </data>
+  <data name="EmailPersonal" xml:space="preserve">
+    <value>Profile email </value>
   </data>
   <data name="FacebookName" xml:space="preserve">
     <value>Facebook URL</value>

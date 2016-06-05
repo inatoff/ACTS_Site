@@ -45,8 +45,11 @@ namespace ACTS.UI.Areas.Peoples.Controllers
         {           
             var model = await GetPersonalPage(nameSlug);
             ViewBag.Teacher = model;
+            string teacherName = model.FullName.Replace(' ', '+');
+            string scheduleRequest = $"http://api.rozklad.org.ua/v2/teachers/{teacherName}/lessons";
+
             if (model != null) return View(model);
-            else return new HttpNotFoundResult();
+            else return HttpNotFound();
         }
 
         [AllowAnonymous]

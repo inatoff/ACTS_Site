@@ -55,6 +55,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
 
                 model = new TeacherAccountViewModel()
                 {
+                    FullName = currentTeacher.FullName,
                     //Part of account info
                     AccountEmail = currentUser.Email,
                     //Part of teacher info 
@@ -159,5 +160,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
                 }
             }
         }
+
+        
     }
 }

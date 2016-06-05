@@ -32,7 +32,7 @@ namespace ACTS.UI.Controllers
 		/// Сторінка з новиною
 		/// </summary>
 		/// <returns></returns>
-		public ViewResult PageNews(int newsID)
+		public ViewResult News(int newsID)
 		{
 			News news = _repository.GetNews(newsID);
 			return View(news);

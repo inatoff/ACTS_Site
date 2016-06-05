@@ -124,7 +124,16 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Електронна пошта.
+        ///   Looks up a localized string similar to Електронна пошта (видима усім).
+        /// </summary>
+        public static string EmailContacts {
+            get {
+                return ResourceManager.GetString("EmailContacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Електронна пошта профілю.
         /// </summary>
         public static string EmailName {
             get {
@@ -138,6 +147,15 @@ namespace ACTS.Localization.Resources {
         public static string EmailOrUserNameName {
             get {
                 return ResourceManager.GetString("EmailOrUserNameName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Електронна пошта профіля.
+        /// </summary>
+        public static string EmailPersonal {
+            get {
+                return ResourceManager.GetString("EmailPersonal", resourceCulture);
             }
         }
         

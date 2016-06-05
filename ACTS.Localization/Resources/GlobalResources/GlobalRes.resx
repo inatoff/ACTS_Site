@@ -333,8 +333,8 @@
   <data name="Disciplines" xml:space="preserve">
     <value>Дисципліни</value>
   </data>
-  <data name="Disciplines " xml:space="preserve">
-    <value>Дисципліни</value>
+  <data name="HowToFind" xml:space="preserve">
+    <value>Як нас знайти</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Редагувати</value>
@@ -764,5 +764,29 @@
   </data>
   <data name="PostEdit" xml:space="preserve">
     <value>Редагувати публікацію</value>
+  </data>
+  <data name="BlogGreetingsPlaceHolder" xml:space="preserve">
+    <value>Привітання на вашій персональній сторінці (Обов'язкове поле)</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>П'ятниця</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Понеділок</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Субота</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Четвер</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Вівторок</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Середа</value>
+  </data>
+  <data name="ArchiveUncos" xml:space="preserve">
+    <value>Архів новин</value>
   </data>
 </root>

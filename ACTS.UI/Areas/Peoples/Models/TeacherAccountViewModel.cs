@@ -12,14 +12,15 @@ namespace ACTS.UI.Areas.Peoples.Models
 {
     public class TeacherAccountViewModel
     { 
-        public string Degree { get; set; } // Научная степень     
+        public string FullName { get; set; }
+        public string Degree { get; set; }
 
-        [Display(Name = "Visible for all")]
+        [Display(Name = nameof(DisplayRes.EmailContacts), ResourceType = typeof(DisplayRes))]
         [EmailAddress]
         public string Email { get; set; }
 
         [EmailAddress(ErrorMessageResourceName = nameof(EmailAddressRes.EmailErrMsg), ErrorMessageResourceType = typeof(EmailAddressRes))]
-        [Display(Name = nameof(DisplayRes.EmailName), ResourceType = typeof(DisplayRes))]
+        [Display(Name = nameof(DisplayRes.EmailPersonal), ResourceType = typeof(DisplayRes))]
         public string AccountEmail { get; set; }
 
         [HiddenInput]
@@ -35,8 +36,10 @@ namespace ACTS.UI.Areas.Peoples.Models
         [Display(Name = nameof(DisplayRes.ConfirmPasswordName), ResourceType = typeof(DisplayRes))]
         [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessage = "Passwords are not the same")]
         public string ConfirmPassword { get; set; }
-         
+
+        
         [Display(Name = nameof(DisplayRes.Greetings), ResourceType = typeof(DisplayRes))]
+        [DataType(DataType.MultilineText)]
         public string Greetings { get; set; }
 
         [Url]

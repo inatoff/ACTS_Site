@@ -528,6 +528,7 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\PersonalPage\Rozklad.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\Sortable.js" />
@@ -786,7 +787,6 @@
     <Content Include="Views\Department\About.cshtml" />
     <Content Include="Views\Department\History.cshtml" />
     <Content Include="Views\Department\ServicePersonell.cshtml" />
-    <Content Include="Views\News\PageNews.cshtml" />
     <Content Include="Views\News\ArchiveUncos.cshtml" />
     <Content Include="Views\News\FooterStringUncos.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Dashboard.cshtml" />
@@ -808,7 +808,7 @@
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Shared\personInfo.cshtml" />
+    <Content Include="Views\Shared\PersonInfo.cshtml" />
     <Content Include="Views\Shared\MenuLinkItem.cshtml" />
     <Content Include="Views\Department\OurGraduates.cshtml" />
     <Content Include="Views\ForStudent\Placement.cshtml" />
@@ -832,7 +832,7 @@
     <Content Include="Views\Science\PrizesAndAwards.cshtml" />
     <Content Include="Views\Science\Laboratories.cshtml" />
     <Content Include="Views\Science\StudentResearches.cshtml" />
-    <Content Include="Views\ForStudent\Specialities.cshtml" />
+    <Content Include="Views\ForStudent\Specialties.cshtml" />
     <Content Include="Views\ForStudent\StudentRating.cshtml" />
     <Content Include="Views\ForStudent\UsefulLinks.cshtml" />
     <Content Include="Views\ForEnrollee\ConditionsOfAdmissions.cshtml" />
@@ -841,6 +841,9 @@
     <Content Include="Views\ForEnrollee\FAQ.cshtml" />
     <Content Include="Views\ForEnrollee\FDP.cshtml" />
     <Content Include="Views\ForEnrollee\Magistracy.cshtml" />
+    <Content Include="Views\ForStudent\StudentCity.cshtml" />
+    <Content Include="Views\ForStudent\CoursesAndProbations.cshtml" />
+    <Content Include="Views\Shared\Uncos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

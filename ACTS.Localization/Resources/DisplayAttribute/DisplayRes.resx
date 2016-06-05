@@ -138,11 +138,17 @@
   <data name="EmailAddressName" xml:space="preserve">
     <value>Адрес електронної пошти*</value>
   </data>
+  <data name="EmailContacts" xml:space="preserve">
+    <value>Електронна пошта (видима усім)</value>
+  </data>
   <data name="EmailName" xml:space="preserve">
-    <value>Електронна пошта</value>
+    <value>Електронна пошта профілю</value>
   </data>
   <data name="EmailOrUserNameName" xml:space="preserve">
     <value>Ім'я користувача або адрес електронної пошти</value>
+  </data>
+  <data name="EmailPersonal" xml:space="preserve">
+    <value>Електронна пошта профіля</value>
   </data>
   <data name="FacebookName" xml:space="preserve">
     <value>Facebook URL-адреса</value>

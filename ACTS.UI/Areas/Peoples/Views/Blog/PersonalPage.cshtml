@@ -1,7 +1,7 @@
 ﻿@model ACTS.UI.Areas.Peoples.Models.PersonalPageViewModel
 
 @{
-    ViewBag.Title = "PersonalPage"; 
+    ViewBag.Title = GlobalRes.PersonalPage; 
     Layout = "~/Areas/Peoples/Views/Shared/_PersonalPageLayout.cshtml";
 }
 <div>
@@ -26,27 +26,83 @@
                 </li>
             </ul>
         </div>
+        <script>
+            var teacherName = "@ViewBag.FullName".replace(' ','+');
+            var rozkladString = 'http://api.rozklad.org.ua/v2/teachers/'+teacherName+'/lessons';
+            var lessonsFirstWeek = {lesson1 : new Array(),lesson2 : new Array(),lesson3 : new Array(),lesson4 : new Array(),lesson5 : new Array()};
+            var lessonsSecondWeek = {lesson1 : new Array(),lesson2 : new Array(),lesson3 : new Array(),lesson4 : new Array(),lesson5 : new Array()};
+            function GetScheduleData() {
+                var data = JSON.parse($.get(rozkladString).when);
+                var lessons = data.data;
+                lessons.forEach(function (item, lessons) {
+                    if (item.lesson_week == "1") {
+                        switch (item.lesson_number) {
+                            case "1":
+                                lessonsFirstWeek.lesson1.push(item);
+                                break;
+                            case "2":
+                                lessonsFirstWeek.lesson2.push(item);
+                                break;
+                            case "3":
+                                lessonsFirstWeek.lesson3.push(item);
+                                break;
+                            case "4":
+                                lessonsFirstWeek.lesson4.push(item);
+                                break;
+                            case "5":
+                                lessonsFirstWeek.lesson5.push(item);
+                                break;
+                        }
+                    } else {
+                        switch (item.lesson_number) {
+                            case "1":
+                                lessonsSecondWeek.lesson1.push(item);
+                                break;
+                            case "2":
+                                lessonsSecondWeek.lesson2.push(item);
+                                break;
+                            case "3":
+                                lessonsSecondWeek.lesson3.push(item);
+                                break;
+                            case "4":
+                                lessonsSecondWeek.lesson4.push(item);
+                                break;
+                            case "5":
+                                lessonsSecondWeek.lesson5.push(item);
+                                break;
+                        }
+                    }
+                });
+            }
+            function GenerateTable() {
+                
+            }
+            document.addEventListener("DOMContentLoaded", GenerateTable);
+        </script>
         <div class="tab-pane" id="b">
-            <h3>What's your Favorite?</h3>
-            <ul class="list-group pull-left">
-                <li class="list-group-item">
-                    <h4>Crystals &nbsp; &nbsp;<span class="badge pull-right">100%</span></h4>
-                </li>
-                <li class="list-group-item">
-                    <h4>Healing &nbsp; &nbsp;<span class="badge pull-right">90%</span></h4>
-                </li>
-                <li class="list-group-item">
-                    <h4>Exploring &nbsp; &nbsp;<span class="badge pull-right">78%</span></h4>
-                </li>
-                <li class="list-group-item">
-                    <h4>QiGong &nbsp; &nbsp;<span class="badge pull-right">83%</span></h4>
-                </li>
-                <li class="list-group-item">
-                    <h4>
-                        Myself &nbsp; &nbsp;<span class="badge pull-right">100%</span>
-                    </h4>
-                </li>
-            </ul>
+            <div class="table-responsive">
+                <table class="table-striped rozklad">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>@GlobalRes.Monday</th>
+                            <th>@GlobalRes.Tuesday</th>
+                            <th>@GlobalRes.Wednesday</th>
+                            <th>@GlobalRes.Thursday</th>
+                            <th>@GlobalRes.Friday</th>
+                            <th>@GlobalRes.Saturday</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr id="lesson1"></tr>
+                        <tr id="lesson2"></tr>
+                        <tr id="lesson3"></tr>
+                        <tr id="lesson4"></tr>
+                        <tr id="lesson4"></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="tab-pane" id="c">CCCCThirdamuno, ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt condimentum vitae.</div>
         <div class="tab-pane" id="d">DDDDDSecondo sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. Aliquam in felis sit amet augue.</div>

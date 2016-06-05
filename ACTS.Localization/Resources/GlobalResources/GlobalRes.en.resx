@@ -159,6 +159,9 @@
   <data name="ApplyFilter" xml:space="preserve">
     <value>Apply filter</value>
   </data>
+  <data name="ArchiveUncos" xml:space="preserve">
+    <value>News archive</value>
+  </data>
   <data name="AreYouSure" xml:space="preserve">
     <value>Are you sure you want to do this?</value>
   </data>
@@ -173,6 +176,9 @@
   </data>
   <data name="BlogEditProfile" xml:space="preserve">
     <value>Profile</value>
+  </data>
+  <data name="BlogGreetingsPlaceHolder" xml:space="preserve">
+    <value>Greetings on your personal page (Required)</value>
   </data>
   <data name="BlogInterests" xml:space="preserve">
     <value>Science Interests</value>
@@ -333,9 +339,6 @@
   <data name="Disciplines" xml:space="preserve">
     <value>Disciplines</value>
   </data>
-  <data name="Disciplines " xml:space="preserve">
-    <value>Disciplines</value>
-  </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
@@ -435,6 +438,9 @@
   <data name="ForStudent" xml:space="preserve">
     <value>For Student</value>
   </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Friday</value>
+  </data>
   <data name="FullName" xml:space="preserve">
     <value>Full name</value>
   </data>
@@ -446,6 +452,9 @@
   </data>
   <data name="HomeIndexTitle" xml:space="preserve">
     <value>Automation and Сontrol in Technical Systems (AСTS)</value>
+  </data>
+  <data name="HowToFind" xml:space="preserve">
+    <value>How to find us</value>
   </data>
   <data name="Id" xml:space="preserve">
     <value>Id</value>
@@ -507,6 +516,9 @@
   <data name="Modified" xml:space="preserve">
     <value>Modified</value>
   </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Monday</value>
+  </data>
   <data name="MyAccount" xml:space="preserve">
     <value>My account</value>
   </data>
@@ -558,6 +570,15 @@
   <data name="Position" xml:space="preserve">
     <value>Position</value>
   </data>
+  <data name="PostCreate" xml:space="preserve">
+    <value>Create a new post</value>
+  </data>
+  <data name="PostDelete" xml:space="preserve">
+    <value>Delete post</value>
+  </data>
+  <data name="PostEdit" xml:space="preserve">
+    <value>Edit post</value>
+  </data>
   <data name="Postgraduate" xml:space="preserve">
     <value>Postgraduate</value>
   </data>
@@ -581,6 +602,9 @@
   </data>
   <data name="Russian" xml:space="preserve">
     <value>Russian</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Saturday</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
@@ -681,6 +705,9 @@
   <data name="TeachingStaff" xml:space="preserve">
     <value>Teaching staff</value>
   </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
   <data name="TimeRange" xml:space="preserve">
     <value>Time range</value>
   </data>
@@ -693,6 +720,9 @@
   <data name="To" xml:space="preserve">
     <value>to</value>
   </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
   <data name="TwitterUrl" xml:space="preserve">
     <value>Twitter URL</value>
   </data>
@@ -700,7 +730,7 @@
     <value>Ukrainian</value>
   </data>
   <data name="Uncos" xml:space="preserve">
-    <value>Uncos</value>
+    <value>News</value>
   </data>
   <data name="Undone" xml:space="preserve">
     <value>Page is under construction</value>
@@ -750,16 +780,10 @@
   <data name="VkontakteUrl" xml:space="preserve">
     <value>Vkontakte URL</value>
   </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Wednesday</value>
+  </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
-  </data>
-  <data name="PostCreate" xml:space="preserve">
-    <value>Create a new post</value>
-  </data>
-  <data name="PostDelete" xml:space="preserve">
-    <value>Delete post</value>
-  </data>
-  <data name="PostEdit" xml:space="preserve">
-    <value>Edit post</value>
   </data>
 </root>

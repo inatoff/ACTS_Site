@@ -187,6 +187,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Архів новин.
+        /// </summary>
+        public static string ArchiveUncos {
+            get {
+                return ResourceManager.GetString("ArchiveUncos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ви впевнені, що хочете зробити це?.
         /// </summary>
         public static string AreYouSure {
@@ -228,6 +237,15 @@ namespace ACTS.Localization.Resources {
         public static string BlogEditProfile {
             get {
                 return ResourceManager.GetString("BlogEditProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Привітання на вашій персональній сторінці (Обов&apos;язкове поле).
+        /// </summary>
+        public static string BlogGreetingsPlaceHolder {
+            get {
+                return ResourceManager.GetString("BlogGreetingsPlaceHolder", resourceCulture);
             }
         }
         
@@ -709,15 +727,6 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Дисципліни.
-        /// </summary>
-        public static string Disciplines_ {
-            get {
-                return ResourceManager.GetString("Disciplines ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Редагувати.
         /// </summary>
         public static string Edit {
@@ -1015,6 +1024,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to П&apos;ятниця.
+        /// </summary>
+        public static string Friday {
+            get {
+                return ResourceManager.GetString("Friday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Повне ім&apos;я.
         /// </summary>
         public static string FullName {
@@ -1047,6 +1065,15 @@ namespace ACTS.Localization.Resources {
         public static string HomeIndexTitle {
             get {
                 return ResourceManager.GetString("HomeIndexTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Як нас знайти.
+        /// </summary>
+        public static string HowToFind {
+            get {
+                return ResourceManager.GetString("HowToFind", resourceCulture);
             }
         }
         
@@ -1227,6 +1254,15 @@ namespace ACTS.Localization.Resources {
         public static string Modified {
             get {
                 return ResourceManager.GetString("Modified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Понеділок.
+        /// </summary>
+        public static string Monday {
+            get {
+                return ResourceManager.GetString("Monday", resourceCulture);
             }
         }
         
@@ -1479,6 +1515,15 @@ namespace ACTS.Localization.Resources {
         public static string Russian {
             get {
                 return ResourceManager.GetString("Russian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Субота.
+        /// </summary>
+        public static string Saturday {
+            get {
+                return ResourceManager.GetString("Saturday", resourceCulture);
             }
         }
         
@@ -1789,6 +1834,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Четвер.
+        /// </summary>
+        public static string Thursday {
+            get {
+                return ResourceManager.GetString("Thursday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Часовий діапазон.
         /// </summary>
         public static string TimeRange {
@@ -1821,6 +1875,15 @@ namespace ACTS.Localization.Resources {
         public static string To {
             get {
                 return ResourceManager.GetString("To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вівторок.
+        /// </summary>
+        public static string Tuesday {
+            get {
+                return ResourceManager.GetString("Tuesday", resourceCulture);
             }
         }
         
@@ -1992,6 +2055,15 @@ namespace ACTS.Localization.Resources {
         public static string VkontakteUrl {
             get {
                 return ResourceManager.GetString("VkontakteUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Середа.
+        /// </summary>
+        public static string Wednesday {
+            get {
+                return ResourceManager.GetString("Wednesday", resourceCulture);
             }
         }
         

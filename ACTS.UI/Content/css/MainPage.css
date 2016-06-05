@@ -1,48 +1,49 @@
-﻿body{
-    font:300 'Roboto Slab';
+﻿body {
+    font: 300 'Roboto Slab';
 }
 
-div.c__block-content>ol>li{
-    margin:14px 0 14px 0;
+div.c__block-content > ol > li {
+    margin: 14px 0 14px 0;
 }
 
-.mainColumns{
-    padding-left:0;
-    padding-right:0;
+.mainColumns {
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.pageContent{
-    text-align:justify;
+.pageContent {
+    text-align: justify;
 }
 
-.footer{
-    background-color:#3c4a5e;
-    color:#5e788e;
-    padding-bottom:15px;
-    text-align:right;
-    position:relative;
+.footer {
+    background-color: #3c4a5e;
+    color: #5e788e;
+    padding-bottom: 15px;
+    text-align: right;
+    position: relative;
 }
 
-a.language{
-    width:100%;
+a.language {
+    width: 100%;
 }
 
-.row{
-    margin-right:0;
+.row {
+    margin-right: 0;
 }
 
-.contactFooter{
-    padding-right:0;
+.contactFooter {
+    padding-right: 0;
 }
 
-.footerPartners{
-    padding-right:160px;
+.footerPartners {
+    padding-right: 160px;
 }
 
-.navColumns{
-    padding-right:30px;
-    height:900px
+.navColumns {
+    padding-right: 30px;
+    height: 900px;
 }
+
 .open:not(.dropup) > .animated-dropdown-menu {
     backface-visibility: visible !important;
     -webkit-animation: flipInX 0.7s both;
@@ -50,20 +51,25 @@ a.language{
     animation: flipInX 0.7s both;
 }
 
-ul.nav.navbar>li:not(.sidebar-brand){
-    width:230px;
-    margin:2px;
-    margin-top:3px;
-    background-color:#fcfcfc
+ul.nav.navbar > li:not(.sidebar-brand) {
+    width: 230px;
+    margin: 2px;
+    margin-top: 3px;
+    background-color: #fcfcfc;
 }
 
-li.sidebar-brand{
-    width:234px;
+li.sidebar-brand {
+    width: 234px;
     font-size: 14px;
     padding: 8px 12px;
     background-color: #f8f8f8;
     margin-bottom: 3px;
     font-weight: 700;
+    border-radius: 20px 20px 0 0;
+}
+
+ul.nav.navbar > li:last-child {
+    border-radius: 0 0 20px 20px;
 }
 
 @keyframes flipInX {
@@ -126,77 +132,170 @@ li.sidebar-brand{
     text-align: center;
 }
 
-.personName{
-    width:100%;
-    text-align:center;
-    font:300 28px/30px "Roboto Slab",Georgia,Times,serif;
-    font-size:20px;
+.personName {
+    width: 100%;
+    text-align: center;
+    font: 300 28px/30px "Roboto Slab",Georgia,Times,serif;
+    font-size: 20px;
     color: #414141;
-    padding:8px 5px 0 5px; 
+    padding: 8px 5px 0 5px;
 }
 
 #vk_groups {
-    padding-top:80px;
-    padding-left:17px;
+    padding-top: 80px;
+    padding-left: 17px;
 }
 
-.back-to-top{
-    width:22px;
-    height:22px;
+.back-to-top {
+    width: 22px;
+    height: 22px;
 }
 
-.slider ul{margin:0;padding:0;list-style:none}
-.slider ul li.slide{margin:0;padding:0;height:250px;width:100%;box-shadow:inset 0 0 0 290px rgba(0,0,0,.25);background-position:center;position:absolute;display:none}
-.slider ul li.slide.active{display:list-item}
-.slider ul li.slide .title{padding-top:30px;color:#fff;font:300 36px/45px "Roboto Slab",Georgia,Times,serif}
-.slider ul li.slide .title span{background-color:rgba(87,154,222,.4)}
-.slider .darken{height:290px;background-color:#000}
-.slider .navigation{position:relative;top:220px;z-index:90}
-.slider .navigation ul{margin:0;padding:0;list-style:none;margin-top:-30px}
-.slider .navigation ul li{margin:0;padding:0;border:1px solid #fff;border   -radius:10px;width:12px;height:12px;float:left;margin-left:8px;cursor:pointer}
-.slider .navigation ul li.active{background-color:#fff}
-.sl1 {background-repeat:repeat-x;background-image :url("../../Content/images/actsSlide1.jpg")}
-.sl2 {background-repeat:repeat-x;background-image:url("../../Content/images/actsSlide2.jpg")}
-.sl3 {background-repeat:repeat-x;background-image:url("../../Content/images/actsSlide3.jpg")}
+.slider ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 
-.pageTitle{
+    .slider ul li.slide {
+        margin: 0;
+        padding: 0;
+        height: 250px;
+        width: 100%;
+        box-shadow: inset 0 0 0 290px rgba(0,0,0,.25);
+        background-position: center;
+        position: absolute;
+        display: none;
+    }
+
+        .slider ul li.slide.active {
+            display: list-item;
+        }
+
+        .slider ul li.slide .title {
+            padding-top: 30px;
+            color: #fff;
+            font: 300 36px/45px "Roboto Slab",Georgia,Times,serif;
+        }
+
+            .slider ul li.slide .title span {
+                background-color: rgba(87,154,222,.4);
+            }
+
+.slider .darken {
+    height: 290px;
+    background-color: #000;
+}
+
+.slider .navigation {
+    position: relative;
+    top: 220px;
+    z-index: 90;
+}
+
+    .slider .navigation ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        margin-top: -30px;
+    }
+
+        .slider .navigation ul li {
+            margin: 0;
+            padding: 0;
+            border: 1px solid #fff;
+            border -radius:10px;
+            width: 12px;
+            height: 12px;
+            float: left;
+            margin-left: 8px;
+            cursor: pointer;
+        }
+
+            .slider .navigation ul li.active {
+                background-color: #fff;
+            }
+
+.sl1 {
+    background-repeat: repeat-x;
+    background-image: url("../../Content/images/actsSlide1.jpg");
+}
+
+.sl2 {
+    background-repeat: repeat-x;
+    background-image: url("../../Content/images/actsSlide2.jpg");
+}
+
+.sl3 {
+    background-repeat: repeat-x;
+    background-image: url("../../Content/images/actsSlide3.jpg");
+}
+
+.pageTitle {
     font: 300 30px/40px "Roboto Slab",Georgia,Times,serif;
     display: table;
     white-space: nowrap;
-    font-family: Roboto Slab,Georgia,Times,serif!important;
+    font-family: Roboto Slab,Georgia,Times,serif !important;
     margin: 15px 0;
 }
 
-.pageTitle:before{
-    right: 1.5%;
-}
+    .pageTitle:before {
+        right: 1.5%;
+    }
 
-.pageTitle:after{
-    left: 1.5%;
-}
+    .pageTitle:after {
+        left: 1.5%;
+    }
 
-.pageTitle:before, .pageTitle:after{
+    .pageTitle:before, .pageTitle:after {
+        border-top: 1px solid #e8e8e8;
+        content: "";
+        display: table-cell;
+        position: relative;
+        top: .75em;
+        width: 45%;
+    }
 
-    border-top: 1px solid #e8e8e8;
-    content: "";
-    display: table-cell;
-    position: relative;
-    top: .75em;
-    width: 45%;
-}
-
-.teacherInfo{
-    padding-top:10px;
+.teacherInfo {
+    padding-top: 10px;
     text-align: center;
 }
 
-.dropdown-menu{
-    padding:0 0;
-}
-.dropdown-menu > li > a {
-    padding: 10px 20px;
+.dropdown-menu {
+    padding: 0 0;
 }
 
-div.c__block-content>ul>li{    
-    padding:5px 5px;
+    .dropdown-menu > li > a {
+        padding: 10px 20px;
+    }
+
+div.c__block-content > ul > li {
+    padding: 5px 5px;
+}
+
+#EditBlogPanel {
+    display: block;
+}
+
+div.navColumns nav ul li {
+    box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.3);
+}
+
+div.nav-container nav {
+    box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.3);
+}
+div#vk_groups iframe{
+    border: 1px solid #5b7fa6;
+    box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.3);
+}
+
+div.field-item blockquote{
+    text-align:center;
+    border-left:none;
+}
+
+.uncos-image{
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
 }

@@ -1,39 +1,44 @@
 ﻿@model IEnumerable<ACTS.Core.Entities.News>
 
 @{
-    ViewBag.Title = "ArchiveUncos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = GlobalRes.ArchiveUncos;
 }
+<div class="row">
+    @Html.Partial("DepartmentNav")
+    <div class="col-md-9 mainColumns content-col" style="background-color:rgba(255, 255, 255, 0.4);" role="main">
+        <div class="c__block-title">@GlobalRes.ArchiveUncos</div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.DataCreate)*@
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageData)
+                </th>
+            </tr>
 
-<h2>ArchiveUncos</h2>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.DataCreate)*@
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImageData)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImageMimeType)
+                    </td>
+                </tr>
+            }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataCreate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageId)
-        </th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataCreate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageMimeType)
-        </td>
-    </tr>
-}
-
-</table>
+        </table>
+    </div>
+</div>
