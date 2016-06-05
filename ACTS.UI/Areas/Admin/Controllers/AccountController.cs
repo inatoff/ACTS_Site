@@ -6,6 +6,7 @@ using ACTS.UI.Controllers;
 using ACTS.UI.Helpers;
 using Microsoft.AspNet.Identity;
 using Ninject.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 	{
 		private readonly ILogger _logger;
 		private ITeacherRepository _teacherRepository;
+
 		public AccountController(ITeacherRepository teacherRepository, ILoggerFactory loggerFactory)
 		{
 			_logger = loggerFactory.GetCurrentClassLogger();
@@ -38,41 +40,67 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		public async Task<ActionResult> Table()
 		{
 			IEnumerable<InfoAccountViewModel> model;
-			using (var userManager = UserManager)
+			using (ApplicationUserManager userManager = UserManager)
+			using (ApplicationRoleManager roleManager = RoleManager)
 			{
-				var users = userManager.Users.Include(user => user.Teacher);
+				//var users = userManager.Users.Include(user => user.Teacher).AsNoTracking();
 
-				var tasks = users.Select(async delegate (ApplicationUser user)
-				{
-					InfoAccountViewModel infoAccount;
+				//var tasks = users.Select(async delegate (ApplicationUser user)
+				//{
+				//	InfoAccountViewModel infoAccount;
 
-					using (var perQueryManager = UserManager)
-						infoAccount = new InfoAccountViewModel
-						{
-							Id = user.Id,
-							Email = user.Email,
-							UserName = user.UserName,
-							TeacherName = user.Teacher?.FullName,
-							Roles = await perQueryManager.GetRolesAsync(user.Id)
-						};
+				//	using (var perQueryManager = UserManager)
+				//		infoAccount = new InfoAccountViewModel
+				//		{
+				//			Id = user.Id,
+				//			Email = user.Email,
+				//			UserName = user.UserName,
+				//			TeacherName = user.Teacher?.FullName,
+				//			Roles = await perQueryManager.GetRolesAsync(user.Id)
+				//		};
 
-					return infoAccount;
-				});
+				//	return infoAccount;
+				//});
 
-				model = await Task.WhenAll(tasks);
+				//model = await Task.WhenAll(tasks);
+
+				var infoAccounts = await userManager.Users
+					.Include(user => user.Teacher)
+					.AsNoTracking()
+					.Select(user => new InfoAccountViewModel
+					{
+						Id = user.Id,
+						Email = user.Email,
+						UserName = user.UserName,
+						TeacherName = user.Teacher == null ? string.Empty : user.Teacher.FullName,
+					}).ToListAsync();
+
+				var roles = roleManager.Roles.Include(r => r.Users).ToList();
+				var DictRoleIdName = roles.ToDictionary(r => r.Id, r => r.Name);
+				var userIdWithRoleNames = roles.SelectMany(r => r.Users)
+					.GroupBy(ur => ur.UserId)
+					.ToDictionary(userIdWithRoleIds => userIdWithRoleIds.Key,
+								  userIdWithRoleIds => userIdWithRoleIds.Select(roleId => DictRoleIdName[roleId.RoleId]).ToList());
+
+				List<string> rolesNames;
+				foreach (var ia in infoAccounts)
+					ia.Roles = userIdWithRoleNames.TryGetValue(ia.Id, out rolesNames) ? rolesNames : new List<string>();
+
+				model = infoAccounts.AsEnumerable();
 			}
 
 			return View("TableAccount", model);
 		}
 
+		[NonAction]
 		private void InitTeachersItems(int? selectedValue = null)
 		{
 			SelectList teachersItems;
-			if (!selectedValue.HasValue)
-				teachersItems = new SelectList(_teacherRepository.NoPairTeachers, "TeacherId", "FullName");
-			else
-				teachersItems = new SelectList(_teacherRepository.GetNoPairTeachersWithSelected(selectedValue.Value).AsEnumerable(),
+			if (selectedValue.HasValue)
+				teachersItems = new SelectList(_teacherRepository.GetNoPairTeachersWithSelected(selectedValue.Value).AsNoTracking(),
 											  "TeacherId", "FullName", selectedValue);
+			else
+				teachersItems = new SelectList(_teacherRepository.NoPairTeachers.AsNoTracking(), "TeacherId", "FullName");
 
 			ViewBag.Teachers = teachersItems;
 		}
@@ -84,6 +112,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			using (var manager = RoleManager)
 				model.Roles = manager.Roles.Select(r => new RoleItem() { Value = r.Name })
 										   .OrderBy(r => r.Value)
+										   .AsNoTracking()
 										   .ToList();
 
 			InitTeachersItems();
@@ -164,7 +193,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 				using (var roleManager = RoleManager)
 				{
-					var roles = roleManager.Roles.AsEnumerable();
+					var roles = roleManager.Roles.AsNoTracking().AsEnumerable();
 
 					var userRoles = await userManager.GetRolesAsync(Id);
 
@@ -222,9 +251,23 @@ namespace ACTS.UI.Areas.Admin.Controllers
 					(await manager.AddToRolesAsync(model.Id, model.SelectedRoles.Except(userRoles).ToArray()))
 						.AddErrorsIfFailed(TempData);
 
+					var pairTeacherIdHasValue = model.PairTeacherId.HasValue;
+
 					if (user.HasTeacher)
-						_teacherRepository.RemovePairToUser(user.Teacher.TeacherId);
-					if (model.PairTeacherId.HasValue)
+						if (pairTeacherIdHasValue)
+						{
+							if (user.Teacher.TeacherId != model.PairTeacherId.Value)
+							{
+								// есть учитель у не обновл. пользователя когда есть у обновленого и это не один и тот же учитель
+								_teacherRepository.RemovePairToUser(user.Teacher.TeacherId);
+								_teacherRepository.AddPairToUser(model.PairTeacherId.Value, user.Id);
+							}
+						} else
+							// есть учитель у не обновл. пользователя когда нет у обновленого
+							_teacherRepository.RemovePairToUser(user.Teacher.TeacherId);
+
+					else if (pairTeacherIdHasValue)
+						// есть учитель у обновл. пользователя когда нету учителя у не обновленого пользователя
 						_teacherRepository.AddPairToUser(model.PairTeacherId.Value, user.Id);
 
 					TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.UserSavedMsg, user.UserName));
@@ -280,6 +323,26 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			}
 
 			return RedirectToAction(nameof(Table));
+		}
+
+		private bool disposedValue = false; // To detect redundant calls
+
+		protected override void Dispose(bool disposing)
+		{
+			if (!disposedValue)
+			{
+				if (disposing)
+				{
+					// TODO: dispose managed state (managed objects).
+					_teacherRepository.Dispose();
+					base.Dispose(disposing);
+				}
+
+				// TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+				// TODO: set large fields to null.
+
+				disposedValue = true;
+			}
 		}
 	}
 }

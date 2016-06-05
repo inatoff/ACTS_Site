@@ -3,6 +3,7 @@ using RazorEngine.Configuration;
 using RazorEngine.Templating;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace ACTS.UI.Services
 {
 	public static class EmailBodyServiceFactory
 	{
+		private static string _pathToTemplates;
+
 		static EmailBodyServiceFactory()
 		{
 			var config = new TemplateServiceConfiguration();
@@ -22,7 +25,11 @@ namespace ACTS.UI.Services
 			Engine.Razor = RazorEngineService.Create(config);
 		}
 
-		public static string DefaultPathToTemplates { get; set; }
+		public static string PathToTemplates
+		{
+			get { return _pathToTemplates ?? (_pathToTemplates = ConfigurationManager.AppSettings["EmailTemplatesFolder"]); }
+			set { _pathToTemplates = value; }
+		}
 
 		public static async Task<string> GetEmailBody<T>(T model, string pathToTemplates, string emailType)
 		{
@@ -41,7 +48,7 @@ namespace ACTS.UI.Services
 
 		public static async Task<string> GetEmailBody<T>(T model, string emailType)
 		{
-			return await GetEmailBody(model, DefaultPathToTemplates, emailType);
+			return await GetEmailBody(model, PathToTemplates, emailType);
 		}
 
 		static async Task<string> ReadTemplateContent(this string path)

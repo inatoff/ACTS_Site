@@ -28,12 +28,6 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			return View();
 		}
 
-		public ActionResult Test()
-		{
-			_logger.Debug("hello from Admin:TestAction");
-			throw new ApplicationException(message: "test");
-		}
-
 		//public ActionResult MyAccount()
 		//{
 		//	var model = new ProfileViewModel();

@@ -1,79 +1,78 @@
 ﻿using ACTS.Core.Abstract;
+using ACTS.Core.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ACTS.Core.Concrete
 {
-    public class EFTagRepository : ITagRepository
-    {
-        private EFDbContext context = new EFDbContext();
+	public class EFTagRepository : ITagRepository
+	{
+		private EFDbContext _context = new EFDbContext();
 
-        public IEnumerable<string> GetAll()
-        {
-            var tagsCollection = context.Posts.Select(p => p.CombinedTags).ToList();
-            return string.Join(",", tagsCollection).Split(',').Distinct();
-        }
+		public IQueryable<Tag> Tags
+		{
+			get { return _context.Tags; }
+		}
 
-        public string Get(string tag)
-        {
-            var posts = context.Posts.Where(post => post.CombinedTags.Contains(tag)).ToList();
-            posts = posts.Where(post =>
-                   post.Tags.Contains(tag, StringComparer.CurrentCultureIgnoreCase))
-                   .ToList();
+		public Tag Get(string tag)
+		{
+			var dbEntry = _context.Tags.FirstOrDefault(t => t.Keyword == tag);
 
-            if (!posts.Any())
-            {
-                throw new KeyNotFoundException($"The tag \"{tag}\" does not exist.");
-            }
+			return dbEntry;
+		}
 
-            return tag.ToLower();
-        }
+		public void Edit(Tag tag)
+		{
+			_context.Entry(tag).State = EntityState.Modified;
 
-        public void Edit(string existingTag, string newTag)
-        {
-            var posts = context.Posts.Where(post => post.CombinedTags.Contains(existingTag)).ToList();
+			_context.SaveChanges();
+		}
 
-            posts = posts.Where(post =>
-                    post.Tags.Contains(existingTag, StringComparer.CurrentCultureIgnoreCase))
-                    .ToList();
+		public void Delete(Tag tag)
+		{
+			_context.Tags.Remove(tag);
 
-            if (!posts.Any())
-            {
-                throw new KeyNotFoundException($"The tag \"{existingTag}\" does not exist.");
-            }
+			_context.SaveChanges();
+		}
 
-            foreach (var post in posts)
-            {
-                post.Tags.Remove(existingTag);
-                post.Tags.Add(newTag);
-            }
+		#region IDisposable Support
+		private bool disposedValue = false; // To detect redundant calls
 
-            context.SaveChanges();
-        }
+		protected virtual void Dispose(bool disposing)
+		{
+			if (!disposedValue)
+			{
+				if (disposing)
+				{
+					// TODO: dispose managed state (managed objects).
+					_context.Dispose();
+				}
 
-        public void Delete(string tag)
-        {
-            var posts = context.Posts.Where(post => post.CombinedTags.Contains(tag))
-                    .ToList();
+				// TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+				// TODO: set large fields to null.
 
-            posts = posts.Where(post =>
-                post.Tags.Contains(tag, StringComparer.CurrentCultureIgnoreCase))
-                .ToList();
+				disposedValue = true;
+			}
+		}
 
-            if (!posts.Any())
-            {
-                throw new KeyNotFoundException($"The tag \"{tag}\" does not exist.");
-            }
+		// TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+		// ~EFTagRepository() {
+		//   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+		//   Dispose(false);
+		// }
 
-            foreach (var post in posts)
-            {
-                post.Tags.Remove(tag);
-            }
-
-            context.SaveChanges();
-        }
-    }
+		// This code added to correctly implement the disposable pattern.
+		public void Dispose()
+		{
+			// Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+			Dispose(true);
+			// TODO: uncomment the following line if the finalizer is overridden above.
+			// GC.SuppressFinalize(this);
+		}
+		#endregion
+	}
 }

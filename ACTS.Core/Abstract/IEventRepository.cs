@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace ACTS.Core.Abstract
 {
-	public interface IEventRepository
+	public interface IEventRepository: IDisposable
 	{
 		IQueryable<Event> Events { get; }
 
-		Event GetEventById(int eventId);
+		Event GetEvent(int id);
 		void UpdateEvent(Event @event);
-		Event DeleteEvent(int eventId);
+		Event DeleteEvent(int id);
 		void CreateEvent(Event @event);
 	}
 }

@@ -1,4 +1,4 @@
-﻿['Disciplines', 'ScienceInterests', 'Projects'].forEach(function (orderableListName) {
+﻿['Disciplines', 'ScienceInterests', 'Projects', 'Publications'].forEach(function (orderableListName) {
     var orderableList = Sortable.create(document.getElementById(orderableListName.toLowerCase()), {
         animation: 150,
         filter: '.js-remove',
@@ -13,7 +13,7 @@
                                   .map(function (input) { return input.value });
 
                 for (var i = evt.oldIndex, N = children.length - 1; i < N; i++) {
-                    children[i].querySelector('input[type=text]').value = values[i];
+                    children[i].querySelector('input[type=text]').value = values[i+1];
                 }
                 rootEl.removeChild(rootEl.lastElementChild)
             }

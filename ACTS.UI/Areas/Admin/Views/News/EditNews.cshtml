@@ -10,10 +10,10 @@
 }
 
 @section Scripts {
-	@Scripts.Render("~/bundles/jqueryval-admin")
-	@Scripts.Render("~/bundles/expressive")
-	@Scripts.Render(GlobalRes.tinymcePath)
-	@Scripts.Render(GlobalRes.fileinputPath)
+	@Scripts.Render("~/bundles/jqueryval-admin",
+					"~/bundles/expressive",
+					GlobalRes.tinymcePath,
+					GlobalRes.fileinputPath)
 }
 
 <div class="row">
@@ -31,8 +31,7 @@
 
 					@Html.ValidationSummary(true, "", new { @class = "text-red" })
 					@Html.HiddenFor(model => model.NewsId)
-					@Html.HiddenFor(model => model.ImageMimeType)
-					@Html.HiddenFor(model => model.ImageData)
+					@Html.HiddenFor(model => model.ImageId)
 
 					<div class="form-group">
 						@Html.LabelFor(model => model.Title, new { @class = "col-md-3 col-lg-2 control-label" })
@@ -43,22 +42,22 @@
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.ImageData, new { @class = "col-md-3 col-lg-2 control-label" })
+						@Html.LabelFor(model => model.ImageId, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
-							@if (Model.ImageData == null)
+							@if (Model.ImageId == null)
 							{
 								<p class="form-control-static">
 									@GlobalRes.None
 								</p>
 							} else
 							{
-								<img alt="News image" class="img-thumbnail" style="max-width:100%;max-height:400px" src="@Url.Action("GetImage", "News", new { area = "", Model.NewsId })" />
+								<img alt="News image" class="img-thumbnail" style="max-width:100%;max-height:400px" src="@Url.Action("Index", "File", new { area = "", id = Model.ImageId.Value })" />
 							}
 						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.ImageData, @GlobalRes.UploadNewImage, new { @class = "col-md-3 col-lg-2 control-label" })
+						@Html.LabelFor(model => model.ImageId, @GlobalRes.UploadNewImage, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
 							<input id="input-image" class="file-loading form-control" accept="image/*" type="file" name="Image" />
 						</div>

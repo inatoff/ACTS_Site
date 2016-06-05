@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,10 +13,9 @@ namespace ACTS.UI.Controllers
 {
 	public class ResourcesController : BaseController
 	{
-		// GET: Resources
+		// GET: Resources/Required
 		public ActionResult Required()
 		{
-			Response.ContentType = "text/javascript";
 			var res = RequiredRes.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true)
 												 .Cast<DictionaryEntry>();
 
@@ -28,12 +28,15 @@ namespace ACTS.UI.Controllers
 				res = Enumerable.Union(res, defaultRes, new DictionaryEntryEqualityComparer());
 			}
 
-			return View(res);
+			var script = res.Aggregate(new StringBuilder("var requiredRes = {"),
+							(sb, de) => sb.AppendFormat("{0}:\"{1}\",", de.Key, HttpUtility.JavaScriptStringEncode((string)de.Value)),
+							sb => sb.Remove(sb.Length - 1, 1).Append("};").ToString());
+
+			return JavaScript(script);
 		}
 
 		public ActionResult Display()
 		{
-			Response.ContentType = "text/javascript";
 			var res = DisplayRes.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true)
 												.Cast<DictionaryEntry>();
 
@@ -46,7 +49,11 @@ namespace ACTS.UI.Controllers
 				res = Enumerable.Union(res, defaultRes, new DictionaryEntryEqualityComparer());
 			}
 
-			return View(res);
+			var script = res.Aggregate(new StringBuilder("var displayRes = {"),
+							(sb, de) => sb.AppendFormat("{0}:\"{1}\",", de.Key, HttpUtility.JavaScriptStringEncode((string)de.Value)),
+							sb => sb.Remove(sb.Length - 1, 1).Append("};").ToString());
+
+			return JavaScript(script);
 		}
 
 		public class DictionaryEntryEqualityComparer : EqualityComparer<DictionaryEntry>

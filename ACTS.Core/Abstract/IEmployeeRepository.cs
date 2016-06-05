@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace ACTS.Core.Abstract
 {
-    public interface IEmployeeRepository
-    {
-        IQueryable<Employee> Employees { get; }
+	public interface IEmployeeRepository: IDisposable
+	{
+		IQueryable<Employee> Employees { get; }
 		void UpdateEmployee(Employee employee);
 		void CreateEmployee(Employee employee);
-		Employee GetEmployeeById(int employeeId);
-        Employee DeleteEmployee(int employeeId);
+		Employee GetEmployee(int id);
+		Employee DeleteEmployee(int id);
 	}
 }

@@ -49,13 +49,13 @@
 									@item.Position
 								</td>
 								<td>
-									@if (item.Photo == null)
+									@if (item.PhotoId == null)
 									{
 										@GlobalRes.None
 									}
 									else
 									{
-										<img alt="Employee image" width="100" height="100" src="@Url.Action("GetImage", "Employee", new { area = "", item.EmployeeId })" />
+										<img alt="Employee image" width="100" height="100" src="@Url.Action("Index", "File", new { area = "", id = item.PhotoId })" />
 									}
 								</td>
 								<td>

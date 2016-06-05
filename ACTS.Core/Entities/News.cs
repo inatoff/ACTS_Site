@@ -1,4 +1,5 @@
-﻿using ACTS.Localization;
+﻿using ACTS.Core.Abstract;
+using ACTS.Localization;
 using ACTS.Localization.Resources;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Web.Mvc;
 
 namespace ACTS.Core.Entities
 {
-	public class News
+	public class News : IHaveFileId
 	{
 		[HiddenInput(DisplayValue = false)]
 		public int NewsId { get; set; }
@@ -27,14 +28,15 @@ namespace ACTS.Core.Entities
 		public DateTime? Modified { get; set; }
 
 		[Display(Name = nameof(DisplayRes.ImageName), ResourceType = typeof(DisplayRes))]
-		public byte [] ImageData { get; set; }
-
-		[HiddenInput(DisplayValue = false)]
-		public string ImageMimeType { get; set; }
+		public Guid? ImageId { get; set; }
 
 		[DataType(DataType.MultilineText)]
 		[AllowHtml]
 		[Display(Name = nameof(DisplayRes.ContentName), ResourceType = typeof(DisplayRes))]
 		public string Content { get; set; }
+
+		Guid? IHaveFileId.FileId { get { return ImageId; } set { ImageId = value; } }
+
+		public Guid? FileId { get { return ((IHaveFileId)this).FileId; } set { ((IHaveFileId)this).FileId = value; } }
 	}
 }

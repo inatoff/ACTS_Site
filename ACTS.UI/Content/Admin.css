@@ -178,6 +178,14 @@ div.hasContent {
     width: 100%
 }
 
-.orderable-item{
+.orderable-item {
     margin-bottom: 15px;
+}
+
+.sortable-chosen div.input-group {
+    border: 1px solid #00acd6;
+}
+
+.sortable-chosen div.input-group input:focus {
+    border: 1px solid #d2d6de;
 }

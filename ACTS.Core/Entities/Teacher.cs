@@ -71,32 +71,20 @@ namespace ACTS.Core.Entities
 		// PersonalPage
 
 		[Display(Name = nameof(DisplayRes.DisciplinesName), ResourceType = typeof(DisplayRes))]
-		[UIHint("OrderedByIntList")]
-		public IList<Discipline> Disciplines { get; set; }
+		public virtual ISet<Discipline> Disciplines { get; set; } = new SortedSet<Discipline>();
 
 		[Display(Name = nameof(DisplayRes.ScienceInterestsName), ResourceType = typeof(DisplayRes))]
-		[UIHint("OrderedByIntList")]
-		public IList<ScienceInterest> ScienceInterests { get; set; }
+		public virtual ISet<ScienceInterest> ScienceInterests { get; set; } = new SortedSet<ScienceInterest>();
 
 		[Display(Name = nameof(DisplayRes.ProjectsName), ResourceType = typeof(DisplayRes))]
-		[UIHint("OrderedByIntList")]
-		public virtual IList<Project> Projects { get; set; }
+		public virtual ISet<Project> Projects { get; set; } = new SortedSet<Project>();
 
 		[Display(Name = nameof(DisplayRes.PublicationsName), ResourceType = typeof(DisplayRes))]
-		[UIHint("OrderedByDateTimeList")]
-		public virtual IList<Publication> Publications { get; set; }
-		
+		public virtual ISet<Publication> Publications { get; set; } = new SortedSet<Publication>();
+
 		public virtual Blog Blog { get; set; }
 
 		public bool HasBlog { get { return Blog != null; } }
-
-		public Teacher()
-		{
-			Disciplines = new List<Discipline>();
-			ScienceInterests = new List<ScienceInterest>();
-			Projects = new List<Project>();
-			Publications = new List<Publication>();
-		}
 	}
 
 	public class TeacherMap : EntityTypeConfiguration<Teacher>

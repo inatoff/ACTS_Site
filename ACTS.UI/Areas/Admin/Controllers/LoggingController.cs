@@ -14,8 +14,8 @@ using ACTS.UI.Controllers;
 using ACTS.UI.Helpers;
 using System.ServiceModel.Syndication;
 using ACTS.Core.Logging;
-using ACTS.UI.Services;
 using System.Threading.Tasks;
+using ACTS.UI.Services.Logging;
 
 namespace ACTS.UI.Areas.Admin.Controllers
 {

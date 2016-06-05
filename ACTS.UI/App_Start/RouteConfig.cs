@@ -8,7 +8,7 @@ using System.Web.Routing;
 
 namespace ACTS.UI
 {
-	public class RouteConfig
+	public static class RouteConfig
 	{
 		public static void RegisterRoutes(RouteCollection routes)
 		{
@@ -30,21 +30,19 @@ namespace ACTS.UI
 			routes.MapMvcAttributeRoutes();
 
 
-            routes.MapRoute(
-                name: "TeachingStaff",
-                url: "teachers",
-                defaults: new { controller = "TeachingStaff", action = "TeachingStaff", id = UrlParameter.Optional },
-                namespaces: new[] { "ACTS.UI.Controllers" }
-            );
+			routes.MapRoute(
+				name: "TeachingStaff",
+				url: "teachers",
+				defaults: new { controller = "TeachingStaff", action = "TeachingStaff", id = UrlParameter.Optional },
+				namespaces: new[] { "ACTS.UI.Controllers" }
+			);
 
-            routes.MapRoute(
+			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",
 				defaults: new { controller = "Department", action = "About", id = UrlParameter.Optional},
 				namespaces: new[] { "ACTS.UI.Controllers" }
 			);
-
-
-        }
+		}
 	}
 }

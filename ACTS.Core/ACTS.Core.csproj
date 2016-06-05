@@ -42,6 +42,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FileDB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FileDB.1.0.1\lib\net35\FileDB.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
@@ -56,6 +60,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
@@ -65,12 +70,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IFileRepository.cs" />
     <Compile Include="Abstract\ITagRepository.cs" />
     <Compile Include="Abstract\ILogRepository.cs" />
     <Compile Include="Abstract\IEmployeeRepository.cs" />
     <Compile Include="Abstract\IEventRepository.cs" />
     <Compile Include="Abstract\INewsRepository.cs" />
     <Compile Include="Abstract\ITeacherRepository.cs" />
+    <Compile Include="Abstract\IHaveFileId.cs" />
     <Compile Include="Abstract\Worker.cs" />
     <Compile Include="Concrete\EFLogRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
@@ -81,8 +88,12 @@
     <Compile Include="Concrete\EFTagRepository.cs" />
     <Compile Include="Concrete\EFTeacherRepository.cs" />
     <Compile Include="Abstract\IBlogRepository.cs" />
+    <Compile Include="Concrete\FileDbContext.cs" />
+    <Compile Include="Concrete\FileRepository.cs" />
     <Compile Include="Entities\Blog.cs" />
+    <Compile Include="Entities\StoredFile.cs" />
     <Compile Include="Entities\OrderedItem.cs" />
+    <Compile Include="Entities\Tag.cs" />
     <Compile Include="Identity\ApplicationRole.cs" />
     <Compile Include="Identity\ApplicationUser.cs" />
     <Compile Include="Entities\Employee.cs" />
@@ -95,6 +106,7 @@
     <Compile Include="Identity\ApplicationUserStore.cs" />
     <Compile Include="Identity\ApplicationRoleStore.cs" />
     <Compile Include="Identity\ApplicationUserRole.cs" />
+    <Compile Include="IoC\RepositoriesModule.cs" />
     <Compile Include="Logging\LogEntry.cs" />
     <Compile Include="Logging\LogLevel.cs" />
     <Compile Include="Migrations\201604102043349_InitDb.cs" />
@@ -105,17 +117,22 @@
     <Compile Include="Migrations\201604120055045_RevertLogInDb.Designer.cs">
       <DependentUpon>201604120055045_RevertLogInDb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605081921324_OrderedItem.cs" />
-    <Compile Include="Migrations\201605081921324_OrderedItem.Designer.cs">
-      <DependentUpon>201605081921324_OrderedItem.cs</DependentUpon>
+    <Compile Include="Migrations\201605180232468_OrderedItem.cs" />
+    <Compile Include="Migrations\201605180232468_OrderedItem.Designer.cs">
+      <DependentUpon>201605180232468_OrderedItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606012355223_Tag.cs" />
+    <Compile Include="Migrations\201606012355223_Tag.Designer.cs">
+      <DependentUpon>201606012355223_Tag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606040039222_Files.cs" />
+    <Compile Include="Migrations\201606040039222_Files.Designer.cs">
+      <DependentUpon>201606040039222_Files.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -142,8 +159,14 @@
     <EmbeddedResource Include="Migrations\201604120055045_RevertLogInDb.resx">
       <DependentUpon>201604120055045_RevertLogInDb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605081921324_OrderedItem.resx">
-      <DependentUpon>201605081921324_OrderedItem.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605180232468_OrderedItem.resx">
+      <DependentUpon>201605180232468_OrderedItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606012355223_Tag.resx">
+      <DependentUpon>201606012355223_Tag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606040039222_Files.resx">
+      <DependentUpon>201606040039222_Files.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

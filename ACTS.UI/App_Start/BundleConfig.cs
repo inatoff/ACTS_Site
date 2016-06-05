@@ -3,7 +3,7 @@ using System.Web.Optimization;
 
 namespace ACTS.UI
 {
-	public class BundleConfig
+	public static class BundleConfig
 	{
 		// Дополнительные сведения о Bundling см. по адресу http://go.microsoft.com/fwlink/?LinkId=254725
 		public static void RegisterBundles(BundleCollection bundles)
@@ -89,8 +89,8 @@ namespace ACTS.UI
 				"https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.4.2/Sortable.js")
 				.Include("~/Scripts/Sortable.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/teachingStaffWrapper")
-                .Include("~/Scripts/actsScripts/teachingStaffWrapper.js"));
+			bundles.Add(new ScriptBundle("~/bundles/teachingStaffWrapper")
+				.Include("~/Scripts/actsScripts/teachingStaffWrapper.js"));
 
 			#endregion
 

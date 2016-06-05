@@ -38,6 +38,7 @@ namespace ACTS.UI.Areas.Admin.Models
 		[Display(Name = nameof(DisplayRes.EmailAddressName), ResourceType = typeof(DisplayRes))]
 		[RequiredIf("SendVerification == true",
 			ErrorMessageResourceName = nameof(RequiredRes.RequiredIfSendVerificationErrMsg), ErrorMessageResourceType = typeof(RequiredRes))]
+		//[CustomRequired]
 		[EmailAddress(ErrorMessageResourceName = nameof(EmailAddressRes.EmailErrMsg), ErrorMessageResourceType = typeof(EmailAddressRes))]
 		public string Email { get; set; }
 

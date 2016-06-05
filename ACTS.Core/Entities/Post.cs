@@ -31,23 +31,9 @@ namespace ACTS.Core.Entities
 		[AllowHtml]
 		public string Content { get; set; }
 
-        public IList<string> Tags
-        {
-            get { return _tags; }
-            set { _tags = value; } 
-        }
+		public virtual IList<Tag> Tags { get; set; } = new List<Tag>();
 
-        public string CombinedTags
-        {
-            get { return string.Join(",", _tags); }
-            set
-            {
-                _tags = value.Split(',').Select(s => s.Trim()).ToList();
-            }
-        }
+		public virtual Blog Blog { get; set; }
 
-        public virtual Blog Blog { get; set; }
-
-        private IList<string> _tags = new List<string>();
-    }
+	}
 }

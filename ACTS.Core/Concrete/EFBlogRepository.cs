@@ -9,94 +9,120 @@ using System.Data.Entity;
 
 namespace ACTS.Core.Concrete
 {
-    public class EFBlogRepository : IBlogRepository
-    {
-        private EFDbContext context = new EFDbContext();
+	public class EFBlogRepository : IBlogRepository
+	{
+		private EFDbContext _context = new EFDbContext();
 
-        public IQueryable<Post> Posts
-        {
-            get { return context.Posts; }
-        }
+		public IQueryable<Post> Posts
+		{
+			get { return _context.Posts; }
+		}
 
-        public IQueryable<Blog> Blogs
-        {
-            get { return context.Blogs; }
-        }
+		public IQueryable<Blog> Blogs
+		{
+			get { return _context.Blogs; }
+		}
 
-        public Post DeletePost(int postId)
-        {
-            Post dbEntry = context.Posts.Find(postId);
-            if (dbEntry != null)
-            {
-                context.Posts.Remove(dbEntry);
-                context.SaveChanges();
-            }
-            else
-            {
-                throw new KeyNotFoundException($"The post with the id of {postId} does not exist!");
-            }
-            return dbEntry;
-        }
+		public Post DeletePost(int id)
+		{
+			Post dbEntry = _context.Posts.Find(id);
+			if (dbEntry != null)
+			{
+				_context.Posts.Remove(dbEntry);
+				_context.SaveChanges();
+			}
+			_context.SaveChanges();
 
-        public async Task<Post> GetPostByIdAsync(int postId)
-        {
-            return await Posts.FirstOrDefaultAsync(p => p.PostId == postId);
-        }
+			return dbEntry;
+		}
 
-        public void CreatePost(Post post)
-        {
-            if (post.PostId == 0)
-            {
-                post.Created = DateTime.UtcNow;
-                context.Posts.Add(post);
-            }
-            else
-            {
-                Post dbEntry = context.Posts.Find(post.PostId);
-                if (dbEntry != null)
-                {
-                    dbEntry.Title = post.Title;
-                    dbEntry.Modified = DateTime.UtcNow;
-                    dbEntry.Content = post.Content;
-                }
-            }
+		public async Task<Post> GetPostAsync(int id)
+		{
+			return await _context.Posts.FindAsync(id);
+		}
 
-            context.SaveChanges();
-        }
+		public void CreatePost(Post post)
+		{
+			post.Created = DateTime.UtcNow;
 
-        public async Task EditPost(int postId, Post updatedPost)
-        {
-            var post = await context.Posts.SingleOrDefaultAsync(p => p.PostId == postId);
+			_context.Posts.Add(post);
+			_context.SaveChanges();
+		}
 
-            if (post == null)
-            {
-                throw new KeyNotFoundException($"A post with the id of {postId} does not exist in the data store.");
-            }
-            post.PostId = updatedPost.PostId;
-            post.Title = updatedPost.Title;
-            post.Modified = updatedPost.Modified;
-            post.Tags = updatedPost.Tags;
+		public async Task EditPost(int id, Post updatedPost)
+		{
+			var post = await _context.Posts.SingleOrDefaultAsync(p => p.PostId == id);
 
-            await context.SaveChangesAsync();
-        }
+			if (post == null)
+			{
+				throw new KeyNotFoundException($"A post with the id of {id} does not exist in the data store.");
+			}
 
-        public Blog GetBlogByAuthorNameSlug(string slug)
-        {
-			var blog = context.Blogs.FirstOrDefault(b => b.Teacher.NameSlug == slug);
+			post.Modified = DateTime.UtcNow;
+
+			post.PostId = updatedPost.PostId;
+			post.Title = updatedPost.Title;
+			post.Tags = updatedPost.Tags;
+
+			await _context.SaveChangesAsync();
+		}
+
+		public Blog GetBlogByAuthorNameSlug(string slug)
+		{
+			var blog = _context.Blogs.FirstOrDefault(b => b.Teacher.NameSlug == slug);
 			return blog;
 		}
 
-        public async Task InitPersonalPage(Teacher teacher)
-        {
-            var dbEntry = await context.Teachers.FindAsync(teacher);
-            dbEntry.Blog = new Blog();
-            await context.SaveChangesAsync();
-        }
+		public async Task<Blog> InitPersonalPage(Teacher teacher)
+		{
+			var dbEntry = await _context.Teachers.FindAsync(teacher);
+			var blog = new Blog();
+			dbEntry.Blog = blog;
+			await _context.SaveChangesAsync();
 
-        //TODO
-        public Task<IQueryable<Post>> GetPostsByTag(string[] tags)
-        {
-            throw new NotImplementedException();
-        }
-    }
+			return blog;
+		}
+
+		//TODO
+		public Task<IQueryable<Post>> GetPostsByTag(string[] tags)
+		{
+			throw new NotImplementedException();
+		}
+
+		#region IDisposable Support
+		private bool disposedValue = false; // To detect redundant calls
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (!disposedValue)
+			{
+				if (disposing)
+				{
+					// TODO: dispose managed state (managed objects).
+					_context.Dispose();
+				}
+
+				// TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+				// TODO: set large fields to null.
+
+				disposedValue = true;
+			}
+		}
+
+		// TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+		// ~EFBlogRepository() {
+		//   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+		//   Dispose(false);
+		// }
+
+		// This code added to correctly implement the disposable pattern.
+		public void Dispose()
+		{
+			// Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+			Dispose(true);
+			// TODO: uncomment the following line if the finalizer is overridden above.
+			// GC.SuppressFinalize(this);
+		}
+		#endregion
+	}
 }

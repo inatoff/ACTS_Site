@@ -3,6 +3,7 @@
 @{
 	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
 	ViewBag.Title = GlobalRes.EditTeacher;
+	const string partialForOrdCollection = "OrderableCollection";
 }
 
 @section Styles{
@@ -10,61 +11,13 @@
 }
 
 @section Scripts{
-	@Scripts.Render("~/bundles/jqueryval-admin")
-	@Scripts.Render("~/bundles/expressive")
-	@Scripts.Render(GlobalRes.fileinputPath)
-<script type="text/javascript">
-		var disciplines = Sortable.create(document.getElementById('disciplines'), {
-			animation: 150,
-			filter: '.js-remove',
-			onFilter: function (evt) {
-				var el = disciplines.closest(evt.item); // get dragged item
-				el && el.parentNode.removeChild(el);
-			},
-			onEnd: function (evt) {
-				var oldIndex = evt.oldIndex,
-					newIndex = evt.newIndex;
-
-				if (oldIndex === newIndex || newIndex == undefined) {
-					return;
-				}
-
-				var rootEl = disciplines.el,
-					children = rootEl.children,
-					oldPlace = children[oldIndex],
-					newPlace = children[newIndex];
-
-
-				if (oldIndex > newIndex) {
-					rootEl.removeChild(newPlace)
-					rootEl.insertBefore(oldPlace, newPlace)
-				} else {
-
-				}
-
-				//var inputs = children.querySelectorAll('input[type=text]');
-
-				//for (var i = 0; i < children.length; i++) {
-				//	var child;
-				//}
-			}
-		});
-
-		document.getElementById("addBtnDisciplines").onclick = function () {
-			var targetEl = disciplines.el;
-
-			var el = document.createElement('p');
-			var html =
-				('<input id="Disciplines_{count}__Order" name="Disciplines[{count}].Order" type="hidden" value="{count}">'
-				+ '<div class="input-group">'
-				+ '<input class="form-control text-box single-line" id="Disciplines_{count}__Value" name="Disciplines[{count}].Value" type="text" value="">'
-				+ '<span class="input-group-addon js-remove"><i class="fa fa-remove"></i></span>'
-				+ '</div>').replace(/{count}/g, targetEl.children.length);
-			el.innerHTML = html;
-
-			targetEl.appendChild(el);
-		}
-</script>
+	@Scripts.Render("~/bundles/jqueryval-admin",
+					"~/bundles/expressive",
+					GlobalRes.fileinputPath,
+					"~/Resources/Required",
+					"~/Resources/Display",
+					"~/bundles/sortable",
+					"~/Scripts/Admin/initSortable.js")
 }
 
 
@@ -83,8 +36,7 @@
 
 					@Html.ValidationSummary(true, "", new { @class = "text-red" })
 					@Html.HiddenFor(model => model.TeacherId)
-					@Html.HiddenFor(model => model.Photo)
-					@Html.HiddenFor(model => model.PhotoMimeType)
+					@Html.HiddenFor(model => model.PhotoId)
 
 					<div class="form-group">
 						@Html.LabelFor(model => model.FullName, new { @class = "col-md-3 col-lg-2 control-label" })
@@ -174,35 +126,32 @@
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.Photo, new { @class = "col-md-3 col-lg-2 control-label" })
+						@Html.LabelFor(model => model.PhotoId, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
-							@if (Model.Photo == null)
+							@if (Model.PhotoId.HasValue)
+							{
+								<img alt="Teacher image" class="img-thumbnail" style="max-width:100%;max-height:400px" src="@Url.Action("Index", "File", new { area = "", id = Model.PhotoId.Value })" />
+							}
+							else
 							{
 								<p class="form-control-static">
 									@GlobalRes.None
 								</p>
 							}
-							else
-							{
-								<img alt="Teacher image" class="img-thumbnail" style="max-width:100%;max-height:400px" src="@Url.Action("GetImage", "TeachingStaff", new { area = "", Model.TeacherId })" />
-							}
 						</div>
 					</div>
 
 					<div class="form-group">
-						@Html.LabelFor(model => model.Photo, GlobalRes.UploadNewPhoto, new { @class = "col-md-3 col-lg-2 control-label" })
+						@Html.LabelFor(model => model.PhotoId, GlobalRes.UploadNewPhoto, new { @class = "col-md-3 col-lg-2 control-label" })
 						<div class="col-md-8 col-lg-9">
 							<input id="input-image" class="file-loading form-control" accept="image/*" type="file" name="Image" />
 						</div>
 					</div>
 
-					<div class="form-group">
-						@Html.LabelFor(model => model.Disciplines, new { @class = "col-md-3 col-lg-2 control-label" })
-						<div class="col-md-8 col-lg-9">
-							@Html.EditorFor(model => model.Disciplines)
-							@Html.ValidationMessageFor(model => model.Disciplines, "", new { @class = "text-red" }, "p")
-						</div>
-					</div>
+					@Html.EditorFor(model => model.Disciplines, partialForOrdCollection)
+					@Html.EditorFor(model => model.ScienceInterests, partialForOrdCollection)
+					@Html.EditorFor(model => model.Projects, partialForOrdCollection)
+					@Html.EditorFor(model => model.Publications, partialForOrdCollection)
 
 					<div class="form-group">
 						@Html.LabelFor(model => model.Rank, new { @class = "col-md-3 col-lg-2 control-label" })

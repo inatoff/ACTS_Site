@@ -1,0 +1,45 @@
+﻿@model ACTS.Core.Entities.Blog
+
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Areas/Peoples/Views/Shared/_PersonalPageLayout.cshtml";
+}
+<div class="row">
+    @Html.Partial("_PersonalPageNavigation")
+    <div class="col-md-9 mainColumns content-col" style="background-color:rgba(255, 255, 255, 0.4);" role="main">
+        <div class="c__block-title">
+            @GlobalRes.Blog
+        </div>
+        <div class="c__block-content">
+            @foreach (var item in Model.Posts)
+            {
+                <div class="postBox">
+                    <div class="postTitle">
+                        @item.Title
+                    </div>
+                    <div class="postContent">
+                        @item.Content
+                    </div>
+                    <div class="postAuthor">
+                        @Model.Teacher.FullName
+                    </div>
+                    <div class="postCreate">
+                        @item.Created
+                    </div>
+                    <div class="postEdit">
+                        <a href="@Url.Action("Edit",new { controller = "Blog", area = "Peoples", postId = item.PostId })">@GlobalRes.PostEdit</a>
+                    </div>
+                    <div class="postDelit">
+                        <a href="@Url.Action("Delete",new { controller = "Blog", area = "Peoples", postId = item.PostId })">@GlobalRes.PostDelete</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="postCreate">
+            <a href="@Url.Action("Create",new { controller = "Blog", area = "Peoples" })">@GlobalRes.PostCreate</a>
+        </div>
+        <div>
+            @Html.Action("FooterStringUncos", "News")
+        </div>
+    </div>
+</div>

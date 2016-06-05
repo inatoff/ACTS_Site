@@ -8,16 +8,16 @@ namespace ACTS.UI.Controllers
 {
 	public class HomeController : BaseController
 	{
-		// GET: Home
+		// GET: /
 		public ActionResult Index()
 		{
 			return View();
 		}
 
-        public ActionResult About()
-        {
-            return View();
-        }
+		public ActionResult About()
+		{
+			return View();
+		}
 
 		public ActionResult SetCulture(string culture, string returnUrl)
 		{
@@ -38,6 +38,7 @@ namespace ACTS.UI.Controllers
 				return Redirect(returnUrl);
 			return RedirectToAction("Index");
 		}   
+
 		public ActionResult Contacts()
 		{
 			return View();

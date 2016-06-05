@@ -1,0 +1,19 @@
+﻿@model ACTS.Core.Entities.News
+<a href="@Url.Action("News", new { controller = "News", newsID=Model.NewsId })">
+    <div class="uncos-image">
+        <img src="@Url.Action("GetImage","News", new { area = "", newsID = Model.NewsId })" />
+    </div>
+    <div class="uncos-title">
+        @Model.Title
+    </div>
+    <div class="uncos-date">
+        @if (Model.Modified.HasValue)
+        {
+            @Model.Modified
+        }
+        else
+        {
+            @Model.Created
+        }
+    </div>
+</a>

@@ -78,13 +78,13 @@
 									}
 								</td>
 								<td>
-									@if (item.ImageData == null)
+									@if (item.ImageId == null)
 									{
 										@GlobalRes.None
 									}
 									else
 									{
-										<img alt="Event image" width="100" height="100" src="@Url.Action("GetImage", "Event", new { area = "", item.EventId })" />
+										<img alt="Event image" width="100" height="100" src="@Url.Action("Index", "File", new { area = "", id = item.ImageId })" />
 									}
 								</td>
 								<td class="hasContent">

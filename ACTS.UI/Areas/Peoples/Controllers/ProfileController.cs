@@ -51,7 +51,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
             {
                 var currentUserId = CurrentUserId;
                 var currentUser = await userManager.FindByIdAsync(currentUserId);
-                var currentTeacher = teacherRepository.GetTeacherById(currentUser.Teacher.TeacherId);
+                var currentTeacher = teacherRepository.GetTeacher(currentUser.Teacher.TeacherId);
 
                 model = new TeacherAccountViewModel()
                 {
@@ -85,7 +85,7 @@ namespace ACTS.UI.Areas.Peoples.Controllers
             {
                 var currentUserId = CurrentUserId;
                 var currentUser = await userManager.FindByIdAsync(currentUserId);
-                var currentTeacher = teacherRepository.GetTeacherById(currentUser.Teacher.TeacherId);
+                var currentTeacher = teacherRepository.GetTeacher(currentUser.Teacher.TeacherId);
                 if (string.IsNullOrWhiteSpace(model.Password))
                 {
                     ModelState.AddModelError("PageError", "Password must be supplied");

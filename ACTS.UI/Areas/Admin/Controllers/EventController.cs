@@ -32,7 +32,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Edit(int eventId)
 		{
-			Event @event = _repository.GetEventById(eventId);
+			Event @event = _repository.GetEvent(eventId);
 			@event.StartView = @event.StartView?.ToLocalTime();
 			@event.EndView = @event.EndView?.ToLocalTime();
 			return View("EditEvent", @event);
@@ -44,12 +44,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				if (image != null)
-				{
-					@event.ImageMimeType = image.ContentType;
-					@event.ImageData = new byte[image.ContentLength];
-					image.InputStream.Read(@event.ImageData, 0, image.ContentLength);
-				}
+				@event.UpdateFileForContainer(image);
+
 				@event.StartView = @event.StartView?.ToUniversalTime();
 				@event.EndView = @event.EndView?.ToUniversalTime();
 				_repository.UpdateEvent(@event);
@@ -81,12 +77,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				if (image != null)
-				{
-					@event.ImageMimeType = image.ContentType;
-					@event.ImageData = new byte[image.ContentLength];
-					image.InputStream.Read(@event.ImageData, 0, image.ContentLength);
-				}
+				@event.CreateFileForContainer(image);
+
 				@event.StartView = @event.StartView?.ToUniversalTime();
 				@event.EndView = @event.EndView?.ToUniversalTime();
 				_repository.CreateEvent(@event);
@@ -113,6 +105,26 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				_logger.Info("Event \"{0}\" deleted by {1}.", deletedEvent.Title, User.Identity.Name);
 			}
 			return RedirectToAction(nameof(Table));
+		}
+
+		private bool disposedValue = false; // To detect redundant calls
+
+		protected override void Dispose(bool disposing)
+		{
+			if (!disposedValue)
+			{
+				if (disposing)
+				{
+					// TODO: dispose managed state (managed objects).
+					_repository.Dispose();
+					base.Dispose(disposing);
+				}
+
+				// TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+				// TODO: set large fields to null.
+
+				disposedValue = true;
+			}
 		}
 	}
 }

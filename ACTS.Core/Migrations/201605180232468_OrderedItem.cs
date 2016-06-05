@@ -38,7 +38,7 @@ namespace ACTS.Core.Migrations
                 c => new
                     {
                         OrderedItemId = c.Int(nullable: false, identity: true),
-                        Order = c.DateTime(nullable: false),
+                        Order = c.Int(nullable: false),
                         Value = c.String(nullable: false),
                         TeacherId = c.Int(nullable: false),
                     })

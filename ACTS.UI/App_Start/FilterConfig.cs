@@ -5,12 +5,11 @@ using System.Web.Mvc;
 
 namespace ACTS.UI
 {
-	public class FilterConfig
+	public static class FilterConfig
 	{
 		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{
-			var kernel = new StandardKernel();
-			ILoggerFactory loggerFactory = kernel.Get<ILoggerFactory>();
+			var loggerFactory = DependencyResolver.Current.GetService<ILoggerFactory>();
 			filters.Add(new LogFilterAttribute(loggerFactory));
 		}
 	}

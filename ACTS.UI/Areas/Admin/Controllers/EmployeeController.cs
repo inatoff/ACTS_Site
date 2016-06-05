@@ -28,13 +28,13 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 		public ActionResult Table()
 		{
-			IEnumerable<Employee> employees = _repository.Employees.OrderBy(em => em.EmployeeId);
+			IEnumerable<Employee> employees = _repository.Employees.OrderBy(em => em.EmployeeId).ToList();
 			return View("TableEmployee", employees);
 		}
 
 		public ActionResult Edit(int employeeId)
 		{
-			Employee employee = _repository.GetEmployeeById(employeeId);
+			Employee employee = _repository.GetEmployee(employeeId);
 			return View("EditEmployee", employee);
 		}
 
@@ -44,12 +44,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				if (image != null)
-				{
-					employee.PhotoMimeType = image.ContentType;
-					employee.Photo = new byte[image.ContentLength];
-					image.InputStream.Read(employee.Photo, 0, image.ContentLength);
-				}
+				employee.UpdateFileForContainer(image);
+
 				_repository.UpdateEmployee(employee);
 				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.EmployeeSavedMsg, employee.FullName));
 				_logger.Info("Employee \"{0}\" saved by {1}.", employee.FullName, User.Identity.Name);
@@ -73,12 +69,8 @@ namespace ACTS.UI.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				if (image != null)
-				{
-					employee.PhotoMimeType = image.ContentType;
-					employee.Photo = new byte[image.ContentLength];
-					image.InputStream.Read(employee.Photo, 0, image.ContentLength);
-				}
+				employee.CreateFileForContainer(image);
+
 				_repository.CreateEmployee(employee);
 				TempData.AddMessage(MessageType.Success, string.Format(GlobalRes.EmployeeSavedMsg, employee.FullName));
 				_logger.Info("Employee \"{0}\" created by {1}.", employee.FullName, User.Identity.Name);
@@ -102,6 +94,26 @@ namespace ACTS.UI.Areas.Admin.Controllers
 				_logger.Info("Employee \"{0}\" deleted by {1}.", deletedEmployee.FullName, User.Identity.Name);
 			}
 			return RedirectToAction(nameof(Table));
+		}
+
+		private bool disposedValue = false; // To detect redundant calls
+
+		protected override void Dispose(bool disposing)
+		{
+			if (!disposedValue)
+			{
+				if (disposing)
+				{
+					// TODO: dispose managed state (managed objects).
+					_repository.Dispose();
+					base.Dispose(disposing);
+				}
+
+				// TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+				// TODO: set large fields to null.
+
+				disposedValue = true;
+			}
 		}
 	}
 }
