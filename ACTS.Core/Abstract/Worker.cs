@@ -34,7 +34,5 @@ namespace ACTS.Core.Abstract
 		public Guid? PhotoId { get; set; }
 
 		Guid? IHaveFileId.FileId { get { return PhotoId; } set { PhotoId = value; } }
-
-		public Guid? FileId { get { return ((IHaveFileId)this).FileId; } set { ((IHaveFileId)this).FileId = value; } }
 	}
 }

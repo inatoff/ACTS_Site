@@ -13,7 +13,6 @@ namespace ACTS.Core.Logging
 		Info,
 		Warn,
 		Error,
-		Fatal,
-		Off
+		Fatal
 	}
 }

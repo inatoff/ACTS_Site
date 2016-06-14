@@ -37,6 +37,9 @@ namespace ACTS.Core.Entities
 
 		Guid? IHaveFileId.FileId { get { return ImageId; } set { ImageId = value; } }
 
-		public Guid? FileId { get { return ((IHaveFileId)this).FileId; } set { ((IHaveFileId)this).FileId = value; } }
+		public override string ToString()
+		{
+			return $"{Title} ({GlobalRes.News})";
+		}
 	}
 }

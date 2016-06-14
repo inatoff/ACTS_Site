@@ -37,7 +37,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 
 			var model = new LogViewModel(logLevel, startDate, endDate, logs);
 
-			return View("Logging", model);
+			return View("Index", model);
 		}
 
 		public async Task<ActionResult> Index()
@@ -45,7 +45,7 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			var logs = (await LogService.GetLastMonthLogsAsync()).OrderByDescending(l => l.UtcDate).AsEnumerable();
 			var model = new LogViewModel(_defaultLevel, DateTime.Now.AddMonths(-1), logs);
 
-			return View("Logging", model);
+			return View(model);
 		}
 
 		public async Task<ActionResult> Rss()

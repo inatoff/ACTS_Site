@@ -30,11 +30,7 @@ namespace ACTS.Core.Concrete
 #if LogsInDb
 		public DbSet<LogEntry> LogEntries { get; set; }
 #endif
-
-		public EFDbContext() : base("ACTSdbConnection")
-		{
-
-		}
+		public EFDbContext() : base("ACTSdbConnection") { }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{

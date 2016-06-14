@@ -246,6 +246,9 @@
   <data name="Content" xml:space="preserve">
     <value>Зміст</value>
   </data>
+  <data name="CopyUrl" xml:space="preserve">
+    <value>Копіювати Url-адресу</value>
+  </data>
   <data name="CoursesAndProbations" xml:space="preserve">
     <value>Курси та стажування</value>
   </data>
@@ -336,6 +339,9 @@
   <data name="Disciplines " xml:space="preserve">
     <value>Дисципліни</value>
   </data>
+  <data name="Download" xml:space="preserve">
+    <value>Завантажити</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Редагувати</value>
   </data>
@@ -416,6 +422,12 @@
   </data>
   <data name="fileinputPath" xml:space="preserve">
     <value>~/bundles/fileinput-uk</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>Назва</value>
+  </data>
+  <data name="FileViewer" xml:space="preserve">
+    <value>Файловий менеджер</value>
   </data>
   <data name="ForEnrollee" xml:space="preserve">
     <value>Абітурієнту</value>
@@ -618,6 +630,9 @@
   <data name="SignIn" xml:space="preserve">
     <value>Увійти</value>
   </data>
+  <data name="Size" xml:space="preserve">
+    <value>Розмір</value>
+  </data>
   <data name="Slug" xml:space="preserve">
     <value>Слаг</value>
   </data>
@@ -723,6 +738,9 @@
   <data name="UploadNewPhoto" xml:space="preserve">
     <value>Завантажити нову фотографію</value>
   </data>
+  <data name="Url" xml:space="preserve">
+    <value>Url-адреса</value>
+  </data>
   <data name="UsefulLinks" xml:space="preserve">
     <value>Корисні посилання</value>
   </data>
@@ -743,6 +761,9 @@
   </data>
   <data name="UserNoFound" xml:space="preserve">
     <value>Користувач з індифікатором = {0} не знайдений.</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Користувачі</value>
   </data>
   <data name="UserSavedMsg" xml:space="preserve">
     <value>Користувач "{0}" успішно збережений.</value>

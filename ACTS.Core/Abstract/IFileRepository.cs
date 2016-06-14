@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace ACTS.Core.Abstract
 {
-	public interface IFileRepository:IDisposable
+	public interface IFileRepository : IDisposable
 	{
 		Guid UpdateFile(Guid id, string fileName, Stream input);
 		Guid CreateFile(string fileName, Stream input);
 		StoredFileStream GetFile(Guid id);
 		bool DeleteFile(Guid id);
+		IQueryable<StoredFileInfo> FileInfos { get; }
 	}
 }

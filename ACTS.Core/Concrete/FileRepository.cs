@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Configuration;
 using ACTS.Core.Entities;
+using System.Linq.Expressions;
+using System.Data.Entity;
 
 namespace ACTS.Core.Concrete
 {
@@ -47,7 +49,7 @@ namespace ACTS.Core.Concrete
 			return storedFile;
 		}
 
-		public Guid UpdateFile(string id, string fileName, Stream input) => 
+		public Guid UpdateFile(string id, string fileName, Stream input) =>
 			UpdateFile(Guid.Parse(id), fileName, input);
 
 		public Guid UpdateFile(Guid id, string fileName, Stream input)
@@ -55,6 +57,47 @@ namespace ACTS.Core.Concrete
 			var context = GetContext(FileAccess.ReadWrite);
 			context.Files.Delete(id);
 			return context.Files.Store(fileName, input).ID;
+		}
+
+		public IQueryable<StoredFileInfo> FileInfos
+		{
+			get
+			{
+				FileDbContext fileContext = GetContext(FileAccess.Read);
+				var storedFileInfos = fileContext.Files.ListFiles()
+													   .Select(f => new StoredFileInfo
+													   {
+														   Id = f.ID,
+														   Name = f.FileName,
+														   Size = f.FileLength
+													   }).ToList();
+
+				using (EFDbContext efContext = new EFDbContext())
+				{
+					var entitysWithFileId = efContext.Uncos.Where(n => n.ImageId.HasValue)
+														   .AsNoTracking()
+														   .AsEnumerable<IHaveFileId>()
+											.Union(efContext.Events.Where(ev => ev.ImageId.HasValue)
+																   .AsNoTracking()
+																   .AsEnumerable<IHaveFileId>())
+											.Union(efContext.Employees.Where(empl => empl.PhotoId.HasValue)
+																	  .AsNoTracking()
+																	  .AsEnumerable<IHaveFileId>())
+											.Union(efContext.Teachers.Where(t => t.PhotoId.HasValue)
+																	 .AsNoTracking()
+																	 .AsEnumerable<IHaveFileId>())
+											.ToLookup(hfi => hfi.FileId.Value);
+
+					foreach (var ewfi in entitysWithFileId)
+					{
+						var storedFileInfo = storedFileInfos.Find(sfi => sfi.Id == ewfi.Key);
+						if (storedFileInfo != null)
+							storedFileInfo.Users = ewfi;
+					}
+				}
+
+				return storedFileInfos.AsQueryable();
+			}
 		}
 
 		#region IDisposable Support
@@ -67,7 +110,7 @@ namespace ACTS.Core.Concrete
 				if (disposing)
 				{
 					// TODO: dispose managed state (managed objects).
-					_context.Dispose();
+					_context?.Dispose();
 				}
 
 				// TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.

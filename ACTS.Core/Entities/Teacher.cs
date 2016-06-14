@@ -85,6 +85,11 @@ namespace ACTS.Core.Entities
 		public virtual Blog Blog { get; set; }
 
 		public bool HasBlog { get { return Blog != null; } }
+
+		public override string ToString()
+		{
+			return $"{FullName} ({GlobalRes.Teacher})";
+		}
 	}
 
 	public class TeacherMap : EntityTypeConfiguration<Teacher>
