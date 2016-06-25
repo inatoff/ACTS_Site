@@ -2,8 +2,8 @@
 
 namespace ACTS.Core.Abstract
 {
-	public interface IHaveFileId
-	{
-		Guid? FileId { get; set; }
-	}
+    public interface IHaveFileId
+    {
+        Guid? FileId { get; set; }
+    }
 }

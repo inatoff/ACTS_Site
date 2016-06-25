@@ -8,37 +8,26 @@
     @Html.Partial("DepartmentNav")
     <div class="col-md-9 mainColumns content-col" style="background-color:rgba(255, 255, 255, 0.4);" role="main">
         <div class="c__block-title">@GlobalRes.ArchiveUncos</div>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @*@Html.DisplayNameFor(model => model.DataCreate)*@
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ImageData)
-                </th>
-            </tr>
-
+        <div class="row">
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @*@Html.DisplayFor(modelItem => item.DataCreate)*@
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ImageData)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ImageMimeType)
-                    </td>
-                </tr>
+                <div class="col-md-4">
+                    <a href="@Url.Action("Index","News", new {area="", id=item.NewsId})" title="@item.Title">
+                        <div class="uncos-image">
+                            @if (item.ImageId.HasValue)
+                            {
+                                <img src="@Url.Action("Index","File",new { area="", id=item.ImageId})" />
+                            }
+                        </div>
+                        <div>
+                            <p class="uncos-title">@item.Title</p>
+                        </div>
+                        <div>
+                            <p class="uncos-date">@(item.Modified ?? item.Created)</p>
+                        </div>
+                    </a>
+                </div>
             }
-
-        </table>
+        </div>
     </div>
 </div>
