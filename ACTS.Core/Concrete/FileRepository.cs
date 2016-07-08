@@ -64,13 +64,13 @@ namespace ACTS.Core.Concrete
 			get
 			{
 				FileDbContext fileContext = GetContext(FileAccess.Read);
-				var storedFileInfos = fileContext.Files.ListFiles()
-													   .Select(f => new StoredFileInfo
-													   {
-														   Id = f.ID,
-														   Name = f.FileName,
-														   Size = f.FileLength
-													   }).ToList();
+                var storedFileInfos = fileContext.Files.ListFiles()
+                                                       .Select(f => new StoredFileInfo
+                                                       {
+                                                           Id = f.ID,
+                                                           Name = f.FileName,
+                                                           Size = f.FileLength
+                                                       });
 
 				using (EFDbContext efContext = new EFDbContext())
 				{
@@ -86,15 +86,14 @@ namespace ACTS.Core.Concrete
 											.Union(efContext.Teachers.Where(t => t.PhotoId.HasValue)
 																	 .AsNoTracking()
 																	 .AsEnumerable<IHaveFileId>())
-											.ToLookup(hfi => hfi.FileId.Value);
+											.GroupBy(hfi => hfi.FileId.Value);
 
-					foreach (var ewfi in entitysWithFileId)
-					{
-						var storedFileInfo = storedFileInfos.Find(sfi => sfi.Id == ewfi.Key);
-						if (storedFileInfo != null)
-							storedFileInfo.Users = ewfi;
-					}
-				}
+                    storedFileInfos = entitysWithFileId.Join(
+                        storedFileInfos, 
+                        ewfi => ewfi.Key,
+                        sfi => sfi.Id, 
+                        (ewfi, sfi) => { sfi.Users = ewfi; return sfi; });
+                }
 
 				return storedFileInfos.AsQueryable();
 			}

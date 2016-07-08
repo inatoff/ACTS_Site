@@ -13,6 +13,7 @@ namespace ACTS.Core.Abstract
 	{
 		IQueryable<Teacher> Teachers { get; }
 		IQueryable<Teacher> NoPairTeachers { get; }
+
 		IQueryable<Teacher> GetNoPairTeachersWithSelected(int id);
 		void CreateTeacher(Teacher teacher);
 		void UpdateTeacher(Teacher teacher);

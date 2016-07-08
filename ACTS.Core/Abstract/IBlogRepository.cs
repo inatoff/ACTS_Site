@@ -9,6 +9,7 @@ namespace ACTS.Core.Abstract
 	{
 		IQueryable<Post> Posts { get; }
 		IQueryable<Blog> Blogs { get; }
+
 		void CreatePost(Post post);
 		Task EditPost(int id, Post post);
 		Blog GetBlogByAuthorNameSlug(string slug);

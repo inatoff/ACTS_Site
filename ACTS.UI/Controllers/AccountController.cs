@@ -68,7 +68,7 @@ namespace ACTS.UI.Controllers
         {
             ViewBag.ReturnUrl = returnUrl;
             // не уверен что нужно говорить пользователю что он не имеет достаточно прав,
-            // но вместе с етим мы можем иметь ситуацию когда кто то битый час пытаеться войти 
+            // но вместе с этим мы можем иметь ситуацию когда кто то битый час пытаеться войти 
             // не зная почему его не пускает
             if (string.IsNullOrWhiteSpace(returnUrl) ? false : returnUrl.ToLower().StartsWith("/admin"))
                 if (!User.IsInRole("Admin") && User.Identity.IsAuthenticated)
@@ -97,7 +97,6 @@ namespace ACTS.UI.Controllers
                 if (user != null)
                     userName = user.UserName;
                 //}
-
 
                 var signInResult = await SignInManager.PasswordSignInAsync(userName, model.Password, model.RememberMe, shouldLockout: true);
 
@@ -149,8 +148,7 @@ namespace ACTS.UI.Controllers
         [HttpPost]
         public JsonResult doesUserNameExist(string userName)
         {
-            ApplicationUser user;
-            user = UserManager.FindByName(userName);
+            ApplicationUser user = UserManager.FindByName(userName);
             return Json(user == null);
         }
 

@@ -1,6 +1,7 @@
 ﻿using ACTS.Core.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -14,7 +15,7 @@ namespace ACTS.UI.Controllers
 
 		public FileController(IFileRepository repository)
 		{
-			_repository = repository;
+            _repository = repository;
 		}
 
 		[Route("Files/Id{id}", Name = "ToDefaultActionFileController")]
