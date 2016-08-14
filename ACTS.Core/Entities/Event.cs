@@ -56,6 +56,11 @@ namespace ACTS.Core.Entities
 			}
 		}
 
-		Guid? IHaveFileId.FileId { get { return ImageId; } set { ImageId = value; } } 
+		Guid? IHaveFileId.FileId { get { return ImageId; } set { ImageId = value; } }
+
+		public override string ToString()
+		{
+			return $"{Title} ({GlobalRes.Event})";
+		}
 	}
 }

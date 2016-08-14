@@ -252,6 +252,9 @@
   <data name="Content" xml:space="preserve">
     <value>Content</value>
   </data>
+  <data name="CopyUrl" xml:space="preserve">
+    <value>Copy url</value>
+  </data>
   <data name="CoursesAndProbations" xml:space="preserve">
     <value>Courses and Probations</value>
   </data>
@@ -339,6 +342,9 @@
   <data name="Disciplines" xml:space="preserve">
     <value>Disciplines</value>
   </data>
+  <data name="Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
@@ -419,6 +425,12 @@
   </data>
   <data name="fileinputPath" xml:space="preserve">
     <value>~/bundles/fileinput</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="FileViewer" xml:space="preserve">
+    <value>File viewer</value>
   </data>
   <data name="ForEnrollee" xml:space="preserve">
     <value>For Enrollee</value>
@@ -639,6 +651,9 @@
   <data name="SignIn" xml:space="preserve">
     <value>Sign in</value>
   </data>
+  <data name="Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
   <data name="Slug" xml:space="preserve">
     <value>Slug</value>
   </data>
@@ -750,6 +765,9 @@
   <data name="UploadNewPhoto" xml:space="preserve">
     <value>Upload new photo:</value>
   </data>
+  <data name="Url" xml:space="preserve">
+    <value>Url</value>
+  </data>
   <data name="UsefulLinks" xml:space="preserve">
     <value>Useful Links</value>
   </data>
@@ -770,6 +788,9 @@
   </data>
   <data name="UserNoFound" xml:space="preserve">
     <value>User with ID = {0} was not found.</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
   </data>
   <data name="UserSavedMsg" xml:space="preserve">
     <value>User "{0}" successfully saved.</value>

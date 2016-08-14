@@ -27,15 +27,15 @@ namespace ACTS.UI.Areas.Admin
 			);
 
 			context.MapRoute(
-				name: "ToLogsRssFeed",
-				url: "Admin/Logging/Rss",
-				defaults: new { controller = "Logging", action = "Rss" }
+				name: "ToAdminAreaDefaultWithoutId",
+				url:  "Admin/{controller}/{action}",
+				defaults: new { controller = "Admin", action = "Index" }
 			);
 
 			context.MapRoute(
-				name: "Admin_default",
-				url:  "Admin/{controller}/{action}/{id}",
-				defaults: new { controller = "Admin", action = "Dashboard", id = UrlParameter.Optional }
+				name: "ToAdminAreaDefault",
+				url:  "Admin/{controller}/{action}/Id{id}",
+				defaults: new { controller = "Admin", action = "Index", id = UrlParameter.Optional }
 			);
 		}
 	}

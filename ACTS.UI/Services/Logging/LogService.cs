@@ -40,7 +40,7 @@ namespace ACTS.UI.Services.Logging
 			{
 				if (_pathToLogs == null)
 				{
-					var jsonLayout = new LoggingConfiguration().AllTargets.OfType<FileTarget>().FirstOrDefault(ft => ft.Layout is JsonLayout);
+					var jsonLayout = NLog.LogManager.Configuration.AllTargets.OfType<FileTarget>().FirstOrDefault(ft => ft.Layout is JsonLayout);
 					_pathToLogs = Path.GetDirectoryName(jsonLayout?.FileName.Render(NLog.LogEventInfo.CreateNullEvent()));
 				}
 				return _pathToLogs;
@@ -73,13 +73,13 @@ namespace ACTS.UI.Services.Logging
 					{
 						try
 						{
-							var task = Task.Factory.StartNew(() => File.ReadAllText(logFilePath));
+							var taskReadAll = Task.Factory.StartNew(() => File.ReadAllText(logFilePath));
 #if DEBUG
 #pragma warning disable CS4014 
-							task.ContinueWith(s => Logger.Trace($"Read text from {logFilePath} successful."));
+							taskReadAll.ContinueWith(s => Logger.Trace($"Read text from {logFilePath} successful."));
 #pragma warning restore CS4014
 #endif
-							logsSB.Append(await task);
+							logsSB.Append(await taskReadAll);
 							break;
 						}
 						catch (IOException ex)

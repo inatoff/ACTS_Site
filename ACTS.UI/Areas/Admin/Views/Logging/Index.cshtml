@@ -1,7 +1,7 @@
 ﻿@model ACTS.UI.Areas.Admin.Models.LogViewModel
 
 @{
-	ViewBag.CurrentPage = Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
+	ViewBag.CurrentPage = Path.GetDirectoryName(Server.MapPath(VirtualPath));
 	ViewBag.Title = GlobalRes.Logging;
 }
 

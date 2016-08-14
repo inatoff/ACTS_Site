@@ -33,6 +33,6 @@ namespace ACTS.Core.Abstract
         [Display(Name = nameof(DisplayRes.PhotoName), ResourceType = typeof(DisplayRes))]
         public Guid? PhotoId { get; set; }
 
-        Guid? IHaveFileId.FileId { get { return PhotoId; } set { PhotoId = value; } }
-    }
+		Guid? IHaveFileId.FileId { get { return PhotoId; } set { PhotoId = value; } }
+	}
 }

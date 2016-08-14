@@ -231,6 +231,12 @@
   <data name="FDP" xml:space="preserve">
     <value>Довузовская подготовка</value>
   </data>
+  <data name="FileName" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="FileViewer" xml:space="preserve">
+    <value>Файловый менеджер</value>
+  </data>
   <data name="ForEnrollee" xml:space="preserve">
     <value>Абитуриенту</value>
   </data>

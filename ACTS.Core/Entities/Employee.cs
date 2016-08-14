@@ -1,4 +1,5 @@
 ﻿using ACTS.Core.Abstract;
+using ACTS.Localization.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,5 +14,11 @@ namespace ACTS.Core.Entities
 	{
 		[HiddenInput(DisplayValue = false)]
 		public int EmployeeId { get; set; }
+
+
+		public override string ToString()
+		{
+			return $"{FullName} ({GlobalRes.Employee})";
+		}
 	}
 }

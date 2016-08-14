@@ -58,6 +58,18 @@
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Extensions.Logging, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Logging.3.2.3.0\lib\net45-full\Ninject.Extensions.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Logging.NLog4, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Logging.nlog4.3.2.3.0\lib\net45-full\Ninject.Extensions.Logging.NLog4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.0\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -93,6 +105,7 @@
     <Compile Include="Entities\Blog.cs" />
     <Compile Include="Entities\StoredFile.cs" />
     <Compile Include="Entities\OrderedItem.cs" />
+    <Compile Include="Entities\StoredFileInfo.cs" />
     <Compile Include="Entities\Tag.cs" />
     <Compile Include="Identity\ApplicationRole.cs" />
     <Compile Include="Identity\ApplicationUser.cs" />
@@ -108,6 +121,7 @@
     <Compile Include="Identity\ApplicationUserRole.cs" />
     <Compile Include="IoC\RepositoriesModule.cs" />
     <Compile Include="Logging\LogEntry.cs" />
+    <Compile Include="Logging\EFCommandInterceptor.cs" />
     <Compile Include="Logging\LogLevel.cs" />
     <Compile Include="Migrations\201604102043349_InitDb.cs" />
     <Compile Include="Migrations\201604102043349_InitDb.Designer.cs">

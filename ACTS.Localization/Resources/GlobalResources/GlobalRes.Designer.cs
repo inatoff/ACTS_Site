@@ -466,6 +466,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Копіювати Url-адресу.
+        /// </summary>
+        public static string CopyUrl {
+            get {
+                return ResourceManager.GetString("CopyUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Курси та стажування.
         /// </summary>
         public static string CoursesAndProbations {
@@ -727,6 +736,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Завантажити.
+        /// </summary>
+        public static string Download {
+            get {
+                return ResourceManager.GetString("Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Редагувати.
         /// </summary>
         public static string Edit {
@@ -966,6 +984,24 @@ namespace ACTS.Localization.Resources {
         public static string fileinputPath {
             get {
                 return ResourceManager.GetString("fileinputPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Назва.
+        /// </summary>
+        public static string FileName {
+            get {
+                return ResourceManager.GetString("FileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Файловий менеджер.
+        /// </summary>
+        public static string FileViewer {
+            get {
+                return ResourceManager.GetString("FileViewer", resourceCulture);
             }
         }
         
@@ -1636,6 +1672,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Розмір.
+        /// </summary>
+        public static string Size {
+            get {
+                return ResourceManager.GetString("Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Слаг.
         /// </summary>
         public static string Slug {
@@ -1969,6 +2014,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Url-адреса.
+        /// </summary>
+        public static string Url {
+            get {
+                return ResourceManager.GetString("Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Корисні посилання.
         /// </summary>
         public static string UsefulLinks {
@@ -2028,6 +2082,15 @@ namespace ACTS.Localization.Resources {
         public static string UserNoFound {
             get {
                 return ResourceManager.GetString("UserNoFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Користувачі.
+        /// </summary>
+        public static string Users {
+            get {
+                return ResourceManager.GetString("Users", resourceCulture);
             }
         }
         

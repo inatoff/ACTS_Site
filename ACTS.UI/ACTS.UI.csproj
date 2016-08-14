@@ -371,7 +371,7 @@
     <Content Include="Content\skins\_all-skins.min.css" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\css\Site.css" />
-    <Content Include="Areas\Admin\Views\Logging\Logging.cshtml" />
+    <Content Include="Areas\Admin\Views\Logging\Index.cshtml" />
     <Content Include="Areas\Peoples\Views\Profile\Index.cshtml" />
     <Content Include="Areas\Peoples\Views\Shared\_PersonalPageNavigation.cshtml" />
     <Content Include="Areas\Peoples\Views\Blog\Index.cshtml" />
@@ -383,6 +383,7 @@
     <Content Include="Areas\Admin\Views\Teacher\EditorTemplates\OrderableCollection.cshtml" />
     <Content Include="Areas\Admin\Views\Teacher\EditorTemplates\OrderedItem`2.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\UploadImage.cshtml" />
+    <Content Include="Areas\Admin\Views\FileViewer\Index.cshtml" />
     <None Include="EmailTemplates\ConfirmRegistration.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -718,6 +719,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FileViewerController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoggingController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeeController.cs" />
@@ -753,7 +755,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\СontainsFileIdHelper.cs" />
+    <Compile Include="Helpers\HaveFileIdHelper.cs" />
     <Compile Include="Helpers\CultureHelper.cs" />
     <Compile Include="Helpers\DescriptionHelper.cs" />
     <Compile Include="Helpers\StringExtensionHelper.cs" />

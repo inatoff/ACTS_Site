@@ -96,7 +96,7 @@
 							<span>@GlobalRes.Dashboard</span>
 						</a>
 					</li>
-					<li class="@IsActivePage("Index")">
+					<li class="@IsActivePage("MyAccount")">
 						<a href="@Url.Action("Index", "MyAccount")">
 							<i class="fa fa-gears"></i>
 							<span>@GlobalRes.MyAccount</span>
@@ -130,9 +130,15 @@
 							<li class="@IsActivePage("CreateAccount")"><a href="@Url.Action("Create", "Account")"><i class="fa fa-circle-o"></i>@GlobalRes.Account</a></li>
 						</ul>
 					</li>
+					<li class="@IsActivePage("FileViewer")">
+						<a href="@Url.Action("Index", "FileViewer")">
+							<i class="fa fa-files-o"></i>
+							<span>@GlobalRes.FileViewer</span>
+						</a>
+					</li>
 					<li class="@IsActivePage("Logging")">
 						<a href="@Url.Action("Index", "Logging")">
-							<i class="fa fa-file-archive-o"></i>
+							<i class="fa fa-file-text-o"></i>
 							<span>@GlobalRes.Logging</span>
 						</a>
 					</li>

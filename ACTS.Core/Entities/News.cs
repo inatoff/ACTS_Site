@@ -35,6 +35,11 @@ namespace ACTS.Core.Entities
 		[Display(Name = nameof(DisplayRes.ContentName), ResourceType = typeof(DisplayRes))]
 		public string Content { get; set; }
 
-		Guid? IHaveFileId.FileId { get { return ImageId; } set { ImageId = value; } } 
+		Guid? IHaveFileId.FileId { get { return ImageId; } set { ImageId = value; } }
+
+		public override string ToString()
+		{
+			return $"{Title} ({GlobalRes.News})";
+		}
 	}
 }

@@ -64,12 +64,11 @@ namespace ACTS.UI.Areas.Admin.Controllers
 			}
 		}
 
-		public int CurrentUserId
+		protected int CurrentUserId
 		{
 			get { return User.Identity.GetUserId<int>(); }
 		}
 
-		// GET: Admin/Manage
 		public ActionResult Index()
 		{
 			MyAccountViewModel model;

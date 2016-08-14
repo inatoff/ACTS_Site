@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace ACTS.UI.Helpers
 {
-	public static class СontainsFileIdHelper
+	public static class HaveFileIdHelper
 	{
 		public static void UpdateFileForContainer(this IHaveFileId containsFileId, HttpPostedFileBase file)
 		{
