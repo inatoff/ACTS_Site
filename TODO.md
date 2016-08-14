@@ -1,0 +1,8 @@
+- Blog view
+- Teaching staff view
+- Personnel view
+- News view
+- Events partial view
+- Minify JS
+- Email for teachers instructions
+- Little documentation
