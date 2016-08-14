@@ -2,6 +2,7 @@
 @{ 
     var Head = ACTS.Core.Entities.Rank.Head;
     var FirstVice = ACTS.Core.Entities.Rank.FirstVice;
+    
 }
 <div class="row">
     @Html.Partial("DepartmentNav")
@@ -10,6 +11,7 @@
             <div class="pageTitle">
                 @GlobalRes.TeachingStaff
             </div>
+            <div class="panel-group"
             @{
                 foreach (var teacher in Model)
                 {
@@ -39,5 +41,4 @@
         </div>
     </div>
     @Scripts.Render("~/bundles/teachingStaffWrapper")
-
 </div>

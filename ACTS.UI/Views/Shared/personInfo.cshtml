@@ -1,6 +1,6 @@
 ﻿@model ACTS.Core.Entities.Teacher
-<div class="personWrapper">
-    <div class="person__avatar">
+<div class="personWrapper" data-name="@Model.FullName" data-img="@Url.Action("Index", "File", new { area = "", id = Model.PhotoId.Value })">
+    <div class="personAvatar">
         @if (Model.PhotoId.HasValue)
         {
             <img class="TeacherPhoto" alt="Teacher Photo" width="100" height="150" src="@Url.Action("Index", "File", new { area = "", id = Model.PhotoId.Value })" />
@@ -9,7 +9,7 @@
         {
             @GlobalRes.None
         }
-        
+
     </div>
     <div class="personInfo">
         <div class="personName">
@@ -23,33 +23,34 @@
             @Html.ActionLink(GlobalRes.PersonalPage, "PersonalPage", new { area = "Peoples", controller = "Blog", nameSlug = Model.NameSlug })
         }
     </div>
-    <div class="personDescription" style="display:none">
-        <p>@GlobalRes.Degree:@Model.Degree</p>
-        @if (Model.Disciplines != null && Model.Disciplines.Count > 0)
-        {
-            <p>@GlobalRes.Disciplines</p>
-            <ul class="TSDisciplines">
-                @{
-
-                    foreach (var item in Model.Disciplines)
-                    {
-                        <li>
-                            item
-                        </li>
-                    }
-                }
-            </ul>
-            <p><strong>Интересы:</strong></p>
-            <ul>
-                @{
-                    foreach (var item in Model.ScienceInterests)
-                    {
-                        <li>
-                            item
-                        </li>
-                    }
-                }
-            </ul>
-        }
-    </div>
 </div>
+<div class="personDescription" style="display:none">
+    <p><strong>@GlobalRes.Degree:@Model.Degree</strong></p>
+    @if (Model.Disciplines != null && Model.Disciplines.Count > 0)
+    {
+        <p><strong>@GlobalRes.Disciplines</strong></p>
+        <ul class="TSDisciplines">
+            @{  foreach (var item in Model.Disciplines)
+                {
+                    <li>
+                        @item.Value
+                    </li>
+                }
+            }
+        </ul>    
+    }
+    @if (Model.ScienceInterests != null && Model.ScienceInterests.Count > 0)
+    { 
+        <p><strong>@GlobalRes.ScienceInterests</strong></p>
+        <ul>
+            @{foreach (var item in Model.ScienceInterests)
+                {
+                    <li>
+                        @item.Value
+                    </li>
+                }
+            }
+        </ul>   
+    }
+</div>
+

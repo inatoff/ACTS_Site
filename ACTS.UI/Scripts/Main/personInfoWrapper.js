@@ -2,11 +2,12 @@
             jQuery(document).ready(function($) {
                 var $descriptionBlock = $('#description');
 
-                $('.person__wrapper').click(function(){
-                    if(getDescription() == $(this).data('id')) {
+                $('.personWrapper').click(function(){
+                    if(getDescription() == $(this).data('name')) {
                         hideDescription();
                     }
-                    else {
+                    else 
+                    {
                         hideDescription();
                         showDescription($(this));
                     }
@@ -24,13 +25,10 @@
                         scrollTop: $block.offset().top
                     }, 500);
 
-                    $("#h_avatar").attr('src', $block.data('img'));
-                    $("#h_name").text($block.data('name'));
-                    $("#h_position").text($block.data('position'));
-
-                    $("#h_description").html($block.find('.person__description').html());
-                    $("#h_links").html($block.find('.person__links').html());
-
+                    $(".personAvatar").attr('src', $block.data('img'));
+                    $(".personName").text($block.data('name'));
+                    $(".personDescription").html($block.find('.personDescription').html());
+                    //$("#h_links").html($block.find('.person__links').html());
                     $descriptionBlock.show();
                 }
 
@@ -51,7 +49,7 @@
                         return false;
                     }
                     else {
-                        return $descriptionBlock.data('id');
+                        return $descriptionBlock.data('name');
                     }
                 }
 
