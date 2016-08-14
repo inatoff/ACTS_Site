@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Assistant" xml:space="preserve">
+    <value>Асистент</value>
+  </data>
   <data name="ChangeEmailDescription" xml:space="preserve">
     <value>Зміна адреси електронної пошти є простим, двоступеневий процесом. Вкажіть нову адресу електронної пошти, яку ви хочете використовувати, і ми надішлемо вам на поточну адресу лист для того щоб підтвердити та завершити зміну адреси.</value>
   </data>
@@ -153,11 +156,17 @@
   <data name="FacebookName" xml:space="preserve">
     <value>Facebook URL-адреса</value>
   </data>
+  <data name="FirstVice" xml:space="preserve">
+    <value>Перший заступник</value>
+  </data>
   <data name="FullNameName" xml:space="preserve">
     <value>Повне ім'я*</value>
   </data>
   <data name="Greetings" xml:space="preserve">
     <value>Привітання</value>
+  </data>
+  <data name="Head" xml:space="preserve">
+    <value>Зав. кафедрою</value>
   </data>
   <data name="ImageName" xml:space="preserve">
     <value>Зображення</value>
@@ -222,6 +231,9 @@
   <data name="StartDate" xml:space="preserve">
     <value>Діапазон дат : </value>
   </data>
+  <data name="Teacher" xml:space="preserve">
+    <value>Викладач</value>
+  </data>
   <data name="TitleName" xml:space="preserve">
     <value>Заголовок*</value>
   </data>
@@ -236,6 +248,9 @@
   </data>
   <data name="UserNameShortName" xml:space="preserve">
     <value>Ім'я користувача</value>
+  </data>
+  <data name="Vice" xml:space="preserve">
+    <value>Заступник</value>
   </data>
   <data name="VkontakteName" xml:space="preserve">
     <value>Вконтакті URL-адреса</value>

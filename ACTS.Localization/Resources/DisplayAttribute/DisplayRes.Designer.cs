@@ -61,6 +61,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Асистент.
+        /// </summary>
+        public static string Assistant {
+            get {
+                return ResourceManager.GetString("Assistant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Зміна адреси електронної пошти є простим, двоступеневий процесом. Вкажіть нову адресу електронної пошти, яку ви хочете використовувати, і ми надішлемо вам на поточну адресу лист для того щоб підтвердити та завершити зміну адреси..
         /// </summary>
         public static string ChangeEmailDescription {
@@ -169,6 +178,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Перший заступник.
+        /// </summary>
+        public static string FirstVice {
+            get {
+                return ResourceManager.GetString("FirstVice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Повне ім&apos;я*.
         /// </summary>
         public static string FullNameName {
@@ -183,6 +201,15 @@ namespace ACTS.Localization.Resources {
         public static string Greetings {
             get {
                 return ResourceManager.GetString("Greetings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Зав. кафедрою.
+        /// </summary>
+        public static string Head {
+            get {
+                return ResourceManager.GetString("Head", resourceCulture);
             }
         }
         
@@ -376,6 +403,15 @@ namespace ACTS.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Викладач.
+        /// </summary>
+        public static string Teacher {
+            get {
+                return ResourceManager.GetString("Teacher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Заголовок*.
         /// </summary>
         public static string TitleName {
@@ -417,6 +453,15 @@ namespace ACTS.Localization.Resources {
         public static string UserNameShortName {
             get {
                 return ResourceManager.GetString("UserNameShortName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Заступник.
+        /// </summary>
+        public static string Vice {
+            get {
+                return ResourceManager.GetString("Vice", resourceCulture);
             }
         }
         
